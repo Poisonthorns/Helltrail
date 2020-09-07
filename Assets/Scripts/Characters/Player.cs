@@ -5,25 +5,47 @@ using System.ComponentModel;
 using System.Threading;
 using UnityEngine;
 
-public class Player : Character
+public class Player : MonoBehaviour
 {
-
+	[SerializeField]
+	private Stat health;
+	[SerializeField]
+	private float startingHealth;
+	[SerializeField]
+	private float maxHealth;
+	[SerializeField]
+	private float speed;
+	[SerializeField]
+	protected Transform movePoint;
+	public LayerMask collideables;
 	// Start is called before the first frame update
 	void Start()
 	{
 		movePoint.parent = null;
+		health.Initialize(startingHealth, maxHealth);
 	}
 
 	// Update is called once per frame
-	protected override void Update()
+	void Update()
 	{
-		base.Update();
+		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
 		GetInput();
 	}
 
 	private void GetInput()
 	{
-		if(Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
+
+		//Testing purposes only
+		if(Input.GetKeyDown(KeyCode.O))
+		{
+			health.myCurrentValue -= 10;
+		}
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			health.myCurrentValue += 10;
+		}
+
+		if (Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
 		{
 			if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
 			{
