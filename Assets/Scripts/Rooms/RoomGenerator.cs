@@ -113,15 +113,21 @@ public class RoomGenerator : MonoBehaviour
                         continue;
                     }
                 }
-                terrain.Add(new Coords(coord.x, coord.y));
-                roomGrid[coord.x,coord.y] = stuff[i];
+                if(i!=-1)
+                {
+                    terrain.Add(new Coords(coord.x, coord.y));
+
+                    roomGrid[coord.x, coord.y] = stuff[i];
+                }
+
             }
         }
     }
     //checks if it is possible or not
     bool isPossible()
     {
-        //checks if their is a path from start to doors
+        //checks if their is a path from start to door
+        /*
         if(!naiveDepth(start))
         {
             return false;
@@ -133,8 +139,8 @@ public class RoomGenerator : MonoBehaviour
             {
                 return false;
             }
-        }
-        return true;
+        }*/
+        return naiveDepth(start);
     }
     //depth first search; visits all eligable tiles.
     bool naiveDepth(Coords startt)
@@ -144,12 +150,16 @@ public class RoomGenerator : MonoBehaviour
 
         helper(map, startt.x, startt.y);
         //checks if nothing blocks the doors(prob unnecessary)
-        for(int i=0; i<door.Length; ++i)
+        for(int i=0; i<roomSizeX; ++i)
         {
-            if(map[door[i].x, door[i].y]==0)
+            for (int j = 0; j < roomSizeY; ++j)
             {
-                return false;
+                if(map[i,j] == 0 && roomGrid[i, j] < 10)
+                {
+                    return false;
+                }
             }
+
         }
         return true;
     }
