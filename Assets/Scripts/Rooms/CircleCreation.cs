@@ -53,6 +53,7 @@ public class CircleCreation : MonoBehaviour
            roomsss.Add(temp.generateRoom(roomWidth, roomHeight, roomMap[i].entrance, roomMap[i].door, monsters, terrain));
             temp.printMap();
         }
+        //next part is creating the actual map
         GameObject grid = new GameObject("grid");
         grid.AddComponent<Grid>();
         GameObject[] roomssssss = new GameObject[roomsss.Count*2];
@@ -69,20 +70,20 @@ public class CircleCreation : MonoBehaviour
             newRoomCollision.AddComponent<TilemapRenderer>();
             newRoomCollision.layer = 8;
             newRoomCollision.transform.parent = grid.transform;
-
+            newRoomCollision.AddComponent<TilemapCollider2D>();
+            newRoomCollision.AddComponent<Rigidbody2D>();
+            newRoomCollision.AddComponent<CompositeCollider2D>();
+            newRoomCollision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
             roomssssss[i*2] = newRoom;
             roomssssss[(i*2)+1] = newRoomCollision;
-            print(i + 1);
         }
 
 
-        //Sprite tileSprite = sprite[0];
         Tile tile = sprite[0];
         Tile tile2 = sprite[1];
         Tile tile3 = sprite[2];
 
-        //tile.sprite = ;
         int tileOffsetX = 0;
         int tileOffsetY = 0;
         int switcher = 0;
@@ -91,12 +92,59 @@ public class CircleCreation : MonoBehaviour
             int[,] test = roomsss[x];
             Tilemap tileMap = roomssssss[x*2].GetComponent<Tilemap>();
             Tilemap tileMapCollision = roomssssss[(x*2)+1].GetComponent<Tilemap>();
+            //set appropriate tiles
+            for (int i = -1; i < roomXSize + 1; ++i)
+            {
+                for (int j = -1; j < roomYSize + 1; ++j)
+                {
+                    if(i == -1 && j == roomYSize)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[11]);
 
+                    }
+                    else if (i == roomXSize && j == roomYSize)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[13]);
+
+                    }
+                    else if (i == -1 && j == -1)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[12]);
+
+                    }
+                    else if (i == roomXSize && j == -1)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[14]);
+
+                    }
+                    else if (i== -1)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[15]);
+
+                    }
+                    else if (i == roomXSize)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[16]);
+
+                    }
+                    else if(j == roomYSize)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[17]);
+
+                    }
+                    else if (j == -1)
+                    {
+                        tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[18]);
+
+                    }
+                }
+            }
             for (int i = 0; i < roomXSize; ++i)
             {
                 for (int j = 0; j < roomYSize; ++j)
                 {
                     tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), tile);
+
                     if (test[i, j] > 10 && test[i, j] != 99)
                     {
                         tileMapCollision.SetTile(new Vector3Int(i+tileOffsetX, j + tileOffsetY, 0), tile2);
@@ -128,19 +176,20 @@ public class CircleCreation : MonoBehaviour
 
                 }
             }
+            //get offset depending on position of next room
             switch (switcher)
             {
                 case 0:
-                     tileOffsetX += 11;
+                     tileOffsetX += 12;
                     break;
                 case 1:
-                    tileOffsetX -= 11;
+                    tileOffsetX -= 12;
                     break;
                 case 2:
-                    tileOffsetY += 11;
+                    tileOffsetY += 12;
                     break;
                 case 3:
-                    tileOffsetY -= 11;
+                    tileOffsetY -= 12;
                     break;
                 default:
                     break;
@@ -149,20 +198,8 @@ public class CircleCreation : MonoBehaviour
             tileMap.RefreshAllTiles();
         }
 
-
-
-
-        /*
-        GameObject newRoom1 = new GameObject("1");
-        newRoom1.AddComponent<Tilemap>();
-        newRoom1.AddComponent<TilemapRenderer>();
-        GameObject newRoom2 = new GameObject("2");
-        newRoom2.AddComponent<Tilemap>();
-        newRoom2.AddComponent<TilemapRenderer>();
-        GameObject newRoom3 = new GameObject("3");
-        newRoom3.AddComponent<Tilemap>();
-        newRoom3.AddComponent<TilemapRenderer>();*/
     }
+    //
     void path()
     {
 
@@ -177,6 +214,7 @@ public class CircleCreation : MonoBehaviour
         }
 
     }
+    //given entrance, creates a random door thats not on the side of entrance
     Coords generateRandomDoor(Coords entrance)
     {
         int entranceSide = 0;
@@ -221,6 +259,7 @@ public class CircleCreation : MonoBehaviour
             return new Coords(-1, -1);
         }
     }
+    //given previous room's door finds the entrance door
     Coords getNextRoomEntrance(Coords prevRoomDoor)
     {
         if(prevRoomDoor.x==0)
