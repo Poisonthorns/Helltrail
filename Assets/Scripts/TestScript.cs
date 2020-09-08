@@ -23,7 +23,7 @@ public class TestScript : MonoBehaviour
         {
             terrain[i] = i + 19;
         }
-        temp.generateRoom(roomWidth, roomHeight, entrance, array, monsters, terrain);
+        //temp.generateRoom(roomWidth, roomHeight, entrance, array, monsters, terrain);
         temp.printMap();
     }
 
