@@ -11,6 +11,10 @@ public class PlayerCombat : MonoBehaviour
     int currentAttack;
     int attackDamage;
     float attackRange;
+    Vector2 attackBox;
+
+    Vector2 lightAttackBox = new Vector2(0.5f, 0.5f);
+    Vector2 heavyAttackBox = new Vector2(1f, 2f);
 
     [SerializeField]
     int lightAttackDamage = 10;
@@ -31,7 +35,8 @@ public class PlayerCombat : MonoBehaviour
         attackDamage = lightAttackDamage;
         attackRange = lightAttackRange;
         currentAttack = 0;
-	}
+        attackBox = lightAttackBox;
+    }
 
     // Update is called once per frame
     void Update()
@@ -53,9 +58,8 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
 	{
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
-        
-        foreach(Collider2D enemy in enemies)
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, attackBox, 0f, enemyLayer, -100f, 100f);
+        foreach (Collider2D enemy in enemies)
 		{
             UnityEngine.Debug.Log("We hit " + enemy.name);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
@@ -70,12 +74,14 @@ public class PlayerCombat : MonoBehaviour
                 currentAttack = 1;
                 attackDamage = heavyAttackDamage;
                 attackRange = heavyAttackRange;
+                attackBox = heavyAttackBox;
                 UnityEngine.Debug.Log("Switched to the heavy weapon");
                 break;
             case 1:
                 currentAttack = 0;
                 attackDamage = lightAttackDamage;
                 attackRange = lightAttackRange;
+                attackBox = lightAttackBox;
                 UnityEngine.Debug.Log("Switched to the light weapon");
                 break;
             default:
