@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Tilemaps;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
+
+
 public struct Room
 {
     public Room(Coords entrancee, Coords doorr, int offsetXa, int offsetYa, int[,] gridd)
@@ -242,6 +245,7 @@ public class CircleCreation : MonoBehaviour
         if (enemies.Length==0)
         {
             print("you win");
+            SceneManager.LoadScene("Win Screen", LoadSceneMode.Single);
         }
     }
     void changeRoom()
