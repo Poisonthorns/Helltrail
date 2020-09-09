@@ -24,8 +24,8 @@ public class CircleCreation : MonoBehaviour
 {
     
     int rooms = 4;
-    int roomXSize = 14;
-    int roomYSize = 8;
+    int roomXSize = 10;
+    int roomYSize = 10;
     public Tile[] sprite;
     public TileBase tiles;
     public GameObject playerPrefab;
@@ -39,8 +39,8 @@ public class CircleCreation : MonoBehaviour
     {
         roomMap = new Room[4];
        RoomGenerator temp = new RoomGenerator();
-        int roomWidth = 14;
-        int roomHeight = 8;
+        int roomWidth = 10;
+        int roomHeight = 10;
         Coords entrance = new Coords(0, 5);
         Coords roomDoor = new Coords(3, 0);
         Coords roomDoor2 = new Coords(9, 4);
@@ -209,16 +209,16 @@ public class CircleCreation : MonoBehaviour
             switch (switcher)
             {
                 case 0:
-                     tileOffsetX += 16;
+                     tileOffsetX += 12;
                     break;
                 case 1:
-                    tileOffsetX -= 16;
+                    tileOffsetX -= 12;
                     break;
                 case 2:
-                    tileOffsetY += 10;
+                    tileOffsetY += 12;
                     break;
                 case 3:
-                    tileOffsetY -= 10;
+                    tileOffsetY -= 12;
                     break;
                 default:
                     break;
@@ -249,7 +249,8 @@ public class CircleCreation : MonoBehaviour
             {
                 if(temp[i,j]==99)
                 {
-
+                    print(roomMap[currentRoom].offsetX);
+                    print(roomMap[currentRoom].offsetY);
                     GameObject player = GameObject.Find("Player");
                     Vector3Int cellPosition = new Vector3Int(i + roomMap[currentRoom].offsetX, j + roomMap[currentRoom].offsetY, 0);
                     print(i);
