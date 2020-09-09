@@ -24,11 +24,12 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
 	{
+        //Enemy damage animation here
         currentHealth -= damage;
         if(currentHealth <= 0)
             Death();
-
 	}
+
     int counter = 0;
     void Update()
     {
@@ -55,6 +56,7 @@ public class Enemy : MonoBehaviour
     }
     public void moveTowardsPlayer()
     {
+        //Enemy movement animation here
         getSquareDistance(new Coords(currentPosition.x, currentPosition.y), playerPosition);
 
         int distance = getSquareDistance(currentPosition, playerPosition);
@@ -97,6 +99,8 @@ public class Enemy : MonoBehaviour
 
     void Death()
 	{
+
+        //Enemy death animation here
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
