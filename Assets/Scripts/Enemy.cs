@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
     }
     public void attack()
     {
-        print("attacking");
+        player.GetComponent<Player>().TakeDamage(100);
     }
     void Death()
 	{
