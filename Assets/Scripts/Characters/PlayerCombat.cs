@@ -73,14 +73,14 @@ public class PlayerCombat : MonoBehaviour
                 currentAttack = 1;
                 attackDamage = heavyAttackDamage;
                 attackBox = heavyAttackBox;
-                //Weapon wheel animation here
+                //Weapon wheel animation here - switch from light attack to heavy
                 UnityEngine.Debug.Log("Switched to the heavy weapon");
                 break;
             case 1:
                 currentAttack = 0;
                 attackDamage = lightAttackDamage;
                 attackBox = lightAttackBox;
-                //Weapon wheel animation here
+                //Weapon wheel animation here - switch from heavy attack to light
                 UnityEngine.Debug.Log("Switched to the light weapon");
                 break;
             default:
