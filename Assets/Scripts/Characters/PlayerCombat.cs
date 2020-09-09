@@ -7,20 +7,13 @@ public class PlayerCombat : MonoBehaviour
 {
 
     public Transform attackPoint;
-    float nextAttackTime = 0f;
 
     int currentAttack;
     int attackDamage;
-    float attackRate;
     Vector2 attackBox;
 
     Vector2 lightAttackBox = new Vector2(0.5f, 0.5f);
     Vector2 heavyAttackBox = new Vector2(1f, 2f);
-
-    [SerializeField]
-    float lightAttackRate = 2f;
-    [SerializeField]
-    float heavyAttackRate = 0.5f;
 
     [SerializeField]
     int lightAttackDamage = 10;
@@ -41,7 +34,6 @@ public class PlayerCombat : MonoBehaviour
         attackDamage = lightAttackDamage;
         currentAttack = 0;
         attackBox = lightAttackBox;
-        attackRate = lightAttackRate;
     }
 
     // Update is called once per frame
@@ -52,16 +44,11 @@ public class PlayerCombat : MonoBehaviour
 
     void GetInput()
 	{
-        if (Time.time >= nextAttackTime)
-		{
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                UnityEngine.Debug.Log("1");
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Attack();
         }
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftShift))
         {
             SwapWeapon();
         }
@@ -86,7 +73,6 @@ public class PlayerCombat : MonoBehaviour
                 currentAttack = 1;
                 attackDamage = heavyAttackDamage;
                 attackBox = heavyAttackBox;
-                attackRate = heavyAttackRate;
                 //Weapon wheel animation here
                 UnityEngine.Debug.Log("Switched to the heavy weapon");
                 break;
@@ -94,7 +80,6 @@ public class PlayerCombat : MonoBehaviour
                 currentAttack = 0;
                 attackDamage = lightAttackDamage;
                 attackBox = lightAttackBox;
-                attackRate = lightAttackRate;
                 //Weapon wheel animation here
                 UnityEngine.Debug.Log("Switched to the light weapon");
                 break;
