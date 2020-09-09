@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
 	[SerializeField]
 	private Stat health;
 	[SerializeField]
@@ -22,7 +23,9 @@ public class Player : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		movePoint.parent = null;
+        health = GameObject.Find("Health Bar").GetComponent<Stat>();
+
+        movePoint.parent = null;
 		health.Initialize(startingHealth, maxHealth);
 	}
 

@@ -27,8 +27,8 @@ public class CircleCreation : MonoBehaviour
 {
     
     int rooms = 4;
-    int roomXSize = 10;
-    int roomYSize = 10;
+    int roomXSize = 14;
+    int roomYSize = 8;
     public Tile[] sprite;
     public TileBase tiles;
     public GameObject playerPrefab;
@@ -42,8 +42,8 @@ public class CircleCreation : MonoBehaviour
     {
         roomMap = new Room[4];
        RoomGenerator temp = new RoomGenerator();
-        int roomWidth = 10;
-        int roomHeight = 10;
+        int roomWidth = 14;
+        int roomHeight = 8;
         Coords entrance = new Coords(0, 5);
         Coords roomDoor = new Coords(3, 0);
         Coords roomDoor2 = new Coords(9, 4);
@@ -212,16 +212,16 @@ public class CircleCreation : MonoBehaviour
             switch (switcher)
             {
                 case 0:
-                     tileOffsetX += 12;
+                     tileOffsetX += 16;
                     break;
                 case 1:
-                    tileOffsetX -= 12;
+                    tileOffsetX -= 16;
                     break;
                 case 2:
-                    tileOffsetY += 12;
+                    tileOffsetY += 10;
                     break;
                 case 3:
-                    tileOffsetY -= 12;
+                    tileOffsetY -= 10;
                     break;
                 default:
                     break;

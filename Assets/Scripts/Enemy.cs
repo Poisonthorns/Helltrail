@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
     }
     public void attack()
     {
+        player.GetComponent<Player>().TakeDamage(10);
         print("attacking");
     }
 
