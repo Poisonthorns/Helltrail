@@ -29,6 +29,7 @@ public class CircleCreation : MonoBehaviour
     public Tile[] sprite;
     public TileBase tiles;
     public GameObject playerPrefab;
+    public GameObject enemyPrefab;
     Room[] roomMap;
     int currentRoom;
     Coords[] entrance;
@@ -46,7 +47,7 @@ public class CircleCreation : MonoBehaviour
         Coords roomDoor3 = new Coords(7, 9);
         Coords[] array = new Coords[] { roomDoor, roomDoor2, roomDoor3 };
         
-        int[] monsters = new int[] { 0, 5, 4, 3 };
+        int[] monsters = new int[] { 2, 5, 4, 3 };
         int[] terrain = new int[10];
         for (int i = 0; i < 10; ++i)
         {
@@ -194,6 +195,12 @@ public class CircleCreation : MonoBehaviour
                         camera.transform.position = new Vector3(tempp.x,tempp.y, -10);
                         GameObject move = GameObject.Find("Move Point");
                         move.transform.position = new Vector3(move.transform.position.x, move.transform.position.y, 0);
+                    }
+                    else if(test[i, j] < 10&& test[i, j] > 1)
+                    {
+                        Vector3Int cellPosition = new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0);
+                       Instantiate(enemyPrefab, grid.GetComponent<Grid>().GetCellCenterWorld(cellPosition), Quaternion.identity);
+
                     }
 
                 }

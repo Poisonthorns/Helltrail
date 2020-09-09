@@ -258,6 +258,7 @@ MonoBehaviour:
   - {fileID: 0}
   tiles: {fileID: 0}
   playerPrefab: {fileID: 6196175591392628658, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
+  enemyPrefab: {fileID: 895348181245028446, guid: 3572afdca5af99348b89c9d4f9a6e008, type: 3}
 --- !u!4 &597426955
 Transform:
   m_ObjectHideFlags: 0
