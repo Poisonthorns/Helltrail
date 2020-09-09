@@ -5,18 +5,20 @@ using UnityEditor.Tilemaps;
 using UnityEngine.Tilemaps;
 public struct Room
 {
-    public Room(Coords entrancee, Coords doorr, int doorSidee, int entranceSidee)
+    public Room(Coords entrancee, Coords doorr, int offsetXa, int offsetYa, int[,] gridd)
     {
         entrance = entrancee;
         door = doorr;
-        doorSide = doorSidee;
-        entranceSide = entranceSidee;
+        offsetX = offsetXa;
+        offsetY = offsetYa;
+        grid = gridd;
     }
 
-    public Coords entrance { get; }
-    public Coords door { get; }
-    public int doorSide { get; }
-    public int entranceSide { get; }
+    public Coords entrance;
+    public Coords door;
+    public int offsetX;
+    public int offsetY;
+    public int[,] grid;
 }
 public class CircleCreation : MonoBehaviour
 {
@@ -26,8 +28,12 @@ public class CircleCreation : MonoBehaviour
     int roomYSize = 10;
     public Tile[] sprite;
     public TileBase tiles;
+    public GameObject playerPrefab;
     Room[] roomMap;
+    int currentRoom;
     Coords[] entrance;
+    Grid g;
+    List<int[,]> roomsss;
     void Start()
     {
         roomMap = new Room[4];
@@ -39,7 +45,7 @@ public class CircleCreation : MonoBehaviour
         Coords roomDoor2 = new Coords(9, 4);
         Coords roomDoor3 = new Coords(7, 9);
         Coords[] array = new Coords[] { roomDoor, roomDoor2, roomDoor3 };
-
+        
         int[] monsters = new int[] { 0, 5, 4, 3 };
         int[] terrain = new int[10];
         for (int i = 0; i < 10; ++i)
@@ -47,7 +53,7 @@ public class CircleCreation : MonoBehaviour
             terrain[i] = i + 19;
         }
         path();
-        List<int[,]> roomsss = new List<int[,]>();
+        roomsss = new List<int[,]>();
         for(int i=0; i<roomMap.Length; ++i)
         {
            roomsss.Add(temp.generateRoom(roomWidth, roomHeight, roomMap[i].entrance, roomMap[i].door, monsters, terrain));
@@ -56,6 +62,7 @@ public class CircleCreation : MonoBehaviour
         //next part is creating the actual map
         GameObject grid = new GameObject("grid");
         grid.AddComponent<Grid>();
+        g = grid.GetComponent<Grid>();
         GameObject[] roomssssss = new GameObject[roomsss.Count*2];
 
         for(int i=0; i< roomsss.Count; ++i)
@@ -92,6 +99,8 @@ public class CircleCreation : MonoBehaviour
             int[,] test = roomsss[x];
             Tilemap tileMap = roomssssss[x*2].GetComponent<Tilemap>();
             Tilemap tileMapCollision = roomssssss[(x*2)+1].GetComponent<Tilemap>();
+            roomMap[x].offsetX = tileOffsetX;
+            roomMap[x].offsetY = tileOffsetY;
             //set appropriate tiles
             for (int i = -1; i < roomXSize + 1; ++i)
             {
@@ -152,7 +161,8 @@ public class CircleCreation : MonoBehaviour
                     }
                     else if (test[i, j] == 99|| test[i, j] == -1)
                     {
-                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), tile3);
+
+                        tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), tile3);
                         if (test[i, j] == -1)
                         {
                             if (i == roomXSize - 1)
@@ -172,6 +182,18 @@ public class CircleCreation : MonoBehaviour
                                 switcher = 3;
                             }
                         }
+                    }
+                    if(test[i, j] == 99&&x==0)
+                    {
+                        Vector3Int cellPosition = new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0);
+                        var newplayer = Instantiate(playerPrefab, grid.GetComponent<Grid>().GetCellCenterWorld(cellPosition), Quaternion.identity);
+                        newplayer.name = "Player";
+                        GameObject camera = GameObject.Find("Main Camera");
+                        Vector3Int cellPosition2 = new Vector3Int((roomXSize/2)+tileOffsetX, (roomYSize / 2) + tileOffsetY, 0);
+                        Vector3 tempp = grid.GetComponent<Grid>().GetCellCenterWorld(cellPosition2);
+                        camera.transform.position = new Vector3(tempp.x,tempp.y, -10);
+                        GameObject move = GameObject.Find("Move Point");
+                        move.transform.position = new Vector3(move.transform.position.x, move.transform.position.y, 0);
                     }
 
                 }
@@ -199,18 +221,57 @@ public class CircleCreation : MonoBehaviour
         }
 
     }
-    //
+    
+    void Update()
+    {
+        GameObject player = GameObject.Find("Player");
+        Vector3Int playerGridLocation = g.WorldToCell(player.transform.position);
+        
+        if (roomsss[currentRoom][playerGridLocation.x- roomMap[currentRoom].offsetX, playerGridLocation.y- roomMap[currentRoom].offsetY] ==-1)
+        {
+            changeRoom();
+        }
+    }
+    void changeRoom()
+    {
+        currentRoom++;
+        int[,] temp = roomsss[currentRoom];
+        for(int i=0; i<roomXSize; ++i)
+        {
+            for(int j = 0; j<roomYSize; ++j)
+            {
+                if(temp[i,j]==99)
+                {
+                    print(roomMap[currentRoom].offsetX);
+                    print(roomMap[currentRoom].offsetY);
+                    GameObject player = GameObject.Find("Player");
+                    Vector3Int cellPosition = new Vector3Int(i + roomMap[currentRoom].offsetX, j + roomMap[currentRoom].offsetY, 0);
+                    print(i);
+                    player.transform.position = g.GetCellCenterWorld(cellPosition) ;
+                    GameObject move = GameObject.Find("Move Point");
+                    move.transform.position = g.GetCellCenterWorld(new Vector3Int (cellPosition.x, cellPosition.y, 0)); 
+                    
+                    GameObject camera = GameObject.Find("Main Camera");
+                    Vector3Int cellPosition2 = new Vector3Int((roomXSize / 2) + roomMap[currentRoom].offsetX, (roomYSize / 2) + roomMap[currentRoom].offsetY, 0);
+                    Vector3 tempp = g.GetComponent<Grid>().GetCellCenterWorld(cellPosition2);
+                    camera.transform.position = new Vector3(tempp.x, tempp.y, -10);
+                    print("yay");
+                    
+                }
+            }
+        }
+    }
     void path()
     {
 
         Coords temp = new Coords(roomXSize / 2, 0);
-        Room room1 = new Room(temp, generateRandomDoor(temp),  0, 0);
+        Room room1 = new Room(temp, generateRandomDoor(temp),0,0, null);
         roomMap[0] = room1;
-
+        currentRoom = 0;
         for(int i=1; i<rooms; ++i)
         {
             Coords temp2 = getNextRoomEntrance(roomMap[i - 1].door);
-            roomMap[i] = new Room(temp2, generateRandomDoor(temp2), 0, 0);
+            roomMap[i] = new Room(temp2, generateRandomDoor(temp2),0,0, null);
         }
 
     }
