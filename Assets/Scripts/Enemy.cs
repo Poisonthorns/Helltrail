@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     }
     public void attack()
     {
-        player.GetComponent<Player>().TakeDamage(100);
+        print("attacking");
     }
 =======
 >>>>>>> parent of 4aed1e8... enemy attack and movement
