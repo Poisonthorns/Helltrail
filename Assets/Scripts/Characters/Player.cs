@@ -82,8 +82,8 @@ public class Player : MonoBehaviour
 
 	private void Die()
 	{
-		//Swap to a death scene
-		//Player death animation here
+        //Swap to a death scene
+        anim.SetBool("Death", true);
 		UnityEngine.Debug.Log("We are dead");
 	}
 }
