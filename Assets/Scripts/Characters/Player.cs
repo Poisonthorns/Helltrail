@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	protected Transform movePoint;
 	public LayerMask collideables;
+    public Animator anim;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -51,7 +52,8 @@ public class Player : MonoBehaviour
 			{
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, collideables))
 				{
-					//Movement animation here (this handles both up and down, you'll need to check which is happening)
+                    //Movement animation here (this handles both up and down, you'll need to check which is happening)
+                    anim.SetBool("Walking",true);
 					movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
 				}
 			}
@@ -59,7 +61,8 @@ public class Player : MonoBehaviour
 			{
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, collideables))
 				{
-					//Movement animation here (this handles both left and right, you'll need to check which is happening)
+                    //Movement animation here (this handles both left and right, you'll need to check which is happening)
+                    anim.SetBool("Walking", true);
 					movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
 				}
 			}

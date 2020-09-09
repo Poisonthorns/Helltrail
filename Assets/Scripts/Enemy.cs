@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grid = GameObject.Find("grid").GetComponent<Grid>();
+        grid = GameObject.Find("Grid").GetComponent<Grid>();
         manager = GameObject.Find("Manager");
         player = GameObject.Find("Player");
         currentHealth = maxHealth;
