@@ -57,4 +57,15 @@ public class Stat : MonoBehaviour
         myMaxValue = maxValue;
         myCurrentValue = currentValue;
 	}
+
+    public bool TakeDamage(float amount)
+	{
+        myCurrentValue -= amount;
+        return myCurrentValue == 0;
+	}
+
+    public void Heal(float amount)
+    {
+        myCurrentValue += amount;
+    }
 }

@@ -10,7 +10,6 @@ public class PlayerCombat : MonoBehaviour
 
     int currentAttack;
     int attackDamage;
-    float attackRange;
     Vector2 attackBox;
 
     Vector2 lightAttackBox = new Vector2(0.5f, 0.5f);
@@ -33,7 +32,6 @@ public class PlayerCombat : MonoBehaviour
     void Start()
 	{
         attackDamage = lightAttackDamage;
-        attackRange = lightAttackRange;
         currentAttack = 0;
         attackBox = lightAttackBox;
     }
@@ -50,7 +48,7 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack();
         }
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftShift))
         {
             SwapWeapon();
         }
@@ -59,6 +57,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
 	{
         Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, attackBox, 0f, enemyLayer, -100f, 100f);
+        //Attack animation here
         foreach (Collider2D enemy in enemies)
 		{
             UnityEngine.Debug.Log("We hit " + enemy.name);
@@ -73,27 +72,20 @@ public class PlayerCombat : MonoBehaviour
             case 0:
                 currentAttack = 1;
                 attackDamage = heavyAttackDamage;
-                attackRange = heavyAttackRange;
                 attackBox = heavyAttackBox;
+                //Weapon wheel animation here
                 UnityEngine.Debug.Log("Switched to the heavy weapon");
                 break;
             case 1:
                 currentAttack = 0;
                 attackDamage = lightAttackDamage;
-                attackRange = lightAttackRange;
                 attackBox = lightAttackBox;
+                //Weapon wheel animation here
                 UnityEngine.Debug.Log("Switched to the light weapon");
                 break;
             default:
                 UnityEngine.Debug.Log("Something went wrong in SwapWeapon");
                 break;
 		}
-	}
-
-    void OnDrawGizmosSelected()
-	{
-        if(attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 	}
 }

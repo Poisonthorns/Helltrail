@@ -38,11 +38,11 @@ public class Player : MonoBehaviour
 		//Testing purposes only
 		if(Input.GetKeyDown(KeyCode.O))
 		{
-			health.myCurrentValue -= 10;
+			TakeDamage(10);
 		}
 		if (Input.GetKeyDown(KeyCode.P))
 		{
-			health.myCurrentValue += 10;
+			health.Heal(10);
 		}
 
 		if (Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
 			{
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, collideables))
 				{
+					//Movement animation here
 					movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
 				}
 			}
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
 			{
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, collideables))
 				{
+
 					movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
 				}
 			}
@@ -66,5 +68,17 @@ public class Player : MonoBehaviour
 
 	}
 
+	public void TakeDamage(int damage)
+	{
+		if (health.TakeDamage(damage))
+		{
+			Die();
+		}
+	}
 
+	private void Die()
+	{
+		//Swap to a death scene
+		UnityEngine.Debug.Log("We are dead");
+	}
 }
