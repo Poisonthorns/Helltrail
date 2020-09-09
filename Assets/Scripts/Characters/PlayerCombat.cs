@@ -7,6 +7,7 @@ public class PlayerCombat : MonoBehaviour
 {
 
     public Transform attackPoint;
+    public Animator anim;
 
     int currentAttack;
     int attackDamage;
@@ -57,13 +58,20 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
 	{
         Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, attackBox, 0f, enemyLayer, -100f, 100f);
-        //Attack animation here
+        if (attackDamage == heavyAttackDamage)
+        {
+            anim.Play("Heavy_Attack");
+        }
+        else 
+        {
+            anim.Play("Light_Attack");
+        }
         foreach (Collider2D enemy in enemies)
 		{
             UnityEngine.Debug.Log("We hit " + enemy.name);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
 		}
-	}
+    }
 
     void SwapWeapon()
 	{

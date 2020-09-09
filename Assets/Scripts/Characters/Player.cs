@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 	{
 		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
 		GetInput();
-	}
+    }
 
 	private void GetInput()
 	{

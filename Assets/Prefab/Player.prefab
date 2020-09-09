@@ -362,13 +362,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5098496447460732853}
-  m_LocalRotation: {x: 0, y: 0, z: -0.054394074, w: 0.99851954}
+  m_LocalRotation: {x: -0, y: -0, z: -0.04949082, w: 0.9987746}
   m_LocalPosition: {x: 0.22751078, y: -0.011609635, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2757500429952302074}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.674}
 --- !u!1 &5356291264638867443
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +518,7 @@ MonoBehaviour:
   collideables:
     serializedVersion: 2
     m_Bits: 768
+  anim: {fileID: 0}
 --- !u!114 &6196175591392628671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 6196175591197357483}
+  anim: {fileID: 0}
   lightAttackDamage: 10
   heavyAttackDamage: 20
   lightAttackRange: 0.2
@@ -659,8 +661,8 @@ MonoBehaviour:
   - {fileID: 586866576524884270}
   - {fileID: 7334240836662056744}
   m_Bounds:
-    m_Center: {x: 0.013831228, y: -0.0061199665, z: 0}
-    m_Extent: {x: 0.50616884, y: 1.1438804, z: 0}
+    m_Center: {x: 0.010679007, y: -0.0064549446, z: 0}
+    m_Extent: {x: 0.5070348, y: 1.1435454, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &2118402485813355369
