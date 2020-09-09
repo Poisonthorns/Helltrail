@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grid = GameObject.Find("Grid").GetComponent<Grid>();
+        grid = GameObject.Find("grid").GetComponent<Grid>();
         manager = GameObject.Find("Manager");
         player = GameObject.Find("Player");
         currentHealth = maxHealth;
@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
+        Destroy(gameObject);
 	}
     int getSquareDistance(Coords coord1, Coords coord2)
     {

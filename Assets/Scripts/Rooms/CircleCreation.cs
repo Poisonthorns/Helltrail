@@ -238,6 +238,11 @@ public class CircleCreation : MonoBehaviour
         {
             changeRoom();
         }
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length==0)
+        {
+            print("you win");
+        }
     }
     void changeRoom()
     {
