@@ -85,8 +85,10 @@ public class Player : MonoBehaviour
 
 	private void Die()
 	{
-        //Swap to a death scene
-        anim.SetBool("Death", true);
+		//Swap to a death scene
+		SceneLoader loader = new SceneLoader();
+		loader.GoToDeathScreen();
+		anim.SetBool("Death", true);
 		UnityEngine.Debug.Log("We are dead");
 	}
 }
