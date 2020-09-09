@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneMangement;
+using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
     void GoToMenu()
     {
