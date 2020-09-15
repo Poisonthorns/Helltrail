@@ -25,9 +25,9 @@ public class RoomGenerator : MonoBehaviour
     {
         monsters = new List<Coords>();
         terrain = new List<Coords>();
-        
+
     }
-    
+
     //monsterID must be < 10
     //terrainID must be > 10
     public int[,] generateRoom(int roomWidth, int roomHeight, Coords entrance, Coords roomDoor, int[] monster, int[] stuff)
@@ -36,7 +36,7 @@ public class RoomGenerator : MonoBehaviour
         roomSizeY = roomHeight;
         start = entrance;
         door = new Coords[1];
-        for(int i=0; i<1; ++i)
+        for (int i = 0; i < 1; ++i)
         {
             door[i] = roomDoor;
         }
@@ -54,7 +54,7 @@ public class RoomGenerator : MonoBehaviour
         } while (isPossible());//checks generated map is possible
 
         roomGrid[start.x, start.y] = 99;
-        for(int i=0; i<door.Length; ++i)
+        for (int i = 0; i < door.Length; ++i)
         {
             roomGrid[door[i].x, door[i].y] = -1;
         }
@@ -64,12 +64,12 @@ public class RoomGenerator : MonoBehaviour
     public void printMap()
     {
 
-        for(int i=0; i<roomSizeX; ++i)
+        for (int i = 0; i < roomSizeX; ++i)
         {
             string s = "";
             for (int j = 0; j < roomSizeY; ++j)
             {
-                s+= roomGrid[i, j] + " ";
+                s += roomGrid[i, j] + " ";
             }
             print(s);
         }
@@ -77,17 +77,17 @@ public class RoomGenerator : MonoBehaviour
     //places all the monsters on the map
     void generateMonsters(int[] monster)
     {
-        for(int i=0; i<monster.Length; ++i)
+        for (int i = 0; i < monster.Length; ++i)
         {
             Coords coord = new Coords(Random.Range(0, roomSizeX), Random.Range(0, roomSizeY));
             //checks if something is already there or too close to the entrance
-            if(roomGrid[coord.x,coord.y]!=0 && getSquareDistance(start, coord) < 4)
+            if (roomGrid[coord.x, coord.y] != 0 && getSquareDistance(start, coord) < 4)
             {
                 --i;
             }
             else
             {
-                roomGrid[coord.x,coord.y] = monster[i];
+                roomGrid[coord.x, coord.y] = monster[i];
                 monsters.Add(new Coords(coord.x, coord.y));
             }
         }
@@ -99,22 +99,22 @@ public class RoomGenerator : MonoBehaviour
         {
             Coords coord = new Coords(Random.Range(0, roomSizeX), Random.Range(0, roomSizeY));
             //checks if something is already their or too close to entrance
-            if (roomGrid[coord.x,coord.y] != 0 && getSquareDistance(start, coord) < 1)
+            if (roomGrid[coord.x, coord.y] != 0 && getSquareDistance(start, coord) < 1)
             {
                 --i;
             }
             else
             {
                 //checks if it blocks door
-                for(int j=0; j<door.Length;++j)
+                for (int j = 0; j < door.Length; ++j)
                 {
-                    if(getSquareDistance(door[j], coord)<1)
+                    if (getSquareDistance(door[j], coord) < 1)
                     {
                         --i;
                         continue;
                     }
                 }
-                if(i!=-1)
+                if (i != -1)
                 {
                     terrain.Add(new Coords(coord.x, coord.y));
 
@@ -146,16 +146,16 @@ public class RoomGenerator : MonoBehaviour
     //depth first search; visits all eligable tiles.
     bool naiveDepth(Coords startt)
     {
-        int[,] map = new int[roomSizeX ,roomSizeY];
+        int[,] map = new int[roomSizeX, roomSizeY];
         map[startt.x, startt.y] = 1;
 
         helper(map, startt.x, startt.y);
         //checks if nothing blocks the doors(prob unnecessary)
-        for (int i=0; i<roomSizeX; ++i)
+        for (int i = 0; i < roomSizeX; ++i)
         {
             for (int j = 0; j < roomSizeY; ++j)
             {
-                if(map[i,j] == 0 && (roomGrid[i, j] < 10 || roomGrid[i, j] == -1))
+                if (map[i, j] == 0 && (roomGrid[i, j] < 10 || roomGrid[i, j] == -1))
                 {
                     return false;
                 }
@@ -168,21 +168,21 @@ public class RoomGenerator : MonoBehaviour
     void helper(int[,] map, int x, int y)
     {
         map[x, y] = 1;
-        if (x + 1 < roomSizeX && roomGrid[x + 1,y] < 10 &&  map[x+1,y]==0)
+        if (x + 1 < roomSizeX && roomGrid[x + 1, y] < 10 && map[x + 1, y] == 0)
         {
             helper(map, x + 1, y);
         }
-        if (x - 1 >= 0 && roomGrid[x - 1,y] < 10&&  map[x - 1, y] == 0)
+        if (x - 1 >= 0 && roomGrid[x - 1, y] < 10 && map[x - 1, y] == 0)
         {
             helper(map, x - 1, y);
         }
-        if (y + 1 < roomSizeY && roomGrid[x,y + 1] < 10 &&  map[x, y+1] == 0)
+        if (y + 1 < roomSizeY && roomGrid[x, y + 1] < 10 && map[x, y + 1] == 0)
         {
-            helper(map, x, y +1);
+            helper(map, x, y + 1);
         }
-        if (y - 1 >= 0 && roomGrid[x,y - 1] < 10 &&  map[x , y-1] == 0)
+        if (y - 1 >= 0 && roomGrid[x, y - 1] < 10 && map[x, y - 1] == 0)
         {
-            helper(map, x , y-1);
+            helper(map, x, y - 1);
         }
 
     }
