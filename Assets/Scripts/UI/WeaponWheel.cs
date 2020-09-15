@@ -7,6 +7,10 @@ public class WeaponWheel : MonoBehaviour
 {
     public Image[] selectedWeaponIcons;
     int selected = 0;
+
+    private AudioSource wheelNoises;
+    public AudioClip weaponSelected;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,8 @@ public class WeaponWheel : MonoBehaviour
         {
             selectedWeaponIcons[currentImage].enabled = false;
         }
+
+        wheelNoises = gameObject.GetComponent<AudioSource>();
        
     }
 
@@ -24,6 +30,8 @@ public class WeaponWheel : MonoBehaviour
         selectedWeaponIcons[currentSelection].enabled = false;
         selectedWeaponIcons[newSelection].enabled = true;
         selected = newSelection;
+
+        wheelNoises.PlayOneShot(weaponSelected, 1.0f);
     }
 
     /*

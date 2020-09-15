@@ -20,10 +20,14 @@ public class Player : MonoBehaviour
 	protected Transform movePoint;
 	public LayerMask collideables;
     public Animator anim;
+	private AudioSource playerNoises;
+	public AudioClip playerHurt;
+	public AudioClip playerDeath;
 	// Start is called before the first frame update
 	void Start()
 	{
         health = GameObject.Find("Health Bar").GetComponent<Stat>();
+		playerNoises = gameObject.GetComponent<AudioSource>();
 
         movePoint.parent = null;
 		health.Initialize(startingHealth, maxHealth);
@@ -78,6 +82,8 @@ public class Player : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		//Take damage animation here
+		playerNoises.PlayOneShot(playerHurt, 1.0f);
+
 		if (health.TakeDamage(damage))
 		{
 			Die();
@@ -86,6 +92,7 @@ public class Player : MonoBehaviour
 
 	private void Die()
 	{
+		playerNoises.PlayOneShot(playerDeath);
 		//Swap to a death scene
 		SceneLoader loader = new SceneLoader();
 		loader.GoToDeathScreen();

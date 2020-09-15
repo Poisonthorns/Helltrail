@@ -30,6 +30,11 @@ public class PlayerCombat : MonoBehaviour
     LayerMask enemyLayer;
 
     private WeaponWheel weaponSlots;
+    private AudioSource playerCombatNoises;
+    public AudioClip lightAttackNoise;
+    public AudioClip heavyAttackNoise;
+    public AudioClip rangedAttackNoise;
+    
 
     void Start()
 	{
@@ -37,6 +42,7 @@ public class PlayerCombat : MonoBehaviour
         currentAttack = 0;
         attackBox = lightAttackBox;
         weaponSlots = GameObject.Find("Weapon Wheel").GetComponent<WeaponWheel>();
+        playerCombatNoises  = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,11 +69,20 @@ public class PlayerCombat : MonoBehaviour
         if (attackDamage == heavyAttackDamage)
         {
             anim.Play("Heavy_Attack");
+            playerCombatNoises.PlayOneShot(heavyAttackNoise, 1.0f);
         }
         else 
         {
             anim.Play("Light_Attack");
+            playerCombatNoises.PlayOneShot(lightAttackNoise, 1.0f);
         }
+        /*
+         if (attackDamage == rangedAttackDamage)
+        {
+            anim.Play("Range_Attack");
+            playerCombatNoises.PlayOneShot(rangedAttackNoise, 1.0f);
+        }
+        */
         foreach (Collider2D enemy in enemies)
 		{
             UnityEngine.Debug.Log("We hit " + enemy.name);

@@ -13,18 +13,24 @@ public class Enemy : MonoBehaviour
     Coords playerPosition;
     GameObject manager;
     Grid grid;
+    private AudioSource enemyNoises;
+    public AudioClip enemyHurt;
+    public AudioClip enemyAttack;
+    public AudioClip enemyDeath;
     // Start is called before the first frame update
     void Start()
     {
         grid = GameObject.Find("grid").GetComponent<Grid>();
         manager = GameObject.Find("Manager");
         player = GameObject.Find("Player");
+        enemyNoises = gameObject.GetComponent<AudioSource>();
         currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)
 	{
         //Enemy damage animation here
+        enemyNoises.PlayOneShot(enemyHurt, 1.0f);
         currentHealth -= damage;
         if(currentHealth <= 0)
             Death();
@@ -94,6 +100,7 @@ public class Enemy : MonoBehaviour
     }
     public void attack()
     {
+        enemyNoises.PlayOneShot(enemyAttack, 1.0f);
         player.GetComponent<Player>().TakeDamage(10);
         print("attacking");
     }
@@ -102,6 +109,7 @@ public class Enemy : MonoBehaviour
 	{
 
         //Enemy death animation here
+        enemyNoises.PlayOneShot(enemyDeath, 1.0f);
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;

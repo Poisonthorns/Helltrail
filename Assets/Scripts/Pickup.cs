@@ -7,9 +7,13 @@ public class Pickup : MonoBehaviour
     private Inventory inventory;
     public GameObject itemButton;
 
+    private AudioSource noises;
+    public AudioClip itemAdded;
+
     public void Initialize()
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        noises = gameObject.GetComponent<AudioSource>();
         Debug.Log(inventory);
     }
 
@@ -24,7 +28,8 @@ public class Pickup : MonoBehaviour
                 {
                     inventory.isFull[i] = true;
                     Instantiate(itemButton, inventory.slots[i].transform, false);
-                    //Destroy(gameObject);
+                    noises.PlayOneShot(itemAdded, 1.0f);
+                    Destroy(gameObject);
                     break;
                 }
             }
@@ -41,6 +46,7 @@ public class Pickup : MonoBehaviour
                 {
                     inventory.isFull[i] = true;
                     Instantiate(itemButton, inventory.slots[i].transform, false);
+                    noises.PlayOneShot(itemAdded, 1.0f);
                     Destroy(gameObject);
                     break;
                 }
