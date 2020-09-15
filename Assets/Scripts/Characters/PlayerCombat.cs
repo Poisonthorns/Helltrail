@@ -28,13 +28,15 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField]
     LayerMask enemyLayer;
-    
+
+    private WeaponWheel weaponSlots;
 
     void Start()
 	{
         attackDamage = lightAttackDamage;
         currentAttack = 0;
         attackBox = lightAttackBox;
+        weaponSlots = GameObject.Find("Weapon Wheel").GetComponent<WeaponWheel>();
     }
 
     // Update is called once per frame
@@ -75,6 +77,7 @@ public class PlayerCombat : MonoBehaviour
 
     void SwapWeapon()
 	{
+        // Come back to SelectNext when we add ranged weapons or more weapon slots
         switch(currentAttack)
 		{
             case 0:
@@ -82,6 +85,7 @@ public class PlayerCombat : MonoBehaviour
                 attackDamage = heavyAttackDamage;
                 attackBox = heavyAttackBox;
                 //Weapon wheel animation here - switch from light attack to heavy
+                weaponSlots.selectNext(0, currentAttack);
                 UnityEngine.Debug.Log("Switched to the heavy weapon");
                 break;
             case 1:
@@ -89,6 +93,7 @@ public class PlayerCombat : MonoBehaviour
                 attackDamage = lightAttackDamage;
                 attackBox = lightAttackBox;
                 //Weapon wheel animation here - switch from heavy attack to light
+                weaponSlots.selectNext(1, currentAttack);
                 UnityEngine.Debug.Log("Switched to the light weapon");
                 break;
             default:

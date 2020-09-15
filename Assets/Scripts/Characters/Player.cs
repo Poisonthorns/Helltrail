@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 	{
 		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
 		GetInput();
+
     }
 
 	private void GetInput()
@@ -91,4 +92,16 @@ public class Player : MonoBehaviour
 		anim.SetBool("Death", true);
 		UnityEngine.Debug.Log("We are dead");
 	}
+
+
+	/*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+		InventoryItem item = collision.collider.GetComponent<InventoryItem>();
+		if(item != null)
+        {
+			consumables.AddItem(item);
+        }
+    }*/
+
 }
