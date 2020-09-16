@@ -28,8 +28,8 @@ public class CircleCreation : MonoBehaviour
 {
 
     int roomCount = 4;
-    int roomXSize = 14;
-    int roomYSize = 8;
+    public int roomXSize = 14;
+    public int roomYSize = 8;
     int monsterOffset=2;
     int terrainOffset=20;
     public Tile[] sprite;
@@ -247,7 +247,7 @@ public class CircleCreation : MonoBehaviour
                             else if (j == 0)
                             {
 
-                                tileMap.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY - 1, 0), sprite[0]);
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), sprite[0]);
                                 tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), null);
 
                             }
@@ -262,10 +262,15 @@ public class CircleCreation : MonoBehaviour
                         Vector3Int cellPosition = new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0);
                         var newplayer = Instantiate(playerPrefab, g.GetComponent<Grid>().GetCellCenterWorld(cellPosition), Quaternion.identity);
                         newplayer.name = "Player";
+                        Debug.Log("Player created");
+                        GameObject potion = GameObject.Find("Potion");
+                        Pickup other = (Pickup)potion.GetComponent(typeof(Pickup));
+                        //other.Initialize();
+                        /*
                         GameObject camera = GameObject.Find("Main Camera");
                         Vector3Int cellPosition2 = new Vector3Int((roomXSize / 2) + tileOffsetX, (roomYSize / 2) + tileOffsetY, 0);
                         Vector3 camPos = g.GetComponent<Grid>().GetCellCenterWorld(cellPosition2);
-                        camera.transform.position = new Vector3(camPos.x, camPos.y, -10);
+                        camera.transform.position = new Vector3(camPos.x, camPos.y, -10);*/
                         GameObject move = GameObject.Find("Move Point");
                         move.transform.position = new Vector3(move.transform.position.x, move.transform.position.y, 0);
                     }
