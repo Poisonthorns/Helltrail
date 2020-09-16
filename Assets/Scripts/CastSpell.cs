@@ -8,7 +8,7 @@ public class CastSpell : MonoBehaviour
     public GameObject iceSpikes;
     public GameObject gridObject;
     public GameObject tileMapObject;
-    void iceSpell()
+    public void iceSpell()
     {
         Grid grid = gridObject.GetComponent<Grid>();
         Tilemap tilemap = tileMapObject.GetComponent<Tilemap>();
@@ -16,8 +16,8 @@ public class CastSpell : MonoBehaviour
 
         for (int i=0; i<2; ++i)
         {
-
-            Instantiate(iceSpikes, grid.GetCellCenterWorld(new Vector3Int(Random.Range(0, 10)-5, Random.Range(0, 10) - 5, 0)), Quaternion.identity);
+            Vector3 temp = grid.GetCellCenterWorld(new Vector3Int(Random.Range(0, 10) - 5, Random.Range(0, 10) - 5, 0));
+            Instantiate(iceSpikes,new Vector3(temp.x, temp.y, -1) , Quaternion.identity);
 
         }
 

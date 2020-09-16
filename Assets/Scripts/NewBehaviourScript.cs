@@ -35,6 +35,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
 
         yield return new WaitForSeconds(5);
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

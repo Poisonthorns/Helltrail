@@ -54,8 +54,13 @@ public class RoomGenerator : MonoBehaviour
         } while (isPossible());//checks generated map is possible
 
         roomGrid[start.x, start.y] = 99;
+
         for (int i = 0; i < door.Length; ++i)
         {
+            print(door[i].x+"  wtf");
+            print(door[i].y);
+            print(roomWidth + "  wtf");
+            print(roomHeight);
             roomGrid[door[i].x, door[i].y] = -1;
         }
         return roomGrid;

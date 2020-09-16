@@ -332,6 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4ad01dedd22b4468fb26bcc9fc678d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomXSize: 20
+  roomYSize: 8
   sprite:
   - {fileID: 11400000, guid: 2051e0a4ebef5a24a9ecc76c57fe406e, type: 2}
   - {fileID: 11400000, guid: b9152f164562a7e4b901ddb626402216, type: 2}

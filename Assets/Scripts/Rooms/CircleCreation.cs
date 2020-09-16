@@ -50,8 +50,7 @@ public class CircleCreation : MonoBehaviour
         roomMap = new Room[roomCount];
         roomTileMaps = new Tilemap[roomCount*2];
         RoomGenerator temp = new RoomGenerator();
-        int roomWidth = 14;
-        int roomHeight = 8;
+
         Coords entrance = new Coords(0, 7);
 
 
@@ -72,7 +71,7 @@ public class CircleCreation : MonoBehaviour
             {
                 monsters[j] = Random.Range(0, enemies.Length) + monsterOffset;
             }
-            roomMap[i].grid = (temp.generateRoom(roomWidth, roomHeight, roomMap[i].entrance, roomMap[i].door, monsters, terrain));
+            roomMap[i].grid = (temp.generateRoom(roomXSize, roomYSize, roomMap[i].entrance, roomMap[i].door, monsters, terrain));
         }
         //next part is creating the actual map
 
