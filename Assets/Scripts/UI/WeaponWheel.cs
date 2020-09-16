@@ -33,11 +33,4 @@ public class WeaponWheel : MonoBehaviour
 
         wheelNoises.PlayOneShot(weaponSelected, 1.0f);
     }
-
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }*/
 }

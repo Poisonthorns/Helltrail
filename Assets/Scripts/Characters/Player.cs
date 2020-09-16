@@ -53,6 +53,22 @@ public class Player : MonoBehaviour
 		{
 			health.Heal(10);
 		}
+		if (Input.GetKeyDown(KeyCode.I))
+		{
+			GameObject potion1 = GameObject.Find("Potion");
+			GameObject potion2 = GameObject.Find("Potion (1)");
+			if(potion1 != null)
+            {
+				potion1.GetComponent<Pickup>().addItem();
+            } else if(potion2 != null)
+            {
+				potion2.GetComponent<Pickup>().addItem();
+            }
+		}
+		if (Input.GetKeyDown(KeyCode.U))
+		{
+			GetComponent<Inventory>().selectNextItem();
+		}
 
 		if (Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
 		{

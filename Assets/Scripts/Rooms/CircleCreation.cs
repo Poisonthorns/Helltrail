@@ -262,10 +262,6 @@ public class CircleCreation : MonoBehaviour
                         Vector3Int cellPosition = new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0);
                         var newplayer = Instantiate(playerPrefab, g.GetComponent<Grid>().GetCellCenterWorld(cellPosition), Quaternion.identity);
                         newplayer.name = "Player";
-                        Debug.Log("Player created");
-                        GameObject potion = GameObject.Find("Potion");
-                        Pickup other = (Pickup)potion.GetComponent(typeof(Pickup));
-                        other.Initialize();
                         GameObject camera = GameObject.Find("Main Camera");
                         Vector3Int cellPosition2 = new Vector3Int((roomXSize / 2) + tileOffsetX, (roomYSize / 2) + tileOffsetY, 0);
                         Vector3 camPos = g.GetComponent<Grid>().GetCellCenterWorld(cellPosition2);

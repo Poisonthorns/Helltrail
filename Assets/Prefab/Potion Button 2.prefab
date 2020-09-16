@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7209849074521384174}
   - component: {fileID: 2698259701851498997}
   m_Layer: 5
-  m_Name: Potion Button
+  m_Name: Potion Button 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,14 +61,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 72a3ee1663acfc94690ef38863c123ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e088f92b4c11bb24792ec6a2eb2cb0a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56557791e583ab42a184d6ffd9783e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 8532883259520752010, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
+  item: {fileID: 8532883259520752010, guid: 8462667a62de06048a92d105b4bc169d, type: 3}
 --- !u!114 &2698259701851498997
 MonoBehaviour:
   m_ObjectHideFlags: 0
