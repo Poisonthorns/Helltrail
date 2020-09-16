@@ -102,6 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  enemyHurt: {fileID: 8300000, guid: 53bb270d0f8e44d4799d44074dff6613, type: 3}
+  enemyAttack: {fileID: 0}
+  enemyDeath: {fileID: 8300000, guid: 06a374950b44c814ab5b51a934227a82, type: 3}
 --- !u!61 &895348181245028435
 BoxCollider2D:
   m_ObjectHideFlags: 0
