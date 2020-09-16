@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Tilemaps;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 
@@ -264,7 +263,7 @@ public class CircleCreation : MonoBehaviour
                         newplayer.name = "Player";
                         Debug.Log("Player created");
                         GameObject potion = GameObject.Find("Potion");
-                        Pickup other = (Pickup)potion.GetComponent(typeof(Pickup));
+                        //Pickup other = (Pickup)potion.GetComponent(typeof(Pickup));
                         //other.Initialize();
                         /*
                         GameObject camera = GameObject.Find("Main Camera");
