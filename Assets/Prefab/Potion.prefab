@@ -220,4 +220,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemButton: {fileID: 8081539364811388687, guid: 17e0cb32d015a924d8bd6633f4e735c7, type: 3}
-  itemAdded: {fileID: 0}
+  itemAdded: {fileID: 8300000, guid: fcd60d4f6d93ed842b0af45f15a669f6, type: 3}

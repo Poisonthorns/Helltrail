@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public AudioClip enemyHurt;
     public AudioClip enemyAttack;
     public AudioClip enemyDeath;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +67,7 @@ public class Enemy : MonoBehaviour
         getSquareDistance(new Coords(currentPosition.x, currentPosition.y), playerPosition);
 
         int distance = getSquareDistance(currentPosition, playerPosition);
+        anim.SetBool("Imp_Attack", false);
         if (distance >= 2)
         {
 
@@ -100,6 +102,7 @@ public class Enemy : MonoBehaviour
     }
     public void attack()
     {
+        anim.SetBool("Imp_Attack", true);
         enemyNoises.PlayOneShot(enemyAttack, 1.0f);
         player.GetComponent<Player>().TakeDamage(10);
         print("attacking");
@@ -108,7 +111,7 @@ public class Enemy : MonoBehaviour
     void Death()
 	{
 
-        //Enemy death animation here
+        anim.Play("Imp_Death");
         enemyNoises.PlayOneShot(enemyDeath, 1.0f);
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;

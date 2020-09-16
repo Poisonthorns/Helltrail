@@ -763,8 +763,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   anim: {fileID: 7492379440871885339}
-  playerHurt: {fileID: 0}
-  playerDeath: {fileID: 0}
+  playerHurt: {fileID: 8300000, guid: 7456c5baab5da8d41b4e86c70033126d, type: 3}
+  playerDeath: {fileID: 8300000, guid: a3592903693feb84ba7e1f2c06ba9268, type: 3}
 --- !u!114 &5014205417022423608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,8 +786,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  lightAttackNoise: {fileID: 0}
-  heavyAttackNoise: {fileID: 0}
+  lightAttackNoise: {fileID: 8300000, guid: b904565ab12805e4d8641bff8af84c5d, type: 3}
+  heavyAttackNoise: {fileID: 8300000, guid: 2f477a8c58ef9c14fa6d72820895fdb0, type: 3}
   rangedAttackNoise: {fileID: 0}
 --- !u!114 &5473091783142530975
 MonoBehaviour:
@@ -1243,6 +1243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8591115667232290337, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: weaponSelected
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c83f9c1549f56546930a21c5f4df404, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
 --- !u!1 &810033080677460673 stripped
