@@ -8,7 +8,8 @@ public class NewBehaviourScript : MonoBehaviour
     public LayerMask m_LayerMask;
     void Start()
     {
-        
+        StartCoroutine(ExampleCoroutine());
+
     }
 
     // Update is called once per frame
@@ -29,5 +30,11 @@ public class NewBehaviourScript : MonoBehaviour
             col.gameObject.GetComponent<Player>().TakeDamage(10);
             print("took damage");
         }
+    }
+    IEnumerator ExampleCoroutine()
+    {
+
+        yield return new WaitForSeconds(5);
+        Destroy(this);
     }
 }
