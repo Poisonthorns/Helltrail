@@ -762,6 +762,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   anim: {fileID: 7492379440871885339}
+  playerHurt: {fileID: 0}
+  playerDeath: {fileID: 0}
 --- !u!114 &5014205417022423608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +785,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  lightAttackNoise: {fileID: 0}
+  heavyAttackNoise: {fileID: 0}
+  rangedAttackNoise: {fileID: 0}
 --- !u!114 &5473091783142530975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +810,9 @@ MonoBehaviour:
   - {fileID: 7545352203669840726}
   - {fileID: 2793142033978863832}
   - {fileID: 1032103972407003217}
+  currentSlot: 0
+  currentTotal: 0
+  SelectedItemIcon: {fileID: 0}
 --- !u!82 &615298299885386401
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1059,6 +1067,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1988686699227201222}
     m_Modifications:
+    - target: {fileID: 328910971611972993, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fae3fdd69c2f7b94fa7967e3e1955c7e, type: 3}
     - target: {fileID: 1714157482671170481, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
