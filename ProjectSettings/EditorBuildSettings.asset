@@ -6,30 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: a51392e756515a24ea05379c2ba07d4b
-  - enabled: 1
-    path: Assets/Scenes/Limbo.unity
-    guid: 06c7857cc7e581140bbb9e838b2aa09f
-  - enabled: 1
     path: Assets/Scenes/FinalBoss.unity
     guid: 0aff2c7378af6b645995035d19d86fa2
-  - enabled: 1
-    path: Assets/Scenes/Win Screen.unity
-    guid: 9226f1f9b42779745ad3f7fe362c775f
-  - enabled: 1
-    path: Assets/Scenes/Death Screen.unity
-    guid: d81f08aec4e28bd4da3c59acae89ccfe
-  - enabled: 1
-    path: Assets/Scenes/TestScene.unity
-    guid: e7b26533a39f61c449c1462dc0c65300
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/roomGeneration test scene.unity
-    guid: 6eb30770304f2104cbde137c7936342c
-  - enabled: 1
-    path: Assets/Scenes/Peyton Animation Scene.unity
-    guid: 3b819da8c091c89498438d8d37204c1f
   m_configObjects: {}
