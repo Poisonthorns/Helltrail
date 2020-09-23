@@ -47,3 +47,4 @@ MonoBehaviour:
   attackDamage: 20
   attackRange: 1.5
   attackRate: 2
+  attackSound: {fileID: 8300000, guid: 2f477a8c58ef9c14fa6d72820895fdb0, type: 3}

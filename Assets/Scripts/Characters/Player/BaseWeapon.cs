@@ -8,4 +8,5 @@ public class BaseWeapon : MonoBehaviour
 	public float attackDamage;
 	public float attackRange;
 	public float attackRate;
+	public AudioClip attackSound;
 }

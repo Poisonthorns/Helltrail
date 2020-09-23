@@ -13,12 +13,22 @@ public class PlayerHealthController : MonoBehaviour
     private float currentFill;
     private float currentValue;
 
+    [SerializeField]
+    private AudioClip playerHurt;
+
+    [SerializeField]
+    private AudioClip playerHealed;
+
+    private AudioSource playerAudio;
+
+
     // Start is called before the first frame update
     void Start()
     {
         content = GetComponent<Image>();
         currentValue = startingHealth;
         currentFill = currentValue / maximumHealth;
+        playerAudio = GameObject.Find("Player").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,6 +57,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void LoseHealth(float amount)
 	{
+        playerAudio.PlayOneShot(playerHurt);
         currentValue -= amount;
         if(currentValue < 0)
             currentValue = 0;
@@ -55,6 +66,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void GainHealth(float amount)
 	{
+        playerAudio.PlayOneShot(playerHealed);
         currentValue += amount;
         if(currentValue > maximumHealth)
             currentValue = maximumHealth;

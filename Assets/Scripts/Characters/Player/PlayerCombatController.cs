@@ -13,11 +13,19 @@ public class PlayerCombatController : MonoBehaviour
 	public GameObject[] allWeapons;
 
 	private float timeSinceLastAttack;
+	private AudioSource playerAudio;
+	private WeaponWheel weaponSlots;
+
+	[SerializeField]
+	private AudioClip weaponSwap;
+
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		weapon = allWeapons[weaponIndex];
+		playerAudio = GameObject.Find("Player").GetComponent<AudioSource>();
+		weaponSlots = GameObject.Find("Weapon Wheel").GetComponent<WeaponWheel>();
 	}
 
 	// Update is called once per frame
@@ -35,7 +43,17 @@ public class PlayerCombatController : MonoBehaviour
 			if (weaponIndex >= allWeapons.Length)
 				weaponIndex = 0;
 			weapon = allWeapons[weaponIndex];
-			Debug.Log("Swap weapon");
+			playerAudio.PlayOneShot(weaponSwap);
+
+			// This is hardcoded so I will fix this: swaps weapon icon on HUD
+			if (weapon.GetComponent<BaseWeapon>().attackDamage == 20)
+			{
+				weaponSlots.selectNext(0, 1);// heavy
+			} else if (weapon.GetComponent<BaseWeapon>().attackDamage == 10)
+            {
+				weaponSlots.selectNext(1, 0);// light
+			}
+				Debug.Log("Swap weapon");
 		}
 
 		//Attack Input
@@ -64,6 +82,7 @@ public class PlayerCombatController : MonoBehaviour
 
 	void Attack()
 	{
+		playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 		if (Time.time > timeSinceLastAttack)
 		{
 			Debug.Log("PlayerCombatController Attack");
