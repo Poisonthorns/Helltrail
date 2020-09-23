@@ -25,9 +25,13 @@ public class NewBehaviourScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("Player"))
+        //print("triggered");
+
+        if (col.gameObject.name.Equals("Player Sprite"))
         {
-            col.gameObject.GetComponent<Player>().TakeDamage(10);
+            print(col.gameObject.name);
+            GameObject.Find("Health Bar").GetComponent<PlayerHealthController>().LoseHealth(10);
+            //col.gameObject.GetComponent<Player>().TakeDamage(10);
             print("took damage");
         }
     }

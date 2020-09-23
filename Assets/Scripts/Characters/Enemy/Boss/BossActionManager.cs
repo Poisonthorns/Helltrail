@@ -8,16 +8,22 @@ public class BossActionManager : MonoBehaviour
     float attackDelay = 1.0f;
     private float nextDamageEvent;
     private int attackPhase = 0;
-    CastSpell spell;
+    CastSpell spell = null;
     int counter = 0;
     // Start is called before the first frame update
     void Start()
     {
-        spell = gameObject.GetComponent<CastSpell>();
+        spell = this.gameObject.GetComponent<CastSpell>();
+        gameObject.GetComponent<CastSpell>().iceSpell();
+        if(spell==null)
+        {
+            print("wtf");
+        }
     }
  
     void Update()
     {
+        /*
         if (counter == 6000)
         {
             spell.iceSpell();
@@ -25,7 +31,7 @@ public class BossActionManager : MonoBehaviour
         else
         {
             ++counter;
-        }
+        }*/
         if (Time.time >= nextDamageEvent)
         {
             nextDamageEvent = Time.time + attackDelay;
@@ -34,6 +40,7 @@ public class BossActionManager : MonoBehaviour
             switch (attackPhase)
             {
                 case 0:
+
                     UnityEngine.Debug.Log("Attack phase 0");
                     spell.iceSpell();
                     attackPhase = 1;
@@ -41,6 +48,7 @@ public class BossActionManager : MonoBehaviour
                 case 1:
                     UnityEngine.Debug.Log("Attack phase 1");
                     //Call attack script here
+                    spell.fireBallSpell();
                     attackPhase = 2;
                     break;
                 case 2:
