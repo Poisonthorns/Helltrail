@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Limbo.unity
     guid: 06c7857cc7e581140bbb9e838b2aa09f
   - enabled: 1
+    path: Assets/Scenes/Gluttony.unity
+    guid: 11b93a1e75817694eb3d5e2a24536370
+  - enabled: 1
+    path: Assets/Scenes/Violence.unity
+    guid: f5c99cfdfbf9689438174a945ca4c7ac
+  - enabled: 1
+    path: Assets/Scenes/Heresy.unity
+    guid: b78de162c1533e74980549fd1af4d620
+  - enabled: 1
     path: Assets/Scenes/FinalBoss.unity
     guid: 0aff2c7378af6b645995035d19d86fa2
   - enabled: 1
