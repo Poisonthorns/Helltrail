@@ -58,6 +58,13 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
+    public void GoToIceSpell()
+    {
+        //Insert correct number
+        audioManager.PlayMusicWithFade(treacherySong, 0.1f);
+        SceneManager.LoadScene(6);
+    }
+
     public void GoToWinScreen()
     {
        // SceneManager.LoadScene(2);
@@ -74,5 +81,10 @@ public class SceneLoader : MonoBehaviour
         //Insert correct number
         audioManager.PlayMusicWithFade(limboSong, 0.1f);
         SceneManager.LoadScene(1);
+    }
+
+    public void GoToDebug()
+    {
+        SceneManager.LoadScene(13);
     }
 }

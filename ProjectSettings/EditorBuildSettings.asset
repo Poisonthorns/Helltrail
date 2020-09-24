@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalBoss.unity
     guid: 0aff2c7378af6b645995035d19d86fa2
   - enabled: 1
+    path: Assets/Scenes/FinalBoss 1.unity
+    guid: 7d7d429e0209219479cccc8cf34a371f
+  - enabled: 1
     path: Assets/Scenes/Win Screen.unity
     guid: 9226f1f9b42779745ad3f7fe362c775f
   - enabled: 1
@@ -41,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Peyton Animation Scene.unity
     guid: 3b819da8c091c89498438d8d37204c1f
+  - enabled: 1
+    path: Assets/Scenes/Debug Menu.unity
+    guid: 04fa794b25b516f4abe6aa483d673e8a
   m_configObjects: {}

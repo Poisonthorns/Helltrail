@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementController : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class PlayerMovementController : MonoBehaviour
 
 	private void GetInput()
 	{
+		if(Input.GetKeyDown(KeyCode.Escape))
+        {
+			SceneManager.LoadScene("Debug Menu");
+        }
 
 		/*
 		
