@@ -9,8 +9,14 @@ public class CastSpell : MonoBehaviour
     public GameObject fireBall;
     public GameObject gridObject;
     public GameObject tileMapObject;
+
+    public AudioClip iceSound;
+    public AudioClip fireSound;
+
+    private AudioSource satanSpellAudio;
     public void iceSpell()
     {
+        satanSpellAudio.PlayOneShot(iceSound);
         Grid grid = gridObject.GetComponent<Grid>();
         Tilemap tilemap = tileMapObject.GetComponent<Tilemap>();
         Instantiate(iceSpikes, grid.GetCellCenterWorld(new Vector3Int(0, 0, 0)), Quaternion.identity);
@@ -25,6 +31,7 @@ public class CastSpell : MonoBehaviour
     }
     public void fireBallSpell()
     {
+        satanSpellAudio.PlayOneShot(fireSound);
         Grid grid = gridObject.GetComponent<Grid>();
         Tilemap tilemap = tileMapObject.GetComponent<Tilemap>();
         Instantiate(fireBall, grid.GetCellCenterWorld(new Vector3Int(0, 0, 0)), Quaternion.identity);
@@ -34,6 +41,7 @@ public class CastSpell : MonoBehaviour
     }
     void Start()
     {
+        satanSpellAudio = gameObject.GetComponent<AudioSource>();
         iceSpell();
     }
 }

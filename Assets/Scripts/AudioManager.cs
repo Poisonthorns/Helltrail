@@ -15,16 +15,20 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+            DontDestroyOnLoad(gameObject);
+     
+        /*
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
         }
+        /*
         else
         {
             instance = this;
-        }
+        }*/
         // Keep this instance alive throughout the whole game
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
         // Create audio sources, and save them as references
         musicSource = gameObject.AddComponent<AudioSource>();

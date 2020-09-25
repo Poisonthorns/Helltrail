@@ -305,7 +305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.70007, y: -268.29993}
+  m_AnchoredPosition: {x: 71.700195, y: -268.29993}
   m_SizeDelta: {x: 355.1363, y: 110.9801}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &291466380
@@ -450,7 +450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.70007, y: -556.7999}
+  m_AnchoredPosition: {x: 71.700195, y: -556.7999}
   m_SizeDelta: {x: 355.1363, y: 110.9801}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &303532832
@@ -757,7 +757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.70007, y: -701.09985}
+  m_AnchoredPosition: {x: 71.700195, y: -701.09985}
   m_SizeDelta: {x: 355.1363, y: 110.9801}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &635360451
@@ -902,7 +902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.70007, y: -124}
+  m_AnchoredPosition: {x: 71.700195, y: -124}
   m_SizeDelta: {x: 355.1363, y: 110.9801}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &811595415
@@ -1047,7 +1047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.70007, y: -412.4999}
+  m_AnchoredPosition: {x: 71.700195, y: -412.49988}
   m_SizeDelta: {x: 355.1363, y: 110.9801}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &853207988
@@ -1300,7 +1300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0abede68ec36b4eadc0d65b5a93d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSong: {fileID: 0}
   limboSong: {fileID: 0}
   gluttonySong: {fileID: 0}
   violenceSong: {fileID: 0}
@@ -1769,7 +1768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0abede68ec36b4eadc0d65b5a93d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSong: {fileID: 0}
   limboSong: {fileID: 0}
   gluttonySong: {fileID: 0}
   violenceSong: {fileID: 0}
@@ -2063,7 +2061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.70007, y: -845.3999}
+  m_AnchoredPosition: {x: 71.700195, y: -845.3999}
   m_SizeDelta: {x: 355.1363, y: 110.9801}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1672525154

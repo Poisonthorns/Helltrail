@@ -297,6 +297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0abede68ec36b4eadc0d65b5a93d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSong: {fileID: 8300000, guid: fa34f32edd6402843bb679ce41e357da, type: 3}
+  limboSong: {fileID: 0}
+  gluttonySong: {fileID: 0}
+  violenceSong: {fileID: 0}
+  heresySong: {fileID: 0}
+  treacherySong: {fileID: 0}
 --- !u!114 &339975233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +503,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dc2065ef4cd7dbe408595ae78c185051, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
   Loop: 1

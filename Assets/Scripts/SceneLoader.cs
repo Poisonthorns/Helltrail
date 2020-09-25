@@ -7,8 +7,6 @@ public class SceneLoader : MonoBehaviour
 {
     private AudioManager audioManager;
     [SerializeField]
-    private AudioClip menuSong;
-    [SerializeField]
     private AudioClip limboSong;
     [SerializeField]
     private AudioClip gluttonySong;
@@ -25,66 +23,65 @@ public class SceneLoader : MonoBehaviour
     }
     public void GoToMenu()
     {
-        //Insert correct number
-        audioManager.PlayMusicWithFade(menuSong, 0.1f);
-        SceneManager.LoadScene(0);
+        //Insert correct name
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void GoToLimbo()
+    {
+        //Insert correct name
+        audioManager.PlayMusicWithFade(limboSong, 0.1f);
+        SceneManager.LoadScene("Limbo");
     }
 
     public void GoToGluttony()
     {
-        //Insert correct number
+        //Insert correct name
         audioManager.PlayMusicWithFade(gluttonySong, 0.1f);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Gluttony");
     }
 
     public void GoToViolence()
     {
-        //Insert correct number
+        //Insert correct name
         audioManager.PlayMusicWithFade(violenceSong, 0.1f);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Violence");
     }
 
     public void GoToHeresy()
     {
-        //Insert correct number
+        //Insert correct name
         audioManager.PlayMusicWithFade(heresySong, 0.1f);
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Heresy");
     }
 
     public void GoToTreachery()
     {
-        //Insert correct number
+        //Insert correct name
         audioManager.PlayMusicWithFade(treacherySong, 0.1f);
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene("FinalBoss");
     }
 
     public void GoToIceSpell()
     {
-        //Insert correct number
+        //Insert correct name
         audioManager.PlayMusicWithFade(treacherySong, 0.1f);
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene("FinalBoss 1");
     }
 
     public void GoToWinScreen()
     {
-       // SceneManager.LoadScene(2);
+       SceneManager.LoadScene("Win Screen");
     }
 
     public void GoToDeathScreen()
     {
-        //Insert correct number
-        SceneManager.LoadScene(2);
-    }
-
-    public void GoToGame()
-	{
-        //Insert correct number
-        audioManager.PlayMusicWithFade(limboSong, 0.1f);
-        SceneManager.LoadScene(1);
+        //Insert correct name
+        SceneManager.LoadScene("Death Screen");
     }
 
     public void GoToDebug()
     {
-        SceneManager.LoadScene(13);
+        SceneManager.LoadScene("Debug Menu");
     }
 }

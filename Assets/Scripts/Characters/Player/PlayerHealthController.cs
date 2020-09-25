@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealthController : MonoBehaviour
@@ -61,6 +62,8 @@ public class PlayerHealthController : MonoBehaviour
         currentValue -= amount;
         if(currentValue < 0)
             currentValue = 0;
+        if (currentValue == 0)
+            SceneManager.LoadScene("Death Screen");
         currentFill = currentValue / maximumHealth;
     }
 
