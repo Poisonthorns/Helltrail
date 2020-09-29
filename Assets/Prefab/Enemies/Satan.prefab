@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 464152606491050098}
   - component: {fileID: 464152606491050097}
   - component: {fileID: 5378819856443364876}
+  - component: {fileID: 198885632669470538}
   m_Layer: 9
   m_Name: Satan
   m_TagString: Enemy
@@ -103,7 +104,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.07}
+  m_Offset: {x: 0, y: -0.54214215}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -114,7 +115,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.64, y: 4.27}
+  m_Size: {x: 3.5, y: 2.5042844}
   m_EdgeRadius: 0
 --- !u!50 &464152606491050095
 Rigidbody2D:
@@ -150,7 +151,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.17, y: 0.75}
+  m_Offset: {x: 2.26, y: -1.31}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -161,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.56, y: 4.16}
+  m_Size: {x: 1.17, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &464152606491050089
 BoxCollider2D:
@@ -176,7 +177,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.37, y: 2.29}
+  m_Offset: {x: -0.1400001, y: 1.3142844}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -187,7 +188,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.84, y: 2.76}
+  m_Size: {x: 1.34, y: 1.3014312}
   m_EdgeRadius: 0
 --- !u!114 &464152606491050099
 MonoBehaviour:
@@ -202,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 300
+  currentHealth: 0
 --- !u!114 &464152606491050098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +232,8 @@ MonoBehaviour:
   fireBall: {fileID: 4905634907710766859, guid: 6944da288b3d078418689856f5dc0688, type: 3}
   gridObject: {fileID: 0}
   tileMapObject: {fileID: 0}
+  iceSound: {fileID: 0}
+  fireSound: {fileID: 0}
 --- !u!82 &5378819856443364876
 AudioSource:
   m_ObjectHideFlags: 0
@@ -326,3 +330,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &198885632669470538
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464152606491050090}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.32, y: -1.4323316}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.76, y: 4.53}
+    newSize: {x: 10.26, y: 8.07}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.17, y: 0.68533707}
+  m_EdgeRadius: 0
