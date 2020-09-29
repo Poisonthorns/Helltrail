@@ -37,11 +37,11 @@ public class Pickup : MonoBehaviour
                     
                     inventory.isFull[i] = true;
                     inventory.currentTotal += 1;
-                    Instantiate(itemButton, inventory.slots[i].transform, false);
+                    //Instantiate(itemButton, inventory.slots[i].transform, false);
                     // First time adding an item displays its sprite automatically
                     if (inventory.currentTotal == 1 && inventory.currentSlot == 0)
                     {
-                        inventory.SelectedItemIcon.sprite = inventory.slots[inventory.currentSlot].transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
+                        //inventory.SelectedItemIcon.sprite = inventory.slots[inventory.currentSlot].transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
                         inventory.SelectedItemIcon.enabled = true;
                     }
                     noises.PlayOneShot(itemAdded, 1.0f);

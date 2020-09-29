@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 464152606491050090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: ca75e34be09ce9c43a498a26ee6c6176, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1514d2690ba5ce54c9431590328bcf55, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,7 +107,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.26, y: 8.07}
+    oldSize: {x: 5.76, y: 4.53}
     newSize: {x: 10.26, y: 8.07}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -154,7 +154,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.26, y: 8.07}
+    oldSize: {x: 5.76, y: 4.53}
     newSize: {x: 10.26, y: 8.07}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -180,7 +180,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.26, y: 8.07}
+    oldSize: {x: 5.76, y: 4.53}
     newSize: {x: 10.26, y: 8.07}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -230,8 +230,6 @@ MonoBehaviour:
   fireBall: {fileID: 4905634907710766859, guid: 6944da288b3d078418689856f5dc0688, type: 3}
   gridObject: {fileID: 0}
   tileMapObject: {fileID: 0}
-  iceSound: {fileID: 8300000, guid: 2f487936688580047adb8e7ca2b1807d, type: 3}
-  fireSound: {fileID: 8300000, guid: fee112a660748f74e857ebd0697b0f73, type: 3}
 --- !u!82 &5378819856443364876
 AudioSource:
   m_ObjectHideFlags: 0
