@@ -9,10 +9,10 @@ public class PlayerHealthController : MonoBehaviour
     public float lerpSpeed;
     public float startingHealth;
     public float maximumHealth;
-
+    public int defense;
     private Image content;
     private float currentFill;
-    private float currentValue;
+    public float currentValue;
 
     [SerializeField]
     private AudioClip playerHurt;
@@ -59,7 +59,7 @@ public class PlayerHealthController : MonoBehaviour
     public void LoseHealth(float amount)
 	{
         playerAudio.PlayOneShot(playerHurt);
-        currentValue -= amount;
+        currentValue -= amount - defense;
         if(currentValue < 0)
             currentValue = 0;
         if (currentValue == 0)

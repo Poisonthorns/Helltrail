@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    public int defense;
     Coords currentPosition;
     bool playerDetected = false;
     GameObject player;
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
 	{
         //Enemy damage animation here
         enemyNoises.PlayOneShot(enemyHurt, 1.0f);
-        currentHealth -= damage;
+        currentHealth -= damage-defense;
         if(currentHealth <= 0)
             Death();
 	}

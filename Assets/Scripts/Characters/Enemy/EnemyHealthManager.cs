@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealthManager : MonoBehaviour
 {
     public float startingHealth;
-    private float currentHealth;
+    public float currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,12 @@ public class EnemyHealthManager : MonoBehaviour
         if(currentHealth <= 0)
             Death();
     }
-
+    public void GainHealth(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth <= 0)
+            Death();
+    }
     void Death()
     {
         //anim.Play("Imp_Death");

@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class PotionItem : MonoBehaviour
 {
-    public GameObject effect;
-    private Transform player;
+    public int id;
+    Transform player;
     private void Start()
     {
-        player = GameObject.Find("Player").transform;
+        
     }
 
-    public void Use()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        // Do effect here
-        //Instantiate(effect, player.position, Quaternion.identity);
-        // Remove selector image here
-        player.GetComponent<Inventory>().currentTotal -= 1;
-        Destroy(gameObject);
+
+        print("item detected");
+        if (col.gameObject.name.Equals("Player"))
+        {
+            player = GameObject.Find("Player").transform;
+            bool obtained = player.GetComponent<Inventory>().addItem(id);
+            if(obtained)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

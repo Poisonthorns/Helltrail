@@ -57,10 +57,7 @@ public class RoomGenerator : MonoBehaviour
 
         for (int i = 0; i < door.Length; ++i)
         {
-            print(door[i].x+"  wtf");
-            print(door[i].y);
-            print(roomWidth + "  wtf");
-            print(roomHeight);
+
             roomGrid[door[i].x, door[i].y] = -1;
         }
         return roomGrid;

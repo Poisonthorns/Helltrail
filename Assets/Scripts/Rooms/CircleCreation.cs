@@ -27,14 +27,15 @@ public class CircleCreation : MonoBehaviour
 {
 
     int roomCount = 4;
-    public int roomXSize = 14;
-    public int roomYSize = 8;
+    public int roomXSize;
+    public int roomYSize;
     int monsterOffset=2;
     int terrainOffset=20;
     public Tile[] sprite;
     public Tile[] rockSprite;
     public GameObject[] enemies;
     public GameObject playerPrefab;
+    public GameObject portal;
     public int[] enemyEachFloor;
     public int[] rocksEachFloor;
 
@@ -280,26 +281,34 @@ public class CircleCreation : MonoBehaviour
                     }
 
                 }
+
             }
             //get offset depending on position of next room
+
+            if(x == 3)
+            {
+
+                Instantiate(portal, 
+                    g.GetComponent<Grid>().GetCellCenterWorld(new Vector3Int((int)Random.Range(5.0f, 10.0f)+tileOffsetX, (int)Random.Range(5.0f, 10.0f) + tileOffsetY, 0)), Quaternion.identity);
+
+            }
             switch (switcher)
             {
                 case 0:
-                    tileOffsetX += 16;
+                    tileOffsetX += roomXSize + 2;
                     break;
                 case 1:
-                    tileOffsetX -= 16;
+                    tileOffsetX -= roomXSize + 2;
                     break;
                 case 2:
-                    tileOffsetY += 10;
+                    tileOffsetY += roomYSize + 2;
                     break;
                 case 3:
-                    tileOffsetY -= 10;
+                    tileOffsetY -= roomYSize + 2;
                     break;
                 default:
                     break;
             }
-
             tileMap.RefreshAllTiles();
         }
     }

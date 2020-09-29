@@ -20,7 +20,6 @@ public class EnemyAttackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("update");
         //whenever the character is attacking...
         if (Time.time > timeSinceLastAttack)
         {

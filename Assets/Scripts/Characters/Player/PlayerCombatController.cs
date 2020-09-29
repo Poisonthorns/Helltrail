@@ -6,7 +6,7 @@ public class PlayerCombatController : MonoBehaviour
 {
 	public LayerMask enemyLayer;
 	public Transform attackPoint;
-
+    public float additionalDamage;
 	//Access variables like this: weapon.GetComponent<BaseWeapon>().attackDamage
 	private GameObject weapon;
 	int weaponIndex = 0;
@@ -91,7 +91,7 @@ public class PlayerCombatController : MonoBehaviour
 			{
 				UnityEngine.Debug.Log("We hit " + enemy.name);
 				if(enemy.gameObject.tag == "Enemy")
-					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage);
+					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
 			}
 		
 			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
