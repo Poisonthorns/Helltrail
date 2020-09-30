@@ -47,4 +47,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Debug Menu.unity
     guid: 04fa794b25b516f4abe6aa483d673e8a
+  - enabled: 0
+    path: Assets/Scenes/Controls Screen.unity
+    guid: 17be3b335f471b5448352b3346293d71
+  - enabled: 0
+    path: Assets/Scenes/Pause Screen.unity
+    guid: 9d34515dc97b0de4e8c0a591724fa21b
   m_configObjects: {}

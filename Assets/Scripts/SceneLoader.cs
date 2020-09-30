@@ -17,12 +17,19 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private AudioClip treacherySong;
 
+    [SerializeField]
+    private GameObject pauseScreen;
+
+    [SerializeField]
+    private GameObject controlsScreen;
+
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
     }
     public void GoToMenu()
     {
+        DisableActiveScreens();
         //Insert correct name
         SceneManager.LoadScene("Main Menu");
     }
@@ -84,4 +91,42 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Debug Menu");
     }
+
+    public void GoToPause()
+    {
+        DisableActiveScreens();
+        pauseScreen.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        DisableActiveScreens();
+        pauseScreen.SetActive(false);
+    }
+
+    public void GoToControls()
+    {
+        DisableActiveScreens();
+        controlsScreen.SetActive(true);
+    }
+
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
+    public void DisableActiveScreens()
+    {
+        if(controlsScreen != null && controlsScreen.activeSelf)
+        {
+            controlsScreen.SetActive(false);
+        }
+
+        if (pauseScreen != null && pauseScreen.activeSelf)
+        {
+            pauseScreen.SetActive(false);
+        }
+    }
+
+    
 }

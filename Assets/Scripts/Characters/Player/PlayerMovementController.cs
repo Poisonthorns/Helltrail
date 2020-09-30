@@ -31,6 +31,11 @@ public class PlayerMovementController : MonoBehaviour
 			SceneManager.LoadScene("Debug Menu");
         }
 
+		if (Input.GetKeyDown(KeyCode.Backspace))
+		{
+           GameObject.FindObjectOfType<SceneLoader>().GoToPause();
+		}
+
 		/*
 		
 		if(Input.GetKeyDown(KeyCode.I))
@@ -54,7 +59,7 @@ public class PlayerMovementController : MonoBehaviour
 
 
 		//Movement Input
-		if(Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
+		if (Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
 		{
 			if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
 			{
