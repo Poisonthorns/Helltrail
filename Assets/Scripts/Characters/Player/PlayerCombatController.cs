@@ -93,9 +93,9 @@ public class PlayerCombatController : MonoBehaviour
 
 	void Attack()
 	{
-		playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 		if (Time.time > timeSinceLastAttack)
 		{
+			
 			Debug.Log("PlayerCombatController Attack");
 			//If statements for attack aniamations
 			//Animation for light attack here
@@ -113,8 +113,11 @@ public class PlayerCombatController : MonoBehaviour
 			foreach (Collider2D enemy in enemies)
 			{
 				UnityEngine.Debug.Log("We hit " + enemy.name);
-				if(enemy.gameObject.tag == "Enemy")
+				if (enemy.gameObject.tag == "Enemy")
+				{
+					playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
+				}
 			}
 		
 			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;

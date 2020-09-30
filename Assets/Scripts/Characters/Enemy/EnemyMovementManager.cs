@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyMovementManager : MonoBehaviour
 {
+    public Transform player;
+
     public float moveSpeed;
 
     private Rigidbody2D myRigidbody;
@@ -50,8 +50,57 @@ public class EnemyMovementManager : MonoBehaviour
 			{
                 moving = true;
                 timeToMoveCounter = timeToMove;
-                moveDirection = new Vector3(Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, moveSpeed)), Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, moveSpeed)), 0f);
+                moveDirection = directionTowardsPlayer();
 			}
 		}
+    }
+
+    Vector3 directionRandom()
+	{
+        return new Vector3(Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, moveSpeed)), Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, moveSpeed)), 0f);
+    }
+
+    Vector3 directionTowardsPlayer()
+    {
+        Vector3 dir = player.position - transform.position;
+        Debug.Log(dir.x + " " + dir.y);
+        if (Mathf.Abs(dir.x) < 1.0f && Mathf.Abs(dir.y) < 1.0f)
+		{
+            dir.x = 0.0f;
+            dir.y = 0.0f;
+		}
+		else
+		{
+            if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+            {
+                if (dir.x > 0)
+                {
+                    dir.x = 1.0f;
+                }
+                else
+                {
+                    dir.x = -1.0f;
+                }
+
+                dir.y = 0.0f;
+            }
+            else
+            {
+                if (dir.y > 0)
+                {
+                    dir.y = 1.0f;
+                }
+                else
+                {
+                    dir.y = -1.0f;
+                }
+
+                dir.x = 0.0f;
+            }
+
+            
+        }
+        
+        return dir;
     }
 }
