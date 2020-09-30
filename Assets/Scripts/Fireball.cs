@@ -45,7 +45,7 @@ public class Fireball : MonoBehaviour
             }
             else
             {
-                GameObject.Find("Health Bar").GetComponent<PlayerHealthController>().LoseHealth(20);
+                GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().LoseHealth(20);
 
                 print("took direct damage");
             }
