@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public int currentSlot;
     public int currentTotal;
     public Image SelectedItemIcon;
-
+    public Sprite tempImage;
     public void Start()
     {
         SelectedItemIcon = GameObject.Find("SelectedItemIcon").GetComponent<Image>();
@@ -24,13 +24,16 @@ public class Inventory : MonoBehaviour
     {
         print(itemID);
         int nextIndex = getNextFreeSlot();
-        if (getNextFreeSlot()==-1)
+        int temp = getNextFreeSlot();
+        if (temp==-1)
         {
             return false;
         }
         else
         {
             slots[nextIndex] = itemID;
+            GameObject.Find("SlotImage" + (temp+1)).GetComponent<Image>().sprite = tempImage;
+            GameObject.Find("SlotImage" + (temp + 1)).GetComponent<Image>().color = new Color (255, 255, 255,100);
         }
         return true;
     }
@@ -41,6 +44,9 @@ public class Inventory : MonoBehaviour
         {
             if(useItem(1))
             {
+                GameObject.Find("SlotImage1").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage1").GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
                 print("used item");
             }
             else
@@ -52,6 +58,8 @@ public class Inventory : MonoBehaviour
         {
             if (useItem(2))
             {
+                GameObject.Find("SlotImage2").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage2").GetComponent<Image>().color = new Color(255, 255, 255, 0);
                 print("used item");
             }
             else
@@ -63,6 +71,9 @@ public class Inventory : MonoBehaviour
         {
             if (useItem(3))
             {
+                GameObject.Find("SlotImage3").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage3").GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
                 print("used item");
             }
             else
@@ -74,6 +85,9 @@ public class Inventory : MonoBehaviour
         {
             if (useItem(4))
             {
+                GameObject.Find("SlotImage4").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage4").GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
                 print("used item");
             }
             else
@@ -85,6 +99,9 @@ public class Inventory : MonoBehaviour
         {
             if (useItem(5))
             {
+                GameObject.Find("SlotImage5").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage5").GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
                 print("used item");
             }
             else
@@ -96,6 +113,9 @@ public class Inventory : MonoBehaviour
         {
             if (useItem(6))
             {
+                GameObject.Find("SlotImage6").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage6").GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
                 print("used item");
             }
             else
@@ -107,6 +127,9 @@ public class Inventory : MonoBehaviour
         {
             if (useItem(7))
             {
+                GameObject.Find("SlotImage7").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage7").GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
                 print("used item");
             }
             else
@@ -118,6 +141,9 @@ public class Inventory : MonoBehaviour
         {
             if (useItem(8))
             {
+                GameObject.Find("SlotImage8").GetComponent<Image>().sprite = null;
+                GameObject.Find("SlotImage8").GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
                 print("used item");
             }
             else
