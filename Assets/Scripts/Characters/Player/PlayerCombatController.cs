@@ -113,10 +113,13 @@ public class PlayerCombatController : MonoBehaviour
 			foreach (Collider2D enemy in enemies)
 			{
 				UnityEngine.Debug.Log("We hit " + enemy.name);
-				if (enemy.gameObject.tag == "Enemy")
+				if (enemy.gameObject != null)
 				{
-					playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
-					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
+					if (enemy.gameObject.tag == "Enemy")
+					{
+						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
+						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
+					}
 				}
 			}
 		

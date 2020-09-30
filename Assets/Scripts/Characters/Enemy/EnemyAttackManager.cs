@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttackManager : MonoBehaviour
 {
-    GameObject HealthBarObject;
+    GameObject HealthBar;
     GameObject PlayerObject;
     public float attackRate = 3;
     private float timeSinceLastAttack;
@@ -13,7 +13,7 @@ public class EnemyAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HealthBarObject = GameObject.Find("Health Bar");
+        HealthBar = GameObject.Find("Player Health Bar");
         PlayerObject = GameObject.Find("Player");
     }
 
@@ -31,9 +31,9 @@ public class EnemyAttackManager : MonoBehaviour
     void Attack()
 	{
         float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
-        if(distance <= 1.2f)
+        if(distance <= 1.0f)
         {
-            HealthBarObject.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
+            HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
             Debug.Log("attacking");
         }
     }

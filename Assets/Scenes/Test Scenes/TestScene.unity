@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2004202556}
+    - target: {fileID: 6170759654459756324, guid: d52c466c37b720049bb2e71a611e4d25, type: 3}
+      propertyPath: HealthBarObject
+      value: 
+      objectReference: {fileID: 7492379440977818278}
     - target: {fileID: 6471139792893616792, guid: d52c466c37b720049bb2e71a611e4d25, type: 3}
       propertyPath: m_Name
       value: demon
@@ -5868,3 +5872,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
+--- !u!1 &7492379440977818278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4173321831500711887, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
+  m_PrefabInstance: {fileID: 7492379440977818277}
+  m_PrefabAsset: {fileID: 0}

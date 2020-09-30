@@ -64,7 +64,7 @@ public class EnemyMovementManager : MonoBehaviour
     Vector3 directionTowardsPlayer()
     {
         Vector3 dir = player.position - transform.position;
-        Debug.Log(dir.x + " " + dir.y);
+        //Debug.Log(dir.x + " " + dir.y);
         if (Mathf.Abs(dir.x) < 1.0f && Mathf.Abs(dir.y) < 1.0f)
 		{
             dir.x = 0.0f;
