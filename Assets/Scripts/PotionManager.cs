@@ -16,7 +16,7 @@ public class PotionManager : MonoBehaviour
                 enemy.GetComponent<EnemyHealthManager>().GainHealth(40);
             }
         }
-        GameObject.Find("Health Bar").GetComponent<PlayerHealthController>().GainHealth(20);
+        GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().GainHealth(20);
 
     }
     void defensePotion()
