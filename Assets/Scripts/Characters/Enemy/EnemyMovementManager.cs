@@ -30,7 +30,8 @@ public class EnemyMovementManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(moving)
+        player = GameObject.Find("Player").transform;
+        if (moving)
 		{
             timeToMoveCounter -= Time.deltaTime;
             myRigidbody.velocity = moveDirection;
