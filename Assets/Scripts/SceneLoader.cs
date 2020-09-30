@@ -96,12 +96,14 @@ public class SceneLoader : MonoBehaviour
     {
         DisableActiveScreens();
         pauseScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void Resume()
     {
         DisableActiveScreens();
         pauseScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void GoToControls()
