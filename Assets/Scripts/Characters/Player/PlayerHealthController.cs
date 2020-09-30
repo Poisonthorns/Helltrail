@@ -21,6 +21,9 @@ public class PlayerHealthController : MonoBehaviour
     private AudioClip playerHealed;
 
     private AudioSource playerAudio;
+    
+    //Animator here
+    public Animator anim;
 
 
     // Start is called before the first frame update
@@ -63,6 +66,8 @@ public class PlayerHealthController : MonoBehaviour
         if(currentValue < 0)
             currentValue = 0;
         if (currentValue == 0)
+            //Death animation here
+            anim.Play("Death");
             SceneManager.LoadScene("Death Screen");
         currentFill = currentValue / maximumHealth;
     }
