@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
         print("triggered");
         if (col.gameObject.name.Equals("Regular Sprite"))
         {
-            SceneManager.LoadScene("FinalBoss1");
+            SceneManager.LoadScene("FinalBoss 1");
 
         }
 
