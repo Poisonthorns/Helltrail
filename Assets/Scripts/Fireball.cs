@@ -35,11 +35,11 @@ public class Fireball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         print("triggered");
-        if (col.gameObject.name.Equals("Player Sprite"))
+        if (col.gameObject.name.Equals("Regular Sprite"))
         {
             if (explode)
             {
-                GameObject.Find("Health Bar").GetComponent<PlayerHealthController>().LoseHealth(10);
+                //GameObject.Find("Health Bar").GetComponent<PlayerHealthController>().LoseHealth(10);
 
                 print("took explosion damage");
             }

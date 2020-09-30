@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0);
     }
 
     // Update is called once per frame
@@ -20,9 +20,9 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         print("triggered");
-        if (col.gameObject.name.Equals("Player"))
+        if (col.gameObject.name.Equals("Regular Sprite"))
         {
-            SceneManager.LoadScene("FinalBoss");
+            SceneManager.LoadScene("FinalBoss1");
 
         }
 

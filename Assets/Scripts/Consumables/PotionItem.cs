@@ -15,7 +15,7 @@ public class PotionItem : MonoBehaviour
     {
 
         print("item detected");
-        if (col.gameObject.name.Equals("Player"))
+        if (col.gameObject.name.Equals("Regular Sprite"))
         {
             player = GameObject.Find("Player").transform;
             bool obtained = player.GetComponent<Inventory>().addItem(id);

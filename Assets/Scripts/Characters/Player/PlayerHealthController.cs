@@ -60,15 +60,20 @@ public class PlayerHealthController : MonoBehaviour
     }
 
     public void LoseHealth(float amount)
-	{
+    {
         playerAudio.PlayOneShot(playerHurt);
+        print(amount);
+        print(defense);
         currentValue -= amount - defense;
-        if(currentValue < 0)
+        print(currentValue);
+        if (currentValue < 0)
             currentValue = 0;
         if (currentValue == 0)
-            //Death animation here
-            anim.Play("Death");
-            SceneManager.LoadScene("Death Screen");
+        { 
+        //Death animation here
+        anim.Play("Death");
+        SceneManager.LoadScene("Death Screen");
+        }
         currentFill = currentValue / maximumHealth;
     }
 

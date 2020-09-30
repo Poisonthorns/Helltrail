@@ -11672,6 +11672,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 6139590402162119152, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
+      propertyPath: currentValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6477629288780477650, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
       propertyPath: m_Layer
       value: 31
@@ -11990,7 +11994,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.5}
+    oldSize: {x: 1.29, y: 4.53}
     newSize: {x: 2.5, y: 2.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
