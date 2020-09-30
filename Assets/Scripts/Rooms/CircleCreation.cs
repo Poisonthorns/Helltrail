@@ -289,7 +289,7 @@ public class CircleCreation : MonoBehaviour
             {
 
                 Instantiate(portal, 
-                    g.GetComponent<Grid>().GetCellCenterWorld(new Vector3Int((int)Random.Range(5.0f, 10.0f)+tileOffsetX, (int)Random.Range(5.0f, 10.0f) + tileOffsetY, 0)), Quaternion.identity);
+                    g.GetComponent<Grid>().GetCellCenterWorld(new Vector3Int(5+tileOffsetX, 5 + tileOffsetY, 0)), Quaternion.identity);
 
             }
             switch (switcher)
