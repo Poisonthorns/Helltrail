@@ -20,7 +20,7 @@ public class PlayerCombatController : MonoBehaviour
 	private AudioClip weaponSwap;
 
 	//booleans here to know what weapon is currently equipped for animations along with animator
-	public bool lightAttack = false;
+	public bool lightAttack = true;
 	public bool heavyAttack = false;
 	public Animator anim;
 
