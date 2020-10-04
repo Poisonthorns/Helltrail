@@ -19,11 +19,6 @@ public class PlayerCombatController : MonoBehaviour
 	[SerializeField]
 	private AudioClip weaponSwap;
 
-	//booleans here to know what weapon is currently equipped for animations along with animator
-	public bool lightAttack = false;
-	public bool heavyAttack = false;
-	public Animator anim;
-
 
 	// Start is called before the first frame update
 	void Start()
@@ -54,15 +49,9 @@ public class PlayerCombatController : MonoBehaviour
 			if (weapon.GetComponent<BaseWeapon>().attackDamage == 20)
 			{
 				weaponSlots.selectNext(0, 1);// heavy
-				//for heavy attack animation
-				heavyAttack = true;
-				lightAttack = false;
 			} else if (weapon.GetComponent<BaseWeapon>().attackDamage == 10)
             {
 				weaponSlots.selectNext(1, 0);// light
-				//for light attack animation
-				lightAttack = true;
-				heavyAttack = false;
 			}
 				Debug.Log("Swap weapon");
 		}
@@ -97,18 +86,7 @@ public class PlayerCombatController : MonoBehaviour
 		{
 			
 			Debug.Log("PlayerCombatController Attack");
-			//If statements for attack aniamations
-			//Animation for light attack here
-			if (lightAttack)
-			{
-				anim.Play("Light Attack");
-			}
 
-			//Animation for heavy attack
-			else if (heavyAttack)
-			{
-				anim.Play("Heavy Attack");
-			}
 			Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
 			foreach (Collider2D enemy in enemies)
 			{
