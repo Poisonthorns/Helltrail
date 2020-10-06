@@ -5,46 +5,46 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: a51392e756515a24ea05379c2ba07d4b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Limbo.unity
     guid: 06c7857cc7e581140bbb9e838b2aa09f
   - enabled: 1
     path: Assets/Scenes/Gluttony.unity
     guid: 11b93a1e75817694eb3d5e2a24536370
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Violence.unity
     guid: f5c99cfdfbf9689438174a945ca4c7ac
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Heresy.unity
     guid: b78de162c1533e74980549fd1af4d620
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FinalBoss.unity
     guid: 0aff2c7378af6b645995035d19d86fa2
   - enabled: 1
     path: Assets/Scenes/FinalBoss 1.unity
     guid: 7d7d429e0209219479cccc8cf34a371f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Win Screen.unity
     guid: 9226f1f9b42779745ad3f7fe362c775f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Death Screen.unity
     guid: d81f08aec4e28bd4da3c59acae89ccfe
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Test Scenes/TestScene.unity
     guid: e7b26533a39f61c449c1462dc0c65300
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/roomGeneration test scene.unity
     guid: 6eb30770304f2104cbde137c7936342c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Peyton Animation Scene.unity
     guid: 3b819da8c091c89498438d8d37204c1f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Debug Menu.unity
     guid: 04fa794b25b516f4abe6aa483d673e8a
   - enabled: 0
