@@ -48,5 +48,11 @@ public class EnemyHealthManager : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         Destroy(gameObject);
+
+        // Win Condition for Satan
+        if(gameObject.name.Equals("Satan"))
+        {
+            SceneManager.LoadScene("Win Screen");
+        }
     }
 }
