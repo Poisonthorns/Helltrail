@@ -66,28 +66,34 @@ public class PlayerCombatController : MonoBehaviour
 			}
 				Debug.Log("Swap weapon");
 		}
+		if(weapon.GetComponent<BaseWeapon>().rangedAttack)
+		{
 
-		//Attack Input
-		if (Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
-			Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
-			Attack();
 		}
-		else if (Input.GetKeyDown(KeyCode.DownArrow))
+		else
 		{
-			attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
-			Attack();
-		}
-		else if (Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
-			Attack();
-		}
-		else if (Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
-			Attack();
+			//Attack Input
+			if (Input.GetKeyDown(KeyCode.UpArrow))
+			{
+				attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
+				Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
+				Attack();
+			}
+			else if (Input.GetKeyDown(KeyCode.DownArrow))
+			{
+				attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
+				Attack();
+			}
+			else if (Input.GetKeyDown(KeyCode.LeftArrow))
+			{
+				attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
+				Attack();
+			}
+			else if (Input.GetKeyDown(KeyCode.RightArrow))
+			{
+				attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
+				Attack();
+			}
 		}
 	}
 

@@ -66,13 +66,13 @@ public class PlayerHealthController : MonoBehaviour
         print(defense);
         currentValue -= amount - defense;
         print(currentValue);
-        if (currentValue < 0)
+        if(currentValue < 0)
             currentValue = 0;
         if (currentValue == 0)
         { 
-        //Death animation here
-        anim.Play("Death");
-        SceneManager.LoadScene("Death Screen");
+            //This line prevents the Death Screen from loading for some reason
+            //anim.Play("Death");
+            SceneManager.LoadScene("Death Screen");
         }
         currentFill = currentValue / maximumHealth;
     }
