@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Peyton Animation Scene.unity
     guid: 3b819da8c091c89498438d8d37204c1f
+  - enabled: 1
+    path: Assets/Scenes/Gluttony Boss.unity
+    guid: 3d20c66048e5ced4a8f92372c9f05cc9
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
