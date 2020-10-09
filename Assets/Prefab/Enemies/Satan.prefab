@@ -426,6 +426,7 @@ MonoBehaviour:
   startingHealth: 300
   content: {fileID: 1571840016196170501}
   lerpSpeed: 5
+  blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
 --- !u!114 &464152606491050098
 MonoBehaviour:
   m_ObjectHideFlags: 0

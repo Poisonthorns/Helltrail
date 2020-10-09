@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,6 +26,8 @@ public class PlayerHealthController : MonoBehaviour
     //Animator here
     public Animator anim;
 
+    DamageOverlay overlay;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,8 @@ public class PlayerHealthController : MonoBehaviour
         currentValue = startingHealth;
         currentFill = currentValue / maximumHealth;
         playerAudio = GameObject.Find("Player").GetComponent<AudioSource>();
+        overlay = GameObject.FindObjectOfType(typeof(DamageOverlay)) as DamageOverlay;
+        
     }
 
     // Update is called once per frame
@@ -61,7 +66,11 @@ public class PlayerHealthController : MonoBehaviour
 
     public void LoseHealth(float amount)
     {
+        // Show damage overlay for 1 second
+        StartCoroutine(overlay.ShowOverlay());
+
         playerAudio.PlayOneShot(playerHurt);
+
         print(amount);
         print(defense);
         currentValue -= amount - defense;
