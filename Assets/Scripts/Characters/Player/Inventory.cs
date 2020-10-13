@@ -11,6 +11,10 @@ public class Inventory : MonoBehaviour
     public int currentTotal;
     public Image SelectedItemIcon;
     public Sprite tempImage;
+    public AudioClip itemAdded;
+    private AudioSource noises;
+
+
     public void Start()
     {
         SelectedItemIcon = GameObject.Find("SelectedItemIcon").GetComponent<Image>();
@@ -19,6 +23,8 @@ public class Inventory : MonoBehaviour
         {
             slots[i] = -1;
         }
+
+        noises = gameObject.GetComponent<AudioSource>();
     }
     public bool addItem(int itemID)
     {
@@ -31,6 +37,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+            noises.PlayOneShot(itemAdded);
             slots[nextIndex] = itemID;
             GameObject.Find("SlotImage" + (temp+1)).GetComponent<Image>().sprite = tempImage;
             GameObject.Find("SlotImage" + (temp + 1)).GetComponent<Image>().color = new Color (255, 255, 255,100);

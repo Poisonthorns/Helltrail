@@ -134,6 +134,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion
       objectReference: {fileID: 0}
+    - target: {fileID: 8532883259520752021, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532883259520752021, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8532883259520752022, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -579,6 +587,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isNotGluttony: 0
+  potionUsed: {fileID: 0}
+  healthSound: {fileID: 8300000, guid: bd65abc18e8115049a64ac11f30c4538, type: 3}
+  defenseSound: {fileID: 8300000, guid: 193a5028fdaa002449aad38b1175feac, type: 3}
+  speedSound: {fileID: 8300000, guid: b5c971432a8319d45a2950f908048183, type: 3}
+  damageSound: {fileID: 8300000, guid: 9e466a158629d4f4ea3fad2b02dff6d2, type: 3}
+  rangeSound: {fileID: 8300000, guid: b12697562754c604283e5caf2371d16f, type: 3}
 --- !u!1 &2079981938
 GameObject:
   m_ObjectHideFlags: 0

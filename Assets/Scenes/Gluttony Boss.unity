@@ -934,6 +934,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1293181375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1293181378}
+  - component: {fileID: 1293181377}
+  - component: {fileID: 1293181376}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1293181376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293181375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f461922c8737b4595e14989a54dd45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNotGluttony: 0
+  potionUsed: {fileID: 0}
+  healthSound: {fileID: 8300000, guid: bd65abc18e8115049a64ac11f30c4538, type: 3}
+  defenseSound: {fileID: 8300000, guid: 193a5028fdaa002449aad38b1175feac, type: 3}
+  speedSound: {fileID: 8300000, guid: b5c971432a8319d45a2950f908048183, type: 3}
+  damageSound: {fileID: 8300000, guid: 9e466a158629d4f4ea3fad2b02dff6d2, type: 3}
+  rangeSound: {fileID: 8300000, guid: b12697562754c604283e5caf2371d16f, type: 3}
+--- !u!114 &1293181377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293181375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4ad01dedd22b4468fb26bcc9fc678d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomXSize: 20
+  roomYSize: 8
+  sprite:
+  - {fileID: 11400000, guid: 2051e0a4ebef5a24a9ecc76c57fe406e, type: 2}
+  - {fileID: 11400000, guid: b9152f164562a7e4b901ddb626402216, type: 2}
+  - {fileID: 11400000, guid: f7916ccd9107e0748a47d2a9098acbc6, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: f7916ccd9107e0748a47d2a9098acbc6, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: e9ac7cb33426bb54dacb75c3d6577d30, type: 2}
+  - {fileID: 11400000, guid: 66d90b8723c6ce841a1fb2345e48fb4b, type: 2}
+  - {fileID: 11400000, guid: 9560594af8316ec42bb161b8054ddfbd, type: 2}
+  - {fileID: 11400000, guid: ade5a0a7aa8c2574bbe115857aa72ad7, type: 2}
+  - {fileID: 11400000, guid: dc80b07b922dce748bc54ebab9a8c397, type: 2}
+  - {fileID: 11400000, guid: 02ec2f60467768840bbc2f131fb142e0, type: 2}
+  - {fileID: 11400000, guid: 1468b5c35b4ca184ab702576e8d041c3, type: 2}
+  - {fileID: 11400000, guid: bde8512b99409954eb2834c2b7398cb2, type: 2}
+  - {fileID: 0}
+  rockSprite:
+  - {fileID: 11400000, guid: b9152f164562a7e4b901ddb626402216, type: 2}
+  - {fileID: 11400000, guid: ccf8412f50ddf4041b82ebc9bb30c94d, type: 2}
+  - {fileID: 11400000, guid: b172a1c2bd38f0946b6e3301dcb72ea4, type: 2}
+  enemies:
+  - {fileID: 6471139792893616792, guid: d52c466c37b720049bb2e71a611e4d25, type: 3}
+  playerPrefab: {fileID: 7007244473938058363, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
+  portal: {fileID: 0}
+  enemyEachFloor: 04000000040000000400000004000000
+  rocksEachFloor: 04000000040000000400000004000000
+--- !u!4 &1293181378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293181375}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1614727680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,82 +1194,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1654012661
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1654012663}
-  - component: {fileID: 1654012662}
-  m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1654012662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654012661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4ad01dedd22b4468fb26bcc9fc678d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomXSize: 20
-  roomYSize: 8
-  sprite:
-  - {fileID: 11400000, guid: 2051e0a4ebef5a24a9ecc76c57fe406e, type: 2}
-  - {fileID: 11400000, guid: b9152f164562a7e4b901ddb626402216, type: 2}
-  - {fileID: 11400000, guid: f7916ccd9107e0748a47d2a9098acbc6, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: e9ac7cb33426bb54dacb75c3d6577d30, type: 2}
-  - {fileID: 11400000, guid: 66d90b8723c6ce841a1fb2345e48fb4b, type: 2}
-  - {fileID: 11400000, guid: 9560594af8316ec42bb161b8054ddfbd, type: 2}
-  - {fileID: 11400000, guid: ade5a0a7aa8c2574bbe115857aa72ad7, type: 2}
-  - {fileID: 11400000, guid: dc80b07b922dce748bc54ebab9a8c397, type: 2}
-  - {fileID: 11400000, guid: 02ec2f60467768840bbc2f131fb142e0, type: 2}
-  - {fileID: 11400000, guid: 1468b5c35b4ca184ab702576e8d041c3, type: 2}
-  - {fileID: 11400000, guid: bde8512b99409954eb2834c2b7398cb2, type: 2}
-  - {fileID: 0}
-  rockSprite:
-  - {fileID: 11400000, guid: b9152f164562a7e4b901ddb626402216, type: 2}
-  - {fileID: 11400000, guid: ccf8412f50ddf4041b82ebc9bb30c94d, type: 2}
-  - {fileID: 11400000, guid: b172a1c2bd38f0946b6e3301dcb72ea4, type: 2}
-  enemies:
-  - {fileID: 895348181245028446, guid: 3572afdca5af99348b89c9d4f9a6e008, type: 3}
-  playerPrefab: {fileID: 7007244473938058363, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
-  portal: {fileID: 0}
-  enemyEachFloor: 04000000040000000400000004000000
-  rocksEachFloor: 04000000040000000400000004000000
---- !u!4 &1654012663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654012661}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1775795622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1533,7 @@ GameObject:
   - component: {fileID: 1964034002}
   - component: {fileID: 1964034001}
   m_Layer: 0
-  m_Name: Limbo Boss Room
+  m_Name: Gluttony Boss Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
