@@ -22,6 +22,7 @@ public class PlayerCombatController : MonoBehaviour
 	//booleans here to know what weapon is currently equipped for animations along with animator
 	public bool lightAttack = true;
 	public bool heavyAttack = false;
+	public bool rangeAttack = false;
 	public Animator anim;
 
 
@@ -45,26 +46,49 @@ public class PlayerCombatController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftShift))
 		{
 			weaponIndex += 1;
-			if (weaponIndex >= allWeapons.Length)
-				weaponIndex = 0;
-			weapon = allWeapons[weaponIndex];
+			
 			playerAudio.PlayOneShot(weaponSwap);
 
-			// This is hardcoded so I will fix this: swaps weapon icon on HUD
-			if (weapon.GetComponent<BaseWeapon>().attackDamage == 20)
+			if (weaponIndex >= allWeapons.Length)
 			{
-				weaponSlots.selectNext(0, 1);// heavy
-				//for heavy attack animation
-				heavyAttack = true;
-				lightAttack = false;
-			} else if (weapon.GetComponent<BaseWeapon>().attackDamage == 10)
-            {
-				weaponSlots.selectNext(1, 0);// light
-				//for light attack animation
+				weaponIndex = 0;
+				weaponSlots.selectNext(allWeapons.Length - 1, 0);// light
+											 //for light attack animation
 				lightAttack = true;
 				heavyAttack = false;
+				rangeAttack = false;
+				weapon = allWeapons[weaponIndex];
 			}
-				Debug.Log("Swap weapon");
+			else
+			{
+				weapon = allWeapons[weaponIndex];
+				// This is hardcoded so I will fix this: swaps weapon icon on HUD
+				if (weapon.GetComponent<BaseWeapon>().attackDamage == 20)
+				{
+					weaponSlots.selectNext(0, 1);// heavy
+												 //for heavy attack animation
+					lightAttack = false;
+					heavyAttack = true;
+					rangeAttack = false;
+				}
+				else if (weapon.GetComponent<BaseWeapon>().attackDamage == 10)
+				{
+					weaponSlots.selectNext(1, 0);// light
+												 //for light attack animation
+					lightAttack = true;
+					heavyAttack = false;
+					rangeAttack = false;
+				}
+				else if (weapon.GetComponent<BaseWeapon>().attackDamage == 5)
+				{
+					weaponSlots.selectNext(1, 2);// range
+												 //for range attack animation
+					lightAttack = false;
+					heavyAttack = false;
+					rangeAttack = true;
+				}
+			}
+			Debug.Log("Swap weapon");
 		}
 		if(weapon.GetComponent<BaseWeapon>().rangedAttack)
 		{
