@@ -50,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gluttony Boss.unity
     guid: 3d20c66048e5ced4a8f92372c9f05cc9
+  - enabled: 1
+    path: Assets/Scenes/StatScreen.unity
+    guid: 93c584cf595c89542bf42fc91a078994
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

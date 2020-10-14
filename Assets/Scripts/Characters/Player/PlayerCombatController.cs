@@ -25,23 +25,7 @@ public class PlayerCombatController : MonoBehaviour
 	public bool rangeAttack = false;
 	public Animator anim;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 	public GameObject upgradedStats;
-=======
-	public float upgradedDamage;
-	public float upgradedSpeed;
-	public float upgradedAttackRate;
->>>>>>> Stashed changes
-=======
->>>>>>> parent of 17c7ebc... Rudimentary stat system
-=======
->>>>>>> parent of 17c7ebc... Rudimentary stat system
-=======
-	public GameObject upgradedStats;
->>>>>>> parent of 259c95d... update
 
 	// Start is called before the first frame update
 	void Start()
@@ -165,23 +149,8 @@ public class PlayerCombatController : MonoBehaviour
 					if (enemy.gameObject.tag == "Enemy")
 					{
 						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
-=======
-						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + upgradedDamage);
->>>>>>> Stashed changes
-=======
-						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
->>>>>>> parent of 17c7ebc... Rudimentary stat system
-=======
-						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
->>>>>>> parent of 17c7ebc... Rudimentary stat system
-=======
-						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
->>>>>>> parent of 259c95d... update
 					}
 				}
 			}
