@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 1926146366168398983}
   - component: {fileID: 1926146366168398980}
   m_Layer: 9
-  m_Name: demon (old)
+  m_Name: demon 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,8 +182,8 @@ MonoBehaviour:
   - {fileID: 5986223334232170306}
   - {fileID: 8130707957898581716}
   m_Bounds:
-    m_Center: {x: -0.20137954, y: 0.0025794506, z: 0}
-    m_Extent: {x: 2.5439453, y: 2.6195858, z: 0}
+    m_Center: {x: -0.20137954, y: 0.0025792122, z: 0}
+    m_Extent: {x: 2.5439453, y: 2.6195855, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5526412244872737925
@@ -349,9 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  content: {fileID: 0}
-  lerpSpeed: 0
-  blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
+  currentHealth: 0
 --- !u!114 &1926146366168398980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16db123ea8dcf0d4b83caa94a88c985e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   moveSpeed: 2
   timeBetweenMove: 2
   timeToMove: 1

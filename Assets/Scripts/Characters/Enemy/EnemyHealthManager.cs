@@ -11,9 +11,6 @@ public class EnemyHealthManager : MonoBehaviour
     private float currentFill;
     public float lerpSpeed;
 
-    // Damage particle effect
-    public GameObject blood;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +29,6 @@ public class EnemyHealthManager : MonoBehaviour
 
     public void LoseHealth(float amount)
     {
-        Instantiate(blood, transform.position, Quaternion.identity);
         currentHealth -= amount;
         if(currentHealth <= 0)
             Death();
@@ -52,11 +48,5 @@ public class EnemyHealthManager : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         Destroy(gameObject);
-
-        // Win Condition for Satan
-        if(gameObject.name.Equals("Satan"))
-        {
-            SceneManager.LoadScene("Win Screen");
-        }
     }
 }

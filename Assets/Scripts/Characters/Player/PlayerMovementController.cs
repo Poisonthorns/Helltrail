@@ -11,9 +11,6 @@ public class PlayerMovementController : MonoBehaviour
 	//Need animator here for animations
 	public Animator anim;
 
-	public GameObject upgradedStats;
-
-	public float upgradedSpeed;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -23,8 +20,7 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		upgradedSpeed = upgradedStats.GetComponent<Stats>().upgradedAttackRate;
-		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, (speed + upgradedStats.GetComponent<Stats>().upgradedSpeed) * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
         GetInput();
     }
 

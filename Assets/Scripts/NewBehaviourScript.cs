@@ -27,7 +27,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         //print("triggered");
 
-        if (col.gameObject.name.Equals("Sprite"))
+        if (col.gameObject.name.Equals("Regular Sprite"))
         {
             print(col.gameObject.name);
             GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().LoseHealth(10);
