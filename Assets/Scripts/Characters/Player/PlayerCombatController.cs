@@ -25,6 +25,7 @@ public class PlayerCombatController : MonoBehaviour
 	public bool rangeAttack = false;
 	public Animator anim;
 
+	public GameObject upgradedStats;
 
 	// Start is called before the first frame update
 	void Start()
@@ -148,12 +149,12 @@ public class PlayerCombatController : MonoBehaviour
 					if (enemy.gameObject.tag == "Enemy")
 					{
 						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
-						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
+						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
 					}
 				}
 			}
 		
-			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
+			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate - upgradedStats.GetComponent<Stats>().upgradedAttackRate;
 		}
 	}
 }
