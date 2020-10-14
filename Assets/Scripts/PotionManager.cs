@@ -5,9 +5,27 @@ using UnityEngine;
 public class PotionManager : MonoBehaviour
 {
     public bool isNotGluttony;
+
+    [SerializeField]
+    private AudioSource potionUsed;
+
+    public AudioClip healthSound;
+    public AudioClip defenseSound;
+    public AudioClip speedSound;
+    public AudioClip damageSound;
+    public AudioClip rangeSound;
+
+    public void Start()
+    {
+        potionUsed = GameObject.Find("Player").GetComponent<AudioSource>();
+    }
+
     void healthPotion()
     {
         print("healed");
+
+        potionUsed.PlayOneShot(healthSound);
+
         if(!isNotGluttony)
         {
             GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy");
@@ -23,6 +41,8 @@ public class PotionManager : MonoBehaviour
     {
         print("defense");
 
+        potionUsed.PlayOneShot(defenseSound);
+
         if (!isNotGluttony)
         {
             GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy");
@@ -31,15 +51,20 @@ public class PotionManager : MonoBehaviour
                 enemy.GetComponent<EnemyHealthManager>().GainHealth(40);
             }
         }
-        GameObject.Find("Health Bar").GetComponent<PlayerHealthController>().GainHealth(20);
+        GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().GainHealth(20);
     }
     void speedPotion()
     {
+        print("speed");
 
+        potionUsed.PlayOneShot(speedSound);
     }
     void damageUpPotion()
     {
         print("damage up");
+
+        potionUsed.PlayOneShot(damageSound);
+
         if (!isNotGluttony)
         {
             GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy");
@@ -50,6 +75,13 @@ public class PotionManager : MonoBehaviour
         }
         GameObject.Find("Player").GetComponent<PlayerCombatController>().additionalDamage += 20;
         StartCoroutine(PotionExpire(4 , 20));
+    }
+
+    void rangeUpPotion()
+    {
+        print("range up");
+
+        potionUsed.PlayOneShot(rangeSound);
     }
     IEnumerator PotionExpire(int type, int seconds)
     {
