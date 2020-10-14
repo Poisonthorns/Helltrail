@@ -455,8 +455,8 @@ MonoBehaviour:
   fireBall: {fileID: 4905634907710766859, guid: 6944da288b3d078418689856f5dc0688, type: 3}
   gridObject: {fileID: 0}
   tileMapObject: {fileID: 0}
-  iceSound: {fileID: 0}
-  fireSound: {fileID: 0}
+  iceSound: {fileID: 8300000, guid: 2f487936688580047adb8e7ca2b1807d, type: 3}
+  fireSound: {fileID: 8300000, guid: fee112a660748f74e857ebd0697b0f73, type: 3}
 --- !u!82 &5378819856443364876
 AudioSource:
   m_ObjectHideFlags: 0

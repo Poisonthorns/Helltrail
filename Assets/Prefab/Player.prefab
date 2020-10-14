@@ -1058,8 +1058,8 @@ MonoBehaviour:
   - {fileID: 2501731765136834711}
   - {fileID: 1590677732808395989}
   m_Bounds:
-    m_Center: {x: 0.5831989, y: 0.013040066, z: 0}
-    m_Extent: {x: 1.4284978, y: 2.2568955, z: 0}
+    m_Center: {x: 0.024114072, y: 0.0043115616, z: 0}
+    m_Extent: {x: 0.71727526, y: 2.2564359, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!50 &1534482841443264077
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   - {fileID: 355892623542660554, guid: 49235289c1e87f449b5f8617a21b1120, type: 3}
   - {fileID: 7164480303779400695, guid: f767a4828bc22ab44b186521fae42ad4, type: 3}
   - {fileID: 9156064572445127161, guid: 9c7c861a3c87f254a969ceb699e53ed8, type: 3}
-  weaponSwap: {fileID: 8300000, guid: 7c83f9c1549f56546930a21c5f4df404, type: 3}
+  weaponSwap: {fileID: 8300000, guid: f30c9e0e7625d074a9a8c932455eb65a, type: 3}
   lightAttack: 0
   heavyAttack: 0
   rangeAttack: 0
@@ -2098,7 +2098,7 @@ PrefabInstance:
     - target: {fileID: 8591115667232290337, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: weaponSelected
       value: 
-      objectReference: {fileID: 8300000, guid: 7c83f9c1549f56546930a21c5f4df404, type: 3}
+      objectReference: {fileID: 8300000, guid: f30c9e0e7625d074a9a8c932455eb65a, type: 3}
     m_RemovedComponents:
     - {fileID: 1714157482615233114, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
