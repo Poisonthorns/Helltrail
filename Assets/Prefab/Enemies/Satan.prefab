@@ -426,6 +426,7 @@ MonoBehaviour:
   startingHealth: 300
   content: {fileID: 1571840016196170501}
   lerpSpeed: 5
+  blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
 --- !u!114 &464152606491050098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,8 +455,8 @@ MonoBehaviour:
   fireBall: {fileID: 4905634907710766859, guid: 6944da288b3d078418689856f5dc0688, type: 3}
   gridObject: {fileID: 0}
   tileMapObject: {fileID: 0}
-  iceSound: {fileID: 0}
-  fireSound: {fileID: 0}
+  iceSound: {fileID: 8300000, guid: 2f487936688580047adb8e7ca2b1807d, type: 3}
+  fireSound: {fileID: 8300000, guid: fee112a660748f74e857ebd0697b0f73, type: 3}
 --- !u!82 &5378819856443364876
 AudioSource:
   m_ObjectHideFlags: 0

@@ -48,6 +48,13 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Gluttony");
     }
 
+    public void GoToGluttonyBoss()
+    {
+        //Insert correct name
+        audioManager.PlayMusicWithFade(gluttonySong, 0.1f);
+        SceneManager.LoadScene("Gluttony Boss");
+    }
+
     public void GoToViolence()
     {
         //Insert correct name
@@ -63,13 +70,6 @@ public class SceneLoader : MonoBehaviour
     }
 
     public void GoToTreachery()
-    {
-        //Insert correct name
-        audioManager.PlayMusicWithFade(treacherySong, 0.1f);
-        SceneManager.LoadScene("FinalBoss");
-    }
-
-    public void GoToIceSpell()
     {
         //Insert correct name
         audioManager.PlayMusicWithFade(treacherySong, 0.1f);

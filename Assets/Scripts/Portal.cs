@@ -20,7 +20,7 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         print("triggered");
-        if (col.gameObject.name.Equals("Regular Sprite"))
+        if (col.gameObject.name.Equals("Player"))
         {
             SceneManager.LoadScene("FinalBoss 1");
 
