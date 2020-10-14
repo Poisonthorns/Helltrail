@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/ArtGallery.unity
+    guid: c24245d3d53f08b4f9572f2974a5c276
   m_configObjects: {}

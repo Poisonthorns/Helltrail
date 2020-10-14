@@ -30,7 +30,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (col.gameObject.name.Equals("Sprite"))
         {
             print(col.gameObject.name);
-            GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().LoseHealth(10);
+            GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().LoseHealth(2);
             //col.gameObject.GetComponent<Player>().TakeDamage(10);
             print("took damage");
         }
