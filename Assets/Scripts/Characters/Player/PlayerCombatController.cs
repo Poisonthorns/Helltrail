@@ -6,6 +6,7 @@ public class PlayerCombatController : MonoBehaviour
 {
 	public LayerMask enemyLayer;
 	public Transform attackPoint;
+    public float additionalDamage;
 	//Access variables like this: weapon.GetComponent<BaseWeapon>().attackDamage
 	private GameObject weapon;
 	int weaponIndex = 0;
@@ -26,6 +27,7 @@ public class PlayerCombatController : MonoBehaviour
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 	public GameObject upgradedStats;
 =======
@@ -37,6 +39,9 @@ public class PlayerCombatController : MonoBehaviour
 >>>>>>> parent of 17c7ebc... Rudimentary stat system
 =======
 >>>>>>> parent of 17c7ebc... Rudimentary stat system
+=======
+	public GameObject upgradedStats;
+>>>>>>> parent of 259c95d... update
 
 	// Start is called before the first frame update
 	void Start()
@@ -162,6 +167,7 @@ public class PlayerCombatController : MonoBehaviour
 						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
 =======
@@ -173,6 +179,9 @@ public class PlayerCombatController : MonoBehaviour
 =======
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
 >>>>>>> parent of 17c7ebc... Rudimentary stat system
+=======
+						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
+>>>>>>> parent of 259c95d... update
 					}
 				}
 			}
