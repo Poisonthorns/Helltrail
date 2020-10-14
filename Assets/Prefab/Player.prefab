@@ -1399,6 +1399,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   anim: {fileID: 7492379440871885339}
+  upgradedStats: {fileID: 7778264597260204410, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+  upgradedSpeed: 0
 --- !u!114 &8198342455684694356
 MonoBehaviour:
   m_ObjectHideFlags: 0

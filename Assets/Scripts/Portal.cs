@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
         print("triggered");
         if (col.gameObject.name.Equals("Player"))
         {
-            SceneManager.LoadScene("FinalBoss 1");
+            SceneManager.LoadScene("StatScreen");
 
         }
 
