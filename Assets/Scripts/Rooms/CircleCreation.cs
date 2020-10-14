@@ -3,458 +3,461 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
-using System.Linq;
+
 
 public struct Room
 {
-    public int roomID;
+    public Room(Coords entrancee, Coords doorr, int offsetXa, int offsetYa, int[,] gridd)
+    {
+        entrance = entrancee;
+        door = doorr;
+        offsetX = offsetXa;
+        offsetY = offsetYa;
+        grid = gridd;
+    }
+
     public Coords entrance;
-    public Coords exit;
-    public int difficulty;
-    public int numEnemies;
-    public int numTerrain;
+    public Coords door;
+    public int offsetX;
+    public int offsetY;
     public int[,] grid;
-    public Coords mapCoord;
-    public List<Coords> connectedRooms;
 }
 
 public class CircleCreation : MonoBehaviour
 {
 
-    public int roomCount = 10;
-    int[,] gameMap;
+    int roomCount = 4;
+    public int roomXSize;
+    public int roomYSize;
+    int monsterOffset=2;
+    int terrainOffset=20;
+    public Tile[] sprite;
+    public Tile[] rockSprite;
+    public GameObject[] enemies;
+    public GameObject playerPrefab;
+    public GameObject portal;
+    public int[] enemyEachFloor;
+    public int[] rocksEachFloor;
+
+
     Room[] roomMap;
-    public int roomWidth;
-    public int roomHeight;
-    public int[] numTerrain;
-    public int[] numMonsters;
-    public int[] roomDifficulty;
-    public Tile[] tiles;
-    public bool roomChangeTrigger = true;
-    public GameObject[] enemyType;
-    public GameObject[] terrainType;
-    public GameObject gridObject;
-    public GameObject door;
-    public GameObject player;
-    public int currentRoom = 0;
-    Grid grid;
-    public Tilemap tileMap;
-    public Tilemap tileMapCollision;
+    Coords[] entrance;
+    Grid g;
+    Tilemap[] roomTileMaps;
+
+
     void Start()
     {
-        loadObjects();
-        gameMap = new int[50, 50];
         roomMap = new Room[roomCount];
-        setupGameMap();
-        setupRooms();
-        generateRooms();
-        drawRooms();
-        drawDoors();
-        drawTerrain();
-        drawEnemies(0);
-        GameObject.Find("Main Camera").transform.position = new Vector3((roomWidth/2) + 12, (roomHeight / 2)+12,-10);
-        Instantiate(player, grid.CellToWorld(new Vector3Int( roomWidth + 12,  12, 0)), Quaternion.identity);
+        roomTileMaps = new Tilemap[roomCount*2];
+        RoomGenerator temp = new RoomGenerator();
 
-    }
-    void drawEnemies(int room)
-    {
-        //for (int i = 0; i < roomCount; ++i)
+        Coords entrance = new Coords(0, 7);
+
+
+        
+
+        path();
+         
+        for (int i = 0; i < roomMap.Length; ++i)
         {
-            Room currentRoom = roomMap[room];
+            int[] monsters = new int[enemyEachFloor[i]] ;
+            int[] terrain = new int[rocksEachFloor[i]];
 
-
-            for (int x = 0; x < roomWidth; ++x)
-                {
-                    for (int y = 0; y < roomHeight; ++y)
-                    {
-                        int c = currentRoom.grid[x, y];
-                        //print(c);
-                        if (c > 0)
-                        {
-                            Vector3 temp = grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + x + 12, 12 + y, 0));
-                            temp.x += 0.5f;
-                            temp.y += 0.5f;
-                            Instantiate(enemyType[0], temp, Quaternion.identity);
-                            //tileMapCollision.SetTile(new Vector3Int((currentRoom.roomID * roomWidth * 2) + x + 12, 12 + y, 0), tiles[6]);
-
-                        }
-                    }
-                }
-            
+            for (int j = 0; j < rocksEachFloor[i]; ++j)
+            {
+                terrain[j] = Random.Range(0, rockSprite.Length) + terrainOffset;
+            }
+            for (int j = 0; j < enemyEachFloor[i]; ++j)
+            {
+                monsters[j] = Random.Range(0, enemies.Length) + monsterOffset;
+            }
+            roomMap[i].grid = (temp.generateRoom(roomXSize, roomYSize, roomMap[i].entrance, roomMap[i].door, monsters, terrain));
         }
+        //next part is creating the actual map
+
+        gridCreation();
+
+        setTiles();
+
+
+
+       
+
     }
-    void drawTerrain()
+    void gridCreation()
     {
+        GameObject grid = new GameObject("grid");
+        grid.AddComponent<Grid>();
+        g = grid.GetComponent<Grid>();
+        GameObject[] roomssssss = new GameObject[roomCount * 2];
+
         for (int i = 0; i < roomCount; ++i)
         {
-            Room currentRoom = roomMap[i];
+            GameObject newRoom = new GameObject("newRoom" + i);
+            newRoom.AddComponent<Tilemap>();
+            newRoom.AddComponent<TilemapRenderer>();
+            newRoom.transform.parent = grid.transform;
 
-            //for (int j = 0; j < currentRoom.numTerrain; j++)
+            GameObject newRoomCollision = new GameObject("collision" + i);
+            newRoomCollision.AddComponent<Tilemap>();
+            newRoomCollision.AddComponent<TilemapRenderer>();
+            newRoomCollision.layer = 8;
+            newRoomCollision.transform.parent = grid.transform;
+            newRoomCollision.AddComponent<TilemapCollider2D>();
+            newRoomCollision.AddComponent<Rigidbody2D>();
+            newRoomCollision.AddComponent<CompositeCollider2D>();
+            newRoomCollision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
+            roomTileMaps[i * 2] = newRoom.GetComponent<Tilemap>();
+            roomTileMaps[(i * 2) + 1] = newRoomCollision.GetComponent<Tilemap>(); ;
+        }
+    }
+    void setTiles()
+    {
+        Tile tile = sprite[0];
+        Tile tile2 = sprite[1];
+        Tile tile3 = sprite[2];
+        int tileOffsetX = 0;
+        int tileOffsetY = 0;
+        int switcher = 0;
+        for (int x = 0; x < roomCount; ++x)
+        {
+            int[,] roomGrid = roomMap[x].grid;
+            Tilemap tileMap = roomTileMaps[x * 2];
+            Tilemap tileMapCollision = roomTileMaps[x * 2 + 1];
+            roomMap[x].offsetX = tileOffsetX;
+            roomMap[x].offsetY = tileOffsetY;
+            //set appropriate tiles
+            for (int i = -1; i < roomXSize + 1; ++i)
             {
-                for(int x = 0; x<roomWidth; ++x)
+                for (int j = -1; j < roomYSize + 1; ++j)
                 {
-                    for(int y = 0; y<roomHeight; ++y)
+                    if (i == -1 && j == roomYSize)
                     {
-                        int c = currentRoom.grid[x, y];
-                        //print(c);
-                        if(c<0)
-                        {
-                            //Instantiate(terrainType[0], grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2)+x+ 12, 12+y, 0)), Quaternion.identity);
-                            tileMapCollision.SetTile(new Vector3Int((currentRoom.roomID * roomWidth * 2) + x + 12, 12+y, 0), tiles[6]);
-                            
-                        }
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[11]);
+
+                    }
+                    else if (i == roomXSize && j == roomYSize)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[13]);
+
+                    }
+                    else if (i == -1 && j == -1)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[12]);
+
+                    }
+                    else if (i == roomXSize && j == -1)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[14]);
+
+                    }
+                    else if (i == -1)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[15]);
+
+                    }
+                    else if (i == roomXSize)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[16]);
+
+                    }
+                    else if (j == roomYSize)
+                    {
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[17]);
+
+                    }
+                    else if (j == -1)
+                    {
+                        tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[18]);
                     }
                 }
             }
-        }
-    }
-
-    public void changeRooms(bool isForward)
-    {
-        if (isForward)
-        {
-            currentRoom+=1;
-            print(currentRoom);
-
-            int tempX = roomMap[currentRoom].entrance.x;
-            int tempY = roomMap[currentRoom].entrance.y;
-
-            GameObject.Find("Player(Clone)").transform.position = grid.CellToWorld(new Vector3Int(tempX, tempY, 0));
-            GameObject.Find("Move Point").transform.position = grid.CellToWorld(new Vector3Int(tempX, tempY, 0));
-
-            GameObject cam = GameObject.Find("Main Camera");
-            Vector3 newCamPos = new Vector3(cam.transform.position.x + (roomWidth*2), cam.transform.position.y, cam.transform.position.z);
-            cam.transform.position = newCamPos;
-            //drawEnemies(currentRoom);
-        }
-        else
-        {
-            currentRoom--;
-            print(currentRoom);
-
-            int tempX = roomMap[currentRoom].exit.x;
-            int tempY = roomMap[currentRoom].exit.y;
-
-            GameObject.Find("Player(Clone)").transform.position = grid.CellToWorld(new Vector3Int(tempX, tempY, 0));
-            GameObject.Find("Move Point").transform.position = grid.CellToWorld(new Vector3Int(tempX, tempY, 0));
-
-            GameObject cam = GameObject.Find("Main Camera");
-            Vector3 newCamPos = new Vector3(cam.transform.position.x - (roomWidth * 2), cam.transform.position.y, cam.transform.position.z);
-            cam.transform.position = newCamPos;
-        }
-    }
-    void drawDoors()
-    {
-        for(int i=0; i<roomCount; ++i)
-        {
-            Room currentRoom = roomMap[i];
-            bool isExit=true;
-            if (i==0)
+            for (int i = 0; i < roomXSize; ++i)
             {
-                isExit = false;
-            }
-
-
-            for(int j=0; j<currentRoom.connectedRooms.Count; j++)
-            {
-                int tempX =  currentRoom.mapCoord.x- currentRoom.connectedRooms[j].x;
-                int tempY =  currentRoom.mapCoord.y- currentRoom.connectedRooms[j].y;
-               // print(tempX+"  "+ tempY);
-                //print(currentRoom.roomID);
-
-                if (tempX==1&& tempY == 0)
+                for (int j = 0; j < roomYSize; ++j)
                 {
-                    if(isExit)
+
+                    tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), sprite[0]);
+
+                    if (roomGrid[i, j] > 10 && roomGrid[i, j] != 99)
                     {
-                        isExit = false;
-                        roomMap[i].entrance = new Coords((currentRoom.roomID * roomWidth * 2) + 12, (roomHeight / 2) + 12);
-
-
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + 12, (roomHeight / 2) + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = false;
+                        tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0), rockSprite[roomGrid[i,j]-terrainOffset]);
                     }
-                    else
+                    else if (roomGrid[i, j] == 99 || roomGrid[i, j] == -1)
                     {
-                        roomMap[i].exit = new Coords((currentRoom.roomID * roomWidth * 2) + 12, (roomHeight / 2) + 12);
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + 12, (roomHeight / 2) + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = true;
 
-                    }
-
-                }
-                else if(tempX==0&&tempY==1)
-                {
-                    if (isExit)
-                    {
-                        isExit = false;
-                        roomMap[i].entrance = new Coords((currentRoom.roomID * roomWidth * 2) + (roomWidth / 2) + 12, (roomHeight) + 12);
-                        //print(i);
-                        //print(currentRoom.entrance.x);
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + (roomWidth / 2) + 12, (roomHeight) + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = false;
-
-                    }
-                    else
-                    {
-                        roomMap[i].exit = new Coords((currentRoom.roomID * roomWidth * 2) + (roomWidth / 2) + 12, (roomHeight) + 12);
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + (roomWidth / 2) + 12, (roomHeight) + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = true;
-
-                    }
-
-                }
-                else if (tempX == -1 && tempY == 0)
-                {
-                    if (isExit)
-                    {
-                        isExit = false;
-                        roomMap[i].entrance = new Coords((currentRoom.roomID * roomWidth * 2) + roomWidth + 12, (roomHeight / 2) + 12);
-                        //print(i);
-                        //print(currentRoom.entrance.x);
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + roomWidth + 12, (roomHeight / 2) + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = false;
-
-                    }
-                    else
-                    {
-                        roomMap[i].exit = new Coords((currentRoom.roomID * roomWidth * 2) + roomWidth + 12, (roomHeight / 2) + 12);
-
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + roomWidth + 12, (roomHeight / 2) + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = true;
-
-                    }
-
-                }
-                else if (tempX == 0 && tempY == -1)
-                {
-                    if (isExit)
-                    {
-                        isExit = false;
-                        roomMap[i].entrance = new Coords((currentRoom.roomID * roomWidth * 2) + 12 + (roomWidth / 2), 0 + 12);
-                        //print(i);
-                        //print(currentRoom.entrance.x);
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + 12 + (roomWidth / 2), 0 + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = false;
-
-                    }
-                    else
-                    {
-                        roomMap[i].exit = new Coords((currentRoom.roomID * roomWidth * 2) + 12 + (roomWidth / 2), 0 + 12);
-                        GameObject d = Instantiate(door, grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + 12 + (roomWidth / 2), 0 + 12, 0)), Quaternion.identity);
-                        d.GetComponent<Door>().isExit = true;
-
-                    }
-
-                }
-            }
-        }
-    }
-    void loadObjects()
-    {
-        grid = gridObject.GetComponent<Grid>();
-    }
-    void drawRooms()
-    {
-        int tileXOffset = roomWidth + 2;
-        int tileYOffset = roomHeight + 2;
-        for (int i=0; i<roomCount; ++i)
-        {
-            Room currentRoom = roomMap[i];
-            for (int a = -1; a<=roomWidth; ++a)
-            {
-                for (int b = -1; b <= roomHeight; ++b)
-                {
-                    if (a == -1)
-                    {
-                        tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[1]);
-                    }
-                    else if (a == roomWidth)
-                    {
-                        tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[2]);
-                    }
-                    else if (b == -1)
-                    {
-                        tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[4]);
-                    }
-                    else if (b == roomHeight)
-                    {
-                        tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[3]);
-                    }
-                    else
-                    {
-                        tileMap.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[0]);
-
-                        if (currentRoom.grid[a, b] == 0)
+                        if (roomGrid[i, j] == -1)
                         {
-                            tileMap.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[0]);
-                        }
-                        else if(currentRoom.exit.x-1 == a && currentRoom.exit.y-1 == b)
-                        {
-                            print("this ran2");
-                            //tileMap.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[5]);
+                            if (i == roomXSize - 1)
+                            {
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), sprite[0]);
+                                switcher = 0;
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), null);
+
+                            }
+                            else if (i == 0)
+                            {
+
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX - 1, j + tileOffsetY, 0), sprite[0]);
+                                switcher = 1;
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX - 1, j + tileOffsetY, 0), null);
+
+                            }
+                            else if (j == roomYSize - 1)
+                            {
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY + 1, 0), sprite[0]);
+                                switcher = 2;
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY + 1, 0), null);
+
+                            }
+                            else if (j == 0)
+                            {
+
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY - 1, 0), sprite[0]);
+                                switcher = 3;
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY - 1, 0), null);
+
+                            }
                         }
                         else
                         {
-                            //tileMap.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[5]);
+                            if (i == roomXSize - 1)
+                            {
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), sprite[0]);
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), null);
 
-                            //Instantiate(enemyType[currentRoom.grid[a, b] - 1], grid.CellToWorld(new Vector3Int(a + tileXOffset, b + tileYOffset, 0)), Quaternion.identity);
+                            }
+                            else if (i == 0)
+                            {
+
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX - 1, j + tileOffsetY, 0), sprite[0]);
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX - 1, j + tileOffsetY, 0), null);
+
+                            }
+                            else if (j == roomYSize - 1)
+                            {
+
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY + 1, 0), sprite[0]);
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX, j + tileOffsetY + 1, 0), null);
+
+                            }
+                            else if (j == 0)
+                            {
+
+                                tileMap.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), sprite[0]);
+                                tileMapCollision.SetTile(new Vector3Int(i + tileOffsetX + 1, j + tileOffsetY, 0), null);
+
+                            }
+
                         }
                     }
+                    else
+                    {
+                    }
+                    if (roomGrid[i, j] == 99 && x == 0)
+                    {
+                        Vector3Int cellPosition = new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0);
+                        var newplayer = Instantiate(playerPrefab, g.GetComponent<Grid>().GetCellCenterWorld(cellPosition), Quaternion.identity);
+                        newplayer.name = "Player";
+                        Debug.Log("Player created");
+                        GameObject potion = GameObject.Find("Potion");
+                        //Pickup other = (Pickup)potion.GetComponent(typeof(Pickup));
+                        //other.Initialize();
+                        /*
+                        GameObject camera = GameObject.Find("Main Camera");
+                        Vector3Int cellPosition2 = new Vector3Int((roomXSize / 2) + tileOffsetX, (roomYSize / 2) + tileOffsetY, 0);
+                        Vector3 camPos = g.GetComponent<Grid>().GetCellCenterWorld(cellPosition2);
+                        camera.transform.position = new Vector3(camPos.x, camPos.y, -10);*/
+                        GameObject move = GameObject.Find("Move Point");
+                        move.transform.position = new Vector3(move.transform.position.x, move.transform.position.y, 0);
+                    }
+                    else if (roomGrid[i, j] < 10 && roomGrid[i, j] > 1)
+                    {
+                        Vector3Int cellPosition = new Vector3Int(i + tileOffsetX, j + tileOffsetY, 0);
+                        Instantiate(enemies[roomGrid[i, j] - monsterOffset], g.GetComponent<Grid>().GetCellCenterWorld(cellPosition), Quaternion.identity);
+
+                    }
+
                 }
+
             }
-            tileXOffset += roomWidth*2;
-        }
-    }
+            //get offset depending on position of next room
 
-    void setupRooms()
-    {
-        roomMap[0].roomID = 0;
-        roomMap[0].entrance = new Coords(roomWidth/2, 0);
-        roomMap[0].numEnemies = numMonsters[0];
-        roomMap[0].numTerrain = numTerrain[0];
-        roomMap[0].difficulty = roomDifficulty[0];
-        for (int i = 1; i < roomCount; ++i)
-        {
-            //print("wtf");   
-            roomMap[i].roomID = i;
-            roomMap[i].numEnemies = numMonsters[i];
-            roomMap[i].numTerrain = numTerrain[i];
-            roomMap[i].difficulty = roomDifficulty[i];
-        }
-    }
-    void generateRooms()
-    {
-        RoomGenerator roomGen = new RoomGenerator(enemyType, terrainType);
-        for (int i=0; i<roomCount; ++i)
-        {
-            roomGen.generateRoom(roomMap[i]);
-        }
-    }
+            if(x == 3)
+            {
 
-    void setupGameMap()
-    {
-        int currentxpos = 25;
-        int currentypos = 25;
-        int roomIndex = 1;
-        gameMap[currentxpos, currentypos] = roomIndex;
-        roomMap[roomIndex - 1] = new Room();
-        roomMap[roomIndex - 1].connectedRooms = new List<Coords>();
-        roomMap[roomIndex - 1].grid = new int[roomWidth, roomHeight];
-        roomMap[roomIndex - 1].mapCoord = new Coords(currentxpos, currentypos);
-        int roomsLeft = roomCount-1;
-        while(roomsLeft>0)
-        {
-            int chooseDirection = Random.Range(0, 4);
-            switch (chooseDirection)
+                Instantiate(portal, 
+                    g.GetComponent<Grid>().GetCellCenterWorld(new Vector3Int(5+tileOffsetX, 5 + tileOffsetY, 0)), Quaternion.identity);
+
+            }
+            switch (switcher)
             {
                 case 0:
-                    ++currentxpos;
+                    tileOffsetX += roomXSize + 2;
                     break;
                 case 1:
-                    --currentxpos;
+                    tileOffsetX -= roomXSize + 2;
                     break;
                 case 2:
-                    ++currentypos;
+                    tileOffsetY += roomYSize + 2;
                     break;
                 case 3:
-                    --currentypos;
+                    tileOffsetY -= roomYSize + 2;
                     break;
                 default:
-                    print("Default case");
                     break;
             }
-            if(gameMap[currentxpos,currentypos]==0)
-            {
-                roomIndex++;
-                gameMap[currentxpos, currentypos] = roomIndex;
-                roomMap[roomIndex - 1] = new Room();
-                roomMap[roomIndex - 1].grid = new int[roomWidth, roomHeight];
-                roomMap[roomIndex - 1].mapCoord = new Coords(currentxpos, currentypos);
-                roomMap[roomIndex - 1].connectedRooms = new List<Coords>();
-                roomMap[roomIndex - 2].connectedRooms.Add(roomMap[roomIndex - 1].mapCoord);
-                roomMap[roomIndex - 1].connectedRooms.Add(roomMap[roomIndex - 2].mapCoord);
-
-                --roomsLeft;
-            }
-            else
-            {
-                switch (chooseDirection)
-                {
-                    case 0:
-                        --currentxpos;
-                        break;
-                    case 1:
-                        ++currentxpos;
-                        break;
-                    case 2:
-                        --currentypos;
-                        break;
-                    case 3:
-                        ++currentypos;
-                        break;
-                    default:
-                        print("Default case");
-                        break;
-                }
-            }
+            tileMap.RefreshAllTiles();
         }
     }
-    Coords createDoor(int direction)
+    void Update()
+    {
+        GameObject player = GameObject.Find("Player");
+        Vector3Int playerGridLocation = g.WorldToCell(player.transform.position);
+        /*
+        if (roomsss[currentRoom][playerGridLocation.x - roomMap[currentRoom].offsetX, playerGridLocation.y - roomMap[currentRoom].offsetY] == -1)
+        {
+            changeRoom();
+        }*/
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length == 0)
+        {
+            print("you win");
+            SceneManager.LoadScene("Win Screen", LoadSceneMode.Single);
+        }
+    }
+    void changeRoom()
     {
         /*
-        switch (direction)
+        currentRoom++;
+        int[,] temp = roomsss[currentRoom];
+        for (int i = 0; i < roomXSize; ++i)
         {
-            case 0:
-                return new Coords(Random.Range(1, roomWidth - 1), 0);
-            case 1:
-                return new Coords(Random.Range(1, roomWidth - 1), roomHeight);
-            case 2:
-                return new Coords(0, Random.Range(1, roomHeight - 1));
-            case 3:
-                return new Coords(roomWidth, Random.Range(1, roomHeight - 1));
-            default:
-                print("Default case");
-                break;
+            for (int j = 0; j < roomYSize; ++j)
+            {
+                if (temp[i, j] == 99)
+                {
+
+                    GameObject player = GameObject.Find("Player");
+                    Vector3Int cellPosition = new Vector3Int(i + roomMap[currentRoom].offsetX, j + roomMap[currentRoom].offsetY, 0);
+                    player.transform.position = g.GetCellCenterWorld(cellPosition);
+                    GameObject move = GameObject.Find("Move Point");
+                    move.transform.position = g.GetCellCenterWorld(new Vector3Int(cellPosition.x, cellPosition.y, 0));
+
+                    GameObject camera = GameObject.Find("Main Camera");
+                    Vector3Int cellPosition2 = new Vector3Int((roomXSize / 2) + roomMap[currentRoom].offsetX, (roomYSize / 2) + roomMap[currentRoom].offsetY, 0);
+                    Vector3 tempp = g.GetComponent<Grid>().GetCellCenterWorld(cellPosition2);
+                    camera.transform.position = new Vector3(tempp.x, tempp.y, -10);
+
+                }
+            }
         }*/
-        switch (direction)
+    }
+    void path()
+    {
+
+        Coords temp = new Coords(roomXSize / 2, 0);
+        Room room1 = new Room(temp, generateRandomDoor(temp), 0, 0, null);
+        roomMap[0] = room1;
+        for (int i = 1; i < roomCount; ++i)
         {
-            case 0:
-                return  new Coords(roomWidth, roomHeight / 2);
-            case 1:
-                return  new Coords(roomWidth / 2, 0);
-            case 2:
-                return new Coords(roomWidth / 2, roomHeight);
-            case 3:
-                return new Coords(0, roomHeight / 2);
-            default:
-                print("Default case");
-                break;
+            Coords entrancePosition = getNextRoomEntrance(roomMap[i - 1].door);
+            roomMap[i] = new Room(entrancePosition, generateRandomDoor(entrancePosition), 0, 0, null);
         }
-        return new Coords();
 
     }
-    Coords getDoor(Coords prevRoomDoor)
+    //given entrance, creates a random door thats not on the side of entrance
+    Coords generateRandomDoor(Coords entrance)
     {
-        if(prevRoomDoor.x == roomWidth)
+        int entranceSide = 0;
+        if (entrance.x == roomXSize - 1)
         {
-            return new Coords(0, prevRoomDoor.y);
+            entranceSide = 1;
         }
-        else if (prevRoomDoor.x == 0)
+        else if (entrance.x == 0)
         {
-            return new Coords(roomWidth, prevRoomDoor.y);
+            entranceSide = 3;
         }
-        else if(prevRoomDoor.y == roomHeight)
+        else if (entrance.y == 0)
         {
-            return new Coords(prevRoomDoor.x, roomHeight);
+            entranceSide = 0;
         }
-        else if (prevRoomDoor.y == 0)
+        else if (entrance.y == roomYSize - 1)
         {
-            return new Coords(prevRoomDoor.x, 0);
+            entranceSide = 2;
+        }
+        int temp = Random.Range(1, 4);
+        int side = (entranceSide + temp) % 4;
+        if (side == 0)
+        {
+            return new Coords(Random.Range(1, roomXSize - 1), 0);
+        }
+        else if (side == 1)
+        {
+            return new Coords(roomXSize - 1, Random.Range(1, roomYSize - 1));
+        }
+        else if (side == 2)
+        {
+            return new Coords(Random.Range(1, roomXSize - 1), roomYSize - 1);
+
+        }
+        else if (side == 3)
+        {
+            return new Coords(0, Random.Range(1, roomYSize - 1));
         }
         else
         {
-            print("panic");
-            return new Coords();
+            print("this should not happen");
+            return new Coords(-1, -1);
         }
     }
+    int getSide(Coords coord)
+    {
+        if (coord.x == 0)
+        {
+            return 0;
+        }
+        else if (coord.x == roomXSize)
+        {
+            return 2;
+        }
+        else if (coord.y == 0)
+        {
+            return 3;
+        }
+        else if (coord.y == roomYSize)
+        {
+            return 1;
+        }
+        else
+            return -1;
+    }
+    //given previous room's door finds the entrance door
+    Coords getNextRoomEntrance(Coords prevRoomDoor)
+    {
+        if (prevRoomDoor.x == 0)
+        {
+            return new Coords(roomXSize - 1, prevRoomDoor.y);
+        }
+        else if (prevRoomDoor.x == roomXSize - 1)
+        {
+            return new Coords(0, prevRoomDoor.y);
+        }
+        else if (prevRoomDoor.y == roomYSize - 1)
+        {
+            return new Coords(prevRoomDoor.x, 0);
+        }
+        else if (prevRoomDoor.y == 0)
+        {
+            return new Coords(prevRoomDoor.x, roomYSize - 1);
+        }
+        else
+        {
+            print("this should not happen");
+            return new Coords(-1, -1);
+        }
+    }
+
 }

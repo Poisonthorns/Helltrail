@@ -14,97 +14,181 @@ public struct Coords
 }
 public class RoomGenerator : MonoBehaviour
 {
-    GameObject[] enemies;
-    GameObject[] terrain;
-    Stack<int> enemyInRoom;
-    Stack<int> terrainInRoom;
-    public RoomGenerator(GameObject[] enemyList, GameObject[] terrainList)
+    int roomSizeX;
+    int roomSizeY;
+    Coords start;
+    Coords[] door;
+    List<Coords> monsters;
+    List<Coords> terrain;
+    public int[,] roomGrid;
+    public RoomGenerator()
     {
-        //enemies = enemyList;
-        // terrain = terrainList;
-        enemies = new GameObject[10];
-        terrain = new GameObject[10];
-        enemyInRoom = new Stack<int>();
-        terrainInRoom = new Stack<int>();
-    }
-    public void generateRoom(Room room )
-    {
-        enemyInRoom.Clear();
-        terrainInRoom.Clear();
-        determineEnemies( room.difficulty);
-        determineTerrain( room.numTerrain);
-        placeEnemies(room.grid);
-        placeTerrain(room.grid);
-    }
-    void placeEnemies(int[,] grid)
-    {
-        int width = grid.GetLength(0);
-        int height = grid.GetLength(1);
-        while(enemyInRoom.Count > 0)
-        {
-            int x = Random.Range(1, width - 1);
-            int y = Random.Range(1, height - 1);
-            if(grid[x,y] == 0)
-            {
-                //print("this ran");
+        monsters = new List<Coords>();
+        terrain = new List<Coords>();
 
-                grid[x, y] = enemyInRoom.Pop() + 1;
+    }
+
+    //monsterID must be < 10
+    //terrainID must be > 10
+    public int[,] generateRoom(int roomWidth, int roomHeight, Coords entrance, Coords roomDoor, int[] monster, int[] stuff)
+    {
+        roomSizeX = roomWidth;
+        roomSizeY = roomHeight;
+        start = entrance;
+        door = new Coords[1];
+        for (int i = 0; i < 1; ++i)
+        {
+            door[i] = roomDoor;
+        }
+        //randomly generates map until nothing is blocked
+        do
+        {
+            //reset map
+            monsters.Clear();
+            terrain.Clear();
+            roomGrid = new int[roomWidth, roomHeight];
+            //generate map
+            generateMonsters(monster);
+            generateTerrain(stuff);
+
+        } while (isPossible());//checks generated map is possible
+
+        roomGrid[start.x, start.y] = 99;
+
+        for (int i = 0; i < door.Length; ++i)
+        {
+
+            roomGrid[door[i].x, door[i].y] = -1;
+        }
+        return roomGrid;
+    }
+    //prints map
+    public void printMap()
+    {
+
+        for (int i = 0; i < roomSizeX; ++i)
+        {
+            string s = "";
+            for (int j = 0; j < roomSizeY; ++j)
+            {
+                s += roomGrid[i, j] + " ";
+            }
+            print(s);
+        }
+    }
+    //places all the monsters on the map
+    void generateMonsters(int[] monster)
+    {
+        for (int i = 0; i < monster.Length; ++i)
+        {
+            Coords coord = new Coords(Random.Range(0, roomSizeX), Random.Range(0, roomSizeY));
+            //checks if something is already there or too close to the entrance
+            if (roomGrid[coord.x, coord.y] != 0 && getSquareDistance(start, coord) < 4)
+            {
+                --i;
+            }
+            else
+            {
+                roomGrid[coord.x, coord.y] = monster[i];
+                monsters.Add(new Coords(coord.x, coord.y));
             }
         }
     }
-    void placeTerrain(int[,] grid)
+    //generates terrain
+    void generateTerrain(int[] stuff)
     {
-        int width = grid.GetLength(0);
-        int height = grid.GetLength(1);
-        //print("-----------------------");
-        while (terrainInRoom.Count > 0)
+        for (int i = 0; i < stuff.Length; ++i)
         {
-            int x = Random.Range(1, width - 1);
-            int y = Random.Range(1, height - 1);
-            if (grid[x, y] == 0)
+            Coords coord = new Coords(Random.Range(0, roomSizeX), Random.Range(0, roomSizeY));
+            //checks if something is already their or too close to entrance
+            if (roomGrid[coord.x, coord.y] != 0 && getSquareDistance(start, coord) < 1)
             {
-                //print("this ran");
-                //print(-(terrainInRoom.Pop() + 1));
+                --i;
+            }
+            else
+            {
+                //checks if it blocks door
+                for (int j = 0; j < door.Length; ++j)
+                {
+                    if (getSquareDistance(door[j], coord) < 1)
+                    {
+                        --i;
+                        continue;
+                    }
+                }
+                if (i != -1)
+                {
+                    terrain.Add(new Coords(coord.x, coord.y));
 
-                grid[x, y] = -1;//-(terrainInRoom.Pop() + 1);
-                terrainInRoom.Pop();
+                    roomGrid[coord.x, coord.y] = stuff[i];
+                }
+
             }
         }
     }
-    void determineTerrain( int numTerrain)
+    //checks if it is possible or not
+    bool isPossible()
     {
-
-        int assigned = 0;
-        while (assigned < numTerrain)
+        //checks if their is a path from start to door
+        /*
+        if(!naiveDepth(start))
         {
-            //int terrainIndex = Random.Range(0, terrain.Length);
-            int terrainIndex = -1;
-
-            assigned += 1; //terrain.area
-            terrainInRoom.Push(terrainIndex);
+            return false;
         }
-    }
-    void determineEnemies( int difficulty)
-    {
-        int index = 0;
-        for(int i=0; i<enemies.Length; ++i)
+        //checks if there is a path from monsters to doors(doing this check ensures no monsters are trapped)
+        for(int i=0; i<monsters.Count; ++i)
         {
-            //Enemy enemy = enemies[i].GetComponent<Enemy>();
-
-            if(0>difficulty)//change when enemy powerlevel is implemented
+            if(!naiveDepth(monsters[i]))
             {
-                index = i;
-                break;
+                return false;
             }
-        }
-        int assigned = 0;
-        while(assigned<difficulty)
-        {
-            int enemyIndex = Random.Range(0, index);
-            assigned += 5; //enemies[enemyIndex].powerlevel
-            enemyInRoom.Push(enemyIndex);
-        }
+        }*/
+        return naiveDepth(start);
     }
+    //depth first search; visits all eligable tiles.
+    bool naiveDepth(Coords startt)
+    {
+        int[,] map = new int[roomSizeX, roomSizeY];
+        map[startt.x, startt.y] = 1;
+
+        helper(map, startt.x, startt.y);
+        //checks if nothing blocks the doors(prob unnecessary)
+        for (int i = 0; i < roomSizeX; ++i)
+        {
+            for (int j = 0; j < roomSizeY; ++j)
+            {
+                if (map[i, j] == 0 && (roomGrid[i, j] < 10 || roomGrid[i, j] == -1))
+                {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+    //helper for depth search
+    void helper(int[,] map, int x, int y)
+    {
+        map[x, y] = 1;
+        if (x + 1 < roomSizeX && roomGrid[x + 1, y] < 10 && map[x + 1, y] == 0)
+        {
+            helper(map, x + 1, y);
+        }
+        if (x - 1 >= 0 && roomGrid[x - 1, y] < 10 && map[x - 1, y] == 0)
+        {
+            helper(map, x - 1, y);
+        }
+        if (y + 1 < roomSizeY && roomGrid[x, y + 1] < 10 && map[x, y + 1] == 0)
+        {
+            helper(map, x, y + 1);
+        }
+        if (y - 1 >= 0 && roomGrid[x, y - 1] < 10 && map[x, y - 1] == 0)
+        {
+            helper(map, x, y - 1);
+        }
+
+    }
+    //function to get distance between coordinates.(travel distance not physical)
     int getSquareDistance(Coords coord1, Coords coord2)
     {
         return Mathf.Abs(coord1.x - coord2.x) + Mathf.Abs(coord1.y - coord2.y);
