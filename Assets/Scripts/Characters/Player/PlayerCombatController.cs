@@ -25,6 +25,7 @@ public class PlayerCombatController : MonoBehaviour
 	public Animator anim;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 	public GameObject upgradedStats;
 =======
@@ -32,6 +33,8 @@ public class PlayerCombatController : MonoBehaviour
 	public float upgradedSpeed;
 	public float upgradedAttackRate;
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 17c7ebc... Rudimentary stat system
 =======
 >>>>>>> parent of 17c7ebc... Rudimentary stat system
 
@@ -158,11 +161,15 @@ public class PlayerCombatController : MonoBehaviour
 					{
 						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
 =======
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + upgradedDamage);
 >>>>>>> Stashed changes
+=======
+						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
+>>>>>>> parent of 17c7ebc... Rudimentary stat system
 =======
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage);
 >>>>>>> parent of 17c7ebc... Rudimentary stat system
