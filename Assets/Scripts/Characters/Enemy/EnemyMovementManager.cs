@@ -3,39 +3,53 @@
 public class EnemyMovementManager : MonoBehaviour
 {
     public Transform player;
-
     public float moveSpeed;
-
-    private Rigidbody2D myRigidbody;
-
     private bool moving;
 
-    public float timeBetweenMove;
-    private float timeBetweenMoveCounter;
-
-    public float timeToMove;
-    private float timeToMoveCounter;
-
     private Vector3 moveDirection;
-
+    private float time = 0.0f;
+    public float frequency = 1f;
+    private Vector3 newLocation;
     // Start is called before the first frame update
     void Start()
     {
-        myRigidbody = GetComponent<Rigidbody2D>();
-
-        timeBetweenMoveCounter = timeBetweenMove;
-        timeToMoveCounter = timeToMove;
+        newLocation = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         player = GameObject.Find("Player").transform;
-        if (moving)
+
+        time += Time.deltaTime;
+
+        if(!moving && time >= frequency)
+		{
+            time = 0.0f;
+            moveDirection = directionTowardsPlayer();
+            newLocation = transform.position + moveDirection;
+            //transform.position = Vector3.MoveTowards(transform.position, moveDirection, Time.deltaTime * moveSpeed);
+            
+            //Fix this. Don't let it ever try to collide with a collider
+            /*if(player.GetComponent<Collider>.bounds.Contains(newLocation))
+            {
+                print("point hits collider");
+            }*/
+
+            transform.position += moveDirection;
+            moving = true;
+        }
+        
+        if (transform.position == newLocation)
+        {
+            moving = false;
+        }
+
+        /*if(moving)
 		{
             timeToMoveCounter -= Time.deltaTime;
-            myRigidbody.velocity = moveDirection;
-
+            //myRigidbody.velocity = moveDirection;
+            transform.position = Vector3.MoveTowards(transform.position, moveDirection, Time.deltaTime * moveSpeed);
             if(timeToMoveCounter < 0f)
 			{
                 moving = false;
@@ -45,7 +59,7 @@ public class EnemyMovementManager : MonoBehaviour
         else
 		{
             timeBetweenMoveCounter -= Time.deltaTime;
-            myRigidbody.velocity = Vector2.zero;
+            //myRigidbody.velocity = Vector2.zero;
 
             if(timeBetweenMoveCounter < 0f)
 			{
@@ -53,7 +67,7 @@ public class EnemyMovementManager : MonoBehaviour
                 timeToMoveCounter = timeToMove;
                 moveDirection = directionTowardsPlayer();
 			}
-		}
+		}*/
     }
 
     Vector3 directionRandom()
@@ -63,45 +77,29 @@ public class EnemyMovementManager : MonoBehaviour
 
     Vector3 directionTowardsPlayer()
     {
+        Vector3 moveDirection = new Vector3(0, 0, 0);
         Vector3 dir = player.position - transform.position;
+        dir.Normalize();
         //Debug.Log(dir.x + " " + dir.y);
-        if (Mathf.Abs(dir.x) < 1.0f && Mathf.Abs(dir.y) < 1.0f)
+        if(dir.x > 0.3)
 		{
-            dir.x = 0.0f;
-            dir.y = 0.0f;
+            moveDirection += Vector3.right;
 		}
-		else
+        else if(dir.x < -0.3)
 		{
-            if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
-            {
-                if (dir.x > 0)
-                {
-                    dir.x = 1.0f;
-                }
-                else
-                {
-                    dir.x = -1.0f;
-                }
+            moveDirection += Vector3.left;
+		}
 
-                dir.y = 0.0f;
-            }
-            else
-            {
-                if (dir.y > 0)
-                {
-                    dir.y = 1.0f;
-                }
-                else
-                {
-                    dir.y = -1.0f;
-                }
-
-                dir.x = 0.0f;
-            }
-
-            
+        if (dir.y > 0.3)
+        {
+            moveDirection += Vector3.up;
         }
-        
+        else if (dir.y < -0.3)
+        {
+            moveDirection += Vector3.down;
+        }
+
+        //Debug.Log("Dir.x: " + dir.x + ", Dir.y: " + dir.y);
         return dir;
     }
 }

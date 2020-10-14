@@ -6,7 +6,6 @@ public class PlayerCombatController : MonoBehaviour
 {
 	public LayerMask enemyLayer;
 	public Transform attackPoint;
-    public float additionalDamage;
 	//Access variables like this: weapon.GetComponent<BaseWeapon>().attackDamage
 	private GameObject weapon;
 	int weaponIndex = 0;
@@ -25,7 +24,13 @@ public class PlayerCombatController : MonoBehaviour
 	public bool rangeAttack = false;
 	public Animator anim;
 
+<<<<<<< Updated upstream
 	public GameObject upgradedStats;
+=======
+	public float upgradedDamage;
+	public float upgradedSpeed;
+	public float upgradedAttackRate;
+>>>>>>> Stashed changes
 
 	// Start is called before the first frame update
 	void Start()
@@ -149,7 +154,11 @@ public class PlayerCombatController : MonoBehaviour
 					if (enemy.gameObject.tag == "Enemy")
 					{
 						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
+<<<<<<< Updated upstream
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
+=======
+						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + upgradedDamage);
+>>>>>>> Stashed changes
 					}
 				}
 			}
