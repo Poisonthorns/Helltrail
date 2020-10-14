@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8532883259520752023, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8532883259520752023, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -208,15 +208,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8532883259520752023, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8532883259520752023, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8532883259520752023, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6846903158208685781, guid: 6fb004d6226ddbf46a51e1426aa5db78, type: 3}
@@ -535,20 +535,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7916ccd9107e0748a47d2a9098acbc6, type: 2}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: f7916ccd9107e0748a47d2a9098acbc6, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: e9ac7cb33426bb54dacb75c3d6577d30, type: 2}
-  - {fileID: 11400000, guid: 66d90b8723c6ce841a1fb2345e48fb4b, type: 2}
-  - {fileID: 11400000, guid: 9560594af8316ec42bb161b8054ddfbd, type: 2}
-  - {fileID: 11400000, guid: ade5a0a7aa8c2574bbe115857aa72ad7, type: 2}
-  - {fileID: 11400000, guid: dc80b07b922dce748bc54ebab9a8c397, type: 2}
-  - {fileID: 11400000, guid: 02ec2f60467768840bbc2f131fb142e0, type: 2}
-  - {fileID: 11400000, guid: 1468b5c35b4ca184ab702576e8d041c3, type: 2}
-  - {fileID: 11400000, guid: bde8512b99409954eb2834c2b7398cb2, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
+  - {fileID: 11400000, guid: 7ff4c3f0df6abb945a39ca2a8588d4a8, type: 2}
   - {fileID: 0}
   rockSprite:
   - {fileID: 11400000, guid: b9152f164562a7e4b901ddb626402216, type: 2}
