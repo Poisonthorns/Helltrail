@@ -20,7 +20,7 @@ public class PotionItem : MonoBehaviour
         {
             Debug.Log("made it past if");
             player = GameObject.Find("Player").transform;
-            bool obtained = player.GetComponent<Inventory>().addItem(id);
+            bool obtained = player.GetComponent<Inventory>().addItem(id, GetComponent<SpriteRenderer>().sprite);
             if(obtained)
             {
                 Debug.Log("obtained true");

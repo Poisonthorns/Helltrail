@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public int currentSlot;
     public int currentTotal;
     public Image SelectedItemIcon;
-    public Sprite tempImage;
+    public Sprite slotImage;
     public AudioClip itemAdded;
     private AudioSource noises;
 
@@ -26,7 +26,12 @@ public class Inventory : MonoBehaviour
 
         noises = gameObject.GetComponent<AudioSource>();
     }
-    public bool addItem(int itemID)
+
+    public void addImage(Sprite image)
+    {
+        slotImage = image;
+    }
+    public bool addItem(int itemID, Sprite itemImage)
     {
         print(itemID);
         int nextIndex = getNextFreeSlot();
@@ -39,7 +44,7 @@ public class Inventory : MonoBehaviour
         {
             noises.PlayOneShot(itemAdded);
             slots[nextIndex] = itemID;
-            GameObject.Find("SlotImage" + (temp+1)).GetComponent<Image>().sprite = tempImage;
+            GameObject.Find("SlotImage" + (temp + 1)).GetComponent<Image>().sprite = itemImage;
             GameObject.Find("SlotImage" + (temp + 1)).GetComponent<Image>().color = new Color (255, 255, 255,100);
         }
         return true;
