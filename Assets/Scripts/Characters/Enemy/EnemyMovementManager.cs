@@ -4,12 +4,12 @@ public class EnemyMovementManager : MonoBehaviour
 {
     public Transform player;
 
-    public float moveSpeed;
+    /*public float moveSpeed;
 
     private Rigidbody2D myRigidbody;
 
     private bool moving;
-    public int powerLevel;
+    
     public float timeBetweenMove;
     private float timeBetweenMoveCounter;
 
@@ -27,38 +27,44 @@ public class EnemyMovementManager : MonoBehaviour
         timeToMoveCounter = timeToMove;
     }
 
+    */
+
+
+    public float speed;
+    public Transform movePoint;
+    public LayerMask collideables;
+    public int powerLevel;
+    private float nextMovement = 0.0f;
+    public float movementInterval = 2.0f;
+    void Start()
+    {
+        movePoint.parent = null;
+        nextMovement = Random.Range(0.0f, 2.0f);
+    }
+
     // Update is called once per frame
     void Update()
     {
         player = GameObject.Find("Player").transform;
-        if (moving)
-		{
-            timeToMoveCounter -= Time.deltaTime;
-            myRigidbody.velocity = moveDirection;
-
-            if(timeToMoveCounter < 0f)
-			{
-                moving = false;
-                timeBetweenMoveCounter = timeBetweenMove;
-			}
-		}
-        else
-		{
-            timeBetweenMoveCounter -= Time.deltaTime;
-            myRigidbody.velocity = Vector2.zero;
-
-            if(timeBetweenMoveCounter < 0f)
-			{
-                moving = true;
-                timeToMoveCounter = timeToMove;
-                moveDirection = directionTowardsPlayer();
-			}
-		}
+        if(Time.time > nextMovement)
+        {
+            nextMovement += movementInterval;
+            setMovement();
+        }
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
     }
 
-    Vector3 directionRandom()
-	{
-        return new Vector3(Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, moveSpeed)), Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, moveSpeed)), 0f);
+    private void setMovement()
+    {
+        if(Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
+        {
+            Vector3 moveDirection = directionTowardsPlayer();
+            if(!Physics2D.OverlapCircle(movePoint.position + moveDirection, .2f, collideables))
+            {
+                movePoint.position += moveDirection;
+            }
+        }
+
     }
 
     Vector3 directionTowardsPlayer()
@@ -66,12 +72,12 @@ public class EnemyMovementManager : MonoBehaviour
         Vector3 dir = player.position - transform.position;
         //Debug.Log(dir.x + " " + dir.y);
         if (Mathf.Abs(dir.x) < 1.0f && Mathf.Abs(dir.y) < 1.0f)
-		{
+        {
             dir.x = 0.0f;
             dir.y = 0.0f;
-		}
-		else
-		{
+        }
+        else
+        {
             if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
             {
                 if (dir.x > 0)
@@ -99,9 +105,14 @@ public class EnemyMovementManager : MonoBehaviour
                 dir.x = 0.0f;
             }
 
-            
+
         }
-        
+
         return dir;
+    }
+
+    Vector3 directionRandom()
+    {
+        return new Vector3(Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, speed)), Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, speed)), 0f);
     }
 }

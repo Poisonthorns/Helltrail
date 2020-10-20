@@ -11,6 +11,7 @@ public class PlayerCombatController : MonoBehaviour
 	private GameObject weapon;
 	int weaponIndex = 0;
 	public GameObject[] allWeapons;
+	public GameObject Arrow;
 
 	private float timeSinceLastAttack;
 	private AudioSource playerAudio;
@@ -93,28 +94,51 @@ public class PlayerCombatController : MonoBehaviour
 		}
 		if(weapon.GetComponent<BaseWeapon>().rangedAttack)
 		{
-
+			if(Input.GetKeyDown(KeyCode.UpArrow))
+			{
+				Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
+				arrowPosition += transform.position;
+				RangedAttack(225f, arrowPosition);
+			}
+			else if(Input.GetKeyDown(KeyCode.DownArrow))
+			{
+				Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
+				arrowPosition += transform.position;
+				RangedAttack(45f, arrowPosition);
+			}
+			else if(Input.GetKeyDown(KeyCode.LeftArrow))
+			{
+				Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
+				arrowPosition += transform.position;
+				RangedAttack(-45f, arrowPosition);
+			}
+			else if(Input.GetKeyDown(KeyCode.RightArrow))
+			{
+				Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
+				arrowPosition += transform.position;
+				RangedAttack(135f, arrowPosition);
+			}
 		}
 		else
 		{
 			//Attack Input
-			if (Input.GetKeyDown(KeyCode.UpArrow))
+			if(Input.GetKeyDown(KeyCode.UpArrow))
 			{
 				attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
 				Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
 				Attack();
 			}
-			else if (Input.GetKeyDown(KeyCode.DownArrow))
+			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
 				Attack();
 			}
-			else if (Input.GetKeyDown(KeyCode.LeftArrow))
+			else if(Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
 				Attack();
 			}
-			else if (Input.GetKeyDown(KeyCode.RightArrow))
+			else if(Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
 				Attack();
@@ -122,6 +146,17 @@ public class PlayerCombatController : MonoBehaviour
 		}
 	}
 
+	void RangedAttack(float arrowRotation, Vector3 arrowPosition)
+	{
+		if (Time.time > timeSinceLastAttack)
+		{
+			GameObject newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, arrowRotation));
+			newArrow.GetComponent<Arrow>().SetRotation(arrowRotation);
+			newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
+			newArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
+			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
+		}
+	}
 	void Attack()
 	{
 		if (Time.time > timeSinceLastAttack)

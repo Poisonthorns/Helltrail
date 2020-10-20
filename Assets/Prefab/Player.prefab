@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5561986610081113164}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 826797528792199961}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: attackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4234841956068049511}
   - component: {fileID: 3513161796432097697}
   - component: {fileID: 8984244984129554923}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3988909942974616812}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 3829907202361984109}
   - component: {fileID: 5882659371041318483}
   - component: {fileID: 6395582516546968248}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823574028583975839}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2771074915039956869}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1478742994152639331}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7234449696987584837}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8457333701669096212}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 3938110944619253635}
   - component: {fileID: 7584181759289773452}
   - component: {fileID: 243450458452070253}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7721081921587301769}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7007588508244309941}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449784567360982875}
   - component: {fileID: 8577074462021621180}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: HT Heavy Attack Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5350612085272313522}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4618945219989585259}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 5005383881245446120}
   - component: {fileID: 5259820655603061456}
   - component: {fileID: 6145348250617574635}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -783,7 +783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7493420357128248176}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2501731765136834711}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1059710599626315407}
   - component: {fileID: 9619604314314750}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: HT Ranged Attack Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -934,7 +934,7 @@ GameObject:
   - component: {fileID: 8511113140742022770}
   - component: {fileID: 1534482841443264077}
   - component: {fileID: 6022129812502871003}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1120,7 @@ GameObject:
   - component: {fileID: 2034624207833236499}
   - component: {fileID: 7415991455979718578}
   - component: {fileID: 6243980884724916444}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3242537373921612804}
   - component: {fileID: 365261690694824695}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: HT Light Attack Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1277,7 +1277,7 @@ GameObject:
   - component: {fileID: 8188625859635368162}
   - component: {fileID: 791988483273247428}
   - component: {fileID: 36427209517939473}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1355,9 +1355,9 @@ GameObject:
   - component: {fileID: 2967183236165034768}
   - component: {fileID: 6048392696855698835}
   - component: {fileID: 2200426964657037222}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1421,6 +1421,7 @@ MonoBehaviour:
   - {fileID: 355892623542660554, guid: 49235289c1e87f449b5f8617a21b1120, type: 3}
   - {fileID: 7164480303779400695, guid: f767a4828bc22ab44b186521fae42ad4, type: 3}
   - {fileID: 9156064572445127161, guid: 9c7c861a3c87f254a969ceb699e53ed8, type: 3}
+  Arrow: {fileID: 5550976272680288251, guid: 7cda74d99108ee84eb1d029de5ace67d, type: 3}
   weaponSwap: {fileID: 8300000, guid: f30c9e0e7625d074a9a8c932455eb65a, type: 3}
   lightAttack: 0
   heavyAttack: 0
@@ -1579,7 +1580,7 @@ GameObject:
   - component: {fileID: 8586699016816645679}
   - component: {fileID: 7450774782128428797}
   - component: {fileID: 5883617153007938419}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1652,7 +1653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1590677732808395989}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1682,7 +1683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7270634386525635093}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Move Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1712,7 +1713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5262661104719228142}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1745,7 +1746,7 @@ GameObject:
   - component: {fileID: 6735382001885700235}
   - component: {fileID: 8735456879058747668}
   - component: {fileID: 3931903910976163659}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: SlotImage5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1818,7 +1819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3877295837389265494}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1849,7 +1850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5489978632802046720}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: bone_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1882,6 +1883,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot8
       objectReference: {fileID: 0}
+    - target: {fileID: 166517968516560022, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 167121817661207463, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 328910971611972993, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1890,9 +1899,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot3
       objectReference: {fileID: 0}
+    - target: {fileID: 513554283797976582, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 722682248701040449, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177841259035218878, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362128145497009609, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552778150341838489, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690523975933671321, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693124178383826973, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 1714157482615233118, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Name
       value: Player Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714157482615233118, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1714157482671170481, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1986,9 +2027,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1714157482671170485, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714157484088213703, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 1714692690508568046, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Name
       value: Slot5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714692690508568046, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 2041768498604907199, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1998,21 +2051,65 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot1
       objectReference: {fileID: 0}
+    - target: {fileID: 2221697306020583119, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742545179478010997, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 3089022721098861599, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Name
       value: Slot7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089022721098861599, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659212820339970839, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194837254651627541, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261770988418674081, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 6793808298570462110, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Name
       value: Slot2
       objectReference: {fileID: 0}
+    - target: {fileID: 6793808298570462110, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 7253939968161308561, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Name
       value: Slot6
       objectReference: {fileID: 0}
+    - target: {fileID: 7253939968161308561, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942048591271963397, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988636223219604245, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 8228292440570474412, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Name
       value: Slot4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228292440570474412, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 8591115667232290337, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: weaponSelected

@@ -13,6 +13,7 @@ public class EnemyHealthManager : MonoBehaviour
 
     // Damage particle effect
     public GameObject blood;
+    public GameObject soul;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class EnemyHealthManager : MonoBehaviour
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
+        Instantiate(soul, transform.position, transform.rotation);
         Destroy(gameObject);
 
         // Win Condition for Satan

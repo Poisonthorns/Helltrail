@@ -9,7 +9,7 @@ public class Stats : MonoBehaviour
 	public float upgradedDamage = 0.0f;
 	public float upgradedSpeed = 0.0f;
 	public float upgradedAttackRate = 0.0f;
-	public int souls = 3;
+	public int souls = 0;
 	private static int MAX_SOULS_DISPLAYED = 10;
 	private static int MAX_STAT_TOTAL = 100;
 	public Image[] soulsCollected = new Image[MAX_SOULS_DISPLAYED];

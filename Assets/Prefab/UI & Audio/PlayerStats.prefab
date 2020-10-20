@@ -46,5 +46,19 @@ MonoBehaviour:
   upgradedDamage: 0
   upgradedSpeed: 0
   upgradedAttackRate: 0
-  souls: 3
+  souls: 0
+  soulsCollected:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentDamage: {fileID: 0}
+  currentSpeed: {fileID: 0}
+  currentRate: {fileID: 0}
   soulsLeft: {fileID: 0}
