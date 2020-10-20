@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 49190064}
   - component: {fileID: 49190063}
   m_Layer: 5
-  m_Name: Health Bar
+  m_Name: Rate Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.2
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 255100489}
   - component: {fileID: 255100488}
   m_Layer: 5
-  m_Name: Health Bar
+  m_Name: Speed Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.2
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100/100
+  m_Text: 20/100
 --- !u!222 &339904682
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      - m_Target: {fileID: 1786387458}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: upgradeSpeed
         m_Mode: 1
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1329,7 +1329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100/100
+  m_Text: 20/100
 --- !u!222 &760975420
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      - m_Target: {fileID: 1786387458}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: upgradeDamage
         m_Mode: 1
@@ -1629,6 +1629,7 @@ RectTransform:
   - {fileID: 1380454122}
   - {fileID: 1342603111}
   - {fileID: 1182856486}
+  - {fileID: 1786387457}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1687,7 +1688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1762,7 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2125,7 +2126,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      - m_Target: {fileID: 1786387458}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: upgradeAttackRate
         m_Mode: 1
@@ -2245,7 +2246,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100/100
+  m_Text: 20/100
 --- !u!222 &1593174006
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2304,7 +2305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2458,7 +2459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2483,6 +2484,151 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679376540}
   m_CullTransparentMesh: 0
+--- !u!1001 &1786387456
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1005668925}
+    m_Modifications:
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: souls
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: upgradedDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[0]
+      value: 
+      objectReference: {fileID: 1013840092}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[1]
+      value: 
+      objectReference: {fileID: 1983638438}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[2]
+      value: 
+      objectReference: {fileID: 342144483}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[3]
+      value: 
+      objectReference: {fileID: 2015602577}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[4]
+      value: 
+      objectReference: {fileID: 1089274681}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[5]
+      value: 
+      objectReference: {fileID: 1945457005}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[6]
+      value: 
+      objectReference: {fileID: 1603742233}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[7]
+      value: 
+      objectReference: {fileID: 558347264}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[8]
+      value: 
+      objectReference: {fileID: 1679376542}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsCollected.Array.data[9]
+      value: 
+      objectReference: {fileID: 202432994}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: upgradedSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: upgradedAttackRate
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: currentRate
+      value: 
+      objectReference: {fileID: 339904681}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: currentSpeed
+      value: 
+      objectReference: {fileID: 760975419}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: currentDamage
+      value: 
+      objectReference: {fileID: 1593174005}
+    - target: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: soulsLeft
+      value: 
+      objectReference: {fileID: 2010678970}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.630287
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 214.1647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -145.81567
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778264597260204410, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+      propertyPath: m_Name
+      value: PlayerStats
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+--- !u!4 &1786387457 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7005946387444572292, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+  m_PrefabInstance: {fileID: 1786387456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1786387458 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3393086168543981141, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+  m_PrefabInstance: {fileID: 1786387456}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504d3c48b96581c459157b784d8368f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1945457003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2608,7 +2754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2650,7 +2796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2010678969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2762,7 +2908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2974,7 +3120,7 @@ GameObject:
   - component: {fileID: 4526604729832668923}
   - component: {fileID: 4526604729832668925}
   m_Layer: 5
-  m_Name: Health Bar
+  m_Name: Damage Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3013,7 +3159,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.2
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
