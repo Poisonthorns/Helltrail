@@ -9,7 +9,7 @@ public class EnemyMovementManager : MonoBehaviour
     private Rigidbody2D myRigidbody;
 
     private bool moving;
-
+    public int powerLevel;
     public float timeBetweenMove;
     private float timeBetweenMoveCounter;
 
