@@ -58,6 +58,7 @@ public class CircleCreation : MonoBehaviour
         GameObject.Find("Main Camera").transform.position = new Vector3((roomWidth/2) + roomWidth+2, (roomHeight / 2)+ roomHeight + 2, -10);
         GameObject p = Instantiate(player, new Vector3( roomWidth+ roomWidth/2.0f + 2.5f, roomHeight + 2.5f, 0), Quaternion.identity);
         p.name = "Player";
+        print("player created");
     }
     void drawEnemies(int room)
     {
@@ -409,7 +410,7 @@ public class CircleCreation : MonoBehaviour
                     print("Default case");
                     break;
             }
-            if(gameMap[currentxpos,currentypos]==0)
+            if(gameMap[currentxpos,currentypos]==0&&!(roomsLeft==roomCount-1&&chooseDirection==2))
             {
                 roomIndex++;
                 gameMap[currentxpos, currentypos] = roomIndex;

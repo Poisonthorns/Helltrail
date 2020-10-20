@@ -183,8 +183,8 @@ MonoBehaviour:
   - {fileID: 5986223334232170306}
   - {fileID: 8130707957898581716}
   m_Bounds:
-    m_Center: {x: -0.20137954, y: 0.0025792122, z: 0}
-    m_Extent: {x: 2.5439453, y: 2.6195855, z: 0}
+    m_Center: {x: -0.20137954, y: 0.0025794506, z: 0}
+    m_Extent: {x: 2.5439453, y: 2.6195858, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5526412244872737925
@@ -815,7 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6643606853196140181}
   m_Layer: 31
-  m_Name: Move Point
+  m_Name: asddf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
