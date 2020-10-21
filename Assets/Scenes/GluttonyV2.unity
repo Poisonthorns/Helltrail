@@ -749,6 +749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor
       objectReference: {fileID: 0}
+    - target: {fileID: 5875312131553357929, guid: 5daf4b759b35d92428273d9486befd9c, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5875312131553357934, guid: 5daf4b759b35d92428273d9486befd9c, type: 3}
       propertyPath: m_Name
       value: collisionTiles
@@ -801,7 +805,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5875312131553357930, guid: 5daf4b759b35d92428273d9486befd9c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5daf4b759b35d92428273d9486befd9c, type: 3}
 --- !u!1001 &854437922
 PrefabInstance:
