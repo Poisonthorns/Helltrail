@@ -287,6 +287,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &339321790 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8061527217482334969, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+  m_PrefabInstance: {fileID: 464152607659714979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &456869335
 GameObject:
   m_ObjectHideFlags: 0
@@ -10840,6 +10845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bf4aa7b696f934bb0e924edd52348a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 339321790}
 --- !u!1 &1348490653
 GameObject:
   m_ObjectHideFlags: 0
@@ -11660,7 +11666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 464152606491050090, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
       propertyPath: m_Name
-      value: Satan
+      value: Hoggish
       objectReference: {fileID: 0}
     - target: {fileID: 464152606491050092, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11742,6 +11748,10 @@ PrefabInstance:
       propertyPath: fireSound
       value: 
       objectReference: {fileID: 8300000, guid: fee112a660748f74e857ebd0697b0f73, type: 3}
+    - target: {fileID: 464152606491050098, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 339321790}
     - target: {fileID: 7140658952014420065, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.94
