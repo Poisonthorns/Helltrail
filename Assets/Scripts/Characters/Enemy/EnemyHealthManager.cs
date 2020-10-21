@@ -19,6 +19,9 @@ public class EnemyHealthManager : MonoBehaviour
 
     public GameObject soul;
 
+    //aniamtion
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +55,7 @@ public class EnemyHealthManager : MonoBehaviour
     }
     void Death()
     {
-        //anim.Play("Imp_Death");
+        anim.SetBool("Dead", true);
         //enemyNoises.PlayOneShot(enemyDeath, 1.0f);
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;

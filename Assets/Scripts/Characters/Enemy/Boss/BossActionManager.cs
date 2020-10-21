@@ -10,6 +10,9 @@ public class BossActionManager : MonoBehaviour
     private int attackPhase = 0;
     CastSpell spell = null;
     int counter = 0;
+
+    //animation
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,12 +45,13 @@ public class BossActionManager : MonoBehaviour
                 case 0:
 
                     UnityEngine.Debug.Log("Attack phase 0");
+                    anim.Play("IceAttack");
                     spell.iceSpell();
                     attackPhase = 1;
                     break;
                 case 1:
                     UnityEngine.Debug.Log("Attack phase 1");
-                    //Call attack script here
+                    anim.Play("Slimeball");
                     spell.fireBallSpell();
                     attackPhase = 2;
                     break;

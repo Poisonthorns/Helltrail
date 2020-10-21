@@ -10,6 +10,9 @@ public class EnemyAttackManager : MonoBehaviour
     private float timeSinceLastAttack;
     public float attackDamage;
 
+    //animation
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,7 @@ public class EnemyAttackManager : MonoBehaviour
         float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
         if(distance <= 1.0f)
         {
+            anim.Play("Attack");
             HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
             Debug.Log("attacking");
         }

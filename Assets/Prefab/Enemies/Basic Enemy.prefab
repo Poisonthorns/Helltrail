@@ -1165,6 +1165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRate: 2
   attackDamage: 10
+  anim: {fileID: 263522649211176738}
 --- !u!114 &6170759654459756320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,6 +1184,7 @@ MonoBehaviour:
   blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
   healthUp: {fileID: 2007017813860939879, guid: a89cd0bb1028e4b4f97162fb1f1bb030, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
+  anim: {fileID: 263522649211176738}
 --- !u!114 &6170759654459756323
 MonoBehaviour:
   m_ObjectHideFlags: 0
