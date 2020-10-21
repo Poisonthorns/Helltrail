@@ -17,7 +17,7 @@ public class PotionManager : MonoBehaviour
 
     public void Start()
     {
-        potionUsed = GameObject.Find("Player").GetComponent<AudioSource>();
+        potionUsed = GetComponent<AudioSource>();
     }
 
     void healthPotion()

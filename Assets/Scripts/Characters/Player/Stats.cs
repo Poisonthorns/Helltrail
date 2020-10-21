@@ -17,7 +17,6 @@ public class Stats : MonoBehaviour
 	public Text currentDamage;
 	public Text currentSpeed;
 	public Text currentRate;
-	public Text soulsLeft;
 
 	Stat damageStatBar;
 	Stat speedStatBar;
@@ -42,25 +41,35 @@ public class Stats : MonoBehaviour
 		upgradedDamage = 0.0f;
 		upgradedSpeed = 0.0f;
 		upgradedAttackRate = 0.0f;
-		souls = 3;
+		souls = 0;
 	}
 
 
-	void Start()
+	public void Start()
 	{
 		if (SceneManager.GetActiveScene().name == "StatScreen")
 		{
 			Debug.Log("Here");
-			soulsLeft = GameObject.Find("Souls Left").GetComponent<Text>();
 			damageStatBar = GameObject.Find("Damage Bar").GetComponent<Stat>();
-			Debug.Log(damageStatBar);
 			speedStatBar = GameObject.Find("Speed Bar").GetComponent<Stat>();
 			rateStatBar = GameObject.Find("Rate Bar").GetComponent<Stat>();
 
-			damageStatBar.Initialize(20.0f, 100.0f);
-			speedStatBar.Initialize(20.0f, 100.0f);
-			rateStatBar.Initialize(20.0f, 100.0f);
-			updateSoulsText();
+			currentDamage = GameObject.Find("Attack Damage Total Text").GetComponent<Text>();
+			currentSpeed = GameObject.Find("Movement Speed Total Text").GetComponent<Text>();
+			currentRate = GameObject.Find("Attack Rate Total Text").GetComponent<Text>();
+
+			soulsCollected[0] = GameObject.Find("Soul").GetComponent<Image>();
+
+			for(int index = 1; index < MAX_SOULS_DISPLAYED; index++)
+            {
+				soulsCollected[index] = GameObject.Find("Soul (" + index + ")").GetComponent<Image>(); ;
+			}
+
+			damageStatBar.Initialize(upgradedDamage, (float)MAX_STAT_TOTAL);
+			speedStatBar.Initialize(upgradedSpeed, (float)MAX_STAT_TOTAL);
+			rateStatBar.Initialize(upgradedAttackRate, (float)MAX_STAT_TOTAL);
+			updateSoulDisplay(souls);
+			updateTextDisplay(upgradedDamage, upgradedSpeed, upgradedAttackRate);
 
 		}
 	}
@@ -69,7 +78,6 @@ public class Stats : MonoBehaviour
 	{
 		if (SceneManager.GetActiveScene().name == "StatScreen")
 		{
-			soulsLeft.text = "Souls Left: " + souls;
 			
 			// Check for overflow of souls collected indicator
 			if(souls > MAX_SOULS_DISPLAYED)
@@ -98,6 +106,13 @@ public class Stats : MonoBehaviour
 		}
 	}
 
+	public void updateTextDisplay(float damage, float speed, float rate)
+	{
+		currentDamage.text = (int)damage + "/" + MAX_STAT_TOTAL;
+		currentSpeed.text = (int)speed + "/" + MAX_STAT_TOTAL;
+		currentRate.text = (int)rate + "/" + MAX_STAT_TOTAL;
+	}
+
 	public void upgradeDamage()
 	{
 		if(souls > 0 && upgradedDamage < MAX_STAT_TOTAL)
@@ -119,7 +134,6 @@ public class Stats : MonoBehaviour
 		}
 
 		currentDamage.text = upgradedDamage + "/" + MAX_STAT_TOTAL;
-		updateSoulsText();
 	}
 
 	public void upgradeSpeed()
@@ -140,7 +154,6 @@ public class Stats : MonoBehaviour
 			//Maybe a sound effect or something visual here
 		}
 		currentSpeed.text = upgradedSpeed + "/" + MAX_STAT_TOTAL;
-		updateSoulsText();
 	}
 
 	public void upgradeAttackRate()
@@ -162,23 +175,6 @@ public class Stats : MonoBehaviour
 		}
 
 		currentRate.text = upgradedAttackRate + "/" + MAX_STAT_TOTAL;
-		updateSoulsText();
-	}
-
-	void updateSoulsText()
-	{
-		if (SceneManager.GetActiveScene().name == "StatScreen")
-		{
-			if (soulsLeft != null)
-			{
-				soulsLeft.text = "Souls left: " + souls;
-			}
-			else
-			{
-				soulsLeft = GameObject.Find("Souls Left").GetComponent<Text>();
-				updateSoulsText();
-			}
-		}
 	}
 
 	public void giveSouls(int num)

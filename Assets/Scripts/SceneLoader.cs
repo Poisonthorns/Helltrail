@@ -45,7 +45,7 @@ public class SceneLoader : MonoBehaviour
     {
         //Insert correct name
         audioManager.PlayMusicWithFade(gluttonySong, 0.1f);
-        SceneManager.LoadScene("Gluttony");
+        SceneManager.LoadScene("GluttonyV2");
     }
 
     public void GoToGluttonyBoss()

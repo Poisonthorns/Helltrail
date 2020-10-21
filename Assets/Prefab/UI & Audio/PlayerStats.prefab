@@ -61,4 +61,3 @@ MonoBehaviour:
   currentDamage: {fileID: 0}
   currentSpeed: {fileID: 0}
   currentRate: {fileID: 0}
-  soulsLeft: {fileID: 0}

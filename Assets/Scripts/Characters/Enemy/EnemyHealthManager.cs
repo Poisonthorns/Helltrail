@@ -13,6 +13,10 @@ public class EnemyHealthManager : MonoBehaviour
 
     // Damage particle effect
     public GameObject blood;
+
+    // Health potion particle effect
+    public GameObject healthUp;
+
     public GameObject soul;
 
     // Start is called before the first frame update
@@ -41,6 +45,7 @@ public class EnemyHealthManager : MonoBehaviour
     }
     public void GainHealth(float amount)
     {
+        Instantiate(healthUp, transform.position, Quaternion.identity);
         currentHealth += amount;
         if (currentHealth <= 0)
             Death();
