@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 1926146366168398979}
   - component: {fileID: 1926146366168398983}
   - component: {fileID: 1926146366168398980}
+  - component: {fileID: 8654993331590385594}
   m_Layer: 9
   m_Name: demon (old)
   m_TagString: Enemy
@@ -184,8 +185,8 @@ MonoBehaviour:
   - {fileID: 5986223334232170306}
   - {fileID: 8130707957898581716}
   m_Bounds:
-    m_Center: {x: 0.19502473, y: -0.022265434, z: 0}
-    m_Extent: {x: 2.8397985, y: 2.5749185, z: 0}
+    m_Center: {x: -0.20137954, y: 0.0025794506, z: 0}
+    m_Extent: {x: 2.5439453, y: 2.6195858, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5526412244872737925
@@ -378,6 +379,22 @@ MonoBehaviour:
     m_Bits: 2147484416
   powerLevel: 10
   movementInterval: 2
+--- !u!114 &8654993331590385594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646032159801282879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7a659504a92864cad99ec7c965525b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 348b6660167d8cd4c8feb690f1731291, type: 3}
+  - {fileID: 8300000, guid: df199336432e0834a9661e793d272779, type: 3}
+  - {fileID: 8300000, guid: f18b24fc0ab76714c8b06a9a23b0c4c9, type: 3}
 --- !u!1 &2408532660849361051
 GameObject:
   m_ObjectHideFlags: 0

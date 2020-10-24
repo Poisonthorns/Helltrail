@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: a51392e756515a24ea05379c2ba07d4b
   - enabled: 1
-    path: Assets/Scenes/ArtGallery.unity
+    path: Assets/Scenes/Old Versions/ArtGallery.unity
     guid: c24245d3d53f08b4f9572f2974a5c276
   - enabled: 1
     path: Assets/Scenes/Credits Screen.unity
@@ -24,13 +24,13 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalBoss 1.unity
     guid: 7d7d429e0209219479cccc8cf34a371f
   - enabled: 1
-    path: Assets/Scenes/FinalBoss.unity
+    path: Assets/Scenes/Old Versions/FinalBoss.unity
     guid: 0aff2c7378af6b645995035d19d86fa2
   - enabled: 1
-    path: Assets/Scenes/Gluttony Boss.unity
+    path: Assets/Scenes/Old Versions/Gluttony Boss.unity
     guid: 3d20c66048e5ced4a8f92372c9f05cc9
   - enabled: 1
-    path: Assets/Scenes/Gluttony.unity
+    path: Assets/Scenes/Old Versions/Gluttony.unity
     guid: 11b93a1e75817694eb3d5e2a24536370
   - enabled: 1
     path: Assets/Scenes/GluttonyV2.unity

@@ -914,6 +914,7 @@ GameObject:
   - component: {fileID: 6170759654459756320}
   - component: {fileID: 6170759654459756323}
   - component: {fileID: 1006274275760323521}
+  - component: {fileID: 2693836993701321272}
   m_Layer: 9
   m_Name: Basic Enemy
   m_TagString: Enemy
@@ -1263,6 +1264,21 @@ MonoBehaviour:
     m_Extent: {x: 2.045302, y: 2.6774867, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
+--- !u!114 &2693836993701321272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6471139792893616792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7a659504a92864cad99ec7c965525b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 3781149fe58a1b846a20739b512bc1a6, type: 3}
+  - {fileID: 8300000, guid: efc244f06cfa61f46aedd8a034369812, type: 3}
 --- !u!1 &6485022247658352249
 GameObject:
   m_ObjectHideFlags: 0
