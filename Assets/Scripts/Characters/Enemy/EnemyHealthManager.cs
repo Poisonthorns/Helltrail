@@ -1,9 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 
 public class EnemyHealthManager : MonoBehaviour
 {
+    /* Health Boolean Array size should be 2
+     * Only set 1 as true!
+     * 0 = Normal health
+     * 1 = Infinite health
+     */
+    public bool[] healthType;
+
     public float startingHealth;
     private float currentHealth;
 
@@ -25,6 +33,16 @@ public class EnemyHealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int numTrue = 0;
+        foreach (bool i in healthType)
+        {
+            if (i)
+            {
+                numTrue++;
+            }
+        }
+        Assert.IsTrue(numTrue == 1);
+
         currentHealth = startingHealth;
         currentFill = currentHealth / startingHealth;
     }
@@ -41,9 +59,17 @@ public class EnemyHealthManager : MonoBehaviour
     public void LoseHealth(float amount)
     {
         Instantiate(blood, transform.position, Quaternion.identity);
-        currentHealth -= amount;
+
+        if(healthType[0])
+        {
+            currentHealth -= amount;
+        }
+
         if(currentHealth <= 0)
+        {
             Death();
+        }
+
         currentFill = currentHealth / startingHealth;
     }
     public void GainHealth(float amount)
