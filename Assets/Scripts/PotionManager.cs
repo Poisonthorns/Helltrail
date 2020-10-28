@@ -24,7 +24,11 @@ public class PotionManager : MonoBehaviour
     {
         print("healed");
 
-        potionUsed.PlayOneShot(healthSound);
+        potionUsed.volume = 0.0f;
+        potionUsed.clip = healthSound;
+        potionUsed.Play();
+        StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
+        //potionUsed.PlayOneShot(healthSound);
 
         if(!isNotGluttony)
         {
@@ -41,7 +45,11 @@ public class PotionManager : MonoBehaviour
     {
         print("defense");
 
-        potionUsed.PlayOneShot(defenseSound);
+        //potionUsed.PlayOneShot(defenseSound);
+        potionUsed.volume = 0.0f;
+        potionUsed.clip = defenseSound;
+        potionUsed.Play();
+        StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
 
         if (!isNotGluttony)
         {
@@ -57,13 +65,21 @@ public class PotionManager : MonoBehaviour
     {
         print("speed");
 
-        potionUsed.PlayOneShot(speedSound);
+        //potionUsed.PlayOneShot(speedSound);
+        potionUsed.volume = 0.0f;
+        potionUsed.clip = speedSound;
+        potionUsed.Play();
+        StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
     }
     void damageUpPotion()
     {
         print("damage up");
 
-        potionUsed.PlayOneShot(damageSound);
+        //potionUsed.PlayOneShot(damageSound);
+        potionUsed.volume = 0.0f;
+        potionUsed.clip = damageSound;
+        potionUsed.Play();
+        StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
 
         if (!isNotGluttony)
         {
@@ -81,7 +97,11 @@ public class PotionManager : MonoBehaviour
     {
         print("range up");
 
-        potionUsed.PlayOneShot(rangeSound);
+        //potionUsed.PlayOneShot(rangeSound);
+        potionUsed.volume = 0.0f;
+        potionUsed.clip = rangeSound;
+        potionUsed.Play();
+        StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
     }
     IEnumerator PotionExpire(int type, int seconds)
     {

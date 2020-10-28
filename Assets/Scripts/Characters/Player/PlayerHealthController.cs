@@ -69,7 +69,11 @@ public class PlayerHealthController : MonoBehaviour
         // Show damage overlay for 1 second
         StartCoroutine(overlay.ShowOverlay());
 
-        playerAudio.PlayOneShot(playerHurt);
+        //playerAudio.PlayOneShot(playerHurt);
+        playerAudio.volume = 0.0f;
+        playerAudio.clip = playerHurt;
+        playerAudio.Play();
+        StartCoroutine(SoundManager.Fade(playerAudio, 0.75f, 0.8f));
 
         print(amount);
         print(defense);
@@ -88,7 +92,12 @@ public class PlayerHealthController : MonoBehaviour
 
     public void GainHealth(float amount)
 	{
-        playerAudio.PlayOneShot(playerHealed);
+        //playerAudio.PlayOneShot(playerHealed);
+        playerAudio.volume = 0.0f;
+        playerAudio.clip = playerHealed;
+        playerAudio.Play();
+        StartCoroutine(SoundManager.Fade(playerAudio, 0.75f, 0.7f));
+
         currentValue += amount;
         if(currentValue > maximumHealth)
             currentValue = maximumHealth;

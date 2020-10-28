@@ -17,8 +17,8 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
-        SelectedItemIcon = GameObject.Find("SelectedItemIcon").GetComponent<Image>();
-        SelectedItemIcon.enabled = false;
+        //SelectedItemIcon = GameObject.Find("SelectedItemIcon").GetComponent<Image>();
+        //SelectedItemIcon.enabled = false;
         for(int i=0; i<slots.Length; ++i)
         {
             slots[i] = -1;
@@ -42,7 +42,12 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            noises.PlayOneShot(itemAdded);
+            //noises.PlayOneShot(itemAdded);
+            noises.volume = 0.0f;
+            noises.clip = itemAdded;
+            noises.Play();
+            StartCoroutine(SoundManager.Fade(noises, 0.75f, 1.0f));
+
             slots[nextIndex] = itemID;
             GameObject.Find("SlotImage" + (temp + 1)).GetComponent<Image>().sprite = itemImage;
             GameObject.Find("SlotImage" + (temp + 1)).GetComponent<Image>().color = new Color (255, 255, 255,100);
@@ -201,7 +206,7 @@ public class Inventory : MonoBehaviour
                 currentSlot = 0;
             }
 
-            SelectedItemIcon.enabled = true;
+            //SelectedItemIcon.enabled = true;
            
 
         }
