@@ -185,8 +185,8 @@ MonoBehaviour:
   - {fileID: 5986223334232170306}
   - {fileID: 8130707957898581716}
   m_Bounds:
-    m_Center: {x: -0.20137954, y: 0.0025792122, z: 0}
-    m_Extent: {x: 2.5439453, y: 2.6195855, z: 0}
+    m_Center: {x: -0.20137954, y: 0.0025794506, z: 0}
+    m_Extent: {x: 2.5439453, y: 2.6195858, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5526412244872737925
@@ -324,7 +324,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 0
 --- !u!114 &1926146366168398979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cf10f4f7b70e34f94eb7e503cb5d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackType: 0100
   attackRate: 3
   attackDamage: 10
   anim: {fileID: 5526412244872737925}
@@ -353,7 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ec10a566d3410439c0a98a87c2c587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthType: 0100
   startingHealth: 100
   content: {fileID: 744379613033319725}
   lerpSpeed: 5
@@ -373,7 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16db123ea8dcf0d4b83caa94a88c985e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 010000
   player: {fileID: 0}
   speed: 4
   movePoint: {fileID: 6643606853196140181}

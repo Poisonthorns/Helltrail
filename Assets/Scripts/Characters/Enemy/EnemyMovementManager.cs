@@ -1,18 +1,34 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 
 public class EnemyMovementManager : MonoBehaviour
 {
-    /* Movement Boolean Array size should be 4
-     * Only set 1 as true!
-     * 0 = towards the player
-     * 1 = away from the player
-     * 2 = randomly 
-     * 3 = no movement
-     */
-    public bool[] movementType;
-
     public Transform player;
+
+    /*public float moveSpeed;
+
+    private Rigidbody2D myRigidbody;
+
+    private bool moving;
+    
+    public float timeBetweenMove;
+    private float timeBetweenMoveCounter;
+
+    public float timeToMove;
+    private float timeToMoveCounter;
+
+    private Vector3 moveDirection;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        myRigidbody = GetComponent<Rigidbody2D>();
+
+        timeBetweenMoveCounter = timeBetweenMove;
+        timeToMoveCounter = timeToMove;
+    }
+
+    */
+
 
     public float speed;
     public Transform movePoint;
@@ -22,16 +38,6 @@ public class EnemyMovementManager : MonoBehaviour
     public float movementInterval = 2.0f;
     void Start()
     {
-        int numTrue = 0;
-        foreach (bool i in movementType)
-        {
-            if (i)
-            {
-                numTrue++;
-            }
-        }
-        Assert.IsTrue(numTrue == 1);
-
         movePoint.parent = null;
         nextMovement = Random.Range(0.0f, 2.0f);
     }
@@ -52,7 +58,7 @@ public class EnemyMovementManager : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
         {
-            Vector3 moveDirection = getMovement();
+            Vector3 moveDirection = directionTowardsPlayer();
             if(!Physics2D.OverlapCircle(movePoint.position + moveDirection, .2f, collideables))
             {
                 movePoint.position += moveDirection;
@@ -61,25 +67,7 @@ public class EnemyMovementManager : MonoBehaviour
 
     }
 
-    private Vector3 getMovement()
-	{
-        if(movementType[0])
-		{
-            return directionTowardsPlayer();
-        }
-        else if (movementType[1])
-        {
-            return directionAwayFromPlayer();
-        }
-        else if (movementType[2])
-        {
-            return directionRandom();
-        }
-
-        return new Vector3(0f, 0f, 0f);
-    }
-
-    private Vector3 directionTowardsPlayer()
+    Vector3 directionTowardsPlayer()
     {
         Vector3 dir = player.position - transform.position;
         //Debug.Log(dir.x + " " + dir.y);
@@ -123,13 +111,7 @@ public class EnemyMovementManager : MonoBehaviour
         return dir;
     }
 
-    private Vector3 directionAwayFromPlayer()
-    {
-        
-        return directionTowardsPlayer() * -1.0f;
-    }
-
-    private Vector3 directionRandom()
+    Vector3 directionRandom()
     {
         return new Vector3(Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, speed)), Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, speed)), 0f);
     }
