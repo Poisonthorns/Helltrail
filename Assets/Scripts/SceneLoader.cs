@@ -13,14 +13,25 @@ public static class SceneLoader
     public static AudioClip treacherySong;
 
     public static GameObject pauseScreen;
-
-    
     public static GameObject controlsScreen;
 
     public static void Start()
     {
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-        Debug.Log("HI");
+        foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        {
+            if(go.name.Equals("SoundManager"))
+            {
+                soundManager = go.GetComponent<SoundManager>();
+            }
+            else if(go.name.Equals("Pause Screen"))
+            {
+                pauseScreen = go;
+            }
+            else if(go.name.Equals("Controls Screen"))
+            {
+                controlsScreen = go;
+            }
+        }
     }
     public static void GoToMenu()
     {
@@ -123,6 +134,7 @@ public static class SceneLoader
 
     public static void GoToControls()
     {
+        Debug.Log("here");
         DisableActiveScreens();
         controlsScreen.SetActive(true);
     }
@@ -136,7 +148,9 @@ public static class SceneLoader
     {
         if(controlsScreen != null && controlsScreen.activeSelf)
         {
-            controlsScreen.SetActive(false);
+            Debug.Log("controls if");
+            controlsScreen.SetActive(true);
+ 
         }
 
         if (pauseScreen != null && pauseScreen.activeSelf)
