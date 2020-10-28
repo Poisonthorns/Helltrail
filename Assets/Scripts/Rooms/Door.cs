@@ -9,6 +9,7 @@ public class Door : MonoBehaviour
     public bool isExit;
     GameObject roomManager;
     static bool switchh = true;
+    public bool isLimbo;
     void Start()
     {
         roomManager = GameObject.Find("Manager");
@@ -27,7 +28,17 @@ public class Door : MonoBehaviour
         {
             if(switchh)
             {
-                roomManager.GetComponent<CircleCreation>().changeRooms(isExit);
+                if(roomManager.GetComponent<LimboGeneration>()==null)
+                {
+                    roomManager.GetComponent<CircleCreation>().changeRooms(isExit);
+
+                }
+                else
+                {
+                    roomManager.GetComponent<LimboGeneration>().changeRooms(isExit);
+
+                }
+
             }
         }
     }

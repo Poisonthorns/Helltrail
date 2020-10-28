@@ -144,7 +144,7 @@ public class CircleCreation : MonoBehaviour
             Vector3 newPos = grid.CellToWorld(new Vector3Int(tempX, tempY, 0));
             newPos.x += 0.5f;
             newPos.y += 0.5f;
-            GameObject.Find("Player(Clone)").transform.position = newPos;
+            GameObject.Find("Player").transform.position = newPos;
             GameObject.Find("Move Point").transform.position = newPos;
             GameObject cam = GameObject.Find("Main Camera");
             Vector3 newCamPos = new Vector3(cam.transform.position.x - (roomWidth * 2), cam.transform.position.y, cam.transform.position.z);
