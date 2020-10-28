@@ -1,9 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class EnemyAttackManager : MonoBehaviour
 {
+    /* Attack Boolean Array size should be 2
+     * Only set 1 as true!
+     * 0 = Normal attack
+     * 1 = No attack
+     */
+    public bool[] attackType;
+
     GameObject HealthBar;
     GameObject PlayerObject;
     public float attackRate = 3;
@@ -16,6 +24,16 @@ public class EnemyAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int numTrue = 0;
+        foreach (bool i in attackType)
+        {
+            if (i)
+            {
+                numTrue++;
+            }
+        }
+        Assert.IsTrue(numTrue == 1);
+
         HealthBar = GameObject.Find("Player Health Bar");
         PlayerObject = GameObject.Find("Player");
     }
@@ -33,8 +51,16 @@ public class EnemyAttackManager : MonoBehaviour
 
     void Attack()
 	{
+        if (attackType[0])
+        {
+            normalAttack();
+        }
+    }
+
+    private void normalAttack()
+	{
         float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
-        if(distance <= 1.0f)
+        if (distance <= 1.0f)
         {
             anim.Play("Attack");
             HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);

@@ -1151,7 +1151,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &6170759654459756324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,6 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cf10f4f7b70e34f94eb7e503cb5d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackType: 0100
   attackRate: 2
   attackDamage: 10
   anim: {fileID: 263522649211176738}
@@ -1179,6 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ec10a566d3410439c0a98a87c2c587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthType: 0100
   startingHealth: 20
   content: {fileID: 7884189660016262068}
   lerpSpeed: 5
@@ -1198,6 +1200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16db123ea8dcf0d4b83caa94a88c985e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementType: 01000000
   player: {fileID: 1988686699227201222, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
   speed: 4
   movePoint: {fileID: 3790989679691831218}
