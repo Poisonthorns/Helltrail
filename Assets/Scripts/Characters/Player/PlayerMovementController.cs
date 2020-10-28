@@ -32,12 +32,12 @@ public class PlayerMovementController : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Escape))
         {
-			SceneManager.LoadScene("Debug Menu");
+			SceneLoader.GoToDebug();
         }
 
 		if (Input.GetKeyDown(KeyCode.Backspace))
 		{
-           GameObject.FindObjectOfType<SceneLoader>().GoToPause();
+           SceneLoader.GoToPause();
 		}
 
 		/*

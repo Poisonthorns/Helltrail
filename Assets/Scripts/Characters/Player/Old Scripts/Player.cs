@@ -110,8 +110,7 @@ public class Player : MonoBehaviour
 	{
 		playerNoises.PlayOneShot(playerDeath);
 		//Swap to a death scene
-		SceneLoader loader = new SceneLoader();
-		loader.GoToDeathScreen();
+		SceneLoader.GoToDeathScreen();
 		anim.SetBool("Death", true);
 		UnityEngine.Debug.Log("We are dead");
 	}

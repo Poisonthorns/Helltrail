@@ -330,7 +330,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 58178134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &58178137
@@ -377,8 +377,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 58178136}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -490,7 +490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &291466378
 GameObject:
@@ -721,8 +721,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 303532835}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -779,7 +779,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 303532830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &375843026
@@ -942,7 +942,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635360449
 GameObject:
@@ -1028,8 +1028,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 635360454}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 635360449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &811595413
@@ -1391,7 +1391,7 @@ GameObject:
   - component: {fileID: 873244517}
   - component: {fileID: 873244516}
   - component: {fileID: 873244515}
-  - component: {fileID: 873244519}
+  - component: {fileID: 873244518}
   m_Layer: 5
   m_Name: FinalBoss 1
   m_TagString: Untagged
@@ -1462,9 +1462,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 873244519}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+      - m_Target: {fileID: 873244518}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1512,7 +1512,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873244513}
   m_CullTransparentMesh: 0
---- !u!114 &873244519
+--- !u!114 &873244518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 873244513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &908196450
@@ -1786,7 +1786,7 @@ RectTransform:
   - {fileID: 1874269800}
   - {fileID: 58178135}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1956,8 +1956,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1115156355}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1115156350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1158624401
@@ -2029,7 +2029,7 @@ GameObject:
   - component: {fileID: 1158624406}
   - component: {fileID: 1158624405}
   - component: {fileID: 1158624404}
-  - component: {fileID: 1158624407}
+  - component: {fileID: 1158624403}
   m_Layer: 5
   m_Name: GluttonyV2
   m_TagString: Untagged
@@ -2057,6 +2057,18 @@ RectTransform:
   m_AnchoredPosition: {x: 449.00006, y: -556.7999}
   m_SizeDelta: {x: 355.1363, y: 110.9801}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1158624403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158624401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1158624404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,9 +2112,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1158624407}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+      - m_Target: {fileID: 1158624403}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2150,18 +2162,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158624401}
   m_CullTransparentMesh: 0
---- !u!114 &1158624407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158624401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1250553827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2320,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600867726}
   m_CullTransparentMesh: 0
+--- !u!1 &1667603828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1667603830}
+  - component: {fileID: 1667603829}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1667603829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667603828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f98cff8667e7a447877647618e515fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackList:
+  - {fileID: 8300000, guid: fa34f32edd6402843bb679ce41e357da, type: 3}
+  - {fileID: 8300000, guid: bb64cd5bd20cc3645b0caece327dd5e9, type: 3}
+  - {fileID: 8300000, guid: d375d34623411a344bba0f33571989e4, type: 3}
+  musicSourceA: {fileID: 0}
+  musicSourceB: {fileID: 0}
+  currentTrack: 0
+--- !u!4 &1667603830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667603828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 568.0306, y: 290.2789, z: -65.12431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672525152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,8 +2454,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1672525157}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2462,7 +2512,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672525152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1676228835
@@ -2672,7 +2722,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1874269799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1874269802
@@ -2719,8 +2769,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1874269801}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2852,8 +2902,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1915326386}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2910,7 +2960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1915326381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2002827077
@@ -3041,7 +3091,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2047554193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9645018459b981498262438035d9981, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2047554196
@@ -3088,8 +3138,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2047554195}
-        m_TargetAssemblyTypeName: DebugMenuButtons, Assembly-CSharp
-        m_MethodName: GoToScene
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -126,9 +126,9 @@ GameObject:
   - component: {fileID: 3841408250112777328}
   - component: {fileID: 3841408250112777295}
   - component: {fileID: 3841408250112777294}
-  - component: {fileID: 3841408250112777293}
+  - component: {fileID: 3835275246496839689}
   m_Layer: 5
-  m_Name: Back Button
+  m_Name: Controls Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,9 +234,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3841408250112777293}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: GoToPause
+      - m_Target: {fileID: 3835275246496839689}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22247541fdedf3243a6d39a79a476194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3841408250112777293
+--- !u!114 &3835275246496839689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,13 +282,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3841408250112777291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f0abede68ec36b4eadc0d65b5a93d10, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limboSong: {fileID: 8300000, guid: c7c5548fca9bacc43a86d19e4b62081f, type: 3}
-  gluttonySong: {fileID: 8300000, guid: 35e482fbc6450e143ac708d848480789, type: 3}
-  violenceSong: {fileID: 8300000, guid: a79ed3ec42e13a24bac8151a63b573d4, type: 3}
-  heresySong: {fileID: 8300000, guid: 2e71ed6c8a42c1545b4978ac217cd241, type: 3}
-  treacherySong: {fileID: 8300000, guid: aec626fdf8a247347b586857c39643d2, type: 3}
-  pauseScreen: {fileID: 0}
-  controlsScreen: {fileID: 3841408248536627814}

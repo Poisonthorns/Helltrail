@@ -14,7 +14,7 @@ public class EnemyAudioManager : MonoBehaviour
     string sound4 = "(Burping)";
     string sound5 = "(Monster Noises)";
 
-    float volume = 1.0f;
+    float volume = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +22,10 @@ public class EnemyAudioManager : MonoBehaviour
         //Debug.Log((int)Random.Range(1, 3) - 1);
         enemySound = sounds[Random.Range(1, sounds.Length + 1) - 1];
         enemyAudio = gameObject.GetComponent<AudioSource>();
+        enemyAudio.clip = enemySound;
+        enemyAudio.volume = 0.0f;
 
-        if(enemySound.name.Equals(sound1))
+        if (enemySound.name.Equals(sound1))
         {
             Debug.Log(sound1);
         }
@@ -51,7 +53,13 @@ public class EnemyAudioManager : MonoBehaviour
     {
         if (!enemyAudio.isPlaying)
         {
-            enemyAudio.PlayOneShot(enemySound, volume);
+            //SoundManager.PlayMusic(4, enemySound);
+            //enemyAudio.PlayOneShot(enemySound, volume);
+            Debug.Log("coro started");
+            enemyAudio.volume = 0.0f;
+            enemyAudio.Play();
+            StartCoroutine(SoundManager.Fade(enemyAudio, 1.0f, volume));
+
         }
     }
 }
