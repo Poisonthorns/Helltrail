@@ -22,9 +22,8 @@ public class Door : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("yay");
 
-        if (collision.gameObject.name.Equals("Sprite"))
+        if (collision.gameObject.tag.Equals("Player"))
         {
             if(switchh)
             {
@@ -45,7 +44,7 @@ public class Door : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.gameObject.name.Equals("Sprite"))
+        if (collision.gameObject.tag.Equals("Player"))
         {
             //print("yay");
             if (switchh)
