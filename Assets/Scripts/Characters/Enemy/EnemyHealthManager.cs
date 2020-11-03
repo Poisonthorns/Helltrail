@@ -22,9 +22,6 @@ public class EnemyHealthManager : MonoBehaviour
     // Damage particle effect
     public GameObject blood;
 
-    // Health potion particle effect
-    public GameObject healthUp;
-
     public GameObject soul;
 
     //aniamtion
@@ -74,11 +71,18 @@ public class EnemyHealthManager : MonoBehaviour
     }
     public void GainHealth(float amount)
     {
-        Instantiate(healthUp, transform.position, Quaternion.identity);
         currentHealth += amount;
         if (currentHealth <= 0)
             Death();
     }
+
+    
+    public void PlayParticle(GameObject particle)
+    {
+      Instantiate(particle, transform.position, Quaternion.identity);
+    }
+    
+
     void Death()
     {
         anim.SetBool("Dead", true);

@@ -103,4 +103,9 @@ public class PlayerHealthController : MonoBehaviour
             currentValue = maximumHealth;
         currentFill = currentValue / maximumHealth;
     }
+
+    public void PlayParticle(GameObject particle)
+    {
+        Instantiate(particle, transform.position, Quaternion.identity);
+    }
 }

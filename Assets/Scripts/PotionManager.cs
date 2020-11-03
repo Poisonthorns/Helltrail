@@ -11,9 +11,25 @@ public class PotionManager : MonoBehaviour
 
     public AudioClip healthSound;
     public AudioClip defenseSound;
-    public AudioClip speedSound;
     public AudioClip damageSound;
     public AudioClip rangeSound;
+
+    // Health potion particle effect
+    public GameObject healthUp;
+
+    // Defense potion particle effect
+    public GameObject defenseUp;
+
+    // Damage potion particle effect
+    public GameObject damageUp;
+
+    // Range potion particle effect
+    public GameObject rangeUp;
+
+    // Bomb particle effect
+    public GameObject bombExplosion;
+
+    private GameObject playerStatus;
 
     public void Start()
     {
@@ -28,7 +44,6 @@ public class PotionManager : MonoBehaviour
         potionUsed.clip = healthSound;
         potionUsed.Play();
         StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
-        //potionUsed.PlayOneShot(healthSound);
 
         if(!isNotGluttony)
         {
@@ -36,16 +51,19 @@ public class PotionManager : MonoBehaviour
             foreach(GameObject enemy in temp)
             {
                 enemy.GetComponent<EnemyHealthManager>().GainHealth(40);
+                enemy.GetComponent<EnemyHealthManager>().PlayParticle(healthUp);
             }
         }
-        GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().GainHealth(20);
+
+        playerStatus = GameObject.Find("Player Health Bar");
+        playerStatus.GetComponent<PlayerHealthController>().GainHealth(20);
+        playerStatus.GetComponent<PlayerHealthController>().PlayParticle(healthUp);
 
     }
     void defensePotion()
     {
         print("defense");
 
-        //potionUsed.PlayOneShot(defenseSound);
         potionUsed.volume = 0.0f;
         potionUsed.clip = defenseSound;
         potionUsed.Play();
@@ -57,10 +75,16 @@ public class PotionManager : MonoBehaviour
             foreach (GameObject enemy in temp)
             {
                 enemy.GetComponent<EnemyHealthManager>().GainHealth(40);
+                enemy.GetComponent<EnemyHealthManager>().PlayParticle(defenseUp);
             }
         }
-        GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().GainHealth(20);
+
+        playerStatus = GameObject.Find("Player Health Bar");
+        playerStatus.GetComponent<PlayerHealthController>().GainHealth(20);
+        playerStatus.GetComponent<PlayerHealthController>().PlayParticle(defenseUp);
     }
+
+    /*
     void speedPotion()
     {
         print("speed");
@@ -71,11 +95,12 @@ public class PotionManager : MonoBehaviour
         potionUsed.Play();
         StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
     }
+
+    */
     void damageUpPotion()
     {
         print("damage up");
 
-        //potionUsed.PlayOneShot(damageSound);
         potionUsed.volume = 0.0f;
         potionUsed.clip = damageSound;
         potionUsed.Play();
@@ -87,9 +112,14 @@ public class PotionManager : MonoBehaviour
             foreach (GameObject enemy in temp)
             {
                 enemy.GetComponent<EnemyAttackManager>().attackDamage += 20;
+                enemy.GetComponent<EnemyHealthManager>().PlayParticle(damageUp);
             }
         }
-        GameObject.Find("Player").GetComponent<PlayerCombatController>().additionalDamage += 20;
+
+        playerStatus = GameObject.Find("Player");
+        playerStatus.GetComponent<PlayerCombatController>().additionalDamage += 20;
+        playerStatus = GameObject.Find("Player Health Bar");
+        playerStatus.GetComponent<PlayerHealthController>().PlayParticle(damageUp);
         StartCoroutine(PotionExpire(4 , 20));
     }
 
@@ -97,11 +127,27 @@ public class PotionManager : MonoBehaviour
     {
         print("range up");
 
-        //potionUsed.PlayOneShot(rangeSound);
         potionUsed.volume = 0.0f;
         potionUsed.clip = rangeSound;
         potionUsed.Play();
         StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
+
+        if (!isNotGluttony)
+        {
+            GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in temp)
+            {
+                // Add line that increases enemy range
+                //enemy.GetComponent<EnemyAttackManager>().attackDamage += 20;
+                enemy.GetComponent<EnemyHealthManager>().PlayParticle(rangeUp);
+            }
+        }
+
+        playerStatus = GameObject.Find("Player");
+        playerStatus.GetComponent<PlayerCombatController>().Arrow.GetComponent<Arrow>().speed += 7.0f;
+        playerStatus = GameObject.Find("Player Health Bar");
+        playerStatus.GetComponent<PlayerHealthController>().PlayParticle(rangeUp);
+        StartCoroutine(PotionExpire(5, 20));
     }
     IEnumerator PotionExpire(int type, int seconds)
     {
@@ -123,7 +169,10 @@ public class PotionManager : MonoBehaviour
             case 4:
                 print("damage up expired");
                 GameObject.Find("Player").GetComponent<PlayerCombatController>().additionalDamage -= 20;
-
+                break;
+            case 5:
+                print("range up expired");
+                GameObject.Find("Player").GetComponent<PlayerCombatController>().Arrow.GetComponent<Arrow>().speed -= 7.0f;
                 break;
             default:
                 break;
@@ -135,6 +184,30 @@ public class PotionManager : MonoBehaviour
     {
 
     }
+
+    void bomb()
+    {
+        /*
+        print("bomb");
+
+        potionUsed.volume = 0.0f;
+        potionUsed.clip = bombSound;
+        potionUsed.Play();
+        StartCoroutine(SoundManager.Fade(potionUsed, 0.75f, 1.0f));
+
+        if (!isNotGluttony)
+        {
+            GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in temp)
+            {
+                // Add line that makes enemies explode
+                //enemy.GetComponent<EnemyAttackManager>().attackDamage += 20;
+                enemy.GetComponent<EnemyHealthManager>().PlayParticle(bombExplosion);
+            }
+        }
+        */
+    }
+
     public void useItem(int id)
     {
         print(id);
@@ -144,7 +217,7 @@ public class PotionManager : MonoBehaviour
                 healthPotion();
                 break;
             case 2:
-                speedPotion();
+                //speedPotion();
                 break;
             case 3:
                 defensePotion();
@@ -153,6 +226,12 @@ public class PotionManager : MonoBehaviour
                 damageUpPotion();
                 break;
             case 5:
+                rangeUpPotion();
+                break;
+            case 6:
+                bomb();
+                break;
+            case 7:
                 allOfTheAbovePotion();
                 break;
             default:
