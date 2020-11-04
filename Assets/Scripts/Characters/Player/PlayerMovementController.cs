@@ -124,17 +124,18 @@ public class PlayerMovementController : MonoBehaviour
 					}
 				}
 			}
+			//added else statement here so when player is not moving, idle animation will play (walking animation will not play).
+			else
+			{
+				animDown.SetBool("Walking", false);
+				spriteDown.SetActive(true);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
+				spriteUp.SetActive(false);
+			}
 
 		}
-		//added else statement here so when player is not moving, idle animation will play (walking animation will not play).
-		else 
-		{
-		animDown.SetBool("Walking", false);
-		spriteDown.SetActive(true);
-		spriteRight.SetActive(false);
-		spriteLeft.SetActive(false);
-		spriteUp.SetActive(false);
-		}
+		
 
 	}
 }
