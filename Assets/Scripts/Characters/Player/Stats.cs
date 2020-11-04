@@ -22,6 +22,9 @@ public class Stats : MonoBehaviour
 	Stat speedStatBar;
 	Stat rateStatBar;
 
+	public bool limboRan;
+	public bool gluttonyRan;
+
 	void Awake()
 	{
 		if(playerStats != null)
@@ -33,7 +36,9 @@ public class Stats : MonoBehaviour
 			playerStats = this;
 		}
 
-		DontDestroyOnLoad(this);	
+		DontDestroyOnLoad(this);
+		limboRan = false;
+		gluttonyRan = false;
 	}
 
 	void OnApplicationQuit()
@@ -78,16 +83,26 @@ public class Stats : MonoBehaviour
 	{
 		if (SceneManager.GetActiveScene().name == "StatScreen")
 		{
-			
+
 			// Check for overflow of souls collected indicator
-			if(souls > MAX_SOULS_DISPLAYED)
-            {
+			if (souls > MAX_SOULS_DISPLAYED)
+			{
 				updateSoulDisplay(MAX_SOULS_DISPLAYED);
-            }
-            else
-            {
+			}
+			else
+			{
 				updateSoulDisplay(souls);
-            }
+			}
+		}
+
+		if (SceneManager.GetActiveScene().name == "LimboV2")
+		{
+			limboRan = true;
+		}
+
+		if (SceneManager.GetActiveScene().name == "GluttonyV2")
+		{
+			gluttonyRan = true;
 		}
 	}
 

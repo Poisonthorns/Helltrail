@@ -45,7 +45,7 @@ public static class SceneLoader
     public static void GoToLimbo()
     {
         //Insert correct name
-        SceneManager.LoadScene("Limbo");
+        SceneManager.LoadScene("LimboV2");
         soundManager.SwitchTrackCaller(1);
     }
 

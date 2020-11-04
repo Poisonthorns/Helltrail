@@ -95,7 +95,7 @@ public class Virgil : MonoBehaviour
             //next();
             //triggerDialogue = false;
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
             print(stage);
             if(inDialogue)

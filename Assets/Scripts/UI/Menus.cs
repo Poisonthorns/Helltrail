@@ -8,7 +8,7 @@ public class Menus : MonoBehaviour
     {
         if(gameObject.name.Equals("Start Button"))
         {
-            SceneLoader.GoToGluttony();
+            SceneLoader.GoToLimbo();
         }
         else if (gameObject.name.Equals("Controls Button"))
         { 

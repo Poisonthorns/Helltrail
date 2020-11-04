@@ -38,12 +38,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StatScreen.unity
     guid: 93c584cf595c89542bf42fc91a078994
-  - enabled: 1
-    path: Assets/Scenes/Heresy.unity
-    guid: b78de162c1533e74980549fd1af4d620
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Limbo.unity
     guid: 06c7857cc7e581140bbb9e838b2aa09f
+  - enabled: 1
+    path: Assets/Scenes/LimboV2.unity
+    guid: d3f5757b5687e7248aa4461e82fcb074
   - enabled: 1
     path: Assets/Scenes/Peyton Animation Scene.unity
     guid: 3b819da8c091c89498438d8d37204c1f

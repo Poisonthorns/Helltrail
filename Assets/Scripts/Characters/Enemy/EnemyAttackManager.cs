@@ -65,12 +65,14 @@ public class EnemyAttackManager : MonoBehaviour
         if (distance <= 1.5f)
         {
             anim.Play("Attack");
+            HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
+            /*
             //Delay
-            StartCoroutine("waitForMelee", 0.2f);
+            StartCoroutine("waitForMelee", 0.2f);*/
             Debug.Log("attacking");
         }
     }
-
+    /*
     IEnumerator waitForNormalAttack(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -82,6 +84,7 @@ public class EnemyAttackManager : MonoBehaviour
 
         yield return null;
     }
+    */
 }
 
 
