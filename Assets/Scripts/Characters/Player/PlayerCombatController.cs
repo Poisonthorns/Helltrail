@@ -24,6 +24,7 @@ public class PlayerCombatController : MonoBehaviour
 	public bool lightAttack = true;
 	public bool heavyAttack = false;
 	public bool rangeAttack = false;
+	public Animator animUp;
 	public Animator animDown;
 	public Animator animRight;
 	public Animator animLeft;
@@ -107,12 +108,11 @@ public class PlayerCombatController : MonoBehaviour
 				RangedAttack(225f, arrowPosition);
 
 				//Animation
-				//spriteUp.SetActive(true);
-				spriteDown.SetActive(true);
+				spriteUp.SetActive(true);
+				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
-				//animUp.Play("Ranged Attack");
-				animDown.Play("Ranged Attack");
+				animUp.Play("Ranged Attack");
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
@@ -121,7 +121,7 @@ public class PlayerCombatController : MonoBehaviour
 				RangedAttack(45f, arrowPosition);
 
 				//Animation
-				//spriteUp.SetActive(false);
+				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
@@ -134,7 +134,7 @@ public class PlayerCombatController : MonoBehaviour
 				RangedAttack(-45f, arrowPosition);
 
 				//Animation
-				//spriteUp.SetActive(false);
+				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(true);
@@ -147,7 +147,7 @@ public class PlayerCombatController : MonoBehaviour
 				RangedAttack(135f, arrowPosition);
 
 				//Animation
-				//spriteUp.SetActive(false);
+				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(true);
 				spriteLeft.SetActive(false);
@@ -164,7 +164,7 @@ public class PlayerCombatController : MonoBehaviour
 				Attack();
 
 				//Animation
-				//spriteUp.SetActive(true);
+				spriteUp.SetActive(true);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
@@ -173,14 +173,12 @@ public class PlayerCombatController : MonoBehaviour
 				//Animation for light attack here
 				if (lightAttack)
 				{
-					//animUp.Play("Light Attack);
-					animDown.Play("Light Attack");
+					animUp.Play("Light Attack");
 				}
 				//Animation for heavy attack
 				else if (heavyAttack)
 				{
-					//animUp.Play("Heavy Attack");
-					animDown.Play("Heavy Attack");
+					animUp.Play("Heavy Attack");
 				}
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
@@ -189,7 +187,7 @@ public class PlayerCombatController : MonoBehaviour
 				Attack();
 
 				//Animation
-				//spriteUp.SetActive(false);
+				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
@@ -212,7 +210,7 @@ public class PlayerCombatController : MonoBehaviour
 				Attack();
 
 				//Animation
-				//spriteUp.SetActive(false);
+				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(true);
@@ -233,7 +231,7 @@ public class PlayerCombatController : MonoBehaviour
 				Attack();
 
 				//Animation
-				//spriteUp.SetActive(false);
+				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(true);
 				spriteLeft.SetActive(false);

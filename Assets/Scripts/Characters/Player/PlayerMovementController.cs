@@ -9,6 +9,7 @@ public class PlayerMovementController : MonoBehaviour
 	public Transform movePoint;
 	public LayerMask collideables;
 	//Need animator here for animations
+	public Animator animUp;
 	public Animator animDown;
 	public Animator animRight;
 	public Animator animLeft;
@@ -85,14 +86,14 @@ public class PlayerMovementController : MonoBehaviour
 					//Up and Down Animations
 					if(Input.GetKey(KeyCode.W))
 					{
-						//spriteUp.SetActive(true);
-						spriteDown.SetActive(true);
+						spriteDown.SetActive(false);
+						spriteUp.SetActive(true);
 						spriteRight.SetActive(false);
 						spriteLeft.SetActive(false);
 					}
 					else if (Input.GetKey(KeyCode.S))
 					{
-						//spriteUp.SetActive(false);
+						spriteUp.SetActive(false);
 						spriteDown.SetActive(true);
 						spriteRight.SetActive(false);
 						spriteLeft.SetActive(false);
@@ -109,14 +110,14 @@ public class PlayerMovementController : MonoBehaviour
 					//Left and Right Animations
 					if(Input.GetKey(KeyCode.A))
 					{
-						//spriteUp.SetActive(false);
+						spriteUp.SetActive(false);
 						spriteDown.SetActive(false);
 						spriteRight.SetActive(false);
 						spriteLeft.SetActive(true);
 					}
 					else if (Input.GetKey(KeyCode.D))
 					{
-						//spriteUp.SetActive(false);
+						spriteUp.SetActive(false);
 						spriteDown.SetActive(false);
 						spriteRight.SetActive(true);
 						spriteLeft.SetActive(false);
