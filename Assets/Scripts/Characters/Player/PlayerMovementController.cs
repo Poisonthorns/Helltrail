@@ -133,6 +133,7 @@ public class PlayerMovementController : MonoBehaviour
 		spriteDown.SetActive(true);
 		spriteRight.SetActive(false);
 		spriteLeft.SetActive(false);
+		spriteUp.SetActive(false);
 		}
 
 	}
