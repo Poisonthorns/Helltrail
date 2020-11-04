@@ -9,7 +9,9 @@ public class PlayerMovementController : MonoBehaviour
 	public Transform movePoint;
 	public LayerMask collideables;
 	//Need animator here for animations
-	public Animator anim;
+	public Animator animDown;
+	public Animator animRight;
+	public Animator animLeft;
 
 	public GameObject upgradedStats;
 
@@ -77,22 +79,24 @@ public class PlayerMovementController : MonoBehaviour
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 1f), .2f, collideables))
 				{
 					//Movement animation here (this handles both up and down, you'll need to check which is happening)
-					anim.SetBool("Walking", true);
+					animDown.SetBool("Walking", true);
 					movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
 
 					//Up and Down Animations
-					// if(Input.GetKey(KeyCode.W))
-					// {
-					// 	spriteDown.SetActive(true);
-					// 	spriteRight.SetActive(false);
-					// 	spriteLeft.SetActive(false);
-					// }
-					// else if (Input.GetKey(KeyCode.S))
-					// {
-					// 	spriteDown.SetActive(true);
-					// 	spriteRight.SetActive(false);
-					// 	spriteLeft.SetActive(false);
-					// }
+					if(Input.GetKey(KeyCode.W))
+					{
+						//spriteUp.SetActive(true);
+						spriteDown.SetActive(true);
+						spriteRight.SetActive(false);
+						spriteLeft.SetActive(false);
+					}
+					else if (Input.GetKey(KeyCode.S))
+					{
+						//spriteUp.SetActive(false);
+						spriteDown.SetActive(true);
+						spriteRight.SetActive(false);
+						spriteLeft.SetActive(false);
+					}
 				}
 			}
 			else if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
@@ -100,22 +104,23 @@ public class PlayerMovementController : MonoBehaviour
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 1f), .2f, collideables))
 				{
 					//Movement animation here (this handles both left and right, you'll need to check which is happening)
-					anim.SetBool("Walking", true);
 					movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
 
 					//Left and Right Animations
-					// if(Input.GetKey(KeyCode.A))
-					// {
-					// 	spriteDown.SetActive(false);
-					// 	spriteRight.SetActive(false);
-					// 	spriteLeft.SetActive(true);
-					// }
-					// else if (Input.GetKey(KeyCode.D))
-					// {
-					// 	spriteDown.SetActive(false);
-					// 	spriteRight.SetActive(true);
-					// 	spriteLeft.SetActive(false);
-					// }
+					if(Input.GetKey(KeyCode.A))
+					{
+						//spriteUp.SetActive(false);
+						spriteDown.SetActive(false);
+						spriteRight.SetActive(false);
+						spriteLeft.SetActive(true);
+					}
+					else if (Input.GetKey(KeyCode.D))
+					{
+						//spriteUp.SetActive(false);
+						spriteDown.SetActive(false);
+						spriteRight.SetActive(true);
+						spriteLeft.SetActive(false);
+					}
 				}
 			}
 
@@ -123,7 +128,10 @@ public class PlayerMovementController : MonoBehaviour
 		//added else statement here so when player is not moving, idle animation will play (walking animation will not play).
 		else 
 		{
-			anim.SetBool("Walking", false);
+		animDown.SetBool("Walking", false);
+		spriteDown.SetActive(true);
+		spriteRight.SetActive(false);
+		spriteLeft.SetActive(false);
 		}
 
 	}
