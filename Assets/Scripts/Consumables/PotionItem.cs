@@ -16,7 +16,7 @@ public class PotionItem : MonoBehaviour
 
         print("item detected");
         Debug.Log("Collided with " + col.gameObject.name);
-        if (col.gameObject.name.Equals("Sprite"))
+        if (col.gameObject.name.Contains("Sprite"))
         {
             Debug.Log("made it past if");
             player = GameObject.Find("Player").transform;

@@ -26,15 +26,11 @@ public class Menus : MonoBehaviour
         {
             SceneLoader.GoToPause();
         }
-        else if (gameObject.name.Equals("Controls Back Button"))
-        {
-            SceneLoader.GoToMenu();
-        }
         else if (gameObject.name.Equals("Peyton Animation Scene"))
         {
             SceneLoader.GoToPeytonAnimation();
         }
-        else if (gameObject.name.Equals("Main Menu"))
+        else if (gameObject.name.Equals("Main Menu") || gameObject.name.Equals("Back to Menu Button") || gameObject.name.Equals("Controls Back Button"))
         {
             SceneLoader.GoToMenu();
         }

@@ -13,7 +13,7 @@ public class LoadCredits : MonoBehaviour
 
  IEnumerator delayCredits()
  {
-        yield return new WaitForSeconds(20);
-        SceneManager.LoadScene("Credits Screen");
+        yield return new WaitForSeconds(15);
+        SceneLoader.GoToCredits();
  }
 }

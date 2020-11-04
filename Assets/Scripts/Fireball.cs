@@ -35,7 +35,7 @@ public class Fireball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         print("triggered");
-        if (col.gameObject.name.Equals("Sprite"))
+        if (col.gameObject.name.Contains("Sprite"))
         {
             if (explode)
             {

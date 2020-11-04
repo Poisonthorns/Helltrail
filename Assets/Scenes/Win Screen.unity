@@ -173,16 +173,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 899142506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f0abede68ec36b4eadc0d65b5a93d10, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limboSong: {fileID: 0}
-  gluttonySong: {fileID: 0}
-  violenceSong: {fileID: 0}
-  heresySong: {fileID: 0}
-  treacherySong: {fileID: 0}
-  pauseScreen: {fileID: 0}
-  controlsScreen: {fileID: 0}
 --- !u!114 &899142509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,8 +247,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 899142508}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: GoToMenu
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -336,6 +329,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fa34f32edd6402843bb679ce41e357da, type: 3}
   - {fileID: 8300000, guid: bb64cd5bd20cc3645b0caece327dd5e9, type: 3}
   - {fileID: 8300000, guid: d375d34623411a344bba0f33571989e4, type: 3}
+  - {fileID: 8300000, guid: 72ccfe7f79d04a64bae73137e598d3bf, type: 3}
   musicSourceA: {fileID: 0}
   musicSourceB: {fileID: 0}
   currentTrack: 0
@@ -741,16 +735,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1939158776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f0abede68ec36b4eadc0d65b5a93d10, type: 3}
+  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limboSong: {fileID: 0}
-  gluttonySong: {fileID: 0}
-  violenceSong: {fileID: 0}
-  heresySong: {fileID: 0}
-  treacherySong: {fileID: 0}
-  pauseScreen: {fileID: 0}
-  controlsScreen: {fileID: 0}
 --- !u!114 &1939158779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,8 +809,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1939158778}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: GoToMenu
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: buttonFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

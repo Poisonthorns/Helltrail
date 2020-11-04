@@ -23,7 +23,7 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         print("triggered");
-        if (col.gameObject.name.Equals("Sprite"))
+        if (col.gameObject.name.Contains("Sprite"))
         {
             SceneManager.LoadScene("StatScreen");
             //Debug.Log(SceneManager.GetSceneByName("StatScreen").buildIndex);

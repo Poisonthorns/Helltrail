@@ -98,6 +98,12 @@ public static class SceneLoader
         soundManager.SwitchTrackCaller(0);
     }
 
+    public static void GoToCredits()
+    {
+        SceneManager.LoadScene("Credits Screen");
+        soundManager.SwitchTrackCaller(3);
+    }
+
     public static void GoToDebug()
     {
         SceneManager.LoadScene("Debug Menu");
