@@ -12,8 +12,8 @@ public static class SceneLoader
     public static AudioClip heresySong;
     public static AudioClip treacherySong;
 
-    public static GameObject pauseScreen;
-    public static GameObject controlsScreen;
+    public static GameObject pause;
+    public static GameObject controls;
 
     public static void Start()
     {
@@ -23,16 +23,17 @@ public static class SceneLoader
             {
                 soundManager = go.GetComponent<SoundManager>();
             }
-            else if(go.name.Equals("Pause Screen"))
+            else if(go.name.Equals("Menus"))
             {
-                pauseScreen = go;
-            }
-            else if(go.name.Equals("Controls Screen"))
-            {
-                controlsScreen = go;
+                pause = go.transform.Find("Pause Screen").gameObject;
+                controls = go.transform.Find("Controls Screen").gameObject;
             }
         }
+
+        DisableActiveScreens();
+
     }
+
     public static void GoToMenu()
     {
         DisableActiveScreens();
@@ -120,15 +121,15 @@ public static class SceneLoader
 
     public static void GoToPause()
     {
+        Debug.Log("go to pause");
         DisableActiveScreens();
-        pauseScreen.SetActive(true);
+        GameObject.Find("Menus").transform.Find("Pause Screen").gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 
     public static void Resume()
     {
         DisableActiveScreens();
-        pauseScreen.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -136,7 +137,7 @@ public static class SceneLoader
     {
         Debug.Log("here");
         DisableActiveScreens();
-        controlsScreen.SetActive(true);
+        GameObject.Find("Menus").transform.Find("Controls Screen").gameObject.SetActive(true);
     }
 
     public static void exitGame()
@@ -146,16 +147,18 @@ public static class SceneLoader
 
     public static void DisableActiveScreens()
     {
-        if(controlsScreen != null && controlsScreen.activeSelf)
+      
+        if (controls != null && GameObject.Find("Menus").transform.Find("Controls Screen").gameObject.activeInHierarchy)
         {
             Debug.Log("controls if");
-            controlsScreen.SetActive(true);
- 
+            GameObject.Find("Menus").transform.Find("Controls Screen").gameObject.SetActive(false);
+
         }
 
-        if (pauseScreen != null && pauseScreen.activeSelf)
+        if (pause != null && GameObject.Find("Menus").transform.Find("Pause Screen").gameObject.activeInHierarchy)
         {
-            pauseScreen.SetActive(false);
+            Debug.Log("pause if");
+            GameObject.Find("Menus").transform.Find("Pause Screen").gameObject.SetActive(false);
         }
     }
 

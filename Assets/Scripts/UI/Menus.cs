@@ -11,7 +11,7 @@ public class Menus : MonoBehaviour
             SceneLoader.GoToGluttony();
         }
         else if (gameObject.name.Equals("Controls Button"))
-        {
+        { 
             SceneLoader.GoToControls();
         }
         else if (gameObject.name.Equals("Exit Button"))
@@ -21,6 +21,10 @@ public class Menus : MonoBehaviour
         else if (gameObject.name.Equals("Pause Back Button"))
         {
             SceneLoader.Resume();
+        }
+        else if (gameObject.name.Equals("Pause Controls Back"))
+        {
+            SceneLoader.GoToPause();
         }
         else if (gameObject.name.Equals("Controls Back Button"))
         {

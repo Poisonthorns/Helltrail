@@ -17,8 +17,6 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
-        //SelectedItemIcon = GameObject.Find("SelectedItemIcon").GetComponent<Image>();
-        //SelectedItemIcon.enabled = false;
         for(int i=0; i<slots.Length; ++i)
         {
             slots[i] = -1;
@@ -42,7 +40,6 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            //noises.PlayOneShot(itemAdded);
             noises.volume = 0.0f;
             noises.clip = itemAdded;
             noises.Play();
@@ -205,9 +202,6 @@ public class Inventory : MonoBehaviour
             {
                 currentSlot = 0;
             }
-
-            //SelectedItemIcon.enabled = true;
-           
 
         }
     }

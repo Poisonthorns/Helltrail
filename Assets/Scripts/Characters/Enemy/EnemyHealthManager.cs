@@ -66,7 +66,7 @@ public class EnemyHealthManager : MonoBehaviour
         {
             Death();
         }
-
+        Debug.Log(currentHealth);
         currentFill = currentHealth / startingHealth;
     }
     public void GainHealth(float amount)
@@ -94,7 +94,7 @@ public class EnemyHealthManager : MonoBehaviour
         Destroy(gameObject);
 
         // Win Condition for Satan
-        if(gameObject.name.Equals("Satan"))
+        if(gameObject.name.Equals("Hoggish"))
         {
             SceneManager.LoadScene("Win Screen");
         }
