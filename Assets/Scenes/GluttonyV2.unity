@@ -181,7 +181,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.635025
+  orthographic size: 4.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -345,8 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomCount: 6
-  roomWidth: 16
-  roomHeight: 10
+  roomWidth: 12
+  roomHeight: 8
   numTerrain: 030000000400000005000000020000000100000000000000
   numMonsters: 030000000300000003000000030000000300000003000000
   roomDifficulty: 050000000a00000014000000230000003700000050000000
@@ -364,8 +364,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c354641f88fc894da2b7b5db76ba10b, type: 2}
   - {fileID: 11400000, guid: 1ca846f54f35f2940beedfd3b366cfa5, type: 2}
   - {fileID: 11400000, guid: a035f81d4c83b204d8543bfda2b49ed6, type: 2}
-  - {fileID: 11400000, guid: 91170b72eae35b84e8b4cf9f1b63f1d2, type: 2}
-  - {fileID: 11400000, guid: 91170b72eae35b84e8b4cf9f1b63f1d2, type: 2}
+  - {fileID: 11400000, guid: 36876ceb3ebc55746be48f4b083ad4f7, type: 2}
+  - {fileID: 11400000, guid: ef991874864c4b845814485816815b7b, type: 2}
   - {fileID: 11400000, guid: ffc7c59f4411f664ca12e83a24b7481c, type: 2}
   - {fileID: 11400000, guid: 60ad71917a786cd4f9ef47aab4d9fb42, type: 2}
   gridObject: {fileID: 88040471}
@@ -652,8 +652,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665159692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 186, y: 17, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalPosition: {x: 140, y: 14, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8

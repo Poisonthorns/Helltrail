@@ -100,7 +100,7 @@ MonoBehaviour:
   speed: 3
   weapon: {fileID: 9156064572445127161, guid: 9c7c861a3c87f254a969ceb699e53ed8, type: 3}
   additionalDamage: 0
-  upgradedStats: {fileID: 0}
+  upgradedStats: {fileID: 7778264597260204410, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
 --- !u!50 &-4599641657209775703
 Rigidbody2D:
   serializedVersion: 4

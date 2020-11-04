@@ -8,8 +8,8 @@ public class Door : MonoBehaviour
     public int direction;
     public bool isExit;
     GameObject roomManager;
-    static bool switchh = true;
-    public bool isLimbo;
+    public static bool switchh = true;
+    public static bool doorLock = false;
     void Start()
     {
         roomManager = GameObject.Find("Manager");
@@ -25,17 +25,18 @@ public class Door : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player"))
         {
-            if(switchh)
+            if(switchh && !doorLock)
             {
+                switchh = true;
                 if(roomManager.GetComponent<LimboGeneration>()==null)
                 {
                     roomManager.GetComponent<CircleCreation>().changeRooms(isExit);
-
+                    
                 }
                 else
                 {
                     roomManager.GetComponent<LimboGeneration>().changeRooms(isExit);
-
+                    doorLock = true;
                 }
 
             }

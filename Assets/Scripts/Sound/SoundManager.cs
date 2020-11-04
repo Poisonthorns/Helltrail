@@ -61,7 +61,7 @@ public class SoundManager : MonoBehaviour
 
     public void SwitchTrackCaller(int i)
     {
-        UnityEngine.Debug.Log("made it to switch call");
+        //UnityEngine.Debug.Log("made it to switch call");
         StartCoroutine(SwitchTrack(i));
     }
 
@@ -72,7 +72,7 @@ public class SoundManager : MonoBehaviour
 
     public static IEnumerator CrossFade(AudioSource A, AudioSource B, float seconds)
     {
-        UnityEngine.Debug.Log("Starting crossfade");
+        //UnityEngine.Debug.Log("Starting crossfade");
 
         // Calculate duration of each step
         float stepInterval = seconds / 20.0f;

@@ -1,30 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+struct CharacterDialogue
+{
+    public string text;
+    public int speaker;
+    public CharacterDialogue(string t, int s)
+    {
+        text = t;
+        speaker = s;
+    }
+}
 public class Virgil : MonoBehaviour
 {
-    public int stage =  -1;
+    public int stage =  -2;
     public Vector3 target;
     bool move = false;
     bool teleport = false;
     bool dialogue = false;
     bool arrivedAtTarget = false;
     bool changeRoom = false;
-    
+    bool inDialogue = false;
+    bool triggerDialogue = false;
+    public GameObject dialogueUI;
+    public GameObject VirildialogueUI;
+    public GameObject AidendialogueUI;
+    public GameObject textUI;
+    bool doorTrigger = false;
+    public int dialogueStage = 0;
     public GameObject[] movePoints;
+    CharacterDialogue[] dialogues;
+    int dialogueEndPoint;
+    bool disabledialogue = false;
+    bool pause = false;
+    public int enemycount;
+    bool killingPart = false;
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(14.5f, 14.5f, -2);
+        transform.position = new Vector3(20.5f, 14.5f, -2);
         target = transform.position;
-        //next();
+        dialogueUI.SetActive(false);
+        dialogues = new CharacterDialogue[16];
+        dialogues[0] = new CharacterDialogue("huh? Where am I?", 0);
+        dialogues[1] = new CharacterDialogue("You’re in Limbo. You’ve been sent to help us.", 1);
+        dialogues[2] = new CharacterDialogue("Help you? How?", 0);
+        dialogues[3] = new CharacterDialogue("Satan has taken pure souls from the mortal realm illegally. We have been unable to reach them, but the border between the afterlife and the mortal realm has begun to weaken. We must take this opportunity to rescue them before they are stuck in the underworld forever. ", 1);
+        dialogues[4] = new CharacterDialogue("But why me?", 0);
+        dialogues[5] = new CharacterDialogue("Satan has captured and corrupted many of the world’s most powerful warriors and saints. However, only a mortal can traverse both heaven and hell. That’s why god chose you, a pure soul with a strong resistance to the corruption and temptation of hell, to reclaim the lost souls.", 1);
+        dialogues[6] = new CharacterDialogue("We are able to get you to the third circle of hell if we hurry.", 1);
+        dialogues[7] = new CharacterDialogue("First, you’ll need some weapons. Here’s a small dagger. You’ll need it. Use it by pressing the arrows keys in the direction of your attack. This will deal a small amount of damage, but you can use it quickly. When you’re ready, let’s head to the next room, I heard something coming from there. Use the WASD keys to move around.", 1);
+        dialogues[8] = new CharacterDialogue("A Wretch! These enemies are common in all circles of Hell. They are quick but pretty easy to kill! Use your dagger to attack. .", 1);
+        dialogues[9] = new CharacterDialogue("It looks like that enemy had a sword from a fallen soldier. You can use that on your journey, it will be stronger but slower than your dagger.", 1);
+        dialogues[10] = new CharacterDialogue("To rotate between your weapons use the key ‘Q’. There are a lot of enemies in here, if you see your health bar dropping, look for a health potion for strength. ", 1);
+        dialogues[11] = new CharacterDialogue("That was close. If you find yourself needing help, always keep your eyes open for potions, they can help you in lots of ways. Also, it looks like you now have a bow and arrow! That will be useful for ranged attacks. ", 1);
+        dialogues[12] = new CharacterDialogue("It looks like one of the gluttony monsters has wandered into Limbo!", 1);
+        dialogues[13] = new CharacterDialogue("A soul! One of the monsters must’ve trapped it inside them! You can use these freed souls to help fuel your journey.", 1);
+        dialogues[14] = new CharacterDialogue("It looks like we’ve made it to the entry of the Gluttony circle of hell. I think you’re ready to head on your journey. Remember, every circle of hell will contain the sin it embodies. Giving in to these sins, will only make these enemies stronger.", 1);
+        dialogues[15] = new CharacterDialogue("We wish you luck on your journey. You are our only hope in returning these pure souls to the world.", 1);
+ 
+        next();
     }
     void Update()
     {
         if (move)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, 3*Time.deltaTime);
             if(Vector3.Distance(transform.position, target) < 0.1)
             {
                 move = false;
@@ -32,9 +74,11 @@ public class Virgil : MonoBehaviour
                 if(changeRoom)
                 {
                     changeRoom = false;
+                    print("asdf2");
                     next();
 
                 }
+
             }
         }
         else if(teleport)
@@ -42,27 +86,119 @@ public class Virgil : MonoBehaviour
             transform.position = target;
             arrivedAtTarget = true;
             teleport = false;
+            print("asdf3");
+
             next();
         }
-        else if(dialogue)
+        if(triggerDialogue&&arrivedAtTarget&&doorTrigger)
         {
-            //doDialogue
+            //next();
+            //triggerDialogue = false;
         }
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
+            print(stage);
+            if(inDialogue)
+            {
+                nextDialogue();
+
+
+
+            }
+            else
+            {
+                dialogueUI.SetActive(false);
+                Door.doorLock = false;
+                //next();
+            }
+            if(pause&&!killingPart)
+            {
+                pause = false;
+
+                next();
+            }
             print("enter pressed");
+        }
+        int temp = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        //print(temp);
+        if (temp == enemycount-3 &&killingPart)
+        {
+            enemycount -= 3;
+            pause = false;
+            killingPart = false;
             next();
+            print("this ran");
         }
     }
-    void next()
+    public void fix()
     {
-        ++stage;
+        //dialogueEndPoint++;
+    }
+    void nextDialogue()
+    {
+        if(dialogueStage>= dialogues.Length)
+        {
+            inDialogue = false;
+
+            return;
+        }
+        CharacterDialogue d = dialogues[dialogueStage];
+        if(d.speaker==0)
+        {
+            VirildialogueUI.SetActive(false);
+            AidendialogueUI.SetActive(true);
+            textUI.GetComponent<Text>().text = d.text;
+        }
+        else
+        {
+            VirildialogueUI.SetActive(true);
+            AidendialogueUI.SetActive(false);
+            textUI.GetComponent<Text>().text = d.text;
+        }
+        print(dialogueStage);
+        print(dialogueEndPoint);
+        dialogueStage++;
+
+        if (dialogueStage == dialogueEndPoint)
+        {
+            inDialogue = false;
+            print("asdf5");
+            if(pause)
+            {
+
+            }
+            else
+            {
+                next();
+
+            }
+
+        }
+
+    }
+    void doDialogue()
+    {
+        dialogueUI.SetActive(true);
+        inDialogue = true;
+        print("doing dialogue");
+        nextDialogue();
+    }
+    public void next()
+    {
+        
         switch (stage)
         {
+            case -1:
+                {
+                    doDialogue();
+                    dialogueEndPoint = 8;
+                    break;
+                }
             case 0:
+
                 {
                     move = true;
-                    target = new Vector3(18.5f, 14.5f, -2);
+                    target = new Vector3(26.5f, 14.5f, -2);
                     arrivedAtTarget = false;
                     changeRoom = true;
                     //do Dialogue
@@ -72,38 +208,45 @@ public class Virgil : MonoBehaviour
                 {
 
                     teleport = true;
-                    target = new Vector3(25, 14.5f, -2);
+                    target = new Vector3(37.5f, 14.5f, -2);
                     break;
                 }
+
             case 2:
                 {
                     move = true;
-                    target = new Vector3(30.5f, 14.5f, -2);
+                    target = new Vector3(44.5f, 14.5f, -2);
                     arrivedAtTarget = false;
+                    triggerDialogue = true;
                     break;
                 }
             case 3:
                 {
-                    changeRoom = true;
-                    move = true;
-                    target = new Vector3(34.5f, 14.5f, -2);
-                    arrivedAtTarget = false;
+                    dialogueEndPoint = 9;
+                    pause = true;
+                    killingPart = true;
+
+                    doDialogue();
+
+                    break;
+                }
+            case 222:
+                {
+                    //dialogueEndPoint = 9;
+                    print("----------------");
+                    //doDialogue();
+                    next();
                     break;
                 }
             case 4:
                 {
-                    teleport = true;
-                    target = new Vector3(41.5f, 14.5f, -2);
+                    dialogueEndPoint = 10;
+                    pause = true;
+                    doDialogue();
                     break;
                 }
+
             case 5:
-                {
-                    move = true;
-                    target = new Vector3(46.5f, 14.5f, -2);
-                    arrivedAtTarget = false;
-                    break;
-                }
-            case 6:
                 {
                     changeRoom = true;
                     move = true;
@@ -111,58 +254,157 @@ public class Virgil : MonoBehaviour
                     arrivedAtTarget = false;
                     break;
                 }
-            case 7:
+            case 6:
                 {
                     teleport = true;
-                    target = new Vector3(57.5f, 14.5f, -2);
+                    target = new Vector3(61.5f, 14.5f, -2);
                     break;
                 }
-            case 8:
+            case 7:
                 {
                     move = true;
-                    target = new Vector3(62.5f, 14.5f, -2);
+                    target = new Vector3(68.5f, 14.5f, -2);
                     arrivedAtTarget = false;
                     break;
                 }
+
+            case 8:
+                {
+                    dialogueEndPoint = 11;
+                    pause = true;
+                    killingPart = true;
+                    //stage += 1;
+                    doDialogue();
+                    break;
+                }
+
             case 9:
+                {
+                    dialogueEndPoint = 12;
+                    pause = true;
+                    doDialogue();
+                    break;
+                }
+
+            case 10:
                 {
                     changeRoom = true;
                     move = true;
-                    target = new Vector3(66.5f, 14.5f, -2);
+                    target = new Vector3(74.5f, 14.5f, -2);
                     arrivedAtTarget = false;
-                    break;
-                }
-            case 10:
-                {
-                    teleport = true;
-                    target = new Vector3(73.5f, 14.5f, -2);
                     break;
                 }
             case 11:
                 {
-                    changeRoom = true;
-
-                    move = true;
-                    target = new Vector3(75.5f, 14.5f, -2);
-                    arrivedAtTarget = false;
+                    teleport = true;
+                    target = new Vector3(85.5f, 14.5f, -2);
                     break;
                 }
             case 12:
                 {
-                    changeRoom = true;
                     move = true;
-                    target = new Vector3(75.5f, 11.5f, -2);
+                    target = new Vector3(92.5f, 14.5f, -2);
                     arrivedAtTarget = false;
                     break;
                 }
+
+
             case 13:
+                {
+                    dialogueEndPoint = 13;
+                    pause = true;
+                    killingPart = true;
+                    doDialogue();
+                    break;
+                }
+
+
+            case 14:
+                {
+                    dialogueEndPoint = 14;
+                    pause = true;
+
+                    doDialogue();
+                    break;
+                }
+
+
+
+
+            case 15:
                 {
                     changeRoom = true;
                     move = true;
-                    target = new Vector3(78.5f, 11.5f, -2);
+                    target = new Vector3(98.5f, 14.5f, -2);
                     arrivedAtTarget = false;
                     break;
                 }
+            case 16:
+                {
+                    teleport = true;
+                    target = new Vector3(109.5f, 14.5f, -2);
+                    break;
+                }
+            case 17:
+                {
+                    changeRoom = true;
+
+                    move = true;
+                    target = new Vector3(112.5f, 14.5f, -2);
+                    arrivedAtTarget = false;
+                    break;
+                }
+            case 18:
+                {
+
+                    break;
+                }
+
+            /*
+
+                        case 22:
+                            {
+                                changeRoom = true;
+                                move = true;
+                                target = new Vector3(122.5f, 14.5f, -2);
+                                arrivedAtTarget = false;
+                                break;
+                            }
+                        case 23:
+                            {
+                                teleport = true;
+                                target = new Vector3(133.5f, 14.5f, -2);
+                                break;
+                            }
+                        case 24:
+                            {
+                                changeRoom = true;
+
+                                move = true;
+                                target = new Vector3(136.5f, 14.5f, -2);
+                                arrivedAtTarget = false;
+                                break;
+                            }
+                            */
+
+
+
+            case 19:
+                {
+                    dialogueEndPoint = 17;
+
+                    doDialogue();
+                    break;
+                }
+
+
+
+
+
+
+        
         }
+        ++stage;
+
     }
 }

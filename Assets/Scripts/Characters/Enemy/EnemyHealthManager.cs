@@ -88,7 +88,17 @@ public class EnemyHealthManager : MonoBehaviour
 
     void Death()
     {
-        anim.SetBool("Dead", true);
+        // Win Condition for Satan
+        if (gameObject.tag.Equals("Boss"))
+        {
+            SceneManager.LoadScene("Win Screen");
+        }
+
+        if (gameObject.tag == "Enemy")
+        {
+            anim.SetBool("Dead", true);
+        }
+
         //enemyNoises.PlayOneShot(enemyDeath, 1.0f);
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;
@@ -97,11 +107,5 @@ public class EnemyHealthManager : MonoBehaviour
         puddleObj.transform.localScale = new Vector3(Random.Range(0.2f, 0.25f), Random.Range(0.2f, 0.25f), 1.0f);
         Instantiate(soul, transform.position, transform.rotation);
         Destroy(gameObject);
-
-        // Win Condition for Satan
-        if(gameObject.name.Equals("Hoggish"))
-        {
-            SceneManager.LoadScene("Win Screen");
-        }
     }
 }
