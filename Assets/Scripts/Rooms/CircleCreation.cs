@@ -59,6 +59,7 @@ public class CircleCreation : MonoBehaviour
         GameObject p = Instantiate(player, new Vector3( roomWidth+ roomWidth/2.0f + 2.5f, roomHeight + 2.5f, 0), Quaternion.identity);
         p.name = "Player";
         print("player created");
+        Door.doorLock = false;
     }
     void drawEnemies(int room)
     {
@@ -307,23 +308,23 @@ public class CircleCreation : MonoBehaviour
         for (int i=0; i<roomCount; ++i)
         {
             Room currentRoom = roomMap[i];
-            for (int a = -1; a<=roomWidth; ++a)
+            for (int a = -2; a<=roomWidth+1; ++a)
             {
-                for (int b = -1; b <= roomHeight; ++b)
+                for (int b = -2; b <= roomHeight+1; ++b)
                 {
-                    if (a == -1)
+                    if (a <= -1)
                     {
                         tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[1]);
                     }
-                    else if (a == roomWidth)
+                    else if (a >= roomWidth)
                     {
                         tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[1]);
                     }
-                    else if (b == -1)
+                    else if (b <= -1)
                     {
                         tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[1]);
                     }
-                    else if (b == roomHeight)
+                    else if (b >= roomHeight)
                     {
                         tileMapCollision.SetTile(new Vector3Int(a + tileXOffset, b + tileYOffset, 0), tiles[1]);
                     }

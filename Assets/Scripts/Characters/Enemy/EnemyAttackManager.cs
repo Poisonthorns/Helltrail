@@ -59,6 +59,8 @@ public class EnemyAttackManager : MonoBehaviour
 
     private void normalAttack()
 	{
+        PlayerObject = GameObject.Find("Player");
+
         float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
         if (distance <= 1.0f)
         {
