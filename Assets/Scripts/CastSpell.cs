@@ -34,8 +34,8 @@ public class CastSpell : MonoBehaviour
         satanSpellAudio.PlayOneShot(fireSound);
         Grid grid = gridObject.GetComponent<Grid>();
         Tilemap tilemap = tileMapObject.GetComponent<Tilemap>();
-        Instantiate(fireBall, grid.GetCellCenterWorld(new Vector3Int(0, 0, 0)), Quaternion.Euler(0, 0, 90));
-
+        //Instantiate(fireBall, grid.GetCellCenterWorld(new Vector3Int(0, 0, 0)), Quaternion.Euler(0, 0, 90));
+        Instantiate(fireBall, GameObject.Find("Hoggish").transform.position + new Vector3(-2.5f, 0f, 0f), Quaternion.Euler(0, 0, 90));
 
 
 

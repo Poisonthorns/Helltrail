@@ -62,12 +62,25 @@ public class EnemyAttackManager : MonoBehaviour
         PlayerObject = GameObject.Find("Player");
 
         float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
-        if (distance <= 1.0f)
+        if (distance <= 1.5f)
         {
             anim.Play("Attack");
-            HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
+            //Delay
+            StartCoroutine("waitForMelee", 0.2f);
             Debug.Log("attacking");
         }
+    }
+
+    IEnumerator waitForNormalAttack(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        if (distance <= 1.0f)
+        {
+            HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
+        }
+
+        yield return null;
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class BossActionManager : MonoBehaviour
@@ -22,6 +23,8 @@ public class BossActionManager : MonoBehaviour
         {
             print("wtf");
         }
+
+        nextDamageEvent = Time.time + attackDelay * 5;
     }
  
     void Update()
@@ -35,6 +38,7 @@ public class BossActionManager : MonoBehaviour
         {
             ++counter;
         }*/
+        
         if (Time.time >= nextDamageEvent)
         {
             nextDamageEvent = Time.time + attackDelay;
