@@ -22,6 +22,9 @@ public class EnemyHealthManager : MonoBehaviour
     // Damage particle effect
     public GameObject blood;
 
+    // Blood puddle left after death
+    public GameObject puddle;
+
     public GameObject soul;
 
     //aniamtion
@@ -90,6 +93,8 @@ public class EnemyHealthManager : MonoBehaviour
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
+        GameObject puddleObj = Instantiate(puddle, transform.position, Quaternion.identity);
+        puddleObj.transform.localScale = new Vector3(Random.Range(0.2f, 0.25f), Random.Range(0.2f, 0.25f), 1.0f);
         Instantiate(soul, transform.position, transform.rotation);
         Destroy(gameObject);
 
