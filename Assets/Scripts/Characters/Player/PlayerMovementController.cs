@@ -21,6 +21,7 @@ public class PlayerMovementController : MonoBehaviour
 	public GameObject spriteDown;
 	public GameObject spriteRight;
 	public GameObject spriteLeft;
+	public PlayerCombatController combatController;
 
 	public float upgradedSpeed;
 	// Start is called before the first frame update
@@ -76,23 +77,22 @@ public class PlayerMovementController : MonoBehaviour
 		{
 			if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
 			{
-
+				//Movement animation here (this handles both up and down, you'll need to check which is happening)
+				animDown.SetBool("Walking", true);
+				animUp.SetBool("Walking", true);
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 1f), .2f, collideables))
 				{
-					//Movement animation here (this handles both up and down, you'll need to check which is happening)
-					animDown.SetBool("Walking", true);
-					animUp.SetBool("Walking", true);
 					movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
 
 					//Up and Down Animations
-					if(Input.GetKey(KeyCode.W))
+					if(Input.GetKey(KeyCode.W) && !combatController.attacking) 
 					{
 						spriteUp.SetActive(true);
 						spriteDown.SetActive(false);
 						spriteRight.SetActive(false);
 						spriteLeft.SetActive(false);
 					}
-					else if (Input.GetKey(KeyCode.S))
+					else if (Input.GetKey(KeyCode.S) && !combatController.attacking)
 					{
 						spriteUp.SetActive(false);
 						spriteDown.SetActive(true);
@@ -103,22 +103,22 @@ public class PlayerMovementController : MonoBehaviour
 			}
 			else if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
 			{
-					animRight.SetBool("Walking", true);
-					animLeft.SetBool("Walking", true);
+				animRight.SetBool("Walking", true);
+				animLeft.SetBool("Walking", true);
 				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 1f), .2f, collideables))
 				{
 					//Movement animation here (this handles both left and right, you'll need to check which is happening)
 					movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
 
 					//Left and Right Animations
-					if(Input.GetKey(KeyCode.A))
+					if(Input.GetKey(KeyCode.A) && !combatController.attacking)
 					{
 						spriteUp.SetActive(false);
 						spriteDown.SetActive(false);
 						spriteRight.SetActive(false);
 						spriteLeft.SetActive(true);
 					}
-					else if (Input.GetKey(KeyCode.D))
+					else if (Input.GetKey(KeyCode.D) && !combatController.attacking)
 					{
 						spriteUp.SetActive(false);
 						spriteDown.SetActive(false);

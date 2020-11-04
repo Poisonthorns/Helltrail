@@ -32,6 +32,7 @@ public class PlayerCombatController : MonoBehaviour
 	public GameObject spriteDown;
 	public GameObject spriteRight;
 	public GameObject spriteLeft;
+	public bool attacking;
 
 	public GameObject upgradedStats;
 
@@ -224,7 +225,6 @@ public class PlayerCombatController : MonoBehaviour
 		{
 			
 			Debug.Log("PlayerCombatController Attack");
-
 			//Animation for light attack here
 			if (lightAttack)
 			{
