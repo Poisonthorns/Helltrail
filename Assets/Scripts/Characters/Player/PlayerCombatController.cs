@@ -24,7 +24,14 @@ public class PlayerCombatController : MonoBehaviour
 	public bool lightAttack = true;
 	public bool heavyAttack = false;
 	public bool rangeAttack = false;
-	public Animator anim;
+	public Animator animUp;
+	public Animator animDown;
+	public Animator animRight;
+	public Animator animLeft;
+	public GameObject spriteUp;
+	public GameObject spriteDown;
+	public GameObject spriteRight;
+	public GameObject spriteLeft;
 
 	public GameObject upgradedStats;
 
@@ -99,24 +106,48 @@ public class PlayerCombatController : MonoBehaviour
 				Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
 				arrowPosition += transform.position;
 				RangedAttack(225f, arrowPosition);
+
+				//Animation
+				spriteUp.SetActive(true);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
 				arrowPosition += transform.position;
 				RangedAttack(45f, arrowPosition);
+
+				//Animation
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(true);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
 			}
 			else if(Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
 				arrowPosition += transform.position;
 				RangedAttack(-45f, arrowPosition);
+
+				//Animation
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(true);
 			}
 			else if(Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
 				arrowPosition += transform.position;
 				RangedAttack(135f, arrowPosition);
+
+				//Animation
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(true);
+				spriteLeft.SetActive(false);
 			}
 		}
 		else
@@ -127,21 +158,45 @@ public class PlayerCombatController : MonoBehaviour
 				attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
 				Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
 				Attack();
+
+				//Animation
+				spriteUp.SetActive(true);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
 				Attack();
+
+				//Animation
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(true);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
 			}
 			else if(Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
 				Attack();
+
+				//Animation
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(true);
 			}
 			else if(Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
 				Attack();
+
+				//Animation
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(true);
+				spriteLeft.SetActive(false);
 			}
 		}
 	}
@@ -150,6 +205,12 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		if (Time.time > timeSinceLastAttack)
 		{
+			//animation
+			animUp.Play("Ranged Attack");
+			animDown.Play("Ranged Attack");
+			animRight.Play("Ranged Attack");
+			animLeft.Play("Ranged Attack");
+
 			GameObject newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, arrowRotation));
 			newArrow.GetComponent<Arrow>().SetRotation(arrowRotation);
 			newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
@@ -163,18 +224,24 @@ public class PlayerCombatController : MonoBehaviour
 		{
 			
 			Debug.Log("PlayerCombatController Attack");
-			//If statements for attack aniamations
+
 			//Animation for light attack here
 			if (lightAttack)
 			{
-				anim.Play("Light Attack");
+				animUp.Play("Light Attack");
+				animDown.Play("Light Attack");
+				animRight.Play("Light Attack");
+				animLeft.Play("Light Attack");
 			}
-
 			//Animation for heavy attack
 			else if (heavyAttack)
 			{
-				anim.Play("Heavy Attack");
+				animUp.Play("Heavy Attack");
+				animDown.Play("Heavy Attack");
+				animRight.Play("Heavy Attack");
+				animLeft.Play("Heavy Attack");
 			}
+
 			Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
 			foreach (Collider2D enemy in enemies)
 			{
