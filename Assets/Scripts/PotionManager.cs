@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PotionManager : MonoBehaviour
 {
@@ -30,10 +32,23 @@ public class PotionManager : MonoBehaviour
     public GameObject bombExplosion;
 
     private GameObject playerStatus;
+    private GameObject statusText;
 
     public void Start()
     {
         potionUsed = GetComponent<AudioSource>();
+
+        foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        {
+            if (go.name.Equals("Status Text"))
+            {
+                statusText = go;
+                break;
+            }
+        }
+        statusText.GetComponent<Text>().text = "";
+        Debug.Log("changed to " + statusText.GetComponent<Text>().text);
+        Debug.Log(statusText != null);
     }
 
     void healthPotion()
@@ -58,6 +73,9 @@ public class PotionManager : MonoBehaviour
         playerStatus = GameObject.Find("Player Health Bar");
         playerStatus.GetComponent<PlayerHealthController>().GainHealth(20);
         playerStatus.GetComponent<PlayerHealthController>().PlayParticle(healthUp);
+        statusText.GetComponent<Text>().text = "Health Up";
+        Debug.Log("changed to " + statusText.GetComponent<Text>().text);
+        StartCoroutine(PotionExpire(1, 5));
 
     }
     void defensePotion()
@@ -82,6 +100,9 @@ public class PotionManager : MonoBehaviour
         playerStatus = GameObject.Find("Player Health Bar");
         playerStatus.GetComponent<PlayerHealthController>().GainHealth(20);
         playerStatus.GetComponent<PlayerHealthController>().PlayParticle(defenseUp);
+        statusText.GetComponent<Text>().text = "Defense Up";
+        Debug.Log("changed to " + statusText.GetComponent<Text>().text);
+        StartCoroutine(PotionExpire(3, 5));
     }
 
     /*
@@ -120,6 +141,8 @@ public class PotionManager : MonoBehaviour
         playerStatus.GetComponent<PlayerCombatController>().additionalDamage += 20;
         playerStatus = GameObject.Find("Player Health Bar");
         playerStatus.GetComponent<PlayerHealthController>().PlayParticle(damageUp);
+        statusText.GetComponent<Text>().text = "Damage Up";
+        Debug.Log("changed to " + statusText.GetComponent<Text>().text);
         StartCoroutine(PotionExpire(4 , 20));
     }
 
@@ -147,24 +170,26 @@ public class PotionManager : MonoBehaviour
         playerStatus.GetComponent<PlayerCombatController>().Arrow.GetComponent<Arrow>().speed += 7.0f;
         playerStatus = GameObject.Find("Player Health Bar");
         playerStatus.GetComponent<PlayerHealthController>().PlayParticle(rangeUp);
+        statusText.GetComponent<Text>().text = "Range Up";
+        Debug.Log("changed to " + statusText.GetComponent<Text>().text);
         StartCoroutine(PotionExpire(5, 20));
     }
     IEnumerator PotionExpire(int type, int seconds)
     {
-       
 
         yield return new WaitForSeconds(seconds);
+        statusText.GetComponent<Text>().text = "";
+        Debug.Log("changed to " + statusText.GetComponent<Text>().text);
         switch (type)
         {
             case 1:
-                print("no");
+                print("health up done");
                 break;
             case 2:
                 print("notyet speed");
                 break;
             case 3:
-                print("defense expired");
-
+                print("defense up expired");
                 break;
             case 4:
                 print("damage up expired");
