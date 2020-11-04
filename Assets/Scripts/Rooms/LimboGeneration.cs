@@ -37,7 +37,7 @@ public class LimboGeneration : MonoBehaviour
         drawDoors();
 
         GameObject.Find("Main Camera").transform.position = new Vector3((roomWidth / 2) + roomWidth + 2, (roomHeight / 2) + roomHeight + 2, -10);
-        GameObject p = Instantiate(player, new Vector3(roomWidth + roomWidth / 2.0f + 2.5f, roomHeight + 2.5f, 0), Quaternion.identity);
+        GameObject p = Instantiate(player, new Vector3(roomWidth + roomWidth / 2.0f + 2.5f, roomHeight + 2.5f, -0.1f), Quaternion.identity);
         p.name = "Player";
         print("player created");
         Door.doorLock = true;
@@ -56,7 +56,7 @@ public class LimboGeneration : MonoBehaviour
             Vector3 newPos = grid.CellToWorld(new Vector3Int(tempX, tempY, 0));
             newPos.x += 0.5f;
             newPos.y += 0.5f;
-
+            newPos.z = -0.1f;
             GameObject.Find("Player").transform.position = newPos;
             GameObject.Find("Move Point").transform.position = newPos;
 
