@@ -312,7 +312,7 @@ public class PlayerCombatController : MonoBehaviour
 				spriteLeft.SetActive(false);
 
 				//Delay
-				StartCoroutine("waitForMelee", 0.6f);
+				StartCoroutine("waitForMelee", 1.0f);
 			}
 			else if (heavyAttack && downAttack)
 			{
@@ -323,7 +323,7 @@ public class PlayerCombatController : MonoBehaviour
 				spriteLeft.SetActive(false);
 
 				//Delay
-				StartCoroutine("waitForMelee", 0.6f);
+				StartCoroutine("waitForMelee", 1.0f);
 			}
 			else if (heavyAttack && rightAttack)
 			{
@@ -334,7 +334,7 @@ public class PlayerCombatController : MonoBehaviour
 				spriteLeft.SetActive(false);
 
 				//Delay
-				StartCoroutine("waitForMelee", 0.6f);
+				StartCoroutine("waitForMelee", 1.0f);
 			}
 			else if (heavyAttack && leftAttack)
 			{
@@ -345,7 +345,7 @@ public class PlayerCombatController : MonoBehaviour
 				spriteLeft.SetActive(true);
 
 				//Delay
-				StartCoroutine("waitForMelee", 0.6f);
+				StartCoroutine("waitForMelee", 1.0f);
 			}
 		}
 	}

@@ -17,7 +17,6 @@ public class EnemyAttackManager : MonoBehaviour
     public float attackRate = 3;
     private float timeSinceLastAttack;
     public float attackDamage;
-    //public float distance = 1.0f;
 
     //animation
     public Animator anim;
@@ -66,24 +65,23 @@ public class EnemyAttackManager : MonoBehaviour
         if (distance <= 1.5f)
         {
             anim.Play("Attack");
-            HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
             //Delay
-            // StartCoroutine("waitForMelee", 0.2f);
-            // Debug.Log("attacking");
+            StartCoroutine("waitForMelee", 0.2f);
+            Debug.Log("attacking");
         }
     }
 
-    // IEnumerator waitForNormalAttack(float waitTime)
-    // {
-    //     yield return new WaitForSeconds(waitTime);
+    IEnumerator waitForNormalAttack(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
 
-    //     if (distance <= 1.0f)
-    //     {
-    //         HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
-    //     }
+        if (distance <= 1.0f)
+        {
+            HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
+        }
 
-    //     yield return null;
-    // }
+        yield return null;
+    }
 }
 
 
