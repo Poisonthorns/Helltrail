@@ -23,7 +23,6 @@ public class PlayerCombatController : MonoBehaviour
 	//booleans here to know what weapon is currently equipped for animations along with animator
 	public bool lightAttack = true;
 	public bool heavyAttack = false;
-	public bool rangeAttack = false;
 	public Animator animUp;
 	public Animator animDown;
 	public Animator animRight;
@@ -33,6 +32,10 @@ public class PlayerCombatController : MonoBehaviour
 	public GameObject spriteRight;
 	public GameObject spriteLeft;
 	public bool attacking;
+	public bool upAttack;
+	public bool downAttack;
+	public bool rightAttack;
+	public bool leftAttack;
 
 	public GameObject upgradedStats;
 
@@ -45,7 +48,6 @@ public class PlayerCombatController : MonoBehaviour
 
 		lightAttack = true;
 		heavyAttack = false;
-		rangeAttack = false;
 	}
 
 	// Update is called once per frame
@@ -70,7 +72,6 @@ public class PlayerCombatController : MonoBehaviour
 											 //for light attack animation
 				lightAttack = true;
 				heavyAttack = false;
-				rangeAttack = false;
 				weapon = allWeapons[weaponIndex];
 			}
 			else
@@ -83,7 +84,6 @@ public class PlayerCombatController : MonoBehaviour
 												 //for heavy attack animation
 					lightAttack = false;
 					heavyAttack = true;
-					rangeAttack = false;
 				}
 				else if (weapon.GetComponent<BaseWeapon>().attackDamage == 10)
 				{
@@ -91,7 +91,6 @@ public class PlayerCombatController : MonoBehaviour
 												 //for light attack animation
 					lightAttack = true;
 					heavyAttack = false;
-					rangeAttack = false;
 				}
 				else if (weapon.GetComponent<BaseWeapon>().attackDamage == 5)
 				{
@@ -99,7 +98,6 @@ public class PlayerCombatController : MonoBehaviour
 												 //for range attack animation
 					lightAttack = false;
 					heavyAttack = false;
-					rangeAttack = true;
 				}
 			}
 			Debug.Log("Swap weapon");
@@ -110,50 +108,40 @@ public class PlayerCombatController : MonoBehaviour
 			{
 				Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
 				arrowPosition += transform.position;
-				//Animation
-				spriteUp.SetActive(true);
-				spriteDown.SetActive(false);
-				spriteRight.SetActive(false);
-				spriteLeft.SetActive(false);
-				
+				upAttack = true;
+				downAttack = false;
+				rightAttack = false;
+				leftAttack = false;
 				RangedAttack(225f, arrowPosition);
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
 				arrowPosition += transform.position;
-				//Animation
-				spriteUp.SetActive(false);
-				spriteDown.SetActive(true);
-				spriteRight.SetActive(false);
-				spriteLeft.SetActive(false);
-
+				upAttack = false;
+				downAttack = true;
+				rightAttack = false;
+				leftAttack = false;
 				RangedAttack(45f, arrowPosition);
 			}
 			else if(Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
 				arrowPosition += transform.position;
-
-				//Animation
-				spriteUp.SetActive(false);
-				spriteDown.SetActive(false);
-				spriteRight.SetActive(false);
-				spriteLeft.SetActive(true);
-
+				upAttack = false;
+				downAttack = false;
+				rightAttack = false;
+				leftAttack = true;
 				RangedAttack(-45f, arrowPosition);
 			}
 			else if(Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
 				arrowPosition += transform.position;
-				
-				//Animation
-				spriteUp.SetActive(false);
-				spriteDown.SetActive(false);
-				spriteRight.SetActive(true);
-				spriteLeft.SetActive(false);
-
+				upAttack = false;
+				downAttack = false;
+				rightAttack = true;
+				leftAttack = false;
 				RangedAttack(135f, arrowPosition);
 			}
 		}
@@ -164,49 +152,37 @@ public class PlayerCombatController : MonoBehaviour
 			{
 				attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
 				Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
-
-				//Animation
-				spriteUp.SetActive(true);
-				spriteDown.SetActive(false);
-				spriteRight.SetActive(false);
-				spriteLeft.SetActive(false);
-
+				upAttack = true;
+				downAttack = false;
+				rightAttack = false;
+				leftAttack = false;
 				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
-
-				//Animation
-				spriteUp.SetActive(false);
-				spriteDown.SetActive(true);
-				spriteRight.SetActive(false);
-				spriteLeft.SetActive(false);
-
+				upAttack = false;
+				downAttack = true;
+				rightAttack = false;
+				leftAttack = false;
 				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
-
-				//Animation
-				spriteUp.SetActive(false);
-				spriteDown.SetActive(false);
-				spriteRight.SetActive(false);
-				spriteLeft.SetActive(true);
-
+				upAttack = false;
+				downAttack = false;
+				rightAttack = false;
+				leftAttack = true;
 				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
-
-				//Animation
-				spriteUp.SetActive(false);
-				spriteDown.SetActive(false);
-				spriteRight.SetActive(true);
-				spriteLeft.SetActive(false);
-
+				upAttack = false;
+				downAttack = false;
+				rightAttack = true;
+				leftAttack = false;
 				Attack();
 			}
 		}
@@ -219,13 +195,50 @@ public class PlayerCombatController : MonoBehaviour
 			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
 
 			//animation
-			animUp.Play("Ranged Attack");
-			animDown.Play("Ranged Attack");
-			animRight.Play("Ranged Attack");
-			animLeft.Play("Ranged Attack");
-
-			//Delay
-			StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+			if(upAttack)
+			{
+				animUp.Play("Ranged Attack");
+				spriteUp.SetActive(true);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
+				
+				//Delay
+				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+			}
+			else if(downAttack)
+			{
+				animDown.Play("Ranged Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(true);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
+				
+				//Delay
+				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+			}
+			else if(rightAttack)
+			{
+				animRight.Play("Ranged Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(true);
+				spriteLeft.SetActive(false);
+				
+				//Delay
+				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+			}
+			else if(leftAttack)
+			{
+				animLeft.Play("Ranged Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(true);
+				
+				//Delay
+				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+			}
 		}
 	}
 	void Attack()
@@ -235,23 +248,92 @@ public class PlayerCombatController : MonoBehaviour
 			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
 			Debug.Log("PlayerCombatController Attack");
 			//Animation for light attack here
-			if(lightAttack)
+			if(lightAttack && upAttack)
 			{
 				animUp.Play("Light Attack");
+				spriteUp.SetActive(true);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
+
+				//Delay
+				StartCoroutine("waitForMelee", 0.5f);
+			}
+			else if(lightAttack && downAttack)
+			{
 				animDown.Play("Light Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(true);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
+
+				//Delay
+				StartCoroutine("waitForMelee", 0.5f);
+			}
+			else if(lightAttack && rightAttack)
+			{
 				animRight.Play("Light Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(true);
+				spriteLeft.SetActive(false);
+
+				//Delay
+				StartCoroutine("waitForMelee", 0.5f);
+			}
+			else if(lightAttack && leftAttack)
+			{
 				animLeft.Play("Light Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(true);
+
+				//Delay
+				StartCoroutine("waitForMelee", 0.5f);
+			}
+
+			//Animation for heavy attack
+			else if (heavyAttack && upAttack)
+			{
+				animUp.Play("Heavy Attack");
+				spriteUp.SetActive(true);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
 
 				//Delay
 				StartCoroutine("waitForMelee", 1.0f);
 			}
-			//Animation for heavy attack
-			else if (heavyAttack)
+			else if (heavyAttack && downAttack)
 			{
-				animUp.Play("Heavy Attack");
 				animDown.Play("Heavy Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(true);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
+
+				//Delay
+				StartCoroutine("waitForMelee", 1.0f);
+			}
+			else if (heavyAttack && rightAttack)
+			{
 				animRight.Play("Heavy Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(true);
+				spriteLeft.SetActive(false);
+
+				//Delay
+				StartCoroutine("waitForMelee", 1.0f);
+			}
+			else if (heavyAttack && leftAttack)
+			{
 				animLeft.Play("Heavy Attack");
+				spriteUp.SetActive(false);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(true);
 
 				//Delay
 				StartCoroutine("waitForMelee", 1.0f);
