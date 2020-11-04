@@ -11,24 +11,25 @@ public class Arrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(arrowRotation);
+        upgradedStats = GameObject.FindGameObjectsWithTag("Stats")[0];
+        //Debug.Log(arrowRotation);
         Destroy(gameObject, 2.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(arrowRotation);
+        //Debug.Log(arrowRotation);
         //Debug.Log(transform.position);
         transform.position += movementDirection * Time.deltaTime * speed;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag.Equals("Enemy"))
+        if(col.gameObject.tag.Equals("Enemy") || col.gameObject.tag == "Boss")
         {
-            Debug.Log("enemy hit");
-            col.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
+            Debug.Log("Enemy hit" + (weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage));
+            col.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage);
             Destroy(gameObject);
         }
     }
@@ -36,7 +37,7 @@ public class Arrow : MonoBehaviour
     public void SetRotation(float rot)
 	{
         arrowRotation = rot;
-        Debug.Log(arrowRotation);
+        //Debug.Log(arrowRotation);
         if (arrowRotation == 135.0f)
         {
             movementDirection = new Vector3(1.0f, 0.0f, 0.0f);

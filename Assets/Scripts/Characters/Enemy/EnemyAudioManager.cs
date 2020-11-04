@@ -25,7 +25,7 @@ public class EnemyAudioManager : MonoBehaviour
         enemyAudio.clip = enemySound;
         enemyAudio.volume = 0.0f;
 
-        if (enemySound.name.Equals(sound1))
+        /*if (enemySound.name.Equals(sound1))
         {
             Debug.Log(sound1);
         }
@@ -44,7 +44,7 @@ public class EnemyAudioManager : MonoBehaviour
         else
         {
             Debug.Log(sound5);
-        }
+        }*/
 
     }
 
@@ -55,7 +55,7 @@ public class EnemyAudioManager : MonoBehaviour
         {
             //SoundManager.PlayMusic(4, enemySound);
             //enemyAudio.PlayOneShot(enemySound, volume);
-            Debug.Log("coro started");
+            //Debug.Log("coro started");
             enemyAudio.volume = 0.0f;
             enemyAudio.Play();
             StartCoroutine(SoundManager.Fade(enemyAudio, 1.0f, volume));

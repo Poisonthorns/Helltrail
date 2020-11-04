@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 6178938214568792267}
   m_Layer: 9
   m_Name: Hoggish
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,11 +340,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ec10a566d3410439c0a98a87c2c587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 300
+  healthType: 0100
+  startingHealth: 200
   content: {fileID: 1571840016196170501}
   lerpSpeed: 5
   blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
+  anim: {fileID: 0}
 --- !u!114 &464152606491050098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bf4aa7b696f934bb0e924edd52348a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!114 &464152606491050097
 MonoBehaviour:
   m_ObjectHideFlags: 0

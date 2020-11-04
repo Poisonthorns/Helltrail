@@ -17,7 +17,7 @@ public class Soul : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
 	{
-        if(col.gameObject.name.Contains("Sprite"))
+        if(col.gameObject.tag.Equals("Player"))
         {
             print("soul picked up");
             stats.GetComponent<Stats>().souls++;

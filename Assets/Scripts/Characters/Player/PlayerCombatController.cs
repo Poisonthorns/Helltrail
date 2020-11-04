@@ -78,21 +78,21 @@ public class PlayerCombatController : MonoBehaviour
 			{
 				weapon = allWeapons[weaponIndex];
 				// This is hardcoded so I will fix this: swaps weapon icon on HUD
-				if (weapon.GetComponent<BaseWeapon>().attackDamage == 20)
+				if (weaponIndex == 1)
 				{
 					weaponSlots.selectNext(0, 1);// heavy
 												 //for heavy attack animation
 					lightAttack = false;
 					heavyAttack = true;
 				}
-				else if (weapon.GetComponent<BaseWeapon>().attackDamage == 10)
+				else if (weaponIndex == 0)
 				{
 					weaponSlots.selectNext(1, 0);// light
 												 //for light attack animation
 					lightAttack = true;
 					heavyAttack = false;
 				}
-				else if (weapon.GetComponent<BaseWeapon>().attackDamage == 5)
+				else if (weaponIndex == 2)
 				{
 					weaponSlots.selectNext(1, 2);// range
 												 //for range attack animation
@@ -100,7 +100,7 @@ public class PlayerCombatController : MonoBehaviour
 					heavyAttack = false;
 				}
 			}
-			Debug.Log("Swap weapon");
+			//Debug.Log("Swap weapon");
 		}
 		if(weapon.GetComponent<BaseWeapon>().rangedAttack)
 		{
@@ -156,6 +156,15 @@ public class PlayerCombatController : MonoBehaviour
 				downAttack = false;
 				rightAttack = false;
 				leftAttack = false;
+				//Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
+
+				/*
+				//Animation
+				spriteUp.SetActive(true);
+				spriteDown.SetActive(false);
+				spriteRight.SetActive(false);
+				spriteLeft.SetActive(false);
+				*/
 				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
@@ -246,7 +255,7 @@ public class PlayerCombatController : MonoBehaviour
 		if (Time.time > timeSinceLastAttack)
 		{
 			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
-			Debug.Log("PlayerCombatController Attack");
+			//Debug.Log("PlayerCombatController Attack");
 			//Animation for light attack here
 			if(lightAttack && upAttack)
 			{
@@ -348,10 +357,10 @@ public class PlayerCombatController : MonoBehaviour
 		Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
 		foreach (Collider2D enemy in enemies)
 		{
-			UnityEngine.Debug.Log("We hit " + enemy.name);
+			//UnityEngine.Debug.Log("We hit " + enemy.name);
 			if (enemy.gameObject != null)
 			{
-				if (enemy.gameObject.tag == "Enemy")
+				if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
 				{
 					playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 
