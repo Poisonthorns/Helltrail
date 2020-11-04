@@ -42,6 +42,10 @@ public class PlayerCombatController : MonoBehaviour
 		weapon = allWeapons[weaponIndex];
 		playerAudio = GameObject.Find("Player").GetComponent<AudioSource>();
 		weaponSlots = GameObject.Find("Weapon Wheel").GetComponent<WeaponWheel>();
+
+		lightAttack = true;
+		heavyAttack = false;
+		rangeAttack = false;
 	}
 
 	// Update is called once per frame
@@ -106,49 +110,51 @@ public class PlayerCombatController : MonoBehaviour
 			{
 				Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
 				arrowPosition += transform.position;
-				RangedAttack(225f, arrowPosition);
-
 				//Animation
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+				
+				RangedAttack(225f, arrowPosition);
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
 				arrowPosition += transform.position;
-				RangedAttack(45f, arrowPosition);
-
 				//Animation
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+
+				RangedAttack(45f, arrowPosition);
 			}
 			else if(Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
 				arrowPosition += transform.position;
-				RangedAttack(-45f, arrowPosition);
 
 				//Animation
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(true);
+
+				RangedAttack(-45f, arrowPosition);
 			}
 			else if(Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
 				arrowPosition += transform.position;
-				RangedAttack(135f, arrowPosition);
-
+				
 				//Animation
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(true);
 				spriteLeft.SetActive(false);
+
+				RangedAttack(135f, arrowPosition);
 			}
 		}
 		else
@@ -158,46 +164,50 @@ public class PlayerCombatController : MonoBehaviour
 			{
 				attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
 				Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
-				Attack();
 
 				//Animation
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+
+				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
-				Attack();
 
 				//Animation
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+
+				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
-				Attack();
 
 				//Animation
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(true);
+
+				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
-				Attack();
 
 				//Animation
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(true);
 				spriteLeft.SetActive(false);
+
+				Attack();
 			}
 		}
 	}
@@ -206,32 +216,34 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		if (Time.time > timeSinceLastAttack)
 		{
+			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
+
 			//animation
 			animUp.Play("Ranged Attack");
 			animDown.Play("Ranged Attack");
 			animRight.Play("Ranged Attack");
 			animLeft.Play("Ranged Attack");
 
-			GameObject newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, arrowRotation));
-			newArrow.GetComponent<Arrow>().SetRotation(arrowRotation);
-			newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
-			newArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
-			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
+			//Delay
+			StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
 		}
 	}
 	void Attack()
 	{
 		if (Time.time > timeSinceLastAttack)
 		{
-			
+			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
 			Debug.Log("PlayerCombatController Attack");
 			//Animation for light attack here
-			if (lightAttack)
+			if(lightAttack)
 			{
 				animUp.Play("Light Attack");
 				animDown.Play("Light Attack");
 				animRight.Play("Light Attack");
 				animLeft.Play("Light Attack");
+
+				//Delay
+				StartCoroutine("waitForMelee", 1.0f);
 			}
 			//Animation for heavy attack
 			else if (heavyAttack)
@@ -240,24 +252,44 @@ public class PlayerCombatController : MonoBehaviour
 				animDown.Play("Heavy Attack");
 				animRight.Play("Heavy Attack");
 				animLeft.Play("Heavy Attack");
+
+				//Delay
+				StartCoroutine("waitForMelee", 1.0f);
 			}
+		}
+	}
 
-			Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
-			foreach (Collider2D enemy in enemies)
+	IEnumerator waitForMelee(float waitTime)
+	{
+		yield return new WaitForSeconds(waitTime);
+
+		Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
+		foreach (Collider2D enemy in enemies)
+		{
+			UnityEngine.Debug.Log("We hit " + enemy.name);
+			if (enemy.gameObject != null)
 			{
-				UnityEngine.Debug.Log("We hit " + enemy.name);
-				if (enemy.gameObject != null)
+				if (enemy.gameObject.tag == "Enemy")
 				{
-					if (enemy.gameObject.tag == "Enemy")
-					{
-						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
+					playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 
-						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
-					}
+					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
 				}
 			}
-		
-			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
 		}
+
+		yield return null;
+	}
+
+	IEnumerator waitForRanged(float waitTime, float arrowRotation, Vector3 arrowPosition)
+	{
+		yield return new WaitForSeconds(waitTime);
+
+		GameObject newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, arrowRotation));
+		newArrow.GetComponent<Arrow>().SetRotation(arrowRotation);
+		newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
+		newArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
+
+		yield return null;
 	}
 }
