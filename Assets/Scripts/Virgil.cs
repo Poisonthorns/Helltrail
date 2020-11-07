@@ -108,13 +108,17 @@ public class Virgil : MonoBehaviour
             else
             {
                 dialogueUI.SetActive(false);
-                Door.doorLock = false;
+                if(!killingPart)
+                {
+                    Door.doorLock = false;
+
+                }
+                //
                 //next();
             }
-            if(pause&&!killingPart)
+            if (pause&&!killingPart)
             {
                 pause = false;
-
                 next();
             }
             print("enter pressed");
@@ -123,6 +127,8 @@ public class Virgil : MonoBehaviour
         //print(temp);
         if (temp == enemycount-3 &&killingPart)
         {
+            Door.doorLock = false;
+
             enemycount -= 3;
             pause = false;
             killingPart = false;
@@ -243,6 +249,8 @@ public class Virgil : MonoBehaviour
                     dialogueEndPoint = 10;
                     pause = true;
                     doDialogue();
+                    Door.doorLock = true;
+
                     break;
                 }
 
