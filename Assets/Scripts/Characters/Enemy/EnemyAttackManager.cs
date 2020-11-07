@@ -65,6 +65,8 @@ public class EnemyAttackManager : MonoBehaviour
         if (distance <= 1.5f)
         {
             anim.Play("Attack");
+            HealthBar = GameObject.Find("Player Health Bar");
+
             HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
             /*
             //Delay
