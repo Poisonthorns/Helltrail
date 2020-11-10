@@ -27,16 +27,18 @@ public class Door : MonoBehaviour
         {
             if(switchh && !doorLock)
             {
-                switchh = true;
-                if(roomManager.GetComponent<LimboGeneration>()==null)
+                if (roomManager.GetComponent<LimboGeneration>() == null)
                 {
                     roomManager.GetComponent<CircleCreation>().changeRooms(isExit);
-                    
+                    switchh = true;
+
                 }
-                else
+                else if (isExit)
                 {
                     roomManager.GetComponent<LimboGeneration>().changeRooms(isExit);
                     doorLock = true;
+                    switchh = true;
+
                 }
 
             }
@@ -44,18 +46,36 @@ public class Door : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-
-        if (collision.gameObject.tag.Equals("Player"))
+        if (roomManager.GetComponent<LimboGeneration>() == null)
         {
-            //print("yay");
-            if (switchh)
+            if (collision.gameObject.tag.Equals("Player"))
             {
-                switchh = false;
-            }
-            else
-            {
-                switchh = true;
+                if (switchh)
+                {
+                    switchh = false;
+                }
+                else
+                {
+                    switchh = true;
+                }
             }
         }
+        else
+        {
+            if (collision.gameObject.tag.Equals("Player") && !isExit)
+            {
+                if (switchh)
+                {
+                    switchh = false;
+                }
+                else
+                {
+                    switchh = true;
+                }
+                switchh = true;
+
+            }
+        }
+
     }
 }
