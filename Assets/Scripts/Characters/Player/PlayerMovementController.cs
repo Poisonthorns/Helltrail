@@ -21,7 +21,7 @@ public class PlayerMovementController : MonoBehaviour
 	public GameObject spriteDown;
 	public GameObject spriteRight;
 	public GameObject spriteLeft;
-	public PlayerCombatController combatController;
+	public bool attacking;
 
 	public float upgradedSpeed;
 	// Start is called before the first frame update
@@ -85,14 +85,14 @@ public class PlayerMovementController : MonoBehaviour
 					movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
 
 					//Up and Down Animations
-					if(Input.GetKey(KeyCode.W) && !combatController.attacking) 
+					if(Input.GetKey(KeyCode.W) && !attacking) 
 					{
 						spriteUp.SetActive(true);
 						spriteDown.SetActive(false);
 						spriteRight.SetActive(false);
 						spriteLeft.SetActive(false);
 					}
-					else if (Input.GetKey(KeyCode.S) && !combatController.attacking)
+					else if (Input.GetKey(KeyCode.S) && !attacking)
 					{
 						spriteUp.SetActive(false);
 						spriteDown.SetActive(true);
@@ -111,14 +111,14 @@ public class PlayerMovementController : MonoBehaviour
 					movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
 
 					//Left and Right Animations
-					if(Input.GetKey(KeyCode.A) && !combatController.attacking)
+					if(Input.GetKey(KeyCode.A) && !attacking)
 					{
 						spriteUp.SetActive(false);
 						spriteDown.SetActive(false);
 						spriteRight.SetActive(false);
 						spriteLeft.SetActive(true);
 					}
-					else if (Input.GetKey(KeyCode.D) && !combatController.attacking)
+					else if (Input.GetKey(KeyCode.D) && !attacking)
 					{
 						spriteUp.SetActive(false);
 						spriteDown.SetActive(false);

@@ -31,11 +31,11 @@ public class PlayerCombatController : MonoBehaviour
 	public GameObject spriteDown;
 	public GameObject spriteRight;
 	public GameObject spriteLeft;
-	public bool attacking;
 	public bool upAttack;
 	public bool downAttack;
 	public bool rightAttack;
 	public bool leftAttack;
+	public PlayerMovementController movementController;
 
 	public GameObject upgradedStats;
 
@@ -156,15 +156,6 @@ public class PlayerCombatController : MonoBehaviour
 				downAttack = false;
 				rightAttack = false;
 				leftAttack = false;
-				//Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
-
-				/*
-				//Animation
-				spriteUp.SetActive(true);
-				spriteDown.SetActive(false);
-				spriteRight.SetActive(false);
-				spriteLeft.SetActive(false);
-				*/
 				Attack();
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
@@ -206,6 +197,7 @@ public class PlayerCombatController : MonoBehaviour
 			//animation
 			if(upAttack)
 			{
+				movementController.attacking = true;
 				animUp.Play("Ranged Attack");
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
@@ -217,6 +209,7 @@ public class PlayerCombatController : MonoBehaviour
 			}
 			else if(downAttack)
 			{
+				movementController.attacking = true;
 				animDown.Play("Ranged Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
@@ -259,6 +252,7 @@ public class PlayerCombatController : MonoBehaviour
 			//Animation for light attack here
 			if(lightAttack && upAttack)
 			{
+				movementController.attacking = true;
 				animUp.Play("Light Attack");
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
@@ -270,6 +264,7 @@ public class PlayerCombatController : MonoBehaviour
 			}
 			else if(lightAttack && downAttack)
 			{
+				movementController.attacking = true;
 				animDown.Play("Light Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
@@ -281,6 +276,7 @@ public class PlayerCombatController : MonoBehaviour
 			}
 			else if(lightAttack && rightAttack)
 			{
+				movementController.attacking = true;
 				animRight.Play("Light Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
@@ -292,6 +288,7 @@ public class PlayerCombatController : MonoBehaviour
 			}
 			else if(lightAttack && leftAttack)
 			{
+				movementController.attacking = true;
 				animLeft.Play("Light Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
@@ -305,6 +302,7 @@ public class PlayerCombatController : MonoBehaviour
 			//Animation for heavy attack
 			else if (heavyAttack && upAttack)
 			{
+				movementController.attacking = true;
 				animUp.Play("Heavy Attack");
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
@@ -316,6 +314,7 @@ public class PlayerCombatController : MonoBehaviour
 			}
 			else if (heavyAttack && downAttack)
 			{
+				movementController.attacking = true;
 				animDown.Play("Heavy Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
@@ -327,6 +326,7 @@ public class PlayerCombatController : MonoBehaviour
 			}
 			else if (heavyAttack && rightAttack)
 			{
+				movementController.attacking = true;
 				animRight.Play("Heavy Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
@@ -338,6 +338,7 @@ public class PlayerCombatController : MonoBehaviour
 			}
 			else if (heavyAttack && leftAttack)
 			{
+				movementController.attacking = true;
 				animLeft.Play("Heavy Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
