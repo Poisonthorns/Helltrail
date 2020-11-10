@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackBox: {x: 0.5, y: 0.5}
+  attackID: 0
   attackDamage: 10
   attackRange: 0.2
-  attackRate: 1
+  attackRate: 0.5
   attackSound: {fileID: 8300000, guid: b904565ab12805e4d8641bff8af84c5d, type: 3}
+  rangedAttack: 0
+  destroyDelay: 0
