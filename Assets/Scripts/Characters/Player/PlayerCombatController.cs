@@ -198,48 +198,50 @@ public class PlayerCombatController : MonoBehaviour
 			if(upAttack)
 			{
 				movementController.attacking = true;
-				animUp.Play("Ranged Attack");
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+				animUp.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
 			}
 			else if(downAttack)
 			{
 				movementController.attacking = true;
-				animDown.Play("Ranged Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+				animDown.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
 			}
 			else if(rightAttack)
 			{
-				animRight.Play("Ranged Attack");
+				movementController.attacking = true;
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(true);
 				spriteLeft.SetActive(false);
+				animRight.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
 			}
 			else if(leftAttack)
 			{
-				animLeft.Play("Ranged Attack");
+				movementController.attacking = true;
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(true);
+				animLeft.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 1.0f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
 			}
 		}
 	}
@@ -253,47 +255,46 @@ public class PlayerCombatController : MonoBehaviour
 			if(lightAttack && upAttack)
 			{
 				movementController.attacking = true;
-				animUp.Play("Light Attack");
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
-
+				animUp.Play("Light Attack");
 				//Delay
 				StartCoroutine("waitForMelee", 0.5f);
 			}
 			else if(lightAttack && downAttack)
 			{
 				movementController.attacking = true;
-				animDown.Play("Light Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
-
+				animDown.Play("Light Attack");
 				//Delay
 				StartCoroutine("waitForMelee", 0.5f);
 			}
 			else if(lightAttack && rightAttack)
 			{
 				movementController.attacking = true;
-				animRight.Play("Light Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(true);
 				spriteLeft.SetActive(false);
+				animRight.Play("Light Attack");
 
 				//Delay
 				StartCoroutine("waitForMelee", 0.5f);
 			}
 			else if(lightAttack && leftAttack)
 			{
-				movementController.attacking = true;
-				animLeft.Play("Light Attack");
+				movementController.attacking = true;				
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(true);
+				animLeft.Play("Light Attack");
+
 
 				//Delay
 				StartCoroutine("waitForMelee", 0.5f);
@@ -303,11 +304,11 @@ public class PlayerCombatController : MonoBehaviour
 			else if (heavyAttack && upAttack)
 			{
 				movementController.attacking = true;
-				animUp.Play("Heavy Attack");
 				spriteUp.SetActive(true);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+				animUp.Play("Heavy Attack");
 
 				//Delay
 				StartCoroutine("waitForMelee", 0.6f);
@@ -315,11 +316,11 @@ public class PlayerCombatController : MonoBehaviour
 			else if (heavyAttack && downAttack)
 			{
 				movementController.attacking = true;
-				animDown.Play("Heavy Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(true);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(false);
+				animDown.Play("Heavy Attack");
 
 				//Delay
 				StartCoroutine("waitForMelee", 0.6f);
@@ -327,11 +328,11 @@ public class PlayerCombatController : MonoBehaviour
 			else if (heavyAttack && rightAttack)
 			{
 				movementController.attacking = true;
-				animRight.Play("Heavy Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(true);
 				spriteLeft.SetActive(false);
+				animRight.Play("Heavy Attack");
 
 				//Delay
 				StartCoroutine("waitForMelee", 0.6f);
@@ -339,11 +340,11 @@ public class PlayerCombatController : MonoBehaviour
 			else if (heavyAttack && leftAttack)
 			{
 				movementController.attacking = true;
-				animLeft.Play("Heavy Attack");
 				spriteUp.SetActive(false);
 				spriteDown.SetActive(false);
 				spriteRight.SetActive(false);
 				spriteLeft.SetActive(true);
+				animLeft.Play("Heavy Attack");
 
 				//Delay
 				StartCoroutine("waitForMelee", 0.6f);
