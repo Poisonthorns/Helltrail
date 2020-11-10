@@ -35,7 +35,9 @@ public class PlayerCombatController : MonoBehaviour
 	public bool downAttack;
 	public bool rightAttack;
 	public bool leftAttack;
-	public PlayerMovementController movementController;
+    public bool noBow;
+    public bool noSword;
+    public PlayerMovementController movementController;
 
 	public GameObject upgradedStats;
 
@@ -58,134 +60,148 @@ public class PlayerCombatController : MonoBehaviour
 
 	private void GetInput()
 	{
-		//Swap Weapon Input
-		if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftShift))
-		{
-			weaponIndex += 1;
-			
-			playerAudio.PlayOneShot(weaponSwap);
+        //Swap Weapon Input
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            weaponIndex += 1;
 
-			if (weaponIndex >= allWeapons.Length)
-			{
-				weaponIndex = 0;
-				weaponSlots.selectNext(allWeapons.Length - 1, 0);// light
-											 //for light attack animation
-				lightAttack = true;
-				heavyAttack = false;
-				weapon = allWeapons[weaponIndex];
-			}
-			else
-			{
-				weapon = allWeapons[weaponIndex];
-				// This is hardcoded so I will fix this: swaps weapon icon on HUD
-				if (weaponIndex == 1)
-				{
-					weaponSlots.selectNext(0, 1);// heavy
-												 //for heavy attack animation
-					lightAttack = false;
-					heavyAttack = true;
-				}
-				else if (weaponIndex == 0)
-				{
-					weaponSlots.selectNext(1, 0);// light
-												 //for light attack animation
-					lightAttack = true;
-					heavyAttack = false;
-				}
-				else if (weaponIndex == 2)
-				{
-					weaponSlots.selectNext(1, 2);// range
-												 //for range attack animation
-					lightAttack = false;
-					heavyAttack = false;
-				}
-			}
-			//Debug.Log("Swap weapon");
-		}
-		if(weapon.GetComponent<BaseWeapon>().rangedAttack)
-		{
-			if(Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
-				arrowPosition += transform.position;
-				upAttack = true;
-				downAttack = false;
-				rightAttack = false;
-				leftAttack = false;
-				RangedAttack(225f, arrowPosition);
-			}
-			else if(Input.GetKeyDown(KeyCode.DownArrow))
-			{
-				Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
-				arrowPosition += transform.position;
-				upAttack = false;
-				downAttack = true;
-				rightAttack = false;
-				leftAttack = false;
-				RangedAttack(45f, arrowPosition);
-			}
-			else if(Input.GetKeyDown(KeyCode.LeftArrow))
-			{
-				Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
-				arrowPosition += transform.position;
-				upAttack = false;
-				downAttack = false;
-				rightAttack = false;
-				leftAttack = true;
-				RangedAttack(-45f, arrowPosition);
-			}
-			else if(Input.GetKeyDown(KeyCode.RightArrow))
-			{
-				Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
-				arrowPosition += transform.position;
-				upAttack = false;
-				downAttack = false;
-				rightAttack = true;
-				leftAttack = false;
-				RangedAttack(135f, arrowPosition);
-			}
-		}
-		else
-		{
-			//Attack Input
-			if(Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
-				Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
-				upAttack = true;
-				downAttack = false;
-				rightAttack = false;
-				leftAttack = false;
-				Attack();
-			}
-			else if(Input.GetKeyDown(KeyCode.DownArrow))
-			{
-				attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
-				upAttack = false;
-				downAttack = true;
-				rightAttack = false;
-				leftAttack = false;
-				Attack();
-			}
-			else if(Input.GetKeyDown(KeyCode.LeftArrow))
-			{
-				attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
-				upAttack = false;
-				downAttack = false;
-				rightAttack = false;
-				leftAttack = true;
-				Attack();
-			}
-			else if(Input.GetKeyDown(KeyCode.RightArrow))
-			{
-				attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
-				upAttack = false;
-				downAttack = false;
-				rightAttack = true;
-				leftAttack = false;
-				Attack();
-			}
-		}
+            if (weaponIndex == 1 && noSword)
+            {
+                --weaponIndex;
+            }
+            else if (weaponIndex == 2 && noBow)
+            {
+                --weaponIndex;
+            }
+            else
+            {
+
+                playerAudio.PlayOneShot(weaponSwap);
+
+                if (weaponIndex >= allWeapons.Length)
+                {
+                    weaponIndex = 0;
+                    weaponSlots.selectNext(allWeapons.Length - 1, 0);// light
+                                                                     //for light attack animation
+                    lightAttack = true;
+                    heavyAttack = false;
+                    weapon = allWeapons[weaponIndex];
+                }
+                else
+                {
+                    weapon = allWeapons[weaponIndex];
+                    // This is hardcoded so I will fix this: swaps weapon icon on HUD
+                    if (weaponIndex == 1)
+                    {
+                        weaponSlots.selectNext(0, 1);// heavy
+                                                     //for heavy attack animation
+                        lightAttack = false;
+                        heavyAttack = true;
+                    }
+                    else if (weaponIndex == 0)
+                    {
+                        weaponSlots.selectNext(1, 0);// light
+                                                     //for light attack animation
+                        lightAttack = true;
+                        heavyAttack = false;
+                    }
+                    else if (weaponIndex == 2)
+                    {
+                        weaponSlots.selectNext(1, 2);// range
+                                                     //for range attack animation
+                        lightAttack = false;
+                        heavyAttack = false;
+                    }
+                }
+                //Debug.Log("Swap weapon");
+            }
+        }
+            if (weapon.GetComponent<BaseWeapon>().rangedAttack)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
+                    arrowPosition += transform.position;
+                    upAttack = true;
+                    downAttack = false;
+                    rightAttack = false;
+                    leftAttack = false;
+                    RangedAttack(225f, arrowPosition);
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
+                    arrowPosition += transform.position;
+                    upAttack = false;
+                    downAttack = true;
+                    rightAttack = false;
+                    leftAttack = false;
+                    RangedAttack(45f, arrowPosition);
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
+                    arrowPosition += transform.position;
+                    upAttack = false;
+                    downAttack = false;
+                    rightAttack = false;
+                    leftAttack = true;
+                    RangedAttack(-45f, arrowPosition);
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
+                    arrowPosition += transform.position;
+                    upAttack = false;
+                    downAttack = false;
+                    rightAttack = true;
+                    leftAttack = false;
+                    RangedAttack(135f, arrowPosition);
+                }
+            }
+            else
+            {
+                //Attack Input
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
+                    Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
+                    upAttack = true;
+                    downAttack = false;
+                    rightAttack = false;
+                    leftAttack = false;
+                    Attack();
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
+                    upAttack = false;
+                    downAttack = true;
+                    rightAttack = false;
+                    leftAttack = false;
+                    Attack();
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
+                    upAttack = false;
+                    downAttack = false;
+                    rightAttack = false;
+                    leftAttack = true;
+                    Attack();
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
+                    upAttack = false;
+                    downAttack = false;
+                    rightAttack = true;
+                    leftAttack = false;
+                    Attack();
+                }
+            }
+		
+
 	}
 
 	void RangedAttack(float arrowRotation, Vector3 arrowPosition)

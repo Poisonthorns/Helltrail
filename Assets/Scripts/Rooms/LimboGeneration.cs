@@ -39,6 +39,9 @@ public class LimboGeneration : MonoBehaviour
         GameObject.Find("Main Camera").transform.position = new Vector3((roomWidth / 2) + roomWidth + 2, (roomHeight / 2) + roomHeight + 2, -10);
         GameObject p = Instantiate(player, new Vector3(roomWidth + roomWidth / 2.0f + 2.5f, roomHeight + 2.5f, -0.1f), Quaternion.identity);
         p.name = "Player";
+        p.GetComponent<PlayerCombatController>().noBow = true;
+        p.GetComponent<PlayerCombatController>().noSword = true;
+
         print("player created");
         Door.doorLock = true;
     }

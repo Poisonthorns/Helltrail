@@ -18,7 +18,7 @@ public class EnemyHealthManager : MonoBehaviour
     public Image content;
     private float currentFill;
     public float lerpSpeed;
-
+    public GameObject drop;
     // Damage particle effect
     public GameObject blood;
 
@@ -103,9 +103,14 @@ public class EnemyHealthManager : MonoBehaviour
         UnityEngine.Debug.Log(this.name + " died");
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
-        GameObject puddleObj = Instantiate(puddle, transform.position, Quaternion.identity);
-        puddleObj.transform.localScale = new Vector3(Random.Range(0.2f, 0.25f), Random.Range(0.2f, 0.25f), 1.0f);
-        Instantiate(soul, transform.position, transform.rotation);
+        //GameObject puddleObj = Instantiate(puddle, transform.position, Quaternion.identity);
+        //puddleObj.transform.localScale = new Vector3(Random.Range(0.2f, 0.25f), Random.Range(0.2f, 0.25f), 1.0f);
+        //Instantiate(soul, transform.position, transform.rotation);
+        if(drop!=null)
+        {
+            Instantiate(drop, transform.position, transform.rotation);
+            print("dropeed");
+        }
         Destroy(gameObject);
     }
 }

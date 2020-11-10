@@ -12,7 +12,7 @@ public class Portal : MonoBehaviour
     void Start()
     {
         stats = GameObject.Find("PlayerStats");
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0);
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -1);
     }
 
     // Update is called once per frame
