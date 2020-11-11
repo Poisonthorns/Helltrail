@@ -10,7 +10,7 @@ public class Stats : MonoBehaviour
 	public float upgradedSpeed = 0.0f;
 	public float upgradedAttackRate = 0.0f;
 	public int souls = 0;
-	private static int MAX_SOULS_DISPLAYED = 10;
+	//private static int MAX_SOULS_DISPLAYED = 10;
 	private static int MAX_STAT_TOTAL = 100;
 	//public Image[] soulsCollected = new Image[MAX_SOULS_DISPLAYED];
 
@@ -55,7 +55,6 @@ public class Stats : MonoBehaviour
 	{
 		if (SceneManager.GetActiveScene().name == "StatScreen")
 		{
-			Debug.Log("Here");
 			damageStatBar = GameObject.Find("Damage Bar").GetComponent<Stat>();
 			speedStatBar = GameObject.Find("Speed Bar").GetComponent<Stat>();
 			rateStatBar = GameObject.Find("Rate Bar").GetComponent<Stat>();
@@ -86,7 +85,7 @@ public class Stats : MonoBehaviour
 	{
 		if (SceneManager.GetActiveScene().name == "StatScreen")
 		{
-
+			/*
 			// Check for overflow of souls collected indicator
 			if (souls > MAX_SOULS_DISPLAYED)
 			{
@@ -95,7 +94,8 @@ public class Stats : MonoBehaviour
 			else
 			{
 				updateSoulDisplay(souls);
-			}
+			} */
+			updateSoulDisplay(souls);
 		}
 
 		if (SceneManager.GetActiveScene().name == "LimboV2")
@@ -138,7 +138,8 @@ public class Stats : MonoBehaviour
 	{
 		if(souls > 0 && upgradedDamage < MAX_STAT_TOTAL)
 		{
-			upgradedDamage += 5.0f;
+			//5.0
+			upgradedDamage += 1.0f;
 			
 
 			// Puts cap on the highest damage you can get
@@ -181,7 +182,8 @@ public class Stats : MonoBehaviour
 	{
 		if (souls > 0 && upgradedAttackRate < MAX_STAT_TOTAL)
 		{
-			upgradedAttackRate += 0.25f;
+			//0.25
+			upgradedAttackRate += 1.0f;
 			// Puts cap on the highest rate you can get
 			if (upgradedAttackRate >= MAX_STAT_TOTAL)
 			{
