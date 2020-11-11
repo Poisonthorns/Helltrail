@@ -42,8 +42,8 @@ public class RoomGenerator : MonoBehaviour
         int height = grid.GetLength(1);
         while(enemyInRoom.Count > 0)
         {
-            int x = Random.Range(1, width - 1);
-            int y = Random.Range(1, height - 1);
+            int x = Random.Range(2, width - 2);
+            int y = Random.Range(2, height - 2);
             if(grid[x,y] == 0)
             {
                 //print("this ran");

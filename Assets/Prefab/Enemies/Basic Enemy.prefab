@@ -1003,7 +1003,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.11777198, y: 0.62098}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1014,7 +1014,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.791577, y: 5.7185864}
+  m_Size: {x: 7.211261, y: 6.960547}
   m_EdgeRadius: 0
 --- !u!95 &263522649211176738
 Animator:
@@ -1184,6 +1184,7 @@ MonoBehaviour:
   startingHealth: 20
   content: {fileID: 7884189660016262068}
   lerpSpeed: 5
+  drop: {fileID: 0}
   blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
   puddle: {fileID: 6868723106333547851, guid: 3a6e9e88ee348f942b76fb3e594b8521, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
@@ -1263,8 +1264,8 @@ MonoBehaviour:
   - {fileID: 4007462763574088527}
   - {fileID: 5494216608823814150}
   m_Bounds:
-    m_Center: {x: -0.02005136, y: 0.1885035, z: 0}
-    m_Extent: {x: 1.9645675, y: 2.6791854, z: 0}
+    m_Center: {x: 0.05545628, y: 0.19014621, z: 0}
+    m_Extent: {x: 2.045302, y: 2.6774867, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &2693836993701321272
