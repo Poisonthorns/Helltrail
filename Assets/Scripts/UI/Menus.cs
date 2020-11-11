@@ -32,6 +32,14 @@ public class Menus : MonoBehaviour
         }
         else if (gameObject.name.Equals("Main Menu") || gameObject.name.Equals("Back to Menu Button") || gameObject.name.Equals("Controls Back Button"))
         {
+            GameObject[] results = GameObject.FindGameObjectsWithTag("Stats");
+            for (int i = 0; i < results.Length; ++i)
+            {
+                if (results[i].GetComponent<Stats>() != null)
+                {
+                    Destroy(results[i]);
+                }
+            }
             SceneLoader.GoToMenu();
         }
         else if (gameObject.name.Equals("Limbo"))

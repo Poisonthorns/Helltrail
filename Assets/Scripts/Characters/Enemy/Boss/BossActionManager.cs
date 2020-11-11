@@ -18,7 +18,7 @@ public class BossActionManager : MonoBehaviour
     void Start()
     {
         spell = this.gameObject.GetComponent<CastSpell>();
-        gameObject.GetComponent<CastSpell>().iceSpell();
+        //gameObject.GetComponent<CastSpell>().iceSpell();
         if(spell==null)
         {
             print("wtf");

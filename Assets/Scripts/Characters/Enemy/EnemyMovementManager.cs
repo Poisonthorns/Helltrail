@@ -33,7 +33,7 @@ public class EnemyMovementManager : MonoBehaviour
         Assert.IsTrue(numTrue == 1);
 
         movePoint.parent = null;
-        nextMovement = Random.Range(0.0f, 2.0f);
+        nextMovement = Time.time + Random.Range(0.0f, 3.0f);
     }
 
     /*
