@@ -108,6 +108,7 @@ public class Virgil : MonoBehaviour
             else
             {
                 dialogueUI.SetActive(false);
+                Time.timeScale = 1;
                 if(!killingPart)
                 {
                     Door.doorLock = false;
@@ -187,6 +188,7 @@ public class Virgil : MonoBehaviour
         dialogueUI.SetActive(true);
         inDialogue = true;
         print("doing dialogue");
+        Time.timeScale = 0;
         nextDialogue();
     }
     public void next()

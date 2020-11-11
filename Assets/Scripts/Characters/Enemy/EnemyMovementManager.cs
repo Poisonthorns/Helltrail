@@ -36,11 +36,23 @@ public class EnemyMovementManager : MonoBehaviour
         nextMovement = Random.Range(0.0f, 2.0f);
     }
 
-    // Update is called once per frame
+    /*
+    // Changed to FixedUpdate
     void Update()
     {
         player = GameObject.Find("Player").transform;
         if(Time.time > nextMovement)
+        {
+            nextMovement += movementInterval;
+            setMovement();
+        }
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
+    } */
+
+    void FixedUpdate()
+    {
+        player = GameObject.Find("Player").transform;
+        if (Time.time > nextMovement)
         {
             nextMovement += movementInterval;
             setMovement();

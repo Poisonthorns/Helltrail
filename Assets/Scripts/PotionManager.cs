@@ -34,7 +34,7 @@ public class PotionManager : MonoBehaviour
     private GameObject playerStatus;
     private GameObject statusText;
 
-    public void Start()
+    void Start()
     {
         potionUsed = GetComponent<AudioSource>();
 
@@ -47,6 +47,7 @@ public class PotionManager : MonoBehaviour
             }
         }
         statusText.GetComponent<Text>().text = "";
+        Debug.Log("potionman");
         //Debug.Log("changed to " + statusText.GetComponent<Text>().text);
         //Debug.Log(statusText != null);
     }

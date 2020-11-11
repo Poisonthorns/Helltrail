@@ -30,15 +30,24 @@ public class PlayerMovementController : MonoBehaviour
         movePoint.parent = null;
     }
 
-    // Update is called once per frame
+	/*
+    // Changed to FixedUpdate
     void Update()
     {
 		upgradedSpeed = upgradedStats.GetComponent<Stats>().upgradedAttackRate;
 		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, (speed + upgradedStats.GetComponent<Stats>().upgradedSpeed) * Time.deltaTime);
         GetInput();
-    }
+    }*/
 
-	private void GetInput()
+	
+    void FixedUpdate()
+    {
+		upgradedSpeed = upgradedStats.GetComponent<Stats>().upgradedAttackRate;
+		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, (speed + upgradedStats.GetComponent<Stats>().upgradedSpeed) * Time.deltaTime);
+		GetInput();
+	}
+	
+    private void GetInput()
 	{
 		if(Input.GetKeyDown(KeyCode.Escape))
         {
