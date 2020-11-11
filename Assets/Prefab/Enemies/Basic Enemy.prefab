@@ -1166,7 +1166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 0100
   attackRate: 2
+  attackDelay: 0
   attackDamage: 10
+  attackAnimationDelay: 0.4
   anim: {fileID: 263522649211176738}
 --- !u!114 &6170759654459756320
 MonoBehaviour:

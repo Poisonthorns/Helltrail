@@ -16,7 +16,11 @@ public class EnemyAttackManager : MonoBehaviour
     GameObject PlayerObject;
     public float attackRate = 3;
     private float timeSinceLastAttack;
+    public float attackDelay;
     public float attackDamage;
+
+    public float attackAnimationDelay;
+    bool attacking;
 
     //animation
     public Animator anim;
@@ -24,6 +28,8 @@ public class EnemyAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attacking = false;
+
         int numTrue = 0;
         foreach (bool i in attackType)
         {
@@ -59,34 +65,38 @@ public class EnemyAttackManager : MonoBehaviour
 
     private void normalAttack()
 	{
-        PlayerObject = GameObject.Find("Player");
-
-        float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
-        if (distance <= 1.5f)
+        if(!attacking)
         {
-            anim.Play("Attack");
-            HealthBar = GameObject.Find("Player Health Bar");
+            PlayerObject = GameObject.Find("Player");
 
-            HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
-            /*
-            //Delay
-            StartCoroutine("waitForMelee", 0.2f);*/
-            Debug.Log("attacking");
-        }
+            float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
+            if (distance <= 1.5f)
+            {
+                anim.Play("Attack");
+                //Delay
+                StartCoroutine("waitForNormalAttack", attackAnimationDelay);
+                Debug.Log("attacking");
+            }
+		}
     }
-    /*
+    
     IEnumerator waitForNormalAttack(float waitTime)
     {
+        attacking = true;
         yield return new WaitForSeconds(waitTime);
 
+        PlayerObject = GameObject.Find("Player");
+        float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
         if (distance <= 1.0f)
         {
+            HealthBar = GameObject.Find("Player Health Bar");
             HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
         }
 
+        attacking = false;
         yield return null;
     }
-    */
+    
 }
 
 
