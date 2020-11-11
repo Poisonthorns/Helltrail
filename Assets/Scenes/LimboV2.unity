@@ -360,7 +360,7 @@ MonoBehaviour:
   roomHeight: 8
   tiles:
   - {fileID: 11400000, guid: 2051e0a4ebef5a24a9ecc76c57fe406e, type: 2}
-  - {fileID: 11400000, guid: cdeca6b221c5ff740833874e3e13b353, type: 2}
+  - {fileID: 11400000, guid: f286a3d30f7873c47a5c13318bbd7f09, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   roomChangeTrigger: 1
