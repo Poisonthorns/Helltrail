@@ -12,11 +12,12 @@ public class Stats : MonoBehaviour
 	public int souls = 0;
 	private static int MAX_SOULS_DISPLAYED = 10;
 	private static int MAX_STAT_TOTAL = 100;
-	public Image[] soulsCollected = new Image[MAX_SOULS_DISPLAYED];
+	//public Image[] soulsCollected = new Image[MAX_SOULS_DISPLAYED];
 
 	public Text currentDamage;
 	public Text currentSpeed;
 	public Text currentRate;
+	public Text total;
 
 	Stat damageStatBar;
 	Stat speedStatBar;
@@ -62,13 +63,15 @@ public class Stats : MonoBehaviour
 			currentDamage = GameObject.Find("Attack Damage Total Text").GetComponent<Text>();
 			currentSpeed = GameObject.Find("Movement Speed Total Text").GetComponent<Text>();
 			currentRate = GameObject.Find("Attack Rate Total Text").GetComponent<Text>();
+			total = GameObject.Find("Total Text").GetComponent<Text>();
 
-			soulsCollected[0] = GameObject.Find("Soul").GetComponent<Image>();
 
-			for(int index = 1; index < MAX_SOULS_DISPLAYED; index++)
+			//soulsCollected[0] = GameObject.Find("Soul").GetComponent<Image>();
+
+			/*for(int index = 1; index < MAX_SOULS_DISPLAYED; index++)
             {
 				soulsCollected[index] = GameObject.Find("Soul (" + index + ")").GetComponent<Image>(); ;
-			}
+			}*/
 
 			damageStatBar.Initialize(upgradedDamage, (float)MAX_STAT_TOTAL);
 			speedStatBar.Initialize(upgradedSpeed, (float)MAX_STAT_TOTAL);
@@ -108,6 +111,9 @@ public class Stats : MonoBehaviour
 
 	public void updateSoulDisplay(int numToDisplay)
     {
+		total.text = "" + numToDisplay;
+
+		/*
 		// Make acquired souls visible
 		for (int index = 0; index < numToDisplay; index++)
 		{
@@ -118,7 +124,7 @@ public class Stats : MonoBehaviour
 		for (int index = numToDisplay; index < soulsCollected.Length; index++)
 		{
 			soulsCollected[index].color = new Color(soulsCollected[index].color.r, soulsCollected[index].color.g, soulsCollected[index].color.b, 0.2f);
-		}
+		}*/
 	}
 
 	public void updateTextDisplay(float damage, float speed, float rate)
