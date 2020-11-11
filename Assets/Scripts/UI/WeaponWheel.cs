@@ -10,7 +10,8 @@ public class WeaponWheel : MonoBehaviour
 
     private AudioSource wheelNoises;
     public AudioClip weaponSelected;
-
+    public GameObject bow;
+       public GameObject sword;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,29 @@ public class WeaponWheel : MonoBehaviour
         wheelNoises = gameObject.GetComponent<AudioSource>();
        
     }
+    public void Update()
+    {
+        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noBow)
+        {
+            bow.SetActive(false);
 
-   public void selectNext(int currentSelection, int newSelection)
+        }
+        else
+        {
+            bow.SetActive(true);
+        }
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noSword)
+        {
+            sword.SetActive(false);
+
+        }
+        else
+        {
+            sword.SetActive(true);
+        }
+    }
+
+    public void selectNext(int currentSelection, int newSelection)
     {
         selectedWeaponIcons[currentSelection].enabled = false;
         selectedWeaponIcons[newSelection].enabled = true;
