@@ -11,7 +11,16 @@ public class Arrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        upgradedStats = GameObject.FindGameObjectsWithTag("Stats")[0];
+        GameObject[] results = GameObject.FindGameObjectsWithTag("Stats");
+        for(int i = 0; i < results.Length; ++i)
+		{
+            if(results[i].GetComponent<Stats>() != null)
+			{
+                upgradedStats = results[i];
+                break;
+			}
+		}
+        //upgradedStats = GameObject.FindGameObjectsWithTag("Stats")[0];
         //Debug.Log(arrowRotation);
         Destroy(gameObject, 2.0f);
     }
@@ -28,7 +37,10 @@ public class Arrow : MonoBehaviour
     {
         if(col.gameObject.tag.Equals("Enemy") || col.gameObject.tag == "Boss")
         {
-            Debug.Log("Enemy hit" + (weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage));
+            Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
+            Debug.Log(additionalDamage);
+            Debug.Log(upgradedStats.GetComponent<Stats>().upgradedDamage);
+            //Debug.Log("Enemy hit" + (weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage));
             col.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage);
             Destroy(gameObject);
         }
