@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 6178938214568792267}
   m_Layer: 9
   m_Name: Hoggish
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   startingHealth: 300
   content: {fileID: 1571840016196170501}
   lerpSpeed: 5
+  drop: {fileID: 0}
   blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
   puddle: {fileID: 6868723106333547851, guid: 3a6e9e88ee348f942b76fb3e594b8521, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
