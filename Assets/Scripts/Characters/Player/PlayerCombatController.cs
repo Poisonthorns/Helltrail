@@ -208,7 +208,7 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		if (Time.time > timeSinceLastAttack)
 		{
-			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
+			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate - upgradedStats.GetComponent<Stats>().upgradedAttackRate;
 
 			//animation
 			if(upAttack)
@@ -265,7 +265,7 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		if (Time.time > timeSinceLastAttack)
 		{
-			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate;
+			timeSinceLastAttack = Time.time + weapon.GetComponent<BaseWeapon>().attackRate - upgradedStats.GetComponent<Stats>().upgradedAttackRate;
 			//Debug.Log("PlayerCombatController Attack");
 			//Animation for light attack here
 			if(lightAttack && upAttack)
@@ -382,7 +382,7 @@ public class PlayerCombatController : MonoBehaviour
 				{
 					playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 
-					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedAttackRate);
+					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage);
 				}
 			}
 		}
