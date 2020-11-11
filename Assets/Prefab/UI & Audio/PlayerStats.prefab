@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Stats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7005946387444572292
 Transform:
@@ -46,7 +46,7 @@ MonoBehaviour:
   upgradedDamage: 0
   upgradedSpeed: 0
   upgradedAttackRate: 0
-  souls: 0
+  souls: 3
   soulsCollected:
   - {fileID: 0}
   - {fileID: 0}
@@ -61,3 +61,5 @@ MonoBehaviour:
   currentDamage: {fileID: 0}
   currentSpeed: {fileID: 0}
   currentRate: {fileID: 0}
+  limboRan: 0
+  gluttonyRan: 0
