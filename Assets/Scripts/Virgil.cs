@@ -36,6 +36,7 @@ public class Virgil : MonoBehaviour
     bool pause = false;
     public int enemycount;
     bool killingPart = false;
+    public GameObject[] enemies;
     // Start is called before the first frame update
     void Start()
     {
@@ -226,6 +227,10 @@ public class Virgil : MonoBehaviour
                     target = new Vector3(44.5f, 14.5f, -2);
                     arrivedAtTarget = false;
                     triggerDialogue = true;
+                    enemies[0].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[1].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[2].GetComponent<EnemyMovementManager>().enabled = true;
+
                     break;
                 }
             case 3:
@@ -275,6 +280,9 @@ public class Virgil : MonoBehaviour
                     move = true;
                     target = new Vector3(68.5f, 14.5f, -2);
                     arrivedAtTarget = false;
+                    enemies[3].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[4].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[5].GetComponent<EnemyMovementManager>().enabled = true;
                     break;
                 }
 
@@ -284,6 +292,7 @@ public class Virgil : MonoBehaviour
                     pause = true;
                     killingPart = true;
                     //stage += 1;
+
                     doDialogue();
                     break;
                 }
@@ -315,6 +324,9 @@ public class Virgil : MonoBehaviour
                     move = true;
                     target = new Vector3(92.5f, 14.5f, -2);
                     arrivedAtTarget = false;
+                    enemies[6].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[7].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[8].GetComponent<EnemyMovementManager>().enabled = true;
                     break;
                 }
 
@@ -324,6 +336,7 @@ public class Virgil : MonoBehaviour
                     dialogueEndPoint = 13;
                     pause = true;
                     killingPart = true;
+
                     doDialogue();
                     break;
                 }
