@@ -87,9 +87,12 @@ public class EnemyAttackManager : MonoBehaviour
 
         PlayerObject = GameObject.Find("Player");
         float distance = Vector3.Distance(PlayerObject.transform.position, transform.position);
-        if (distance <= 1.0f)
+        print(distance);
+
+        if (distance <= 1.5f)
         {
             HealthBar = GameObject.Find("Player Health Bar");
+            print("this ran123434");
             HealthBar.GetComponent<PlayerHealthController>().LoseHealth(attackDamage);
         }
 
