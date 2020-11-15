@@ -365,9 +365,8 @@ GameObject:
   - component: {fileID: 824439014}
   - component: {fileID: 824439013}
   - component: {fileID: 824439012}
-  - component: {fileID: 824439015}
-  - component: {fileID: 824439017}
   - component: {fileID: 824439016}
+  - component: {fileID: 824439015}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -415,7 +414,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.7058824}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -437,17 +436,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 824439016}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: buttonFunction
-        m_Mode: 1
+      - m_Target: {fileID: 824439015}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: Pressed
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &824439013
 MonoBehaviour:
@@ -487,21 +486,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824439010}
   m_CullTransparentMesh: 0
---- !u!114 &824439015
-MonoBehaviour:
+--- !u!95 &824439015
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824439010}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5294118, g: 0.03137255, b: 0.03137255, a: 1}
-  m_EffectDistance: {x: 2, y: -1.5}
-  m_UseGraphicAlpha: 1
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 329123eabef802648ba42a80433fc56e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &824439016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,18 +515,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &824439017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824439010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22247541fdedf3243a6d39a79a476194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &852748830
@@ -1116,9 +1107,8 @@ GameObject:
   - component: {fileID: 1604263642}
   - component: {fileID: 1604263641}
   - component: {fileID: 1604263640}
-  - component: {fileID: 1604263639}
-  - component: {fileID: 1604263638}
   - component: {fileID: 1604263637}
+  - component: {fileID: 1604263639}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -1157,33 +1147,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1604263638
-MonoBehaviour:
+--- !u!95 &1604263639
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604263635}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22247541fdedf3243a6d39a79a476194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1604263639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604263635}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5294118, g: 0.03137255, b: 0.03137255, a: 1}
-  m_EffectDistance: {x: 2, y: -1.5}
-  m_UseGraphicAlpha: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 329123eabef802648ba42a80433fc56e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1604263640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,7 +1187,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.7058824}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1227,17 +1209,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1604263637}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: buttonFunction
-        m_Mode: 1
+      - m_Target: {fileID: 1604263639}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: Pressed
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1604263641
 MonoBehaviour:
@@ -1289,9 +1271,8 @@ GameObject:
   - component: {fileID: 2095691518}
   - component: {fileID: 2095691517}
   - component: {fileID: 2095691516}
-  - component: {fileID: 2095691515}
-  - component: {fileID: 2095691514}
   - component: {fileID: 2095691513}
+  - component: {fileID: 2095691515}
   m_Layer: 5
   m_Name: Controls Button
   m_TagString: Untagged
@@ -1330,33 +1311,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2095691514
-MonoBehaviour:
+--- !u!95 &2095691515
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095691511}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22247541fdedf3243a6d39a79a476194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2095691515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2095691511}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5294118, g: 0.03137255, b: 0.03137255, a: 1}
-  m_EffectDistance: {x: 2, y: -1.5}
-  m_UseGraphicAlpha: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 329123eabef802648ba42a80433fc56e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2095691516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,7 +1351,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.7058824}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1400,17 +1373,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095691513}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: buttonFunction
-        m_Mode: 1
+      - m_Target: {fileID: 2095691515}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: Pressed
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2095691517
 MonoBehaviour:

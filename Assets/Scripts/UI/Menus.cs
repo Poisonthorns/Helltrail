@@ -11,7 +11,7 @@ public class Menus : MonoBehaviour
             SceneLoader.GoToLimbo();
         }
         else if (gameObject.name.Equals("Controls Button"))
-        { 
+        {
             SceneLoader.GoToControls();
         }
         else if (gameObject.name.Equals("Exit Button"))
@@ -74,5 +74,10 @@ public class Menus : MonoBehaviour
         {
             SceneLoader.GoToArtGallery();
         }
+    }
+
+    IEnumerator Delay(float count)
+    {
+        yield return new WaitForSeconds(count);
     }
 }
