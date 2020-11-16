@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
-
+using System.Collections.Generic;
+using System.Collections;
 public class EnemyMovementManager : MonoBehaviour
 {
     /* Movement Boolean Array size should be 4
@@ -13,6 +14,7 @@ public class EnemyMovementManager : MonoBehaviour
     public bool[] movementType;
 
     public Transform player;
+    float time = 0.0f;
 
     public float speed;
     public Transform movePoint;
@@ -22,6 +24,7 @@ public class EnemyMovementManager : MonoBehaviour
     public float movementInterval = 2.0f;
     void Start()
     {
+        /*
         int numTrue = 0;
         foreach (bool i in movementType)
         {
@@ -33,7 +36,7 @@ public class EnemyMovementManager : MonoBehaviour
         Assert.IsTrue(numTrue == 1);
 
         movePoint.parent = null;
-        nextMovement = Time.time + Random.Range(0.0f, 3.0f);
+        nextMovement = Time.time + Random.Range(0.0f, 3.0f);*/
     }
 
     /*
@@ -48,29 +51,50 @@ public class EnemyMovementManager : MonoBehaviour
         }
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
     } */
+    bool lockk = false;
+    Vector3 temp; 
 
     void FixedUpdate()
     {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player").transform;
+
+        time += Time.deltaTime;
+        if(time < 1)
+        {
+            temp = setMovement();
+            print(temp);
+            rb.velocity = new Vector2(temp.x, temp.y);
+
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
+        if (time > 2)
+        {
+
+            lockk = false;
+            time = 0;
+        }
+        /*
         player = GameObject.Find("Player").transform;
         if (Time.time > nextMovement)
         {
             nextMovement += movementInterval;
             setMovement();
         }
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);*/
     }
 
-    private void setMovement()
+    private Vector3 setMovement()
     {
-        if(Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
+        if(lockk)
         {
-            Vector3 moveDirection = getMovement();
-            if(!Physics2D.OverlapCircle(movePoint.position + moveDirection, .2f, collideables))
-            {
-                movePoint.position += moveDirection;
-            }
+            return temp;
         }
-
+        lockk = true;
+        return getMovement();
     }
 
     private Vector3 getMovement()
@@ -146,3 +170,5 @@ public class EnemyMovementManager : MonoBehaviour
         return new Vector3(Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, speed)), Mathf.Round(Random.Range(-1f, 1f)) * Mathf.Round(Random.Range(0, speed)), 0f);
     }
 }
+
+

@@ -137,7 +137,7 @@ public class Virgil : MonoBehaviour
             else
             {
                 dialogueUI.SetActive(false);
-                Time.timeScale = 1;
+               // Time.timeScale = 1;
                 if (!killingPart)
                 {
                     Door.doorLock = false;
@@ -184,13 +184,19 @@ public class Virgil : MonoBehaviour
         {
             VirildialogueUI.SetActive(false);
             AidendialogueUI.SetActive(true);
-            textUI.GetComponent<Text>().text = d.text;
+            textUI.GetComponent<Text>().text = "";
+            StartCoroutine(TextAnimation(d.text));
+
+            //textUI.GetComponent<Text>().text = d.text;
         }
         else
         {
             VirildialogueUI.SetActive(true);
             AidendialogueUI.SetActive(false);
-            textUI.GetComponent<Text>().text = d.text;
+            textUI.GetComponent<Text>().text = "";
+            StartCoroutine(TextAnimation(d.text));
+
+            //textUI.GetComponent<Text>().text = d.text;
         }
 
         // Play weapon animations when Virgil introduces a weapon
@@ -224,7 +230,6 @@ public class Virgil : MonoBehaviour
         if (dialogueStage == dialogueEndPoint)
         {
             inDialogue = false;
-            print("asdf5");
             if (pause)
             {
 
@@ -238,12 +243,26 @@ public class Virgil : MonoBehaviour
         }
 
     }
+    private IEnumerator TextAnimation(string text)
+    {
+        string current = "";
+        string[] t = text.Split(null);
+        for(int i=0; i<t.Length; ++i)
+        {
+            yield return new WaitForSeconds(0.05f);
+
+            textUI.GetComponent<Text>().text = textUI.GetComponent<Text>().text +" "+ t[i];
+        }
+
+        
+
+    }
     void doDialogue()
     {
         dialogueUI.SetActive(true);
         inDialogue = true;
         print("doing dialogue");
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         nextDialogue();
     }
     public void next()

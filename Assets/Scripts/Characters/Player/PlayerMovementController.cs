@@ -5,32 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovementController : MonoBehaviour
 {
-	public float speed;
-	public Transform movePoint;
-	public LayerMask collideables;
-	//Need animator here for animations
-	public Animator animUp;
-	public Animator animDown;
-	public Animator animRight;
-	public Animator animLeft;
+    float speed2 = 3f;
+    public Transform movePoint;
+    public LayerMask collideables;
+    //Need animator here for animations
+    public Animator animUp;
+    public Animator animDown;
+    public Animator animRight;
+    public Animator animLeft;
 
-	public GameObject upgradedStats;
+    public GameObject upgradedStats;
 
-	//Turning Animations
-	public GameObject spriteUp;
-	public GameObject spriteDown;
-	public GameObject spriteRight;
-	public GameObject spriteLeft;
-	public bool attacking;
+    //Turning Animations
+    public GameObject spriteUp;
+    public GameObject spriteDown;
+    public GameObject spriteRight;
+    public GameObject spriteLeft;
+    public bool attacking;
 
-	public float upgradedSpeed;
-	// Start is called before the first frame update
-	void Start()
+    public float upgradedSpeed;
+    // Start is called before the first frame update
+    void Start()
     {
         movePoint.parent = null;
     }
 
-	/*
+    /*
     // Changed to FixedUpdate
     void Update()
     {
@@ -38,17 +38,67 @@ public class PlayerMovementController : MonoBehaviour
 		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, (speed + upgradedStats.GetComponent<Stats>().upgradedSpeed) * Time.deltaTime);
         GetInput();
     }*/
+    float time = 0.0f;
+    bool lockInput = false;
 
-	
     void FixedUpdate()
     {
-		upgradedSpeed = upgradedStats.GetComponent<Stats>().upgradedAttackRate;
-		transform.position = Vector3.MoveTowards(transform.position, movePoint.position, (speed + upgradedStats.GetComponent<Stats>().upgradedSpeed) * Time.deltaTime);
-		GetInput();
-	}
-	
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        // Vector2 temp = new Vector2(0, 0);
+        upgradedSpeed = upgradedStats.GetComponent<Stats>().upgradedAttackRate;
+        time += Time.deltaTime;
+        rb.velocity = input() * speed2;
+        if (!lockInput)
+        {
+
+           
+
+        }
+        else
+        {
+            //rb.velocity = new Vector2(0, 0);
+        }
+        //print(lockInput);
+        if (time > 0.1f && lockInput)
+        {
+            lockInput = false;
+            //rb.velocity = new Vector2(0, 0);
+            time = 0;
+        }
+        //transform.position = Vector3.MoveTowards(transform.position, movePoint.position, (speed + upgradedStats.GetComponent<Stats>().upgradedSpeed) * Time.deltaTime);
+        //GetInput();
+    }
+    private Vector2 input()
+    {
+        //if (!lockInput)
+        {
+            time = 0;
+
+            if (Input.GetAxisRaw("Vertical") != 0)
+            {
+                lockInput = true;
+                //print("this ranasdfasdfasdf");
+                return new Vector2(0f, Input.GetAxisRaw("Vertical"));
+            }
+            else if (Input.GetAxisRaw("Horizontal") != 0)
+            {
+                lockInput = true;
+                return new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+            }
+            else
+            {
+                return new Vector2(0f, 0f);
+
+            }
+        }
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        return rb.velocity;
+    }
     private void GetInput()
-	{
+    {
+        /*
 		if(Input.GetKeyDown(KeyCode.Escape))
         {
 			SceneLoader.GoToDebug();
@@ -58,43 +108,20 @@ public class PlayerMovementController : MonoBehaviour
 		{
            SceneLoader.GoToPause();
 		}
-
-		/*
-		
-		if(Input.GetKeyDown(KeyCode.I))
-		{
-			GameObject potion1 = GameObject.Find("Potion");
-			GameObject potion2 = GameObject.Find("Potion (1)");
-			if(potion1 != null)
-			{
-				potion1.GetComponent<Pickup>().addItem();
-			}
-			else if(potion2 != null)
-			{
-				potion2.GetComponent<Pickup>().addItem();
-			}
-		}
-		if(Input.GetKeyDown(KeyCode.U))
-		{
-			GetComponent<Inventory>().selectNextItem();
-		}
-		*/
-
-
-		//Movement Input
-		if (Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
+        //Movement Input
+        if (Vector3.Distance(transform.position, movePoint.position) <= 0.02f)
 		{
 			if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
 			{
 				//Movement animation here (this handles both up and down, you'll need to check which is happening)
 				animDown.SetBool("Walking", true);
 				animUp.SetBool("Walking", true);
-				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 1f), .2f, collideables))
+				//if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 1f), .2f, collideables))
 				{
-					movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-
-					//Up and Down Animations
-					if(Input.GetKey(KeyCode.W) && !attacking) 
+					//movePoint.position += new Vector3(0f, , 0f);
+                    rb.velocity = new Vector2(0f, Input.GetAxisRaw("Vertical"));
+                    //Up and Down Animations
+                    if (Input.GetKey(KeyCode.W) && !attacking) 
 					{
 						spriteUp.SetActive(true);
 						spriteDown.SetActive(false);
@@ -114,13 +141,14 @@ public class PlayerMovementController : MonoBehaviour
 			{
 				animRight.SetBool("Walking", true);
 				animLeft.SetBool("Walking", true);
-				if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 1f), .2f, collideables))
+				//if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 1f), .2f, collideables))
 				{
 					//Movement animation here (this handles both left and right, you'll need to check which is happening)
-					movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+					//movePoint.position += new Vector3(, 0f, 0f);
+                    rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
 
-					//Left and Right Animations
-					if(Input.GetKey(KeyCode.A) && !attacking)
+                    //Left and Right Animations
+                    if (Input.GetKey(KeyCode.A) && !attacking)
 					{
 						spriteUp.SetActive(false);
 						spriteDown.SetActive(false);
@@ -139,14 +167,16 @@ public class PlayerMovementController : MonoBehaviour
 			//added else statement here so when player is not moving, idle animation will play (walking animation will not play).
 			else
 			{
-				animUp.SetBool("Walking", false);
+                rb.velocity = new Vector2(0f, 0f);
+
+                animUp.SetBool("Walking", false);
 				animDown.SetBool("Walking", false);
 				animRight.SetBool("Walking", false);
 				animLeft.SetBool("Walking", false);
 			}
 
-		}
-		
+		}*/
 
-	}
+
+    }
 }
