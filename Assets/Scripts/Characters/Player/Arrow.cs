@@ -22,7 +22,7 @@ public class Arrow : MonoBehaviour
 		}
         //upgradedStats = GameObject.FindGameObjectsWithTag("Stats")[0];
         //Debug.Log(arrowRotation);
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, 3.0f);
     }
 
     // Update is called once per frame
@@ -49,26 +49,6 @@ public class Arrow : MonoBehaviour
     public void SetRotation(float rot)
 	{
         arrowRotation = rot;
-        //Debug.Log(arrowRotation);
-        if (arrowRotation == 135.0f)
-        {
-            movementDirection = new Vector3(1.0f, 0.0f, 0.0f);
-        }
-        else if (arrowRotation == -45.0f)
-        {
-            movementDirection = new Vector3(-1.0f, 0.0f, 0.0f);
-        }
-        else if (arrowRotation == 45.0f)
-        {
-            movementDirection = new Vector3(0.0f, -1.0f, 0.0f);
-        }
-        else if (arrowRotation == 225.0f)
-        {
-            movementDirection = new Vector3(0.0f, 1.0f, 0.0f);
-        }
-        else
-        {
-            movementDirection = new Vector3(0.0f, 0.0f, 0.0f);
-        }
+        movementDirection = new Vector3(Mathf.Sin(rot * Mathf.Deg2Rad), Mathf.Cos(rot * Mathf.Deg2Rad), 0);
     }
 }
