@@ -75,11 +75,11 @@ public class Virgil : MonoBehaviour
         dialogues[0] = new CharacterDialogue("Huh? Where am I?", 0);
         dialogues[1] = new CharacterDialogue("You’re in Limbo. You’ve been sent to help us.", 1);
         dialogues[2] = new CharacterDialogue("Help you? How?", 0);
-        dialogues[3] = new CharacterDialogue("Satan has taken pure souls from the mortal realm illegally. We have been unable to reach them, but the border between the afterlife and the mortal realm has begun to weaken. We must take this opportunity to rescue them before they are stuck in the underworld forever. ", 1);
+        dialogues[3] = new CharacterDialogue("Satan has illegally taken pure souls from the mortal realm. Recently the border between the afterlife and the mortal realm has begun to weaken. So, we must take this opportunity to rescue them. ", 1);
         dialogues[4] = new CharacterDialogue("But why me?", 0);
         dialogues[5] = new CharacterDialogue("Satan has captured and corrupted many of the world’s most powerful warriors and saints. However, only a mortal can traverse both Heaven and Hell. That’s why you were chosen, a pure soul with a strong resistance to the corruption and temptation of Hell, to reclaim the lost souls.", 1);
         dialogues[6] = new CharacterDialogue("If we hurry, we'll be able to get you to Gluttony, the third circle of Hell.", 1);
-        dialogues[7] = new CharacterDialogue("First, you’ll need some weapons. Here’s a small dagger. You’ll need it. Use it by pressing the arrows keys in the direction of your attack. This will deal a small amount of damage, but you can use it quickly. When you’re ready, let’s head to the next room, I heard something coming from there. Use the WASD keys to move around.", 1);
+        dialogues[7] = new CharacterDialogue("First, you’ll need some weapons. Here’s a small dagger. Use it by pressing the arrows keys in the direction of your attack. This will deal a small amount of damage, but you can use it quickly. When you’re ready, let’s head to the next room, I heard something coming from there. Use the WASD keys to move around.", 1);
         dialogues[8] = new CharacterDialogue("A wretch! These enemies are common in all circles of Hell. They are quick but pretty easy to kill! Use your dagger to attack.", 1);
         dialogues[9] = new CharacterDialogue("It looks like that enemy had a sword from a fallen soldier. You can use that on your journey, it will be stronger but slower than your dagger.", 1);
         dialogues[10] = new CharacterDialogue("To rotate between your weapons use the key ‘Q’. There are a lot of enemies in here, if you see your health bar dropping, look for a health potion for strength. ", 1);
@@ -170,6 +170,7 @@ public class Virgil : MonoBehaviour
     {
         //dialogueEndPoint++;
     }
+
     void nextDialogue()
     {
         if (dialogueStage >= dialogues.Length)
