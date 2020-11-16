@@ -12,9 +12,6 @@ GameObject:
   - component: {fileID: 7978635025666622004}
   - component: {fileID: 7978635025666622005}
   - component: {fileID: 7978635025666622006}
-  - component: {fileID: 7978635025666622007}
-  - component: {fileID: 7978635025666622000}
-  - component: {fileID: 1662660503429399752}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -122,7 +119,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662660503429399752}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menus, Assembly-CSharp
         m_MethodName: buttonFunction
         m_Mode: 1
@@ -134,45 +131,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &7978635025666622007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635025666622003}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5294118, g: 0.03137255, b: 0.03137255, a: 1}
-  m_EffectDistance: {x: 2, y: -1.5}
-  m_UseGraphicAlpha: 1
---- !u!114 &7978635025666622000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635025666622003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22247541fdedf3243a6d39a79a476194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1662660503429399752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635025666622003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7978635025734644799
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,9 +143,6 @@ GameObject:
   - component: {fileID: 7978635025734644768}
   - component: {fileID: 7978635025734644769}
   - component: {fileID: 7978635025734644770}
-  - component: {fileID: 7978635025734644771}
-  - component: {fileID: 7978635025734644796}
-  - component: {fileID: 2895068046171542452}
   m_Layer: 5
   m_Name: Controls Button
   m_TagString: Untagged
@@ -295,7 +250,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2895068046171542452}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menus, Assembly-CSharp
         m_MethodName: buttonFunction
         m_Mode: 1
@@ -307,45 +262,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &7978635025734644771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635025734644799}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5294118, g: 0.03137255, b: 0.03137255, a: 1}
-  m_EffectDistance: {x: 2, y: -1.5}
-  m_UseGraphicAlpha: 1
---- !u!114 &7978635025734644796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635025734644799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22247541fdedf3243a6d39a79a476194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2895068046171542452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635025734644799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7978635026143414990
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,9 +388,6 @@ GameObject:
   - component: {fileID: 7978635027113609109}
   - component: {fileID: 7978635027113609110}
   - component: {fileID: 7978635027113609111}
-  - component: {fileID: 7978635027113609104}
-  - component: {fileID: 7978635027113609105}
-  - component: {fileID: 6668395111106184237}
   m_Layer: 5
   m_Name: Pause Back Button
   m_TagString: Untagged
@@ -582,7 +495,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6668395111106184237}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menus, Assembly-CSharp
         m_MethodName: buttonFunction
         m_Mode: 1
@@ -594,42 +507,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &7978635027113609104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635027113609132}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5294118, g: 0.03137255, b: 0.03137255, a: 1}
-  m_EffectDistance: {x: 2, y: -1.5}
-  m_UseGraphicAlpha: 1
---- !u!114 &7978635027113609105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635027113609132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22247541fdedf3243a6d39a79a476194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6668395111106184237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978635027113609132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de198066e2e014748b5851f589cc1413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

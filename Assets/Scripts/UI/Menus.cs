@@ -6,6 +6,7 @@ public class Menus : MonoBehaviour
 {
    public void buttonFunction()
     {
+
         if(gameObject.name.Equals("Start Button"))
         {
             SceneLoader.GoToLimbo();
@@ -76,8 +77,9 @@ public class Menus : MonoBehaviour
         }
     }
 
-    IEnumerator Delay(float count)
+    // Play button sound
+    public void buttonSound()
     {
-        yield return new WaitForSeconds(count);
+        gameObject.GetComponent<AudioSource>().Play();
     }
 }
