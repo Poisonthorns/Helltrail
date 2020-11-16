@@ -41,15 +41,34 @@ public class PlayerCombatController : MonoBehaviour
 
 	public GameObject upgradedStats;
 
+	//Variables for special attack
+	bool specialAttackIsQueued;
+	float specialAttackTimer;
+	public float specialAttackCooldown = 6.0f;
+	public float lightAttackSpecialBonus = 5f;
+
 	// Start is called before the first frame update
 	void Start()
 	{
+		GameObject[] results = GameObject.FindGameObjectsWithTag("Stats");
+		for (int i = 0; i < results.Length; ++i)
+		{
+			if (results[i].GetComponent<Stats>() != null)
+			{
+				upgradedStats = results[i];
+				break;
+			}
+		}
+
 		weapon = allWeapons[weaponIndex];
 		playerAudio = GameObject.Find("Player").GetComponent<AudioSource>();
 		weaponSlots = GameObject.Find("Weapon Wheel").GetComponent<WeaponWheel>();
 
 		lightAttack = true;
 		heavyAttack = false;
+
+		specialAttackIsQueued = false;
+		specialAttackTimer = Time.time;
 	}
 
 	// Update is called once per frame
@@ -60,6 +79,11 @@ public class PlayerCombatController : MonoBehaviour
 
 	private void GetInput()
 	{
+		if(Input.GetKeyDown(KeyCode.E))
+		{
+				specialAttackIsQueued = !specialAttackIsQueued;
+		}
+
         //Swap Weapon Input
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -116,90 +140,90 @@ public class PlayerCombatController : MonoBehaviour
                 //Debug.Log("Swap weapon");
             }
         }
-            if (weapon.GetComponent<BaseWeapon>().rangedAttack)
+        if (weapon.GetComponent<BaseWeapon>().rangedAttack)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
-                    arrowPosition += transform.position;
-                    upAttack = true;
-                    downAttack = false;
-                    rightAttack = false;
-                    leftAttack = false;
-                    RangedAttack(225f, arrowPosition);
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
-                    arrowPosition += transform.position;
-                    upAttack = false;
-                    downAttack = true;
-                    rightAttack = false;
-                    leftAttack = false;
-                    RangedAttack(45f, arrowPosition);
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
-                    arrowPosition += transform.position;
-                    upAttack = false;
-                    downAttack = false;
-                    rightAttack = false;
-                    leftAttack = true;
-                    RangedAttack(-45f, arrowPosition);
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
-                    arrowPosition += transform.position;
-                    upAttack = false;
-                    downAttack = false;
-                    rightAttack = true;
-                    leftAttack = false;
-                    RangedAttack(135f, arrowPosition);
-                }
+                Vector3 arrowPosition = new Vector3(0.0f, 1.0f, 0.0f);
+                arrowPosition += transform.position;
+                upAttack = true;
+                downAttack = false;
+                rightAttack = false;
+                leftAttack = false;
+                RangedAttack(90f, arrowPosition);
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                //Attack Input
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
-                    Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
-                    upAttack = true;
-                    downAttack = false;
-                    rightAttack = false;
-                    leftAttack = false;
-                    Attack();
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
-                    upAttack = false;
-                    downAttack = true;
-                    rightAttack = false;
-                    leftAttack = false;
-                    Attack();
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
-                    upAttack = false;
-                    downAttack = false;
-                    rightAttack = false;
-                    leftAttack = true;
-                    Attack();
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
-                    upAttack = false;
-                    downAttack = false;
-                    rightAttack = true;
-                    leftAttack = false;
-                    Attack();
-                }
+                Vector3 arrowPosition = new Vector3(0.0f, -1.0f, 0.0f);
+                arrowPosition += transform.position;
+                upAttack = false;
+                downAttack = true;
+                rightAttack = false;
+                leftAttack = false;
+                RangedAttack(270f, arrowPosition);
             }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Vector3 arrowPosition = new Vector3(-1.0f, 0.0f, 0.0f);
+                arrowPosition += transform.position;
+                upAttack = false;
+                downAttack = false;
+                rightAttack = false;
+                leftAttack = true;
+                RangedAttack(0f, arrowPosition);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                Vector3 arrowPosition = new Vector3(1.0f, 0.0f, 0.0f);
+                arrowPosition += transform.position;
+                upAttack = false;
+                downAttack = false;
+                rightAttack = true;
+                leftAttack = false;
+                RangedAttack(180f, arrowPosition);
+            }
+        }
+        else
+        {
+            //Attack Input
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                attackPoint.localPosition = new Vector3(0.0f, 1.5f, 0f);
+                Debug.Log(weapon.GetComponent<BaseWeapon>().attackDamage);
+                upAttack = true;
+                downAttack = false;
+                rightAttack = false;
+                leftAttack = false;
+                Attack();
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                attackPoint.localPosition = new Vector3(0.0f, -1.5f, 0f);
+                upAttack = false;
+                downAttack = true;
+                rightAttack = false;
+                leftAttack = false;
+                Attack();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                attackPoint.localPosition = new Vector3(-1.0f, 0.5f, 0f);
+                upAttack = false;
+                downAttack = false;
+                rightAttack = false;
+                leftAttack = true;
+                Attack();
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                attackPoint.localPosition = new Vector3(1.0f, 0.5f, 0f);
+                upAttack = false;
+                downAttack = false;
+                rightAttack = true;
+                leftAttack = false;
+                Attack();
+            }
+        }
 		
 
 	}
@@ -372,21 +396,65 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(waitTime);
 
-		Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
-		foreach (Collider2D enemy in enemies)
+		if(specialAttackIsQueued & Time.time > specialAttackTimer)
 		{
-			//UnityEngine.Debug.Log("We hit " + enemy.name);
-			if (enemy.gameObject != null)
+			specialAttackTimer = Time.time + specialAttackCooldown;
+			if (weapon.GetComponent<BaseWeapon>().attackID == 0)
 			{
-				if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
+				//Special attack for the light attack
+				Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
+				foreach (Collider2D enemy in enemies)
 				{
-					playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
+					if (enemy.gameObject != null)
+					{
+						if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
+						{
+							playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 
-					enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage);
+							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage) * lightAttackSpecialBonus);
+						}
+					}
+				}
+			}
+			else if (weapon.GetComponent<BaseWeapon>().attackID == 1)
+			{
+				//Special attack for the heavy attack
+				//Still need to adjust the attack box
+				Debug.Log("Performing special heavy");
+				Vector2 specialAttackBox = new Vector2(3, 3);
+				Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position, specialAttackBox, 0f, enemyLayer, -100f, 100f);
+				foreach (Collider2D enemy in enemies)
+				{
+					if (enemy.gameObject != null)
+					{
+						if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
+						{
+							playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
+
+							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage));
+						}
+					}
 				}
 			}
 		}
+		else
+		{
+			//Normal melee attack
+			Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
+			foreach (Collider2D enemy in enemies)
+			{
+				//UnityEngine.Debug.Log("We hit " + enemy.name);
+				if (enemy.gameObject != null)
+				{
+					if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
+					{
+						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 
+						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage);
+					}
+				}
+			}
+		}
 		yield return null;
 	}
 
@@ -394,11 +462,38 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(waitTime);
 
-		GameObject newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, arrowRotation));
-		newArrow.GetComponent<Arrow>().SetRotation(arrowRotation);
-		newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
-		newArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
+		if (specialAttackIsQueued & Time.time > specialAttackTimer)
+		{
+			specialAttackTimer = Time.time + specialAttackCooldown;
+			float rotationArc = 45f;
+			float rotationIncrement = 5f;
+			float currRotation = arrowRotation - rotationArc;
+			float endingRotation = arrowRotation + rotationArc;
+			int i = (int)(rotationArc / rotationIncrement);
+			while (currRotation <= endingRotation)
+			{
+				//Need to fix arrow rotation on the special attack
+				GameObject newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, currRotation));
 
+				newArrow.GetComponent<Arrow>().SetRotation(currRotation - 90f);
+				newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
+				newArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
+				currRotation += rotationIncrement;
+				i++;
+			}
+
+			specialAttackIsQueued = false;
+			yield return null;
+		}
+		else
+		{       
+			//Normal ranged attack
+			//Need to fix left and right arrow sprite
+			GameObject tempArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, arrowRotation));
+			tempArrow.GetComponent<Arrow>().SetRotation(arrowRotation - 90f);
+			tempArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
+			tempArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
+		}
 		yield return null;
 	}
 }
