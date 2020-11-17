@@ -85,11 +85,20 @@ public class CircleCreation : MonoBehaviour
                             Vector3 temp = grid.CellToWorld(new Vector3Int((currentRoom.roomID * roomWidth * 2) + x + roomWidth + 2, roomHeight + 2 + y, 0));
                             temp.x += 0.5f;
                             temp.y += 0.5f;
-                        //print("enemes");
-                        //print(c);
-                            Instantiate(enemyType[c-1], temp, Quaternion.identity);
+                            int tempp = Random.Range(0, 10);
+                            GameObject enemy = Instantiate(enemyType[c - 1], temp, Quaternion.identity);
 
-                        }
+                            if (tempp<2)
+                            {
+                                enemy.GetComponent<EnemyHealthManager>().drop = potion;
+                            }
+                            else if(tempp < 6)
+                            {
+                                enemy.GetComponent<EnemyHealthManager>().dropSoul = true;
+
+                            }
+
+                    }
                     }
                 }
             
