@@ -295,6 +295,7 @@ MonoBehaviour:
   currentRoom: 0
   tileMap: {fileID: 1388528231}
   tileMapCollision: {fileID: 537563803}
+  potion: {fileID: 5117099894492388768, guid: 421581d9a6eb22a4e97554a293c3cf5c, type: 3}
 --- !u!4 &208552941
 Transform:
   m_ObjectHideFlags: 0
