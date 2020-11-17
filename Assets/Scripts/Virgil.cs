@@ -68,7 +68,7 @@ public class Virgil : MonoBehaviour
         bowIcon.GetComponent<Animator>().enabled = false;
 
 
-        transform.position = new Vector3(20.5f, 14.5f, -2);
+        transform.position = new Vector3(17.5f, 11.5f, -2);
         target = transform.position;
         dialogueUI.SetActive(false);
         dialogues = new CharacterDialogue[16];
@@ -137,7 +137,9 @@ public class Virgil : MonoBehaviour
             else
             {
                 dialogueUI.SetActive(false);
-               // Time.timeScale = 1;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().enabled = true;
+
+                // Time.timeScale = 1;
                 if (!killingPart)
                 {
                     Door.doorLock = false;
@@ -262,6 +264,9 @@ public class Virgil : MonoBehaviour
         dialogueUI.SetActive(true);
         inDialogue = true;
         print("doing dialogue");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().enabled = false;
+
         //Time.timeScale = 0;
         nextDialogue();
     }
@@ -280,7 +285,7 @@ public class Virgil : MonoBehaviour
 
                 {
                     move = true;
-                    target = new Vector3(26.5f, 14.5f, -2);
+                    target = new Vector3(22.5f, 14.5f, -2);
                     arrivedAtTarget = false;
                     changeRoom = true;
                     //do Dialogue

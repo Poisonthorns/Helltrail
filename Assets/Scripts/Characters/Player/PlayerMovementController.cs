@@ -78,15 +78,54 @@ public class PlayerMovementController : MonoBehaviour
             {
                 lockInput = true;
                 //print("this ranasdfasdfasdf");
+                animDown.SetBool("Walking", true);
+                animUp.SetBool("Walking", true);
+                if (Input.GetKey(KeyCode.W) && !attacking)
+                {
+                    spriteUp.SetActive(true);
+                    spriteDown.SetActive(false);
+                    spriteRight.SetActive(false);
+                    spriteLeft.SetActive(false);
+                }
+                else if (Input.GetKey(KeyCode.S) && !attacking)
+                {
+                    spriteUp.SetActive(false);
+                    spriteDown.SetActive(true);
+                    spriteRight.SetActive(false);
+                    spriteLeft.SetActive(false);
+                }
                 return new Vector2(0f, Input.GetAxisRaw("Vertical"));
             }
             else if (Input.GetAxisRaw("Horizontal") != 0)
             {
+                animRight.SetBool("Walking", true);
+                animLeft.SetBool("Walking", true);
                 lockInput = true;
+                if (Input.GetKey(KeyCode.A) && !attacking)
+                {
+                    spriteUp.SetActive(false);
+                    spriteDown.SetActive(false);
+                    spriteRight.SetActive(false);
+                    spriteLeft.SetActive(true);
+                }
+                else if (Input.GetKey(KeyCode.D) && !attacking)
+                {
+                    spriteUp.SetActive(false);
+                    spriteDown.SetActive(false);
+                    spriteRight.SetActive(true);
+                    spriteLeft.SetActive(false);
+                }
                 return new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
             }
             else
             {
+
+
+                animUp.SetBool("Walking", false);
+                animDown.SetBool("Walking", false);
+                animRight.SetBool("Walking", false);
+                animLeft.SetBool("Walking", false);
+                
                 return new Vector2(0f, 0f);
 
             }
