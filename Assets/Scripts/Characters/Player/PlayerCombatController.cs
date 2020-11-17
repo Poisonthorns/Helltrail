@@ -411,7 +411,7 @@ public class PlayerCombatController : MonoBehaviour
 						{
 							playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 
-							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage) * lightAttackSpecialBonus);
+							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage) * lightAttackSpecialBonus, weapon.GetComponent<BaseWeapon>().attackID);
 						}
 					}
 				}
@@ -430,8 +430,7 @@ public class PlayerCombatController : MonoBehaviour
 						if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
 						{
 							playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
-
-							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage));
+							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage), weapon.GetComponent<BaseWeapon>().attackID);
 						}
 					}
 				}
@@ -449,8 +448,7 @@ public class PlayerCombatController : MonoBehaviour
 					if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
 					{
 						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
-
-						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage);
+						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage, weapon.GetComponent<BaseWeapon>().attackID);
 					}
 				}
 			}

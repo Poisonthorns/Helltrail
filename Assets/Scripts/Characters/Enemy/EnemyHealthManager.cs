@@ -12,6 +12,15 @@ public class EnemyHealthManager : MonoBehaviour
      */
     public bool[] healthType;
 
+    /* Health Boolean Array size should be 2
+     * Only set 1 as true!
+     * 0 = No weakness
+     * 1 = Weak to dagger
+     * 2 = Weak to sword
+     * 3 = Weak to arrow
+     */
+    public bool[] weaknessType;
+
     public float startingHealth;
     private float currentHealth;
 
@@ -56,22 +65,31 @@ public class EnemyHealthManager : MonoBehaviour
         }
     }
 
-    public void LoseHealth(float amount)
+    public void LoseHealth(float amount, int damageType)
     {
         Instantiate(blood, transform.position, Quaternion.identity);
 
-        if(healthType[0])
+        if (healthType[0])
         {
-            currentHealth -= amount;
+            
+            if ((weaknessType[1] && damageType == 0) || (weaknessType[2] && damageType == 1) || (weaknessType[3] && damageType == 2))
+            {
+                currentHealth -= (amount * 2);
+            }
+            else
+            {
+                currentHealth -= amount;
+            }
         }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Death();
         }
         Debug.Log(currentHealth);
         currentFill = currentHealth / startingHealth;
     }
+
     public void GainHealth(float amount)
     {
         currentHealth += amount;

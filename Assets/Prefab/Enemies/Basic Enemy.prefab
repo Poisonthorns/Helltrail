@@ -1183,11 +1183,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthType: 0100
+  weaknessType: 00010000
   startingHealth: 20
   content: {fileID: 7884189660016262068}
   lerpSpeed: 5
   drop: {fileID: 0}
   blood: {fileID: 2007017813860939879, guid: 171ae3f10ee6ef444b09ec6ab8d1b1fa, type: 3}
+  dropSoul: 0
   puddle: {fileID: 6868723106333547851, guid: 3a6e9e88ee348f942b76fb3e594b8521, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
   anim: {fileID: 263522649211176738}
