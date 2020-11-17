@@ -271,6 +271,10 @@ public class Virgil : MonoBehaviour
         inDialogue = true;
         print("doing dialogue");
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animUp.SetBool("Walking", false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animDown.SetBool("Walking", false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animRight.SetBool("Walking", false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animLeft.SetBool("Walking", false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().enabled = false;
 
         //Time.timeScale = 0;
