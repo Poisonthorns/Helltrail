@@ -43,7 +43,7 @@ public class Virgil : MonoBehaviour
     private GameObject daggerIcon;
     private GameObject swordIcon;
     private GameObject bowIcon;
-
+    private IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +88,7 @@ public class Virgil : MonoBehaviour
         dialogues[13] = new CharacterDialogue("A soul! One of the monsters must’ve trapped it inside them! You can use these freed souls to help fuel your journey.", 1);
         dialogues[14] = new CharacterDialogue("It looks like we’ve made it to the entry of the Gluttony circle of Hell. I think you’re ready to head on your journey. Remember, every circle of Hell will contain the sin it embodies. Giving in to these sins, will only make these enemies stronger.", 1);
         dialogues[15] = new CharacterDialogue("We wish you luck on your journey. You are our only hope in returning these pure souls to the world.", 1);
+        coroutine = TextAnimation("");
 
         next();
     }
@@ -96,7 +97,7 @@ public class Virgil : MonoBehaviour
         if (move)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, 3 * Time.deltaTime);
-            if (Vector3.Distance(transform.position, target) < 0.1)
+            if (Vector3.Distance(transform.position, target) < 0.1||true)
             {
                 move = false;
                 arrivedAtTarget = true;
@@ -187,7 +188,9 @@ public class Virgil : MonoBehaviour
             VirildialogueUI.SetActive(false);
             AidendialogueUI.SetActive(true);
             textUI.GetComponent<Text>().text = "";
-            StartCoroutine(TextAnimation(d.text));
+            StopCoroutine(coroutine);
+            coroutine = TextAnimation(d.text);
+            StartCoroutine(coroutine);
 
             //textUI.GetComponent<Text>().text = d.text;
         }
@@ -196,7 +199,10 @@ public class Virgil : MonoBehaviour
             VirildialogueUI.SetActive(true);
             AidendialogueUI.SetActive(false);
             textUI.GetComponent<Text>().text = "";
-            StartCoroutine(TextAnimation(d.text));
+            StopCoroutine(coroutine);
+            coroutine = TextAnimation(d.text);
+
+            StartCoroutine(coroutine);
 
             //textUI.GetComponent<Text>().text = d.text;
         }

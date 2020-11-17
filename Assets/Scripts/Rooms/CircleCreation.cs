@@ -43,6 +43,8 @@ public class CircleCreation : MonoBehaviour
     Grid grid;
     public Tilemap tileMap;
     public Tilemap tileMapCollision;
+    public GameObject potion;
+   
     void Start()
     {
         loadObjects();
