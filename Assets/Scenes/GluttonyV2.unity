@@ -296,6 +296,8 @@ MonoBehaviour:
   tileMap: {fileID: 1388528231}
   tileMapCollision: {fileID: 537563803}
   potion: {fileID: 5117099894492388768, guid: 421581d9a6eb22a4e97554a293c3cf5c, type: 3}
+  potion2: {fileID: 3514934708090182379, guid: 3f334be972a71cb409d56a3d23659416, type: 3}
+  potion3: {fileID: 8232872863761860486, guid: c299c0fb591f2c044b2ff7d7fc96ceed, type: 3}
 --- !u!4 &208552941
 Transform:
   m_ObjectHideFlags: 0

@@ -45,3 +45,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: New Layer
+    uniqueID: 659576549
+    locked: 0
+  - name: New Layer
+    uniqueID: 3210169031
+    locked: 0
+  - name: blood
+    uniqueID: 1504825823
+    locked: 0
+  - name: weapon&pot
+    uniqueID: 3952122021
+    locked: 0
+  - name: Playerand monters
+    uniqueID: 2752123713
+    locked: 0

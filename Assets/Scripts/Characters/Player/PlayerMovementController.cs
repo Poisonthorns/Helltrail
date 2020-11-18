@@ -70,6 +70,15 @@ public class PlayerMovementController : MonoBehaviour
     }
     private Vector2 input()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneLoader.GoToDebug();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneLoader.GoToPause();
+        }
         //if (!lockInput)
         {
             time = 0;

@@ -44,7 +44,10 @@ public class CircleCreation : MonoBehaviour
     public Tilemap tileMap;
     public Tilemap tileMapCollision;
     public GameObject potion;
-   
+    public GameObject potion2;
+
+    public GameObject potion3;
+
     void Start()
     {
         loadObjects();
@@ -90,7 +93,22 @@ public class CircleCreation : MonoBehaviour
 
                             if (tempp<2)
                             {
-                                enemy.GetComponent<EnemyHealthManager>().drop = potion;
+                                int tempp2 = Random.Range(0, 10);
+                                if(tempp2<4)
+                                {
+                                  enemy.GetComponent<EnemyHealthManager>().drop = potion;
+    
+                                }
+                                else if (tempp2 < 7)
+                                {
+                                    enemy.GetComponent<EnemyHealthManager>().drop = potion2;
+
+                                }
+                                else
+                                {
+                                    enemy.GetComponent<EnemyHealthManager>().drop = potion3;
+
+                                }
                             }
                             else if(tempp < 6)
                             {

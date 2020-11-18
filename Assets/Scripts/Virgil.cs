@@ -44,6 +44,9 @@ public class Virgil : MonoBehaviour
     private GameObject swordIcon;
     private GameObject bowIcon;
     private IEnumerator coroutine;
+    int a = 0;
+    int b = 1;
+    int c = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +74,7 @@ public class Virgil : MonoBehaviour
         transform.position = new Vector3(17.5f, 11.5f, -2);
         target = transform.position;
         dialogueUI.SetActive(false);
-        dialogues = new CharacterDialogue[16];
+        dialogues = new CharacterDialogue[17];
         dialogues[0] = new CharacterDialogue("Huh? Where am I?", 0);
         dialogues[1] = new CharacterDialogue("You’re in Limbo. You’ve been sent to help us.", 1);
         dialogues[2] = new CharacterDialogue("Help you? How?", 0);
@@ -80,14 +83,15 @@ public class Virgil : MonoBehaviour
         dialogues[5] = new CharacterDialogue("Satan has captured and corrupted many of the world’s most powerful warriors and saints. However, only a mortal can traverse both Heaven and Hell. That’s why you were chosen, a pure soul with a strong resistance to the corruption and temptation of Hell, to reclaim the lost souls.", 1);
         dialogues[6] = new CharacterDialogue("If we hurry, we'll be able to get you to Gluttony, the third circle of Hell.", 1);
         dialogues[7] = new CharacterDialogue("First, you’ll need some weapons. Here’s a small dagger. Use it by pressing the arrows keys in the direction of your attack. This will deal a small amount of damage, but you can use it quickly. When you’re ready, let’s head to the next room, I heard something coming from there. Use the WASD keys to move around.", 1);
-        dialogues[8] = new CharacterDialogue("A wretch! These enemies are common in all circles of Hell. They are quick but pretty easy to kill! Use your dagger to attack.", 1);
-        dialogues[9] = new CharacterDialogue("It looks like that enemy had a sword from a fallen soldier. You can use that on your journey, it will be stronger but slower than your dagger.", 1);
-        dialogues[10] = new CharacterDialogue("To rotate between your weapons use the key ‘Q’. There are a lot of enemies in here, if you see your health bar dropping, look for a health potion for strength. ", 1);
-        dialogues[11] = new CharacterDialogue("That was close. If you find yourself needing help, always keep your eyes open for potions, they can help you in lots of ways. Also, it looks like you now have a bow and arrow! That will be useful for ranged attacks. ", 1);
-        dialogues[12] = new CharacterDialogue("It looks like one of the Gluttony monsters has wandered into Limbo!", 1);
-        dialogues[13] = new CharacterDialogue("A soul! One of the monsters must’ve trapped it inside them! You can use these freed souls to help fuel your journey.", 1);
-        dialogues[14] = new CharacterDialogue("It looks like we’ve made it to the entry of the Gluttony circle of Hell. I think you’re ready to head on your journey. Remember, every circle of Hell will contain the sin it embodies. Giving in to these sins, will only make these enemies stronger.", 1);
-        dialogues[15] = new CharacterDialogue("We wish you luck on your journey. You are our only hope in returning these pure souls to the world.", 1);
+        dialogues[8] = new CharacterDialogue("Press E to use special attack", 1);
+        dialogues[9] = new CharacterDialogue("A wretch! These enemies are common in all circles of Hell. They are quick but pretty easy to kill! Use your dagger to attack.", 1);
+        dialogues[10] = new CharacterDialogue("It looks like that enemy had a sword from a fallen soldier. You can use that on your journey, it will be stronger but slower than your dagger.", 1);
+        dialogues[11] = new CharacterDialogue("To rotate between your weapons use the key ‘Q’. There are a lot of enemies in here, if you see your health bar dropping, look for a health potion for strength. ", 1);
+        dialogues[12] = new CharacterDialogue("That was close. If you find yourself needing help, always keep your eyes open for potions, they can help you in lots of ways. Also, it looks like you now have a bow and arrow! That will be useful for ranged attacks. ", 1);
+        dialogues[13] = new CharacterDialogue("It looks like one of the Gluttony monsters has wandered into Limbo!", 1);
+        dialogues[14] = new CharacterDialogue("A soul! One of the monsters must’ve trapped it inside them! You can use these freed souls to help fuel your journey.", 1);
+        dialogues[15] = new CharacterDialogue("It looks like we’ve made it to the entry of the Gluttony circle of Hell. I think you’re ready to head on your journey. Remember, every circle of Hell will contain the sin it embodies. Giving in to these sins, will only make these enemies stronger.", 1);
+        dialogues[16] = new CharacterDialogue("We wish you luck on your journey. You are our only hope in returning these pure souls to the world.", 1);
         coroutine = TextAnimation("");
 
         next();
@@ -153,6 +157,12 @@ public class Virgil : MonoBehaviour
             {
                 pause = false;
                 next();
+            }
+            if (killingPart)
+            {
+                enemies[a].GetComponent<EnemyMovementManager>().enabled = true;
+                enemies[a+1].GetComponent<EnemyMovementManager>().enabled = true;
+                enemies[a+2].GetComponent<EnemyMovementManager>().enabled = true;
             }
             print("enter pressed");
         }
@@ -240,13 +250,17 @@ public class Virgil : MonoBehaviour
             inDialogue = false;
             if (pause)
             {
-
+                print("a");
             }
             else
             {
+                print("b");
+
                 next();
 
             }
+            print("c");
+
 
         }
 
@@ -288,7 +302,7 @@ public class Virgil : MonoBehaviour
             case -1:
                 {
                     doDialogue();
-                    dialogueEndPoint = 8;
+                    dialogueEndPoint = 9;
                     break;
                 }
             case 0:
@@ -315,15 +329,14 @@ public class Virgil : MonoBehaviour
                     target = new Vector3(44.5f, 14.5f, -2);
                     arrivedAtTarget = false;
                     triggerDialogue = true;
-                    enemies[0].GetComponent<EnemyMovementManager>().enabled = true;
-                    enemies[1].GetComponent<EnemyMovementManager>().enabled = true;
-                    enemies[2].GetComponent<EnemyMovementManager>().enabled = true;
+
 
                     break;
                 }
             case 3:
                 {
-                    dialogueEndPoint = 9;
+
+                    dialogueEndPoint = 10;
                     pause = true;
                     killingPart = true;
 
@@ -333,15 +346,14 @@ public class Virgil : MonoBehaviour
                 }
             case 222:
                 {
-                    //dialogueEndPoint = 9;
-                    print("----------------");
-                    //doDialogue();
-                    next();
+
                     break;
                 }
             case 4:
                 {
-                    dialogueEndPoint = 10;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noSword = false;
+
+                    dialogueEndPoint = 11;
                     pause = true;
                     doDialogue();
                     Door.doorLock = true;
@@ -368,15 +380,17 @@ public class Virgil : MonoBehaviour
                     move = true;
                     target = new Vector3(68.5f, 14.5f, -2);
                     arrivedAtTarget = false;
-                    enemies[3].GetComponent<EnemyMovementManager>().enabled = true;
-                    enemies[4].GetComponent<EnemyMovementManager>().enabled = true;
-                    enemies[5].GetComponent<EnemyMovementManager>().enabled = true;
+
                     break;
                 }
 
             case 8:
                 {
-                    dialogueEndPoint = 11;
+                    a += 3;
+                    enemies[3].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[4].GetComponent<EnemyMovementManager>().enabled = true;
+                    enemies[5].GetComponent<EnemyMovementManager>().enabled = true;
+                    dialogueEndPoint = 12;
                     pause = true;
                     killingPart = true;
                     //stage += 1;
@@ -387,7 +401,9 @@ public class Virgil : MonoBehaviour
 
             case 9:
                 {
-                    dialogueEndPoint = 12;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noBow = false;
+
+                    dialogueEndPoint = 13;
                     pause = true;
                     doDialogue();
                     break;
@@ -412,18 +428,17 @@ public class Virgil : MonoBehaviour
                     move = true;
                     target = new Vector3(92.5f, 14.5f, -2);
                     arrivedAtTarget = false;
-                    enemies[6].GetComponent<EnemyMovementManager>().enabled = true;
-                    enemies[7].GetComponent<EnemyMovementManager>().enabled = true;
-                    enemies[8].GetComponent<EnemyMovementManager>().enabled = true;
+
                     break;
                 }
 
 
             case 13:
                 {
-                    dialogueEndPoint = 13;
+                    dialogueEndPoint = 14;
                     pause = true;
                     killingPart = true;
+                    a += 3;
 
                     doDialogue();
                     break;
@@ -432,7 +447,8 @@ public class Virgil : MonoBehaviour
 
             case 14:
                 {
-                    dialogueEndPoint = 14;
+
+                    dialogueEndPoint = 15;
                     pause = true;
 
                     doDialogue();
@@ -502,7 +518,7 @@ public class Virgil : MonoBehaviour
 
             case 19:
                 {
-                    dialogueEndPoint = 17;
+                    dialogueEndPoint = 18;
 
                     doDialogue();
                     break;
