@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCombatController : MonoBehaviour
 {
@@ -47,6 +48,11 @@ public class PlayerCombatController : MonoBehaviour
 	public float specialAttackCooldown = 6.0f;
 	public float lightAttackSpecialBonus = 5f;
 
+	// Indicators for status of special attacks
+	private Image lightSpecialCircle;
+	private Image heavySpecialCircle;
+	private Image rangeSpecialCircle;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -67,14 +73,57 @@ public class PlayerCombatController : MonoBehaviour
 		lightAttack = true;
 		heavyAttack = false;
 
+		lightSpecialCircle = GameObject.Find("Light Special Circle").GetComponent<Image>();
+		heavySpecialCircle = GameObject.Find("Heavy Special Circle").GetComponent<Image>();
+		rangeSpecialCircle = GameObject.Find("Range Special Circle").GetComponent<Image>();
+
+		lightSpecialCircle.fillAmount = 0;
+		heavySpecialCircle.fillAmount = 0;
+		rangeSpecialCircle.fillAmount = 0;
+
 		specialAttackIsQueued = false;
 		specialAttackTimer = Time.time;
+		
+
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		GetInput();
+
+		/*
+		// Reset radial indicators
+		if(!specialAttackIsQueued)
+        {
+			lightSpecialCircle.fillAmount = 0;
+			heavySpecialCircle.fillAmount = 0;
+			rangeSpecialCircle.fillAmount = 0;
+
+		    // Icon fill color is gray-black when filling
+		    lightSpecialCircle.color = new Color32(20, 24, 32, 255);
+			heavySpecialCircle.color = new Color32(20, 24, 32, 255);
+			rangeSpecialCircle.color = new Color32(20, 24, 32, 255);
+		}
+
+		// Radially fills three special attack icons based on timer and cooldown, I know the math is wrong and will fix it
+		while(specialAttackIsQueued && lightSpecialCircle.fillAmount < 1.0f)
+        {
+			lightSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
+			heavySpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
+			rangeSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
+		}
+
+		// Changes loaded special attack icon to white
+		if(specialAttackQueued && lightSpecialCircle.fillAmount == 1.0f)
+		{
+			lightSpecialCircle.color = new Color32(255, 255, 255, 255);
+			heavySpecialCircle.color = new Color32(255, 255, 255, 255);
+			rangeSpecialCircle.color = new Color32(255, 255, 255, 255);
+
+		}
+		*/
+
 	}
 
 	private void GetInput()
