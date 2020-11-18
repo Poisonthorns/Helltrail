@@ -39,6 +39,8 @@ public class EnemyHealthManager : MonoBehaviour
     //aniamtion
     public Animator anim;
 
+    bool alreadyDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,8 +84,9 @@ public class EnemyHealthManager : MonoBehaviour
             }
         }
 
-        if (currentHealth <= 0)
+        if(!alreadyDead && currentHealth <= 0)
         {
+            alreadyDead = true;
             Death();
         }
         Debug.Log(currentHealth);
