@@ -83,7 +83,7 @@ public class Virgil : MonoBehaviour
         dialogues[5] = new CharacterDialogue("Satan has captured and corrupted many of the world’s most powerful warriors and saints. However, only a mortal can traverse both Heaven and Hell. That’s why you were chosen, a pure soul with a strong resistance to the corruption and temptation of Hell, to reclaim the lost souls.", 1);
         dialogues[6] = new CharacterDialogue("If we hurry, we'll be able to get you to Gluttony, the third circle of Hell.", 1);
         dialogues[7] = new CharacterDialogue("First, you’ll need some weapons. Here’s a small dagger. Use it by pressing the arrows keys in the direction of your attack. This will deal a small amount of damage, but you can use it quickly. When you’re ready, let’s head to the next room, I heard something coming from there. Use the WASD keys to move around.", 1);
-        dialogues[8] = new CharacterDialogue("Press E to use special attack", 1);
+        dialogues[8] = new CharacterDialogue("Press E to prepare your special attack for your next strike", 1);
         dialogues[9] = new CharacterDialogue("A wretch! These enemies are common in all circles of Hell. They are quick but pretty easy to kill! Use your dagger to attack.", 1);
         dialogues[10] = new CharacterDialogue("It looks like that enemy had a sword from a fallen soldier. You can use that on your journey, it will be stronger but slower than your dagger.", 1);
         dialogues[11] = new CharacterDialogue("To rotate between your weapons use the key ‘Q’. There are a lot of enemies in here, if you see your health bar dropping, look for a health potion for strength. ", 1);
