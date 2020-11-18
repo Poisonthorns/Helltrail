@@ -92,39 +92,52 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		GetInput();
 
-		/*
-		// Reset radial indicators
-		if(!specialAttackIsQueued)
-        {
+		if (!specialAttackIsQueued)
+		{
 			lightSpecialCircle.fillAmount = 0;
 			heavySpecialCircle.fillAmount = 0;
 			rangeSpecialCircle.fillAmount = 0;
-
-		    // Icon fill color is gray-black when filling
-		    lightSpecialCircle.color = new Color32(20, 24, 32, 255);
-			heavySpecialCircle.color = new Color32(20, 24, 32, 255);
-			rangeSpecialCircle.color = new Color32(20, 24, 32, 255);
 		}
-
-		// Radially fills three special attack icons based on timer and cooldown, I know the math is wrong and will fix it
-		while(specialAttackIsQueued && lightSpecialCircle.fillAmount < 1.0f)
+        else
         {
-			lightSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
-			heavySpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
-			rangeSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
+			lightSpecialCircle.fillAmount = 1;
+			heavySpecialCircle.fillAmount = 1;
+			rangeSpecialCircle.fillAmount = 1;
 		}
 
-		// Changes loaded special attack icon to white
-		if(specialAttackQueued && lightSpecialCircle.fillAmount == 1.0f)
-		{
-			lightSpecialCircle.color = new Color32(255, 255, 255, 255);
-			heavySpecialCircle.color = new Color32(255, 255, 255, 255);
-			rangeSpecialCircle.color = new Color32(255, 255, 255, 255);
+			/*
+			// Reset radial indicators
+			if(!specialAttackIsQueued)
+			{
+				lightSpecialCircle.fillAmount = 0;
+				heavySpecialCircle.fillAmount = 0;
+				rangeSpecialCircle.fillAmount = 0;
+
+				// Icon fill color is gray-black when filling
+				lightSpecialCircle.color = new Color32(20, 24, 32, 255);
+				heavySpecialCircle.color = new Color32(20, 24, 32, 255);
+				rangeSpecialCircle.color = new Color32(20, 24, 32, 255);
+			}
+
+			// Radially fills three special attack icons based on timer and cooldown, I know the math is wrong and will fix it
+			while(specialAttackIsQueued && lightSpecialCircle.fillAmount < 1.0f)
+			{
+				lightSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
+				heavySpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
+				rangeSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
+			}
+
+			// Changes loaded special attack icon to white
+			if(specialAttackQueued && lightSpecialCircle.fillAmount == 1.0f)
+			{
+				lightSpecialCircle.color = new Color32(255, 255, 255, 255);
+				heavySpecialCircle.color = new Color32(255, 255, 255, 255);
+				rangeSpecialCircle.color = new Color32(255, 255, 255, 255);
+
+			}
+			*/
 
 		}
-		*/
-
-	}
 
 	private void GetInput()
 	{

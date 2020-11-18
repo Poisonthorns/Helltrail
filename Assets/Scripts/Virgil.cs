@@ -142,7 +142,7 @@ public class Virgil : MonoBehaviour
             else
             {
                 dialogueUI.SetActive(false);
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().enabled = true;
+                GameObject.Find("Player").GetComponent<PlayerMovementController>().enabled = true;
 
                 // Time.timeScale = 1;
                 if (!killingPart)
@@ -284,12 +284,12 @@ public class Virgil : MonoBehaviour
         dialogueUI.SetActive(true);
         inDialogue = true;
         print("doing dialogue");
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animUp.SetBool("Walking", false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animDown.SetBool("Walking", false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animRight.SetBool("Walking", false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().animLeft.SetBool("Walking", false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementController>().enabled = false;
+        GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GameObject.Find("Player").GetComponent<PlayerMovementController>().animUp.SetBool("Walking", false);
+        GameObject.Find("Player").GetComponent<PlayerMovementController>().animDown.SetBool("Walking", false);
+        GameObject.Find("Player").GetComponent<PlayerMovementController>().animRight.SetBool("Walking", false);
+        GameObject.Find("Player").GetComponent<PlayerMovementController>().animLeft.SetBool("Walking", false);
+        GameObject.Find("Player").GetComponent<PlayerMovementController>().enabled = false;
 
         //Time.timeScale = 0;
         nextDialogue();
@@ -351,7 +351,7 @@ public class Virgil : MonoBehaviour
                 }
             case 4:
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noSword = false;
+                    GameObject.Find("Player").GetComponent<PlayerCombatController>().noSword = false;
 
                     dialogueEndPoint = 11;
                     pause = true;
@@ -401,7 +401,7 @@ public class Virgil : MonoBehaviour
 
             case 9:
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noBow = false;
+                    GameObject.Find("Player").GetComponent<PlayerCombatController>().noBow = false;
 
                     dialogueEndPoint = 13;
                     pause = true;
