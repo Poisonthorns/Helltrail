@@ -30,14 +30,13 @@ public class NewBehaviourScript : MonoBehaviour
         if (col.gameObject.tag.Equals("Player"))
         {
             print(col.gameObject.name);
-            GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().LoseHealth(2);
+            GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().LoseHealth(5);
             //col.gameObject.GetComponent<Player>().TakeDamage(10);
             print("took damage");
         }
     }
     IEnumerator ExampleCoroutine()
     {
-
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }

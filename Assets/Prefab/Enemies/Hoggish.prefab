@@ -351,6 +351,7 @@ MonoBehaviour:
   puddle: {fileID: 6868723106333547851, guid: 3a6e9e88ee348f942b76fb3e594b8521, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
   anim: {fileID: 0}
+  damageModifier: 0
 --- !u!114 &464152606491050098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iceSpikes: {fileID: 3281133249853461612, guid: c2d39dbbc40b08a46b4728b347508dd2, type: 3}
+  oozeIndicator: {fileID: 4790674181272895356, guid: 181b1595ba762bd4abadd6b6ff5d769a, type: 3}
   fireBall: {fileID: 4905634907710766859, guid: 6944da288b3d078418689856f5dc0688, type: 3}
   gridObject: {fileID: 0}
   tileMapObject: {fileID: 0}

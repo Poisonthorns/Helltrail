@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
+    public float speed = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class Fireball : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
 
         }
 
@@ -56,7 +58,7 @@ public class Fireball : MonoBehaviour
     IEnumerator ExampleCoroutine()
     {
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class CastSpell : MonoBehaviour
 {
     public GameObject iceSpikes;
+    public GameObject oozeIndicator;
     public GameObject fireBall;
     public GameObject gridObject;
     public GameObject tileMapObject;
@@ -24,8 +25,8 @@ public class CastSpell : MonoBehaviour
         for (int i=0; i<2; ++i)
         {
             Vector3 temp = grid.GetCellCenterWorld(new Vector3Int(Random.Range(0, 10) - 5, Random.Range(0, 10) - 5, 0));
-            Instantiate(iceSpikes, new Vector3(temp.x, temp.y, 0f) , Quaternion.identity);
-
+            Instantiate(oozeIndicator, new Vector3(temp.x, temp.y, 0f), Quaternion.identity);
+            StartCoroutine(WaitToSummonSlime(temp));
         }
 
     }
@@ -35,7 +36,7 @@ public class CastSpell : MonoBehaviour
         Grid grid = gridObject.GetComponent<Grid>();
         Tilemap tilemap = tileMapObject.GetComponent<Tilemap>();
         //Instantiate(fireBall, grid.GetCellCenterWorld(new Vector3Int(0, 0, 0)), Quaternion.Euler(0, 0, 90));
-        Instantiate(fireBall, GameObject.Find("Hoggish").transform.position + new Vector3(-2.5f, 0f, 0f), Quaternion.Euler(0, 0, 90));
+        Instantiate(fireBall, GameObject.Find("Hoggish").transform.position + new Vector3(0f, 1f, 0f), Quaternion.Euler(0, 0, 90));
 
 
 
@@ -44,5 +45,11 @@ public class CastSpell : MonoBehaviour
     {
         satanSpellAudio = gameObject.GetComponent<AudioSource>();
         iceSpell();
+    }
+
+    IEnumerator WaitToSummonSlime(Vector3 temp)
+    {
+        yield return new WaitForSeconds(1f);
+        Instantiate(iceSpikes, new Vector3(temp.x, temp.y, 0f), Quaternion.identity);
     }
 }
