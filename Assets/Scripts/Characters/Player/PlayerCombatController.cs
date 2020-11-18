@@ -245,7 +245,7 @@ public class PlayerCombatController : MonoBehaviour
 				animUp.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition, false));
 			}
 			else if(downAttack)
 			{
@@ -257,7 +257,7 @@ public class PlayerCombatController : MonoBehaviour
 				animDown.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition, false));
 			}
 			else if(rightAttack)
 			{
@@ -269,7 +269,7 @@ public class PlayerCombatController : MonoBehaviour
 				animRight.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition, true));
 			}
 			else if(leftAttack)
 			{
@@ -281,7 +281,7 @@ public class PlayerCombatController : MonoBehaviour
 				animLeft.Play("Ranged Attack");
 				
 				//Delay
-				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition));
+				StartCoroutine(waitForRanged( 0.35f, arrowRotation, arrowPosition, true));
 			}
 		}
 	}
@@ -410,7 +410,6 @@ public class PlayerCombatController : MonoBehaviour
 						if (enemy.gameObject.tag == "Enemy" || enemy.gameObject.tag == "Boss")
 						{
 							playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
-
 							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage) * lightAttackSpecialBonus, weapon.GetComponent<BaseWeapon>().attackID);
 						}
 					}
@@ -456,28 +455,41 @@ public class PlayerCombatController : MonoBehaviour
 		yield return null;
 	}
 
-	IEnumerator waitForRanged(float waitTime, float arrowRotation, Vector3 arrowPosition)
+	IEnumerator waitForRanged(float waitTime, float arrowRotation, Vector3 arrowPosition, bool flipOnX)
 	{
 		yield return new WaitForSeconds(waitTime);
 
 		if (specialAttackIsQueued & Time.time > specialAttackTimer)
 		{
 			specialAttackTimer = Time.time + specialAttackCooldown;
-			float rotationArc = 45f;
-			float rotationIncrement = 5f;
+			float rotationArc = 45;
+			float rotationIncrement = 22.5f;
 			float currRotation = arrowRotation - rotationArc;
 			float endingRotation = arrowRotation + rotationArc;
 			int i = (int)(rotationArc / rotationIncrement);
 			while (currRotation <= endingRotation)
 			{
+				GameObject newArrow;
 				//Need to fix arrow rotation on the special attack
-				GameObject newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, currRotation));
-
+				if (i < 0)
+				{
+					newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, currRotation + ((i - 1) * rotationIncrement)));
+				}
+				else if (i > 0)
+				{
+					newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, currRotation + ((i + 1) * rotationIncrement)));
+				}
+				else
+				{
+					newArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, currRotation));
+				}
+				 
+				newArrow.GetComponent<SpriteRenderer>().flipX = flipOnX;
 				newArrow.GetComponent<Arrow>().SetRotation(currRotation - 90f);
 				newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
 				newArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
 				currRotation += rotationIncrement;
-				i++;
+				i--;
 			}
 
 			specialAttackIsQueued = false;
@@ -488,6 +500,7 @@ public class PlayerCombatController : MonoBehaviour
 			//Normal ranged attack
 			//Need to fix left and right arrow sprite
 			GameObject tempArrow = Instantiate(Arrow, arrowPosition, Quaternion.Euler(0, 0, arrowRotation));
+			tempArrow.GetComponent<SpriteRenderer>().flipX = flipOnX;
 			tempArrow.GetComponent<Arrow>().SetRotation(arrowRotation - 90f);
 			tempArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
 			tempArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
