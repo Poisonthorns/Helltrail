@@ -139,13 +139,13 @@ public class Stats : MonoBehaviour
 		if(souls > 0 && upgradedDamage < MAX_STAT_TOTAL)
 		{
 			//5.0
-			upgradedDamage += 1.0f;
+			upgradedDamage += 0.5f;
 			
 
 			// Puts cap on the highest damage you can get
 			if (upgradedDamage >= MAX_STAT_TOTAL)
 			{
-				upgradedDamage = 100.0f;
+				upgradedDamage = MAX_STAT_TOTAL;
 			}
 			souls--;
 			damageStatBar.Initialize(upgradedDamage, (float) MAX_STAT_TOTAL);
@@ -166,7 +166,7 @@ public class Stats : MonoBehaviour
 			// Puts cap on the highest speed you can get
 			if (upgradedSpeed >= MAX_STAT_TOTAL)
 			{
-				upgradedSpeed = 100.0f;
+				upgradedSpeed = MAX_STAT_TOTAL;
 			}
 			souls--;
 			speedStatBar.Initialize(upgradedSpeed, (float)MAX_STAT_TOTAL);
@@ -183,11 +183,11 @@ public class Stats : MonoBehaviour
 		if (souls > 0 && upgradedAttackRate < MAX_STAT_TOTAL)
 		{
 			//0.25
-			upgradedAttackRate += 1.0f;
+			upgradedAttackRate += 0.25f;
 			// Puts cap on the highest rate you can get
 			if (upgradedAttackRate >= MAX_STAT_TOTAL)
 			{
-				upgradedAttackRate = 100.0f;
+				upgradedAttackRate = MAX_STAT_TOTAL;
 			}
 			souls--;
 			rateStatBar.Initialize(upgradedAttackRate, (float)MAX_STAT_TOTAL);
