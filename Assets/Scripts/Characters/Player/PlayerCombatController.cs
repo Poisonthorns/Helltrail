@@ -53,6 +53,8 @@ public class PlayerCombatController : MonoBehaviour
 	private Image heavySpecialCircle;
 	private Image rangeSpecialCircle;
 
+	public GameObject lightEffect;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -477,6 +479,7 @@ public class PlayerCombatController : MonoBehaviour
 			specialAttackTimer = Time.time + specialAttackCooldown;
 			if (weapon.GetComponent<BaseWeapon>().attackID == 0)
 			{
+				Instantiate(lightEffect, transform.position, transform.rotation);
 				//Special attack for the light attack
 				Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
 				foreach (Collider2D enemy in enemies)
