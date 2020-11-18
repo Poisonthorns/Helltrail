@@ -185,8 +185,8 @@ MonoBehaviour:
   - {fileID: 5986223334232170306}
   - {fileID: 8130707957898581716}
   m_Bounds:
-    m_Center: {x: -0.20137954, y: 0.0025794506, z: 0}
-    m_Extent: {x: 2.5439453, y: 2.6195858, z: 0}
+    m_Center: {x: -0.20137954, y: 0.0025792122, z: 0}
+    m_Extent: {x: 2.5439453, y: 2.6195855, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5526412244872737925
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthType: 0100
   weaknessType: 00000001
-  startingHealth: 100
+  startingHealth: 60
   content: {fileID: 744379613033319725}
   lerpSpeed: 5
   drop: {fileID: 0}
@@ -366,6 +366,7 @@ MonoBehaviour:
   puddle: {fileID: 6868723106333547851, guid: 3a6e9e88ee348f942b76fb3e594b8521, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
   anim: {fileID: 5526412244872737925}
+  damageModifier: 4
 --- !u!114 &1926146366168398980
 MonoBehaviour:
   m_ObjectHideFlags: 0

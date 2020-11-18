@@ -1184,7 +1184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthType: 0100
   weaknessType: 00010000
-  startingHealth: 20
+  startingHealth: 25
   content: {fileID: 7884189660016262068}
   lerpSpeed: 5
   drop: {fileID: 0}
@@ -1193,6 +1193,7 @@ MonoBehaviour:
   puddle: {fileID: 6868723106333547851, guid: 3a6e9e88ee348f942b76fb3e594b8521, type: 3}
   soul: {fileID: 8824349484355730477, guid: 4d34e0194f509324dab128595d2482e4, type: 3}
   anim: {fileID: 263522649211176738}
+  damageModifier: 2
 --- !u!114 &6170759654459756323
 MonoBehaviour:
   m_ObjectHideFlags: 0

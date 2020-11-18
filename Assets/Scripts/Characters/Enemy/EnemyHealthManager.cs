@@ -40,7 +40,7 @@ public class EnemyHealthManager : MonoBehaviour
     public Animator anim;
 
     bool alreadyDead = false;
-
+    public float damageModifier;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +76,7 @@ public class EnemyHealthManager : MonoBehaviour
             
             if ((weaknessType[1] && damageType == 0) || (weaknessType[2] && damageType == 1) || (weaknessType[3] && damageType == 2))
             {
-                currentHealth -= (amount * 2.5f);
+                currentHealth -= (amount * damageModifier);
             }
             else
             {
