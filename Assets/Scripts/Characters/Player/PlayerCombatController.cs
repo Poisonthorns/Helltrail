@@ -53,6 +53,9 @@ public class PlayerCombatController : MonoBehaviour
 	private Image heavySpecialCircle;
 	private Image rangeSpecialCircle;
 
+	private Image CircleSlash;
+	float circleSlashFillAmount = 0f;
+
 	public GameObject lightEffect;
 
 	// Start is called before the first frame update
@@ -78,6 +81,9 @@ public class PlayerCombatController : MonoBehaviour
 		lightSpecialCircle = GameObject.Find("Light Special Circle").GetComponent<Image>();
 		heavySpecialCircle = GameObject.Find("Heavy Special Circle").GetComponent<Image>();
 		rangeSpecialCircle = GameObject.Find("Range Special Circle").GetComponent<Image>();
+
+		CircleSlash = GameObject.Find("CircleSlash").GetComponent<Image>();
+		CircleSlash.fillAmount = 0;
 
 		lightSpecialCircle.fillAmount = 0;
 		heavySpecialCircle.fillAmount = 0;
@@ -119,6 +125,17 @@ public class PlayerCombatController : MonoBehaviour
 			lightSpecialCircle.fillAmount = Mathf.Lerp(lightSpecialCircle.fillAmount, timeLeftOnCooldown, Time.deltaTime * 5f);
 			heavySpecialCircle.fillAmount = Mathf.Lerp(heavySpecialCircle.fillAmount, timeLeftOnCooldown, Time.deltaTime * 5f);
 			rangeSpecialCircle.fillAmount = Mathf.Lerp(rangeSpecialCircle.fillAmount, timeLeftOnCooldown, Time.deltaTime * 5f);
+		}
+
+		if(circleSlashFillAmount != CircleSlash.fillAmount)
+		{
+			CircleSlash.fillAmount = Mathf.Lerp(CircleSlash.fillAmount, circleSlashFillAmount, Time.deltaTime * 5f);
+		}
+
+		if(CircleSlash.fillAmount >= 0.97)
+		{
+			circleSlashFillAmount = 0f;
+			CircleSlash.fillAmount = 0f;
 		}
 
 		/*
@@ -481,6 +498,7 @@ public class PlayerCombatController : MonoBehaviour
 			{
 				Instantiate(lightEffect, transform.position, transform.rotation);
 				//Special attack for the light attack
+				specialAttackIsQueued = false;
 				Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
 				foreach (Collider2D enemy in enemies)
 				{
@@ -500,6 +518,8 @@ public class PlayerCombatController : MonoBehaviour
 				//Still need to adjust the attack box
 				Debug.Log("Performing special heavy");
 				Vector2 specialAttackBox = new Vector2(3, 3);
+				circleSlashFillAmount = 1f;
+				specialAttackIsQueued = false;
 				Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position, specialAttackBox, 0f, enemyLayer, -100f, 100f);
 				foreach (Collider2D enemy in enemies)
 				{
