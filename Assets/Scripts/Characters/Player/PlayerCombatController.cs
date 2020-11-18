@@ -92,7 +92,7 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		GetInput();
 
-		if (!specialAttackIsQueued)
+		/*if (!specialAttackIsQueued)
 		{
 			lightSpecialCircle.fillAmount = 0;
 			heavySpecialCircle.fillAmount = 0;
@@ -103,18 +103,20 @@ public class PlayerCombatController : MonoBehaviour
 			lightSpecialCircle.fillAmount = 1;
 			heavySpecialCircle.fillAmount = 1;
 			rangeSpecialCircle.fillAmount = 1;
-		}
+		}*/
 
 		float timeLeftOnCooldown = specialAttackTimer - Time.time;
 		if (timeLeftOnCooldown < 0)
 		{
 			timeLeftOnCooldown = 0;
 		}
-		timeLeftOnCooldown = (1 - timeLeftOnCooldown) / specialAttackTimer;
+		timeLeftOnCooldown = 1 - (timeLeftOnCooldown / specialAttackCooldown);
 
 		if(timeLeftOnCooldown != lightSpecialCircle.fillAmount)
 		{
 			lightSpecialCircle.fillAmount = Mathf.Lerp(lightSpecialCircle.fillAmount, timeLeftOnCooldown, Time.deltaTime * 5f);
+			heavySpecialCircle.fillAmount = Mathf.Lerp(heavySpecialCircle.fillAmount, timeLeftOnCooldown, Time.deltaTime * 5f);
+			rangeSpecialCircle.fillAmount = Mathf.Lerp(rangeSpecialCircle.fillAmount, timeLeftOnCooldown, Time.deltaTime * 5f);
 		}
 
 		/*
