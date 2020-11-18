@@ -76,7 +76,7 @@ public class EnemyHealthManager : MonoBehaviour
             
             if ((weaknessType[1] && damageType == 0) || (weaknessType[2] && damageType == 1) || (weaknessType[3] && damageType == 2))
             {
-                currentHealth -= (amount * 2);
+                currentHealth -= (amount * 2.5f);
             }
             else
             {
