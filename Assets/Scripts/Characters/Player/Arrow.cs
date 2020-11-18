@@ -42,6 +42,10 @@ public class Arrow : MonoBehaviour
             Debug.Log(upgradedStats.GetComponent<Stats>().upgradedDamage);
             //Debug.Log("Enemy hit" + (weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage));
             col.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage, weapon.GetComponent<BaseWeapon>().attackID);
+        }
+
+        if(!col.gameObject.tag.Equals("Player") && !col.gameObject.tag.Equals("Arrow") && !col.gameObject.tag.Equals("Soul"))
+		{
             Destroy(gameObject);
         }
     }
