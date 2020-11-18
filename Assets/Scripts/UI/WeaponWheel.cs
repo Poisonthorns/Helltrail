@@ -27,7 +27,7 @@ public class WeaponWheel : MonoBehaviour
     }
     public void Update()
     {
-        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noBow)
+        if(GameObject.Find("Player").GetComponent<PlayerCombatController>().noBow)
         {
             bow.SetActive(false);
 
@@ -36,7 +36,7 @@ public class WeaponWheel : MonoBehaviour
         {
             bow.SetActive(true);
         }
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatController>().noSword)
+        if (GameObject.Find("Player").GetComponent<PlayerCombatController>().noSword)
         {
             sword.SetActive(false);
 
