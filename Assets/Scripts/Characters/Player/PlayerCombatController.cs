@@ -500,7 +500,7 @@ public class PlayerCombatController : MonoBehaviour
 				//Special attack for the light attack
 				specialAttackIsQueued = false;
 				Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, weapon.GetComponent<BaseWeapon>().attackBox, 0f, enemyLayer, -100f, 100f);
-				foreach (Collider2D enemy in enemies)
+				foreach(Collider2D enemy in enemies)
 				{
 					if (enemy.gameObject != null)
 					{
@@ -508,6 +508,7 @@ public class PlayerCombatController : MonoBehaviour
 						{
 							playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 							enemy.GetComponent<EnemyHealthManager>().LoseHealth((weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage) * lightAttackSpecialBonus, weapon.GetComponent<BaseWeapon>().attackID);
+							break;
 						}
 					}
 				}
@@ -547,6 +548,10 @@ public class PlayerCombatController : MonoBehaviour
 					{
 						playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 						enemy.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage, weapon.GetComponent<BaseWeapon>().attackID);
+						if (weapon.GetComponent<BaseWeapon>().attackID == 0)
+						{
+							break;
+						}
 					}
 				}
 			}

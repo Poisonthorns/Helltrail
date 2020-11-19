@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5522605cb6d174f8ddff7f46f679a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackBox: {x: 0.5, y: 0.5}
+  attackBox: {x: 0.2, y: 0.2}
   attackID: 0
   attackDamage: 10
   attackRange: 0.2

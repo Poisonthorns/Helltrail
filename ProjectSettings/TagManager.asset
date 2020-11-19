@@ -11,6 +11,7 @@ TagManager:
   - Arrow
   - Soul
   - Wall
+  - BossAttacks
   layers:
   - Default
   - TransparentFX
