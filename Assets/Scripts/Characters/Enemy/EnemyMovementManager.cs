@@ -64,7 +64,7 @@ public class EnemyMovementManager : MonoBehaviour
         {
             temp = setMovement();
             print(temp);
-            rb.velocity = new Vector2(temp.x, temp.y);
+            rb.velocity = (new Vector2(temp.x, temp.y)) * speed;
 
         }
         else

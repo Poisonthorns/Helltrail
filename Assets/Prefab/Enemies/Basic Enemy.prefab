@@ -1208,13 +1208,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementType: 01000000
   player: {fileID: 1988686699227201222, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
-  speed: 4
+  speed: 2
   movePoint: {fileID: 3790989679691831218}
   collideables:
     serializedVersion: 2
     m_Bits: 2147484416
   powerLevel: 5
-  movementInterval: 2
+  movementInterval: 0
 --- !u!114 &1006274275760323521
 MonoBehaviour:
   m_ObjectHideFlags: 0

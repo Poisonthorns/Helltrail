@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementType: 010000
   player: {fileID: 0}
-  speed: 4
+  speed: 1.5
   movePoint: {fileID: 6643606853196140181}
   collideables:
     serializedVersion: 2
