@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthType: 0100
   weaknessType: 00000001
-  startingHealth: 60
+  startingHealth: 80
   content: {fileID: 744379613033319725}
   lerpSpeed: 5
   drop: {fileID: 0}

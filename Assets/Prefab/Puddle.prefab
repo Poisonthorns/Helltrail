@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1013898096206406428}
   m_Layer: 5
   m_Name: Puddle
-  m_TagString: Untagged
+  m_TagString: Blood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
