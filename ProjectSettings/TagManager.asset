@@ -8,6 +8,9 @@ TagManager:
   - Boss
   - Stats
   - Door
+  - Arrow
+  - Soul
+  - Wall
   layers:
   - Default
   - TransparentFX

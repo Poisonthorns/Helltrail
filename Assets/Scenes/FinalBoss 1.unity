@@ -8417,7 +8417,7 @@ CompositeCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 1
-  m_GenerationType: 0
+  m_GenerationType: 1
   m_EdgeRadius: 0
   m_ColliderPaths:
   - m_Collider: {fileID: 794096105}
@@ -13826,6 +13826,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 38036844403980306, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 87028273064167729, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: -0.0027952194
@@ -13938,13 +13942,89 @@ PrefabInstance:
       propertyPath: healthType.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1097974979481450504, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630510465656532852, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327895696846776059, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415537921857186541, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089514412726560406, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765754859427506148, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133788865674906169, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906847570335326693, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 5870718687723589412, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -2.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6034744881652014413, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531457662325219480, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749380806030779445, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 7140658952014420065, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199936616751706672, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440621069416891368, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529467301867050537, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843262815438702593, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030838577547949492, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716084164784148025, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984795729660805361, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122923623725820674, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
+      propertyPath: m_TagString
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 9200802329779041527, guid: af7073405f7d86e4aa37db680e637b07, type: 3}
       propertyPath: m_SortingOrder

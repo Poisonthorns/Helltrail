@@ -37,7 +37,7 @@ public class Fireball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         print("triggered");
-        if (col.gameObject.tag.Equals("Player"))
+        if(col.gameObject.tag.Equals("Player"))
         {
             if (explode)
             {
@@ -48,11 +48,15 @@ public class Fireball : MonoBehaviour
             else
             {
                 GameObject.Find("Player Health Bar").GetComponent<PlayerHealthController>().LoseHealth(5);
-
+                Destroy(gameObject);
                 print("took direct damage");
             }
 
         }
+        else if(!col.gameObject.tag.Equals("Boss") && !col.gameObject.tag.Equals("Wall") && !col.gameObject.tag.Equals("BossAttacks"))
+		{
+            Destroy(gameObject);
+		}
 
     }
     IEnumerator ExampleCoroutine()

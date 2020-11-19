@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3281133249853461609}
   m_Layer: 23
   m_Name: Floor Spikes
-  m_TagString: Arrow
+  m_TagString: BossAttacks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

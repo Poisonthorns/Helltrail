@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 7999338368431990615}
   m_Layer: 0
   m_Name: Slime Ball
-  m_TagString: Arrow
+  m_TagString: BossAttacks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

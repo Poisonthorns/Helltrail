@@ -44,7 +44,7 @@ public class Arrow : MonoBehaviour
             col.GetComponent<EnemyHealthManager>().LoseHealth(weapon.GetComponent<BaseWeapon>().attackDamage + additionalDamage + upgradedStats.GetComponent<Stats>().upgradedDamage, weapon.GetComponent<BaseWeapon>().attackID);
         }
 
-        if(!col.gameObject.tag.Equals("Player") && !col.gameObject.tag.Equals("Arrow") && !col.gameObject.tag.Equals("Soul"))
+        if(!col.gameObject.tag.Equals("Player") && !col.gameObject.tag.Equals("Arrow") && !col.gameObject.tag.Equals("Soul") && !col.gameObject.tag.Equals("BossAttacks"))
 		{
             Destroy(gameObject);
         }
