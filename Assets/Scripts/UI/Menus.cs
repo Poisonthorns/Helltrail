@@ -11,6 +11,10 @@ public class Menus : MonoBehaviour
         {
             SceneLoader.GoToLimbo();
         }
+        else if (gameObject.name.Equals("Credits Button"))
+        {
+            SceneLoader.GoToCredits();
+        }
         else if (gameObject.name.Equals("Controls Button"))
         {
             SceneLoader.GoToControls();
