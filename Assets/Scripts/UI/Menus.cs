@@ -51,10 +51,6 @@ public class Menus : MonoBehaviour
         {
             SceneLoader.GoToLimbo();
         }
-        else if (gameObject.name.Equals("FinalBoss 1"))
-        {
-            SceneLoader.GoToTreachery();
-        }
         else if (gameObject.name.Equals("Win Screen"))
         {
             SceneLoader.GoToWinScreen();
@@ -74,10 +70,6 @@ public class Menus : MonoBehaviour
         else if (gameObject.name.Equals("StatScreen"))
         {
             SceneLoader.GoToStatScreen();
-        }
-        else if (gameObject.name.Equals("ArtGallery"))
-        {
-            SceneLoader.GoToArtGallery();
         }
     }
 

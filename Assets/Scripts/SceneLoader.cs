@@ -8,12 +8,13 @@ public static class SceneLoader
     public static SoundManager soundManager;
     public static AudioClip limboSong;
     public static AudioClip gluttonySong;
-    public static AudioClip violenceSong;
-    public static AudioClip heresySong;
-    public static AudioClip treacherySong;
 
     public static GameObject pause;
     public static GameObject controls;
+
+    public static bool limboStarted;
+    public static bool gluttonyStarted;
+    public static bool bossStarted;
 
     public static void Start()
     {
@@ -44,45 +45,23 @@ public static class SceneLoader
 
     public static void GoToLimbo()
     {
-        //Insert correct name
+        limboStarted = true;
         SceneManager.LoadScene("LimboV2");
         soundManager.SwitchTrackCaller(1);
     }
 
     public static void GoToGluttony()
     {
-        //Insert correct name
-        soundManager.SwitchTrackCaller(2);
+        gluttonyStarted = true;
         SceneManager.LoadScene("GluttonyV2");
+        soundManager.SwitchTrackCaller(2);
     }
 
     public static void GoToGluttonyBoss()
     {
-        //Insert correct name
-        
+        bossStarted = true;
         SceneManager.LoadScene("FinalBoss 1");
         soundManager.SwitchTrackCaller(2);
-    }
-
-    public static void GoToViolence()
-    {
-        //Insert correct name
-        //audioManager.PlayMusicWithFade(violenceSong, 0.1f);
-        SceneManager.LoadScene("Violence");
-    }
-
-    public static void GoToHeresy()
-    {
-        //Insert correct name
-        //audioManager.PlayMusicWithFade(heresySong, 0.1f);
-        SceneManager.LoadScene("Heresy");
-    }
-
-    public static void GoToTreachery()
-    {
-        //Insert correct name
-        //audioManager.PlayMusicWithFade(treacherySong, 0.1f);
-        SceneManager.LoadScene("FinalBoss 1");
     }
 
     public static void GoToWinScreen()
@@ -93,7 +72,6 @@ public static class SceneLoader
 
     public static void GoToDeathScreen()
     {
-        //Insert correct name
         SceneManager.LoadScene("Death Screen");
         soundManager.SwitchTrackCaller(0);
     }
@@ -118,11 +96,6 @@ public static class SceneLoader
     public static void GoToStatScreen()
     {
         SceneManager.LoadScene("StatScreen");
-    }
-
-    public static void GoToArtGallery()
-    {
-        SceneManager.LoadScene("ArtGallery");
     }
 
     public static void GoToPause()
