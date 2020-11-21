@@ -37,14 +37,6 @@ public class Menus : MonoBehaviour
         }
         else if (gameObject.name.Equals("Main Menu") || gameObject.name.Equals("Back to Menu Button") || gameObject.name.Equals("Controls Back Button"))
         {
-            GameObject[] results = GameObject.FindGameObjectsWithTag("Stats");
-            for (int i = 0; i < results.Length; ++i)
-            {
-                if (results[i].GetComponent<Stats>() != null)
-                {
-                    Destroy(results[i]);
-                }
-            }
             SceneLoader.GoToMenu();
         }
         else if (gameObject.name.Equals("Limbo"))
@@ -70,6 +62,30 @@ public class Menus : MonoBehaviour
         else if (gameObject.name.Equals("StatScreen"))
         {
             SceneLoader.GoToStatScreen();
+        }
+        else if (gameObject.name.Equals("Try Again Button"))
+        {
+            Stats stats = GameObject.Find("PlayerStats").GetComponent<Stats>();
+            int soulStart = 0;
+
+            if (SceneLoader.bossStarted)
+            {
+                soulStart = stats.souls;
+                SceneLoader.GoToGluttonyBoss();
+            }
+            else if(SceneLoader.gluttonyStarted)
+            {
+                soulStart = stats.souls;
+                SceneLoader.GoToGluttony();
+            }
+            else if(SceneLoader.limboStarted)
+            {
+                soulStart = stats.souls;
+                SceneLoader.GoToLimbo();
+            }
+
+            // Make stats equal to their total at the start of the level
+            stats.souls = soulStart;
         }
     }
 

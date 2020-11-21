@@ -32,15 +32,27 @@ public static class SceneLoader
         }
 
         DisableActiveScreens();
+        limboStarted = false;
+        gluttonyStarted = false;
+        bossStarted = false;
 
     }
 
     public static void GoToMenu()
     {
+        GameObject[] results = GameObject.FindGameObjectsWithTag("Stats");
+        for (int i = 0; i < results.Length; ++i)
+        {
+            if (results[i].GetComponent<Stats>() != null)
+            {
+                GameObject.Destroy(results[i]);
+            }
+        }
+        // Clear stats if retrying
+        GameObject.Find("PlayerStats").GetComponent<Stats>().clearSouls();
         DisableActiveScreens();
-        //Insert correct name
-        SceneManager.LoadScene("Main Menu");
         soundManager.SwitchTrackCaller(0);
+        SceneManager.LoadScene("Main Menu");
     }
 
     public static void GoToLimbo()

@@ -267,7 +267,6 @@ public class Virgil : MonoBehaviour
     }
     private IEnumerator TextAnimation(string text)
     {
-        string current = "";
         string[] t = text.Split(null);
         for(int i=0; i<t.Length; ++i)
         {

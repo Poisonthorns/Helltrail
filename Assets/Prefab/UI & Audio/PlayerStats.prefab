@@ -46,20 +46,10 @@ MonoBehaviour:
   upgradedDamage: 0
   upgradedSpeed: 0
   upgradedAttackRate: 0
-  souls: 1
-  soulsCollected:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  souls: 0
   currentDamage: {fileID: 0}
   currentSpeed: {fileID: 0}
   currentRate: {fileID: 0}
+  total: {fileID: 0}
   limboRan: 0
   gluttonyRan: 0

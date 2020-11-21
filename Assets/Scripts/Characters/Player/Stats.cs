@@ -10,9 +10,7 @@ public class Stats : MonoBehaviour
 	public float upgradedSpeed = 0.0f;
 	public float upgradedAttackRate = 0.0f;
 	public int souls = 0;
-	//private static int MAX_SOULS_DISPLAYED = 10;
 	private static int MAX_STAT_TOTAL = 30;
-	//public Image[] soulsCollected = new Image[MAX_SOULS_DISPLAYED];
 
 	public Text currentDamage;
 	public Text currentSpeed;
@@ -64,14 +62,6 @@ public class Stats : MonoBehaviour
 			currentRate = GameObject.Find("Attack Rate Total Text").GetComponent<Text>();
 			total = GameObject.Find("Total Text").GetComponent<Text>();
 
-
-			//soulsCollected[0] = GameObject.Find("Soul").GetComponent<Image>();
-
-			/*for(int index = 1; index < MAX_SOULS_DISPLAYED; index++)
-            {
-				soulsCollected[index] = GameObject.Find("Soul (" + index + ")").GetComponent<Image>(); ;
-			}*/
-
 			damageStatBar.Initialize(upgradedDamage, (float)MAX_STAT_TOTAL);
 			speedStatBar.Initialize(upgradedSpeed, (float)MAX_STAT_TOTAL);
 			rateStatBar.Initialize(upgradedAttackRate, (float)MAX_STAT_TOTAL);
@@ -85,16 +75,6 @@ public class Stats : MonoBehaviour
 	{
 		if (SceneManager.GetActiveScene().name == "StatScreen")
 		{
-			/*
-			// Check for overflow of souls collected indicator
-			if (souls > MAX_SOULS_DISPLAYED)
-			{
-				updateSoulDisplay(MAX_SOULS_DISPLAYED);
-			}
-			else
-			{
-				updateSoulDisplay(souls);
-			} */
 			updateSoulDisplay(souls);
 		}
 
@@ -107,24 +87,12 @@ public class Stats : MonoBehaviour
 		{
 			gluttonyRan = true;
 		}
+
 	}
 
 	public void updateSoulDisplay(int numToDisplay)
     {
 		total.text = "" + numToDisplay;
-
-		/*
-		// Make acquired souls visible
-		for (int index = 0; index < numToDisplay; index++)
-		{
-			soulsCollected[index].color = new Color(soulsCollected[index].color.r, soulsCollected[index].color.g, soulsCollected[index].color.b, 1f);
-		}
-
-		// Make uncollected souls faded
-		for (int index = numToDisplay; index < soulsCollected.Length; index++)
-		{
-			soulsCollected[index].color = new Color(soulsCollected[index].color.r, soulsCollected[index].color.g, soulsCollected[index].color.b, 0.2f);
-		}*/
 	}
 
 	public void updateTextDisplay(float damage, float speed, float rate)
@@ -141,7 +109,6 @@ public class Stats : MonoBehaviour
 			//5.0
 			upgradedDamage += 0.5f;
 			
-
 			// Puts cap on the highest damage you can get
 			if (upgradedDamage >= MAX_STAT_TOTAL)
 			{
@@ -204,4 +171,9 @@ public class Stats : MonoBehaviour
 	{
 		souls += num;
 	}
+
+	public void clearSouls()
+    {
+		souls = 0;
+    }
 }
