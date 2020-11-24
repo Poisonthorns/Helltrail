@@ -380,6 +380,9 @@ MonoBehaviour:
   iceSpikes: {fileID: 3281133249853461612, guid: c2d39dbbc40b08a46b4728b347508dd2, type: 3}
   oozeIndicator: {fileID: 4790674181272895356, guid: 181b1595ba762bd4abadd6b6ff5d769a, type: 3}
   fireBall: {fileID: 4905634907710766859, guid: 6944da288b3d078418689856f5dc0688, type: 3}
+  enemySummon: {fileID: 6471139792893616792, guid: d52c466c37b720049bb2e71a611e4d25, type: 3}
+  enemyIndicator: {fileID: 5675583480696842108, guid: 4f4be11f20749fe4881250303c527e2c, type: 3}
+  enemyChance: 3
   gridObject: {fileID: 0}
   tileMapObject: {fileID: 0}
   iceSound: {fileID: 8300000, guid: 2f487936688580047adb8e7ca2b1807d, type: 3}

@@ -39,7 +39,7 @@ public class BossActionManager : MonoBehaviour
             ++counter;
         }*/
         
-        if (Time.time >= nextDamageEvent)
+        if(spell != null && Time.time >= nextDamageEvent)
         {
             nextDamageEvent = Time.time + attackDelay;
 
@@ -47,7 +47,6 @@ public class BossActionManager : MonoBehaviour
             switch (attackPhase)
             {
                 case 0:
-
                     UnityEngine.Debug.Log("Attack phase 0");
                     anim.Play("IceAttack");
                     spell.iceSpell();
@@ -61,7 +60,8 @@ public class BossActionManager : MonoBehaviour
                     break;
                 case 2:
                     UnityEngine.Debug.Log("Attack phase 2");
-                    //End attack animation here
+                    //Summon animation and sound here
+                    spell.summonSpell();
                     attackPhase = 0;
                     break;
                 default:
