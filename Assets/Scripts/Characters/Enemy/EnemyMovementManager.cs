@@ -17,6 +17,8 @@ public class EnemyMovementManager : MonoBehaviour
     float time = 0.0f;
 
     public float speed;
+    public GameObject manager;
+    public GameObject pathtest;
     public Transform movePoint;
     public LayerMask collideables;
     public int powerLevel;
@@ -37,6 +39,8 @@ public class EnemyMovementManager : MonoBehaviour
 
         movePoint.parent = null;
         nextMovement = Time.time + Random.Range(0.0f, 3.0f);*/
+        manager = GameObject.Find("Manager");
+        time = 3;
     }
 
     /*
@@ -52,28 +56,61 @@ public class EnemyMovementManager : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
     } */
     bool lockk = false;
-    Vector3 temp; 
+    Vector3 temp;
+    List<Coords> tempppp;
+    void drawPath()
+    {
+        Vector3 start = transform.position;
+        for(int i=1; i<tempppp.Count; ++i)
+        {
+            //Instantiate(pathtest, start, Quaternion.identity);
+            start.x = start.x + (tempppp[i].x - tempppp[i - 1].x);
+            start.y = start.y + (tempppp[i].y - tempppp[i - 1].y);
+            print(start.x + " a " + start.y);
+            //print(tempppp[i].x + " a " + tempppp[i].y);
 
+        }
+    }
+    Vector2 target;
     void FixedUpdate()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
 
         time += Time.deltaTime;
-        if(time < 1)
+        if(time > 2)
         {
+            tempppp = manager.GetComponent<CircleCreation>().pathFind(this.transform.position);
+            drawPath();
+            Coords reference = tempppp[0];
+            Coords next = tempppp[1];
+            drawPath();
             temp = setMovement();
-            print(temp);
-            rb.velocity = (new Vector2(temp.x, temp.y)) * speed;
+            //print(temp);
+            //rb.velocity = (new Vector2(, ) * speed;
 
+            target.x = (transform.position.x) + ( next.x- reference.x ) ;
+            target.y = (transform.position.y) + ( next.y - reference.y ) ;
+            print(target.x + " b " + target.y);
+
+            // move sprite towards the target location
+            time = 0;
         }
         else
         {
-            rb.velocity = new Vector2(0, 0);
-        }
-        if (time > 2)
-        {
+            float step = 1 * Time.deltaTime;
+            print(target);
+            transform.position = Vector2.MoveTowards(transform.position, target, step);
 
+            //rb.velocity = new Vector2(0, 0);
+        }
+        if (time > 12)
+        {
+           //tempppp = manager.GetComponent<CircleCreation>().pathFind(this.transform.position);
+            foreach(Coords t in tempppp)
+            {
+                //print(t.x + "  " + t.y);
+            }
             lockk = false;
             time = 0;
         }
@@ -89,14 +126,135 @@ public class EnemyMovementManager : MonoBehaviour
 
     private Vector3 setMovement()
     {
+
         if(lockk)
         {
             return temp;
         }
         lockk = true;
-        return getMovement();
+        if (manager == null)
+        {
+            return getMovement();
+        }
+        else
+        {
+            return getMovement();
+        }
     }
+    private void getMovementPF()
+    {
 
+    }
+    bool testDirection(int x, int y,int step, int direction)
+    {
+        int temp = manager.GetComponent<CircleCreation>().currentRoom;
+        Room[] r =  manager.GetComponent<CircleCreation>().roomMap;
+
+        switch (direction)
+        {
+            case 1:
+                if(y+1 < 6 && r[temp].grid[x, y+1]>0 && r[temp].visitedgrid[x, y + 1]==step)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case 3:
+                if (y - 1 > -1 && r[temp].grid[x, y - 1] > 0 && r[temp].visitedgrid[x, y - 1] == step)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case 2:
+                if (x + 1 < 10 && r[temp].grid[x+1, y + 1] > 0 && r[temp].visitedgrid[x+1, y] == step)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case 4:
+                if (x - 1 > -1 && r[temp].grid[x -1, y ] > 0 && r[temp].visitedgrid[x-1, y] == step)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+        }
+        return false;
+    }
+    void initialSetup()
+    {
+
+    }
+    void setVisited(int x, int y, int step)
+    {
+        int temp = manager.GetComponent<CircleCreation>().currentRoom;
+        Room[] r = manager.GetComponent<CircleCreation>().roomMap;
+        Room current = r[temp];
+        if(current.grid[x,y] >=0)
+        {
+            current.visitedgrid[x,y] = step;
+        }
+    }
+    void setDistance()
+    {
+        int temp = manager.GetComponent<CircleCreation>().currentRoom;
+        Room[] r = manager.GetComponent<CircleCreation>().roomMap;
+        Room current = r[temp];
+        initialSetup();
+        int x = 0;
+        int y = 0;
+        for(int step = 1; step<60; ++step)
+        {
+            for(int i=0; i<10; ++i)
+            {
+                for(int j=0; j<6; ++j )
+                {
+
+                    if(current.visitedgrid[i,j] == step -1)
+                    {
+                        test(i, j, step);
+
+                    }
+                }
+            }
+        }
+    }
+    void SetPath()
+    {
+        int step;
+        int x = 5;
+        int y = 5;
+    }
+    void test(int x, int y, int step)
+    {
+        if(testDirection(x,y,-1,1))
+        {
+            setVisited(x, y + 1, step);
+        }
+        if (testDirection(x, y, -1, 2))
+        {
+            setVisited(x, y + 1, step);
+        }
+        if (testDirection(x, y, -1, 3))
+        {
+            setVisited(x, y + 1, step);
+        }
+        if (testDirection(x, y, -1, 4))
+        {
+            setVisited(x, y + 1, step);
+        }
+    }
     private Vector3 getMovement()
 	{
         if(movementType[0])

@@ -21,7 +21,7 @@ public class RoomGenerator : MonoBehaviour
     public RoomGenerator(GameObject[] enemyList, GameObject[] terrainList)
     {
         enemies = enemyList;
-         terrain = terrainList;
+        terrain = terrainList;
         //enemies = new GameObject[10];
         //terrain = new GameObject[10];
         enemyInRoom = new Stack<int>();

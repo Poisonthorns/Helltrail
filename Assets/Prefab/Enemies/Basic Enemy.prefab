@@ -1139,12 +1139,12 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6471139792893616792}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 100
+  m_LinearDrag: 100000
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1209,6 +1209,8 @@ MonoBehaviour:
   movementType: 01000000
   player: {fileID: 1988686699227201222, guid: 25db1935312b0d043b9ffbcaded22b22, type: 3}
   speed: 2
+  manager: {fileID: 0}
+  pathtest: {fileID: 3692944208121703689, guid: 3f7dc33cb77027a4194d5f4938a48d17, type: 3}
   movePoint: {fileID: 3790989679691831218}
   collideables:
     serializedVersion: 2

@@ -138,7 +138,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.3555162, y: -0.026933312}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -149,7 +149,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 6}
+  m_Size: {x: 4.470205, y: 4.8041725}
   m_EdgeRadius: 0
 --- !u!114 &7501969041311150499
 MonoBehaviour:
@@ -185,8 +185,8 @@ MonoBehaviour:
   - {fileID: 5986223334232170306}
   - {fileID: 8130707957898581716}
   m_Bounds:
-    m_Center: {x: -0.20137954, y: 0.0025792122, z: 0}
-    m_Extent: {x: 2.5439453, y: 2.6195855, z: 0}
+    m_Center: {x: -0.20137954, y: 0.0025794506, z: 0}
+    m_Extent: {x: 2.5439453, y: 2.6195858, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5526412244872737925
@@ -312,12 +312,12 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646032159801282879}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 100
+  m_LinearDrag: 100
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -382,6 +382,8 @@ MonoBehaviour:
   movementType: 010000
   player: {fileID: 0}
   speed: 1.5
+  manager: {fileID: 0}
+  pathtest: {fileID: 0}
   movePoint: {fileID: 6643606853196140181}
   collideables:
     serializedVersion: 2
