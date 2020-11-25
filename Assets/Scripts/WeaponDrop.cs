@@ -23,12 +23,19 @@ public class WeaponDrop : MonoBehaviour
     {
         if(collision.gameObject.tag =="Player")
         {
+            // Weapon UI animation starts when player acquires weapon
+            Virgil currentVirgil = GameObject.FindObjectOfType<Virgil>();
+            Animator swordAnim = currentVirgil.swordIcon.GetComponent<Animator>();
+            Animator bowAnim = currentVirgil.bowIcon.GetComponent<Animator>();
+
             if (weaponID == 1)
             {
+                swordAnim.enabled = true;
                 collision.gameObject.GetComponent<PlayerCombatController>().noSword = false;
             }
             else
             {
+                bowAnim.enabled = true;
                 collision.gameObject.GetComponent<PlayerCombatController>().noBow = false;
             }
             Destroy(gameObject);

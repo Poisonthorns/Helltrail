@@ -3,10 +3,14 @@
 public class Soul : MonoBehaviour
 {
     public GameObject stats;
+    public AudioClip soulPickupSound;
+
+    private AudioSource playerAudio;
 
     private void Start()
     {
         stats = GameObject.Find("PlayerStats");
+        playerAudio = GameObject.Find("Player").GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -20,6 +24,7 @@ public class Soul : MonoBehaviour
         if(col.gameObject.tag.Equals("Player"))
         {
             print("soul picked up");
+            playerAudio.PlayOneShot(soulPickupSound);
             stats.GetComponent<Stats>().souls++;
             Destroy(gameObject);
         }

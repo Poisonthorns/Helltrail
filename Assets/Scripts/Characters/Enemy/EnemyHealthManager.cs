@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
+using System.Collections;
 
 public class EnemyHealthManager : MonoBehaviour
 {
@@ -41,6 +42,13 @@ public class EnemyHealthManager : MonoBehaviour
 
     bool alreadyDead = false;
     public float damageModifier;
+
+    [SerializeField]
+    private GameObject bossExplosion;
+
+    [SerializeField]
+    private AudioClip bossDeathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +81,7 @@ public class EnemyHealthManager : MonoBehaviour
 
         if (healthType[0])
         {
-            
+
             if ((weaknessType[1] && damageType == 0) || (weaknessType[2] && damageType == 1) || (weaknessType[3] && damageType == 2))
             {
                 currentHealth -= (amount * damageModifier);
@@ -84,7 +92,7 @@ public class EnemyHealthManager : MonoBehaviour
             }
         }
 
-        if(!alreadyDead && currentHealth <= 0)
+        if (!alreadyDead && currentHealth <= 0)
         {
             alreadyDead = true;
             Death();
@@ -100,42 +108,49 @@ public class EnemyHealthManager : MonoBehaviour
             Death();
     }
 
-    
+
     public void PlayParticle(GameObject particle)
     {
-      Instantiate(particle, transform.position, Quaternion.identity);
+        Instantiate(particle, transform.position, Quaternion.identity);
     }
-    
+
 
     void Death()
     {
         // Win Condition for Satan
         if (gameObject.tag.Equals("Boss"))
         {
-            SceneManager.LoadScene("Win Screen");
+            GameObject winEffect = Instantiate(bossExplosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
-
         if (gameObject.tag == "Enemy")
-        {
-            anim.SetBool("Dead", true);
-        }
+            {
+                anim.SetBool("Dead", true);
+            }
 
-        //enemyNoises.PlayOneShot(enemyDeath, 1.0f);
-        UnityEngine.Debug.Log(this.name + " died");
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
-        GameObject puddleObj = Instantiate(puddle, transform.position, Quaternion.identity);
-        puddleObj.transform.localScale = new Vector3(Random.Range(0.2f, 0.25f), Random.Range(0.2f, 0.25f), 1.0f);
-        if(dropSoul)
-        {
-            Instantiate(soul, transform.position, transform.rotation);
+            UnityEngine.Debug.Log(this.name + " died");
+            GetComponent<Collider2D>().enabled = false;
+            this.enabled = false;
 
-        }
-        if (drop!=null)
-        {
-            Instantiate(drop, transform.position, transform.rotation);
-            print("dropeed");
-        }
-        Destroy(gameObject);
+            if(!gameObject.tag.Equals("Boss"))
+            {
+
+                GameObject puddleObj = Instantiate(puddle, transform.position, Quaternion.identity);
+                puddleObj.transform.localScale = new Vector3(Random.Range(0.2f, 0.25f), Random.Range(0.2f, 0.25f), 1.0f);
+
+            }
+
+            if (dropSoul)
+            {
+                Instantiate(soul, transform.position, transform.rotation);
+
+            }
+            if (drop != null)
+            {
+                Instantiate(drop, transform.position, transform.rotation);
+                print("dropped");
+            }
+            Destroy(gameObject);
+        
     }
 }

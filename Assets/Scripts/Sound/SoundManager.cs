@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource musicSourceA;
     public AudioSource musicSourceB;
 
-    public static float musicVolume = 1.0f;
+    public static float musicVolume = 0.5f;
     public int currentTrack = 0;
 
     void Awake()

@@ -48,6 +48,6 @@ MonoBehaviour:
   attackDamage: 5
   attackRange: 0
   attackRate: 1
-  attackSound: {fileID: 8300000, guid: 2f477a8c58ef9c14fa6d72820895fdb0, type: 3}
+  attackSound: {fileID: 8300000, guid: cfdba5ea2630d3e469b821ab8278449e, type: 3}
   rangedAttack: 1
   destroyDelay: 1

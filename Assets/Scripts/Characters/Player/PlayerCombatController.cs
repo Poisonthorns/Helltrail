@@ -21,6 +21,9 @@ public class PlayerCombatController : MonoBehaviour
 	[SerializeField]
 	private AudioClip weaponSwap;
 
+	[SerializeField]
+	private AudioClip specialRangedSound;
+
 	//booleans here to know what weapon is currently equipped for animations along with animator
 	public bool lightAttack = true;
 	public bool heavyAttack = false;
@@ -100,19 +103,6 @@ public class PlayerCombatController : MonoBehaviour
 	{
 		GetInput();
 
-		/*if (!specialAttackIsQueued)
-		{
-			lightSpecialCircle.fillAmount = 0;
-			heavySpecialCircle.fillAmount = 0;
-			rangeSpecialCircle.fillAmount = 0;
-		}
-        else
-        {
-			lightSpecialCircle.fillAmount = 1;
-			heavySpecialCircle.fillAmount = 1;
-			rangeSpecialCircle.fillAmount = 1;
-		}*/
-
 		float timeLeftOnCooldown = specialAttackTimer - Time.time;
 		if (timeLeftOnCooldown < 0)
 		{
@@ -137,38 +127,6 @@ public class PlayerCombatController : MonoBehaviour
 			circleSlashFillAmount = 0f;
 			CircleSlash.fillAmount = 0f;
 		}
-
-		/*
-		// Reset radial indicators
-		if(!specialAttackIsQueued)
-		{
-			lightSpecialCircle.fillAmount = 0;
-			heavySpecialCircle.fillAmount = 0;
-			rangeSpecialCircle.fillAmount = 0;
-
-			// Icon fill color is gray-black when filling
-			lightSpecialCircle.color = new Color32(20, 24, 32, 255);
-			heavySpecialCircle.color = new Color32(20, 24, 32, 255);
-			rangeSpecialCircle.color = new Color32(20, 24, 32, 255);
-		}
-
-		// Radially fills three special attack icons based on timer and cooldown, I know the math is wrong and will fix it
-		while(specialAttackIsQueued && lightSpecialCircle.fillAmount < 1.0f)
-		{
-			lightSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
-			heavySpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
-			rangeSpecialCircle.fillAmount = specialAttackTimer / specialAttackCooldown;
-		}
-
-		// Changes loaded special attack icon to white
-		if(specialAttackQueued && lightSpecialCircle.fillAmount == 1.0f)
-		{
-			lightSpecialCircle.color = new Color32(255, 255, 255, 255);
-			heavySpecialCircle.color = new Color32(255, 255, 255, 255);
-			rangeSpecialCircle.color = new Color32(255, 255, 255, 255);
-
-		}
-		*/
 
 	}
 
@@ -592,6 +550,7 @@ public class PlayerCombatController : MonoBehaviour
 				newArrow.GetComponent<Arrow>().SetRotation(currRotation - 90f);
 				newArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
 				newArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
+				playerAudio.PlayOneShot(specialRangedSound);
 				currRotation += rotationIncrement;
 				i--;
 			}
@@ -608,6 +567,7 @@ public class PlayerCombatController : MonoBehaviour
 			tempArrow.GetComponent<Arrow>().SetRotation(arrowRotation - 90f);
 			tempArrow.GetComponent<Arrow>().additionalDamage = additionalDamage;
 			tempArrow.GetComponent<Arrow>().upgradedStats = upgradedStats;
+			playerAudio.PlayOneShot(weapon.GetComponent<BaseWeapon>().attackSound);
 		}
 		yield return null;
 	}

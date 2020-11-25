@@ -40,9 +40,9 @@ public class Virgil : MonoBehaviour
     private GameObject weaponWheel;
 
     // Icons of weapons that Virgil will display during tutorial
-    private GameObject daggerIcon;
-    private GameObject swordIcon;
-    private GameObject bowIcon;
+    public GameObject daggerIcon;
+    public GameObject swordIcon;
+    public GameObject bowIcon;
     private IEnumerator coroutine;
     int a = 0;
     int b = 1;
@@ -223,6 +223,7 @@ public class Virgil : MonoBehaviour
             daggerIcon.GetComponent<Animator>().enabled = true;
 
         }
+        /*
         else if (dialogueStage == 9)
         {
             swordIcon.GetComponent<Animator>().enabled = true;
@@ -231,7 +232,7 @@ public class Virgil : MonoBehaviour
         else if (dialogueStage == 11)
         {
             bowIcon.GetComponent<Animator>().enabled = true;
-        }
+        }*/
         else if (dialogueStage == 15)
         {
             daggerIcon.GetComponent<Animator>().enabled = false;

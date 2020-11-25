@@ -3441,6 +3441,7 @@ MonoBehaviour:
   - {fileID: 9156064572445127161, guid: 9c7c861a3c87f254a969ceb699e53ed8, type: 3}
   Arrow: {fileID: 5550976272680288251, guid: 7cda74d99108ee84eb1d029de5ace67d, type: 3}
   weaponSwap: {fileID: 8300000, guid: f30c9e0e7625d074a9a8c932455eb65a, type: 3}
+  specialRangedSound: {fileID: 8300000, guid: ce2be47933099f048a1d82d755f10709, type: 3}
   lightAttack: 0
   heavyAttack: 0
   animUp: {fileID: 7573806536464491000}
@@ -5093,6 +5094,10 @@ PrefabInstance:
     - target: {fileID: 7253939968161308561, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Layer
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628019084743950258, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7942048591271963397, guid: e332c1cfdcb189a40a69bc4722749b65, type: 3}
       propertyPath: m_Layer

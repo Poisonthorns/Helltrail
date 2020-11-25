@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 7778264597260204410, guid: dc7e6fcf7a5ce3d4abb1c77f55dbb638, type: 3}
+  soulPickupSound: {fileID: 8300000, guid: c208ec95b30e7fd47b5e269ac5a7314e, type: 3}
 --- !u!50 &7819779180747782602
 Rigidbody2D:
   serializedVersion: 4
