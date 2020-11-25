@@ -12,6 +12,8 @@ TagManager:
   - Soul
   - Wall
   - BossAttacks
+  - Potion
+  - Blood
   layers:
   - Default
   - TransparentFX
@@ -32,7 +34,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Meshes
   - 
   - 
   - 
@@ -63,4 +65,7 @@ TagManager:
     locked: 0
   - name: Playerand monters
     uniqueID: 2752123713
+    locked: 0
+  - name: asdf
+    uniqueID: 2462543361
     locked: 0
