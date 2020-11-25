@@ -520,15 +520,15 @@ RectTransform:
   m_GameObject: {fileID: 946708758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.75, y: 3.75, z: 1}
+  m_LocalScale: {x: 0.62, y: 0.62, z: 1}
   m_Children: []
   m_Father: {fileID: 1258663980}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -200, y: 100}
-  m_SizeDelta: {x: 98.28088, y: 41.93318}
+  m_AnchoredPosition: {x: -200, y: 98}
+  m_SizeDelta: {x: 600, y: 256}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!82 &946708760
 AudioSource:
@@ -636,7 +636,7 @@ Animator:
   m_GameObject: {fileID: 946708758}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 329123eabef802648ba42a80433fc56e, type: 2}
+  m_Controller: {fileID: 9100000, guid: c82c59335430d7040911c53fd4fd7c5f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -732,7 +732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cab35cc8679b7944b85940485b35972d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f1cfc62af00d3549964b22fd87f456c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
