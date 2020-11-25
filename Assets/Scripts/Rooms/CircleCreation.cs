@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 using System.Linq;
-
+using UnityEngine.Assertions;
 public struct Room
 {
     public int roomID;
@@ -538,7 +538,7 @@ public class CircleCreation : MonoBehaviour
         }
     }
 
-    public List<Coords> pathFind(Vector3 currentPos)
+    public List<Vector3Int> pathFind(Vector3 currentPos)
     {
         Node[,] nodes = new Node[roomWidth, roomHeight];
         print(currentRoom);
@@ -568,7 +568,21 @@ public class CircleCreation : MonoBehaviour
         print(path.Count);
         path.Insert(0, from);
         path.RemoveAt(path.Count - 1);
-        return path;
+
+        List<Vector3Int> positions = new List<Vector3Int>();
+
+
+        foreach(Coords c in path)
+        {
+            int cx = c.x + tileXOffset;
+            int cy = c.y + tileYOffset;
+
+            positions.Add(new Vector3Int(cx, cy, 0));
+        }
+
+
+
+        return positions;
 
     }
 
@@ -589,7 +603,25 @@ public class CircleCreation : MonoBehaviour
 
     private List<Node> helper(Node[,] nodes, Coords startPos, Coords targetPos)
     {
+        print(startPos.x);
+
+
+
+        if (startPos.x >= roomWidth|| startPos.x <0)
+        {
+            return null;
+        }
+        if (targetPos.x >= roomWidth || targetPos.x < 0)
+        {
+            return null;
+        }
+        if (targetPos.y >= roomHeight || targetPos.y < 0)
+        {
+            return null;
+        }
         Node startNode = nodes[startPos.x, startPos.y];
+        print(targetPos.x+     "         "+ targetPos.y);
+
         Node targetNode = nodes[targetPos.x, targetPos.y];
 
         List<Node> openList = new List<Node>();

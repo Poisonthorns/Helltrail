@@ -57,7 +57,7 @@ public class EnemyMovementManager : MonoBehaviour
     } */
     bool lockk = false;
     Vector3 temp;
-    List<Coords> tempppp;
+    List<Vector3Int> tempppp;
     void drawPath()
     {
         Vector3 start = transform.position;
@@ -78,28 +78,27 @@ public class EnemyMovementManager : MonoBehaviour
         player = GameObject.Find("Player").transform;
 
         time += Time.deltaTime;
-        if(time > 2)
+        if(time > 0.75)
         {
             tempppp = manager.GetComponent<CircleCreation>().pathFind(this.transform.position);
-            drawPath();
-            Coords reference = tempppp[0];
-            Coords next = tempppp[1];
-            drawPath();
-            temp = setMovement();
-            //print(temp);
-            //rb.velocity = (new Vector2(, ) * speed;
+            if(tempppp.Count>=2)
+            {
+                //Coords reference = tempppp[0];
+                Vector3Int next = tempppp[1];
+                temp = setMovement();
+                //print(temp);
+                //rb.velocity = (new Vector2(, ) * speed;
+                print(next.x + "   ||||  " + next.y);
+                target = new Vector2(next.x+0.5f, next.y+0.5f);
+            }
 
-            target.x = (transform.position.x) + ( next.x- reference.x ) ;
-            target.y = (transform.position.y) + ( next.y - reference.y ) ;
-            print(target.x + " b " + target.y);
 
             // move sprite towards the target location
             time = 0;
         }
         else
         {
-            float step = 1 * Time.deltaTime;
-            print(target);
+            float step = 2 * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, target, step);
 
             //rb.velocity = new Vector2(0, 0);
@@ -107,7 +106,7 @@ public class EnemyMovementManager : MonoBehaviour
         if (time > 12)
         {
            //tempppp = manager.GetComponent<CircleCreation>().pathFind(this.transform.position);
-            foreach(Coords t in tempppp)
+            //foreach(Coords t in tempppp)
             {
                 //print(t.x + "  " + t.y);
             }
