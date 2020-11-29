@@ -58,6 +58,7 @@ public class EnemyMovementManager : MonoBehaviour
     bool lockk = false;
     Vector3 temp;
     List<Vector3Int> tempppp;
+    bool first = true;
     void drawPath()
     {
         Vector3 start = transform.position;
@@ -78,6 +79,7 @@ public class EnemyMovementManager : MonoBehaviour
         player = GameObject.Find("Player").transform;
 
         time += Time.deltaTime;
+
         if(time > 0.75)
         {
             tempppp = manager.GetComponent<CircleCreation>().pathFind(this.transform.position);
@@ -90,19 +92,20 @@ public class EnemyMovementManager : MonoBehaviour
                 //rb.velocity = (new Vector2(, ) * speed;
                 print(next.x + "   ||||  " + next.y);
                 target = new Vector2(next.x+0.5f, next.y+0.5f);
+                first = false;
             }
 
-
+           
             // move sprite towards the target location
             time = 0;
         }
-        else
+        else if(!first)
         {
             float step = 2 * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, target, step);
 
             //rb.velocity = new Vector2(0, 0);
-        }
+        }/*
         if (time > 12)
         {
            //tempppp = manager.GetComponent<CircleCreation>().pathFind(this.transform.position);
@@ -112,7 +115,7 @@ public class EnemyMovementManager : MonoBehaviour
             }
             lockk = false;
             time = 0;
-        }
+        }*/
         /*
         player = GameObject.Find("Player").transform;
         if (Time.time > nextMovement)

@@ -605,22 +605,28 @@ public class CircleCreation : MonoBehaviour
     {
         print(startPos.x);
 
+        print(targetPos.x + "         " + targetPos.y);
 
 
-        if (startPos.x >= roomWidth|| startPos.x <0)
+        if (startPos.x >= roomWidth|| startPos.x < 0)
         {
+            print(targetPos.x + "      1   " + targetPos.y);
+
             return null;
         }
         if (targetPos.x >= roomWidth || targetPos.x < 0)
         {
+            print(targetPos.x + "     2    " + targetPos.y);
+
             return null;
         }
         if (targetPos.y >= roomHeight || targetPos.y < 0)
         {
+            print(targetPos.x + "     3    " + targetPos.y);
+
             return null;
         }
         Node startNode = nodes[startPos.x, startPos.y];
-        print(targetPos.x+     "         "+ targetPos.y);
 
         Node targetNode = nodes[targetPos.x, targetPos.y];
 
